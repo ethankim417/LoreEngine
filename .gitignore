@@ -2,6 +2,7 @@
 node_modules
 out
 dist
+.gh-pages-worktree
 .vercel
 *.log
 *.tsbuildinfo
