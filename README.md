@@ -4,6 +4,10 @@ LoreEngine is a production-ready portfolio web app for gaming industry intellige
 
 The current version uses static mock data only. It does not call a paid AI API, fetch live news, or summarize articles at runtime.
 
+## Live Demo
+
+[Open the LoreEngine sample dashboard](https://ethankim417.github.io/LoreEngine/)
+
 ## Features
 
 - Next.js, TypeScript, and Tailwind CSS
@@ -42,6 +46,14 @@ npm run build
 4. Deploy.
 
 No environment variables are required for the mock-data version.
+
+## Deploy On GitHub Pages
+
+This repo includes a GitHub Actions workflow at `.github/workflows/pages.yml`.
+
+After changes are pushed to `main`, GitHub Pages builds a static export and publishes it to:
+
+[https://ethankim417.github.io/LoreEngine/](https://ethankim417.github.io/LoreEngine/)
 
 ## Mock Data
 
