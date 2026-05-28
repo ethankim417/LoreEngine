@@ -42,10 +42,10 @@ export function ArticleCard({ article }: { article: Article }) {
           alt=""
           fill
           sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 50vw, 100vw"
-          className="object-cover opacity-[0.18] transition duration-500 [mask-image:linear-gradient(135deg,black,transparent_68%)] group-hover:scale-105 group-hover:opacity-[0.26]"
+          className="translate-x-[18%] translate-y-[-10%] scale-[0.72] object-contain object-right-top opacity-[0.32] transition duration-500 [mask-image:radial-gradient(circle_at_72%_22%,black_0%,black_34%,transparent_72%)] group-hover:scale-[0.76] group-hover:opacity-[0.42]"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(50,217,255,0.12),transparent_30%),linear-gradient(145deg,rgba(6,7,13,0.12),rgba(6,7,13,0.94)_66%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(50,217,255,0.13),transparent_24%),linear-gradient(145deg,rgba(6,7,13,0.18),rgba(6,7,13,0.98)_62%)]" />
       </div>
 
       <div className="relative z-10 flex flex-1 flex-col p-5">
