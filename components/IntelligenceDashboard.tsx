@@ -1,7 +1,16 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { ArrowDownUp, Search, SlidersHorizontal, Sparkles } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import {
+  ArrowDownUp,
+  ArrowRight,
+  Info,
+  Search,
+  SlidersHorizontal,
+  Sparkles,
+  X
+} from "lucide-react";
 import { ArticleCard } from "@/components/ArticleCard";
 import { categories, type Article, type ArticleCategory } from "@/data/articles";
 import type { DashboardMetric } from "@/lib/metrics";
@@ -17,6 +26,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<ArticleCategory | "All">("All");
   const [sortMode, setSortMode] = useState<SortMode>("impact");
+  const [selectedMetric, setSelectedMetric] = useState<DashboardMetric | null>(null);
 
   const filteredArticles = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -47,9 +57,9 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
   return (
     <div className="flex flex-col gap-6">
-      <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <section aria-label="Dashboard metrics" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {metrics.map((metric) => (
-          <MetricCard key={metric.label} metric={metric} />
+          <MetricCard key={metric.label} metric={metric} onSelect={() => setSelectedMetric(metric)} />
         ))}
       </section>
 
@@ -122,11 +132,19 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
           No matching intelligence briefs.
         </div>
       ) : null}
+
+      <MetricExplainerDialog metric={selectedMetric} onClose={() => setSelectedMetric(null)} />
     </div>
   );
 }
 
-function MetricCard({ metric }: { metric: DashboardMetric }) {
+function MetricCard({
+  metric,
+  onSelect
+}: {
+  metric: DashboardMetric;
+  onSelect: () => void;
+}) {
   const toneClass = {
     cyan: "from-cyan-300/20 to-cyan-300/5 text-cyan-100",
     violet: "from-violet-300/20 to-violet-300/5 text-violet-100",
@@ -135,8 +153,18 @@ function MetricCard({ metric }: { metric: DashboardMetric }) {
   }[metric.tone];
 
   return (
-    <div className="glass-panel rounded-lg p-4 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25">
-      <div className={`h-1.5 w-16 rounded-full bg-gradient-to-r ${toneClass}`} />
+    <button
+      type="button"
+      onClick={onSelect}
+      aria-label={`Explain ${metric.label}`}
+      className="glass-panel group rounded-lg p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
+    >
+      <div className="flex items-center justify-between gap-3">
+        <div className={`h-1.5 w-16 rounded-full bg-gradient-to-r ${toneClass}`} />
+        <span className="grid h-8 w-8 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-400 transition group-hover:border-cyan-300/35 group-hover:text-cyan-100">
+          <Info className="h-4 w-4" />
+        </span>
+      </div>
       <p className="mt-4 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
         {metric.label}
       </p>
@@ -144,6 +172,121 @@ function MetricCard({ metric }: { metric: DashboardMetric }) {
         <p className="font-display text-3xl font-black text-white">{metric.value}</p>
         <p className="pb-1 text-sm font-semibold text-slate-300">{metric.delta}</p>
       </div>
+      <p className="mt-3 line-clamp-2 text-xs leading-5 text-slate-400">{metric.shortDescription}</p>
+    </button>
+  );
+}
+
+function MetricExplainerDialog({
+  metric,
+  onClose
+}: {
+  metric: DashboardMetric | null;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    if (!metric) {
+      return;
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [metric, onClose]);
+
+  if (!metric) {
+    return null;
+  }
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="metric-dialog-title"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-3 backdrop-blur-md sm:items-center sm:p-6"
+      onClick={onClose}
+    >
+      <div
+        className="glass-panel w-full max-w-2xl overflow-hidden rounded-lg"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="flex items-start justify-between gap-4 border-b border-white/10 p-5 sm:p-6">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-200">
+              Metric Methodology
+            </p>
+            <h2 id="metric-dialog-title" className="mt-2 font-display text-3xl font-black text-white">
+              {metric.label}
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-slate-300">{metric.shortDescription}</p>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close metric explanation"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-300 transition hover:border-cyan-300/40 hover:text-white"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
+        <div className="grid gap-4 p-5 sm:grid-cols-[1fr_12rem] sm:p-6">
+          <div className="space-y-5">
+            <MetricDetail title="Definition" body={metric.definition} />
+            <MetricDetail title="Calculation" body={metric.calculation} />
+            <MetricDetail title="How To Read It" body={metric.interpretation} />
+          </div>
+
+          <aside className="rounded-lg border border-white/10 bg-black/20 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+              Current Read
+            </p>
+            <p className="mt-2 font-display text-4xl font-black text-white">{metric.value}</p>
+            <p className="mt-1 text-sm font-semibold text-cyan-100">{metric.delta}</p>
+            <div className="mt-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                Inputs
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {metric.inputs.map((input) => (
+                  <span
+                    key={input}
+                    className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-2.5 py-1 text-xs font-medium text-cyan-50"
+                  >
+                    {input}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div className="border-t border-white/10 bg-black/20 p-4 sm:p-5">
+          <Link
+            href="/methodology"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-cyan-200 sm:w-auto"
+            onClick={onClose}
+          >
+            Full Methodology
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
     </div>
+  );
+}
+
+function MetricDetail({ title, body }: { title: string; body: string }) {
+  return (
+    <section>
+      <h3 className="font-display text-base font-bold text-white">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-slate-300">{body}</p>
+    </section>
   );
 }
