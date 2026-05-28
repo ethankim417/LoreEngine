@@ -55,9 +55,10 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               fill
               priority
               sizes="100vw"
-              className="object-cover opacity-35 [mask-image:linear-gradient(90deg,black,transparent_78%)]"
+              className="object-cover opacity-20 [mask-image:linear-gradient(90deg,black,transparent_70%)]"
             />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(50,217,255,0.12),transparent_28%),linear-gradient(90deg,rgba(6,7,13,0.98),rgba(6,7,13,0.9)_50%,rgba(6,7,13,0.68))]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(50,217,255,0.08),transparent_28%),linear-gradient(90deg,rgba(6,7,13,1),rgba(6,7,13,0.96)_56%,rgba(6,7,13,0.82))]" />
+            <div className="absolute left-0 top-0 h-full w-full max-w-4xl bg-gradient-to-r from-[#06070d] via-[#06070d]/95 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#06070d] to-transparent" />
 
             <div className="relative z-10">
