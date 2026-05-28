@@ -25,6 +25,10 @@ export type Article = {
   companies: string[];
   publishedAt: string;
   sourceUrl: string;
+  visual: {
+    image: string;
+    alt: string;
+  };
 };
 
 export const categories: ArticleCategory[] = [
@@ -60,7 +64,11 @@ export const articles: Article[] = [
     sectors: ["AAA Studios", "Game AI", "Live Ops", "Narrative Design"],
     companies: ["Ubisoft", "NetEase", "Roblox", "Inworld"],
     publishedAt: "2026-05-26",
-    sourceUrl: "https://www.nvidia.com/en-eu/geforce/news/nvidia-ace-autonomous-ai-companions-pubg-naraka-bladepoint/"
+    sourceUrl: "https://www.nvidia.com/en-eu/geforce/news/nvidia-ace-autonomous-ai-companions-pubg-naraka-bladepoint/",
+    visual: {
+      image: "/images/intelligence/ai-npcs.webp",
+      alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
+    }
   },
   {
     id: "le-002",
@@ -84,7 +92,11 @@ export const articles: Article[] = [
     sectors: ["Indie Devs", "Game Art", "Steam", "Mobile Gaming"],
     companies: ["Scenario", "Unity Asset Store", "itch.io", "Steam"],
     publishedAt: "2026-05-25",
-    sourceUrl: "https://www.tomshardware.com/video-games/pc-gaming/1-in-5-steam-games-released-in-2025-use-generative-ai-up-nearly-700-percent-year-on-year-7-818-titles-disclose-genai-asset-usage-7-percent-of-entire-steam-library"
+    sourceUrl: "https://www.tomshardware.com/video-games/pc-gaming/1-in-5-steam-games-released-in-2025-use-generative-ai-up-nearly-700-percent-year-on-year-7-818-titles-disclose-genai-asset-usage-7-percent-of-entire-steam-library",
+    visual: {
+      image: "/images/intelligence/studio-engine.webp",
+      alt: "Holographic game engine viewport with asset pipeline geometry"
+    }
   },
   {
     id: "le-003",
@@ -108,7 +120,11 @@ export const articles: Article[] = [
     sectors: ["Hardware", "Game AI", "PC Gaming", "Creator Tools"],
     companies: ["Nvidia", "Microsoft", "Epic Games", "Lenovo"],
     publishedAt: "2026-05-24",
-    sourceUrl: "https://blogs.nvidia.com/blog/ai-decoded-ace-microservices-digital-humans/"
+    sourceUrl: "https://blogs.nvidia.com/blog/ai-decoded-ace-microservices-digital-humans/",
+    visual: {
+      image: "/images/intelligence/hardware-ai.webp",
+      alt: "Glowing GPU-like silicon die and dark circuit intelligence visual"
+    }
   },
   {
     id: "le-004",
@@ -132,7 +148,11 @@ export const articles: Article[] = [
     sectors: ["Console", "Subscription Gaming", "AAA Studios", "Cloud Gaming"],
     companies: ["Microsoft", "Xbox", "Activision Blizzard", "Bethesda"],
     publishedAt: "2026-05-23",
-    sourceUrl: "https://news.xbox.com/en-us/2024/02/21/new-platforms-new-players-xbox-games-switch-playstation/"
+    sourceUrl: "https://news.xbox.com/en-us/2024/02/21/new-platforms-new-players-xbox-games-switch-playstation/",
+    visual: {
+      image: "/images/intelligence/platform-strategy.webp",
+      alt: "Abstract cross-platform gaming network with cloud and device nodes"
+    }
   },
   {
     id: "le-005",
@@ -156,7 +176,11 @@ export const articles: Article[] = [
     sectors: ["Console", "PC Gaming", "AAA Studios", "Publishing"],
     companies: ["Sony", "PlayStation Studios", "Nixxes", "Steam"],
     publishedAt: "2026-05-22",
-    sourceUrl: "https://www.playstation.com/en-us/games/pc-games/"
+    sourceUrl: "https://www.playstation.com/en-us/games/pc-games/",
+    visual: {
+      image: "/images/intelligence/platform-strategy.webp",
+      alt: "Abstract cross-platform gaming network with cloud and device nodes"
+    }
   },
   {
     id: "le-006",
@@ -180,7 +204,11 @@ export const articles: Article[] = [
     sectors: ["Steam", "Indie Devs", "Publishing", "Marketing"],
     companies: ["Valve", "Devolver Digital", "Hooded Horse", "tinyBuild"],
     publishedAt: "2026-05-21",
-    sourceUrl: "https://games.gg/news/what-the-data-says-about-wishlist-conversion/"
+    sourceUrl: "https://games.gg/news/what-the-data-says-about-wishlist-conversion/",
+    visual: {
+      image: "/images/intelligence/business-market.webp",
+      alt: "Dark gaming market intelligence terminal with holographic charts"
+    }
   },
   {
     id: "le-007",
@@ -204,7 +232,11 @@ export const articles: Article[] = [
     sectors: ["Game Engines", "UGC", "Virtual Production", "Creator Economy"],
     companies: ["Epic Games", "Fortnite", "LEGO", "Disney"],
     publishedAt: "2026-05-20",
-    sourceUrl: "https://www.unrealengine.com/en-US/blog/unreal-editor-for-fortnite-is-now-available-in-beta"
+    sourceUrl: "https://www.unrealengine.com/en-US/blog/unreal-editor-for-fortnite-is-now-available-in-beta",
+    visual: {
+      image: "/images/intelligence/studio-engine.webp",
+      alt: "Holographic game engine viewport with asset pipeline geometry"
+    }
   },
   {
     id: "le-008",
@@ -228,7 +260,11 @@ export const articles: Article[] = [
     sectors: ["Mobile Gaming", "Game Engines", "Indie Devs", "Ad Monetization"],
     companies: ["Unity", "AppLovin", "ironSource", "Niantic"],
     publishedAt: "2026-05-19",
-    sourceUrl: "https://unity.com/resources/gaming-report-2025"
+    sourceUrl: "https://unity.com/resources/gaming-report-2025",
+    visual: {
+      image: "/images/intelligence/studio-engine.webp",
+      alt: "Holographic game engine viewport with asset pipeline geometry"
+    }
   },
   {
     id: "le-009",
@@ -252,7 +288,11 @@ export const articles: Article[] = [
     sectors: ["Game AI", "Localization", "Voice Acting", "Legal"],
     companies: ["SAG-AFTRA", "Replica Studios", "ElevenLabs", "Keywords Studios"],
     publishedAt: "2026-05-18",
-    sourceUrl: "https://www.sagaftra.org/replica-studios-agreement-digital-voice-replicas"
+    sourceUrl: "https://www.sagaftra.org/replica-studios-agreement-digital-voice-replicas",
+    visual: {
+      image: "/images/intelligence/ai-npcs.webp",
+      alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
+    }
   },
   {
     id: "le-010",
@@ -276,7 +316,11 @@ export const articles: Article[] = [
     sectors: ["Studios", "Hiring", "Live Ops", "Game AI"],
     companies: ["Electronic Arts", "Riot Games", "Embracer Group", "Take-Two"],
     publishedAt: "2026-05-17",
-    sourceUrl: "https://www.spglobal.com/market-intelligence/en/news-insights/research/video-game-industry-sheds-jobs-to-protect-margins"
+    sourceUrl: "https://www.spglobal.com/market-intelligence/en/news-insights/research/video-game-industry-sheds-jobs-to-protect-margins",
+    visual: {
+      image: "/images/intelligence/business-market.webp",
+      alt: "Dark gaming market intelligence terminal with holographic charts"
+    }
   },
   {
     id: "le-011",
@@ -300,7 +344,11 @@ export const articles: Article[] = [
     sectors: ["Esports", "Streaming", "Sponsorship", "Creator Economy"],
     companies: ["Riot Games", "Valve", "Twitch", "YouTube"],
     publishedAt: "2026-05-16",
-    sourceUrl: "https://esportsinsider.com/esports-viewership-analysis-2025/"
+    sourceUrl: "https://esportsinsider.com/esports-viewership-analysis-2025/",
+    visual: {
+      image: "/images/intelligence/esports-arena.webp",
+      alt: "Futuristic esports arena with viewership heatmap and stage lighting"
+    }
   },
   {
     id: "le-012",
@@ -324,7 +372,11 @@ export const articles: Article[] = [
     sectors: ["Mobile Gaming", "Live Ops", "Ad Monetization", "Publishing"],
     companies: ["Tencent", "NetEase", "Scopely", "AppLovin"],
     publishedAt: "2026-05-15",
-    sourceUrl: "https://business.mistplay.com/resources/mobile-gaming-trends-2025"
+    sourceUrl: "https://business.mistplay.com/resources/mobile-gaming-trends-2025",
+    visual: {
+      image: "/images/intelligence/mobile-gaming.webp",
+      alt: "Mobile gaming live operations network with floating phones and data arcs"
+    }
   },
   {
     id: "le-013",
@@ -348,7 +400,11 @@ export const articles: Article[] = [
     sectors: ["Cloud Gaming", "Subscriptions", "Storefronts", "Marketing"],
     companies: ["Nvidia GeForce Now", "Xbox Cloud Gaming", "Amazon Luna", "Samsung"],
     publishedAt: "2026-05-14",
-    sourceUrl: "https://news.xbox.com/en-us/2024/11/20/stream-your-own-game-xbox-cloud-gaming-beta/"
+    sourceUrl: "https://news.xbox.com/en-us/2024/11/20/stream-your-own-game-xbox-cloud-gaming-beta/",
+    visual: {
+      image: "/images/intelligence/platform-strategy.webp",
+      alt: "Abstract cross-platform gaming network with cloud and device nodes"
+    }
   },
   {
     id: "le-014",
@@ -372,7 +428,11 @@ export const articles: Article[] = [
     sectors: ["QA", "AAA Studios", "Game AI", "DevOps"],
     companies: ["Keywords Studios", "Modl.ai", "Sony", "Electronic Arts"],
     publishedAt: "2026-05-13",
-    sourceUrl: "https://modl.ai/state-of-games-qa-report"
+    sourceUrl: "https://modl.ai/state-of-games-qa-report",
+    visual: {
+      image: "/images/intelligence/ai-npcs.webp",
+      alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
+    }
   },
   {
     id: "le-015",
@@ -396,7 +456,11 @@ export const articles: Article[] = [
     sectors: ["Creator Economy", "Publishing", "YouTube", "Indie Devs"],
     companies: ["YouTube", "Roblox", "Mythical", "Offbrand Games"],
     publishedAt: "2026-05-12",
-    sourceUrl: "https://www.shacknews.com/article/140160/ludwig-offbrand-games-rivals-2"
+    sourceUrl: "https://www.shacknews.com/article/140160/ludwig-offbrand-games-rivals-2",
+    visual: {
+      image: "/images/intelligence/business-market.webp",
+      alt: "Dark gaming market intelligence terminal with holographic charts"
+    }
   }
 ];
 

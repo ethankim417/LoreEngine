@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Bookmark,
@@ -12,6 +13,7 @@ import {
   RadioTower,
   TrendingUp
 } from "lucide-react";
+import { SourceBadge } from "@/components/SourceBadge";
 import type { Article } from "@/data/articles";
 import { categoryTone, formatDate } from "@/lib/format";
 
@@ -34,6 +36,22 @@ export function ArticleCard({ article }: { article: Article }) {
 
   return (
     <article className="glass-panel group flex min-h-[26rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow">
+      <div className="relative aspect-[16/9] overflow-hidden border-b border-white/10">
+        <Image
+          src={article.visual.image}
+          alt={article.visual.alt}
+          fill
+          sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 50vw, 100vw"
+          className="object-cover opacity-[0.78] transition duration-500 group-hover:scale-105 group-hover:opacity-95"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(50,217,255,0.05),transparent_42%),linear-gradient(to_bottom,rgba(6,7,13,0.05),rgba(6,7,13,0.86))]" />
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#06070d] to-transparent" />
+        <div className="absolute left-4 top-4">
+          <SourceBadge source={article.source} />
+        </div>
+      </div>
+
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
@@ -55,7 +73,7 @@ export function ArticleCard({ article }: { article: Article }) {
 
         <div className="mt-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
           <RadioTower className="h-3.5 w-3.5" />
-          {article.source}
+          Signal Brief
         </div>
 
         <h2 className="mt-3 font-display text-xl font-black leading-snug tracking-normal text-white">

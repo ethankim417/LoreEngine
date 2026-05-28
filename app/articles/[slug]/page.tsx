@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink, RadioTower } from "lucide-react";
+import { SourceBadge } from "@/components/SourceBadge";
 import { articles, getArticleBySlug } from "@/data/articles";
 import { categoryTone, formatDate } from "@/lib/format";
 
@@ -46,18 +48,31 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </Link>
 
         <article className="glass-panel overflow-hidden rounded-lg">
-          <div className="border-b border-white/10 p-5 sm:p-7">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
-                {article.category}
-              </span>
-              <span className="text-sm text-slate-400">{article.source}</span>
-              <span className="text-sm text-slate-500">{formatDate(article.publishedAt)}</span>
+          <div className="relative min-h-[26rem] overflow-hidden border-b border-white/10 p-5 sm:p-7">
+            <Image
+              src={article.visual.image}
+              alt={article.visual.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover opacity-55"
+            />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_15%,rgba(50,217,255,0.14),transparent_32%),linear-gradient(90deg,rgba(6,7,13,0.98),rgba(6,7,13,0.78)_48%,rgba(6,7,13,0.38))]" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#06070d] to-transparent" />
+
+            <div className="relative z-10">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
+                  {article.category}
+                </span>
+                <SourceBadge source={article.source} />
+                <span className="text-sm text-slate-300">{formatDate(article.publishedAt)}</span>
+              </div>
+              <h1 className="mt-5 max-w-4xl font-display text-3xl font-black leading-tight tracking-normal text-white sm:text-5xl">
+                {article.title}
+              </h1>
+              <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-200">{article.fullTldr}</p>
             </div>
-            <h1 className="mt-5 max-w-4xl font-display text-3xl font-black leading-tight tracking-normal text-white sm:text-5xl">
-              {article.title}
-            </h1>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">{article.fullTldr}</p>
           </div>
 
           <div className="grid gap-0 lg:grid-cols-[1fr_18rem]">
