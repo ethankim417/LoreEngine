@@ -17,6 +17,7 @@ import {
   X
 } from "lucide-react";
 import { ArticleCard } from "@/components/ArticleCard";
+import { MarketPulse } from "@/components/MarketPulse";
 import { categories, type Article, type ArticleCategory } from "@/data/articles";
 import { formatDate } from "@/lib/format";
 import type { DashboardMetric } from "@/lib/metrics";
@@ -70,6 +71,8 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
           <MetricCard key={metric.label} metric={metric} onSelect={() => setSelectedMetric(metric)} />
         ))}
       </section>
+
+      <MarketPulse />
 
       <section className="glass-panel rounded-lg p-4 sm:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
