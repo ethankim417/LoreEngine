@@ -91,10 +91,9 @@ export function ArticleCard({ article }: { article: Article }) {
         </Link>
         <a
           href={article.sourceUrl}
-          target="_blank"
-          rel="noreferrer"
           aria-label={`Open source article from ${article.source}`}
           title={`Open source article from ${article.source}`}
+          data-testid={`source-link-${article.slug}`}
           className="grid h-12 w-12 place-items-center rounded-lg border border-white/10 bg-white/[0.05] text-slate-200 transition hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-cyan-100"
         >
           <ExternalLink className="h-4 w-4" />

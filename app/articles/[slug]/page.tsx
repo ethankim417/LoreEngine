@@ -105,8 +105,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               </div>
               <a
                 href={article.sourceUrl}
-                target="_blank"
-                rel="noreferrer"
+                data-testid="article-source-link"
                 className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-cyan-300 px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-cyan-200"
               >
                 Open Source
