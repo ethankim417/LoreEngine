@@ -35,30 +35,27 @@ export function ArticleCard({ article }: { article: Article }) {
   }
 
   return (
-    <article className="glass-panel group flex min-h-[26rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow">
-      <div className="relative aspect-[16/9] overflow-hidden border-b border-white/10">
+    <article className="glass-panel group relative flex min-h-[26rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow">
+      <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <Image
           src={article.visual.image}
-          alt={article.visual.alt}
+          alt=""
           fill
           sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 50vw, 100vw"
-          className="object-cover opacity-[0.78] transition duration-500 group-hover:scale-105 group-hover:opacity-95"
+          className="object-cover opacity-[0.18] transition duration-500 [mask-image:linear-gradient(135deg,black,transparent_68%)] group-hover:scale-105 group-hover:opacity-[0.26]"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(50,217,255,0.05),transparent_42%),linear-gradient(to_bottom,rgba(6,7,13,0.05),rgba(6,7,13,0.86))]" />
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#06070d] to-transparent" />
-        <div className="absolute left-4 top-4">
-          <SourceBadge source={article.source} />
-        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(50,217,255,0.12),transparent_30%),linear-gradient(145deg,rgba(6,7,13,0.12),rgba(6,7,13,0.94)_66%)]" />
       </div>
 
-      <div className="flex flex-1 flex-col p-5">
+      <div className="relative z-10 flex flex-1 flex-col p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <span className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
               {article.category}
             </span>
             <span className="text-xs font-medium text-slate-500">{formatDate(article.publishedAt)}</span>
+            <SourceBadge source={article.source} compact />
           </div>
           <button
             type="button"
@@ -99,7 +96,7 @@ export function ArticleCard({ article }: { article: Article }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 bg-black/20 p-4">
+      <div className="relative z-10 grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 bg-black/20 p-4">
         <Link
           href={`/articles/${article.slug}`}
           className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-cyan-200"

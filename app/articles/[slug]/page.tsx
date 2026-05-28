@@ -48,16 +48,16 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </Link>
 
         <article className="glass-panel overflow-hidden rounded-lg">
-          <div className="relative min-h-[26rem] overflow-hidden border-b border-white/10 p-5 sm:p-7">
+          <div className="relative min-h-[18rem] overflow-hidden border-b border-white/10 p-5 sm:min-h-[22rem] sm:p-7">
             <Image
               src={article.visual.image}
               alt={article.visual.alt}
               fill
               priority
               sizes="100vw"
-              className="object-cover opacity-55"
+              className="object-cover opacity-35 [mask-image:linear-gradient(90deg,black,transparent_78%)]"
             />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_15%,rgba(50,217,255,0.14),transparent_32%),linear-gradient(90deg,rgba(6,7,13,0.98),rgba(6,7,13,0.78)_48%,rgba(6,7,13,0.38))]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(50,217,255,0.12),transparent_28%),linear-gradient(90deg,rgba(6,7,13,0.98),rgba(6,7,13,0.9)_50%,rgba(6,7,13,0.68))]" />
             <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#06070d] to-transparent" />
 
             <div className="relative z-10">
