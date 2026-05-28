@@ -4,6 +4,7 @@ out
 dist
 .gh-pages-worktree
 .vercel
+.vercel-cli
 *.log
 *.tsbuildinfo
 .npm-cache
