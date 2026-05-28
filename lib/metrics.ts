@@ -36,7 +36,7 @@ export function getDashboardMetrics(source: Article[] = articles): DashboardMetr
       value: `${averageImpact}/100`,
       delta: "+11 pts",
       tone: "cyan",
-      shortDescription: "A blended pressure gauge for how consequential today's gaming signals look.",
+      shortDescription: "A blended pressure gauge for how consequential this daily brief looks.",
       definition:
         "Industry Heat compresses the average impact score across the current intelligence feed into a 0-100 market temperature.",
       calculation:
@@ -72,7 +72,7 @@ export function getDashboardMetrics(source: Article[] = articles): DashboardMetr
       calculation:
         "Count of articles with an impact score of 80+ or a trend score of 30%+.",
       interpretation:
-        "This is a workload signal. If it jumps, the feed has more items worth reading before a planning meeting or content briefing.",
+        "This is a workload signal. If it jumps, the feed has more items worth reading during the daily brief review.",
       inputs: ["Impact score threshold", "Trend growth threshold", "Total tracked articles"]
     },
     {

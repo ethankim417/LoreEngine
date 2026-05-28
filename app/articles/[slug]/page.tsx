@@ -66,7 +66,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
                   {article.category}
                 </span>
-                <SourceBadge source={article.source} />
+                <SourceBadge source={article.source} credibility={article.sourceCredibility} />
                 <span className="text-sm text-slate-300">{formatDate(article.publishedAt)}</span>
               </div>
               <h1 className="mt-5 max-w-4xl font-display text-3xl font-black leading-tight tracking-normal text-white sm:text-5xl">

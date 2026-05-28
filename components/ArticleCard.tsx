@@ -55,7 +55,7 @@ export function ArticleCard({ article }: { article: Article }) {
               {article.category}
             </span>
             <span className="text-xs font-medium text-slate-500">{formatDate(article.publishedAt)}</span>
-            <SourceBadge source={article.source} compact />
+            <SourceBadge source={article.source} credibility={article.sourceCredibility} compact />
           </div>
           <button
             type="button"

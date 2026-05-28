@@ -38,7 +38,7 @@ function Hero() {
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.34em] text-cyan-200/75">
-              Morning Brief
+              Daily Brief
             </p>
             <h1 className="font-display text-4xl font-black tracking-normal text-white sm:text-6xl">
               LoreEngine

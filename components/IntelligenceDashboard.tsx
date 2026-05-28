@@ -1,19 +1,24 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import {
   ArrowDownUp,
   ArrowRight,
+  CalendarDays,
   ChevronDown,
+  Database,
   Info,
   Search,
+  ShieldCheck,
   SlidersHorizontal,
   Sparkles,
   X
 } from "lucide-react";
 import { ArticleCard } from "@/components/ArticleCard";
 import { categories, type Article, type ArticleCategory } from "@/data/articles";
+import { formatDate } from "@/lib/format";
 import type { DashboardMetric } from "@/lib/metrics";
 
 type SortMode = "newest" | "impact" | "trend";
@@ -58,6 +63,8 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
   return (
     <div className="flex flex-col gap-6">
+      <DailyBriefStatus articles={articles} metrics={metrics} />
+
       <section aria-label="Dashboard metrics" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {metrics.map((metric) => (
           <MetricCard key={metric.label} metric={metric} onSelect={() => setSelectedMetric(metric)} />
@@ -137,6 +144,87 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
       ) : null}
 
       <MetricExplainerDialog metric={selectedMetric} onClose={() => setSelectedMetric(null)} />
+    </div>
+  );
+}
+
+function DailyBriefStatus({
+  articles,
+  metrics
+}: {
+  articles: Article[];
+  metrics: DashboardMetric[];
+}) {
+  const latestPublishedAt = articles.reduce((latest, article) => {
+    const articleTime = new Date(article.publishedAt).getTime();
+    const latestTime = new Date(latest).getTime();
+
+    return articleTime > latestTime ? article.publishedAt : latest;
+  }, articles[0]?.publishedAt ?? new Date().toISOString());
+  const trendingCount = metrics.find((metric) => metric.id === "trending-articles")?.value ?? "0";
+
+  return (
+    <section className="glass-panel rounded-lg p-4 sm:p-5" aria-label="Daily brief status">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex items-start gap-3">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-[0_0_28px_rgba(34,211,238,0.12)]">
+            <CalendarDays className="h-5 w-5" />
+          </span>
+          <div>
+            <div className="flex flex-wrap items-center gap-2">
+              <p className="font-display text-xl font-black text-white">Daily Brief</p>
+              <span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-emerald-100">
+                Cached
+              </span>
+            </div>
+            <p className="mt-1 text-sm leading-6 text-slate-400">
+              Last updated {formatDate(latestPublishedAt)} | demo intelligence cache | no live AI calls
+            </p>
+          </div>
+        </div>
+
+        <div className="grid gap-2 sm:grid-cols-3 lg:min-w-[32rem]">
+          <BriefPill
+            icon={<Database className="h-4 w-4" />}
+            label="Tracked signals"
+            value={articles.length.toString()}
+          />
+          <BriefPill
+            icon={<Sparkles className="h-4 w-4" />}
+            label="Action threshold"
+            value={trendingCount}
+          />
+          <BriefPill
+            icon={<ShieldCheck className="h-4 w-4" />}
+            label="Pipeline mode"
+            value="Mock cache"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BriefPill({
+  icon,
+  label,
+  value
+}: {
+  icon: ReactNode;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex min-h-16 items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-white/10 bg-black/20 text-cyan-100">
+        {icon}
+      </span>
+      <div className="min-w-0">
+        <p className="truncate text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-slate-500">
+          {label}
+        </p>
+        <p className="truncate font-display text-base font-black text-white">{value}</p>
+      </div>
     </div>
   );
 }

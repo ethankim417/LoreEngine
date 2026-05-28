@@ -1,11 +1,27 @@
 import { Newspaper } from "lucide-react";
+import type { SourceCredibility } from "@/data/articles";
 
 type SourceBadgeProps = {
   source: string;
+  credibility?: SourceCredibility;
   compact?: boolean;
 };
 
-export function SourceBadge({ source, compact = false }: SourceBadgeProps) {
+const credibilityTone: Record<SourceCredibility, string> = {
+  "Official source": "border-cyan-300/25 bg-cyan-300/10 text-cyan-100",
+  "Trade press": "border-violet-300/25 bg-violet-300/10 text-violet-100",
+  "Market analysis": "border-emerald-300/25 bg-emerald-300/10 text-emerald-100",
+  "Vendor report": "border-amber-300/25 bg-amber-300/10 text-amber-100"
+};
+
+const compactLabel: Record<SourceCredibility, string> = {
+  "Official source": "Official",
+  "Trade press": "Press",
+  "Market analysis": "Market",
+  "Vendor report": "Vendor"
+};
+
+export function SourceBadge({ source, credibility, compact = false }: SourceBadgeProps) {
   const initials = source
     .split(/\s+/)
     .filter(Boolean)
@@ -19,6 +35,13 @@ export function SourceBadge({ source, compact = false }: SourceBadgeProps) {
         {initials || <Newspaper className="h-3.5 w-3.5" />}
       </span>
       {compact ? null : <span className="truncate">{source}</span>}
+      {credibility ? (
+        <span
+          className={`shrink-0 rounded-full border px-2 py-0.5 text-[0.62rem] font-black uppercase tracking-[0.12em] ${credibilityTone[credibility]}`}
+        >
+          {compact ? compactLabel[credibility] : credibility}
+        </span>
+      ) : null}
     </span>
   );
 }

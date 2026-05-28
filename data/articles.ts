@@ -7,11 +7,18 @@ export type ArticleCategory =
   | "Platform"
   | "Studio";
 
+export type SourceCredibility =
+  | "Official source"
+  | "Trade press"
+  | "Market analysis"
+  | "Vendor report";
+
 export type Article = {
   id: string;
   slug: string;
   title: string;
   source: string;
+  sourceCredibility: SourceCredibility;
   category: ArticleCategory;
   tldr: string;
   fullTldr: string;
@@ -47,6 +54,7 @@ export const articles: Article[] = [
     slug: "adaptive-ai-npcs-enter-live-service-roadmaps",
     title: "Adaptive AI NPCs move from tech demos into live-service roadmaps",
     source: "NVIDIA GeForce News",
+    sourceCredibility: "Official source",
     category: "AI",
     tldr:
       "Major studios are piloting AI-driven NPC behavior layers for retention, quest variation, and lower content ops cost.",
@@ -75,6 +83,7 @@ export const articles: Article[] = [
     slug: "generative-asset-pipelines-reach-indie-production",
     title: "Generative asset pipelines reach practical indie production workflows",
     source: "Tom's Hardware",
+    sourceCredibility: "Trade press",
     category: "Gaming",
     tldr:
       "Small teams are using generative concept, texture, and prop workflows to increase iteration speed without expanding art headcount.",
@@ -103,6 +112,7 @@ export const articles: Article[] = [
     slug: "nvidia-gaming-ai-stack-targets-on-device-agents",
     title: "Nvidia gaming AI stack targets on-device agents and creator tools",
     source: "NVIDIA Blog",
+    sourceCredibility: "Official source",
     category: "Hardware",
     tldr:
       "Nvidia is positioning consumer GPUs as local AI infrastructure for NPCs, modding tools, upscaling, and creator-side automation.",
@@ -131,6 +141,7 @@ export const articles: Article[] = [
     slug: "xbox-strategy-leans-further-into-cross-platform-releases",
     title: "Xbox strategy leans further into cross-platform releases",
     source: "Xbox Wire",
+    sourceCredibility: "Official source",
     category: "Platform",
     tldr:
       "Microsoft's publishing posture continues to prioritize reach, subscriptions, and franchise value over traditional hardware exclusivity.",
@@ -159,6 +170,7 @@ export const articles: Article[] = [
     slug: "playstation-doubles-down-on-premium-single-player-and-pc",
     title: "PlayStation balances premium single-player identity with PC expansion",
     source: "PlayStation",
+    sourceCredibility: "Official source",
     category: "Platform",
     tldr:
       "Sony is protecting blockbuster console launches while using PC ports to extend franchise tails and audience reach.",
@@ -187,6 +199,7 @@ export const articles: Article[] = [
     slug: "steam-wishlist-conversion-gap-widens-for-mid-tier-games",
     title: "Steam wishlist conversion gap widens for mid-tier launches",
     source: "GAMES.GG",
+    sourceCredibility: "Market analysis",
     category: "Business",
     tldr:
       "Wishlist counts remain useful, but genre crowding and discount timing are making launch conversion less predictable.",
@@ -215,6 +228,7 @@ export const articles: Article[] = [
     slug: "unreal-engine-tooling-pushes-virtual-production-and-ugc",
     title: "Unreal Engine tooling pushes deeper into virtual production and UGC",
     source: "Unreal Engine",
+    sourceCredibility: "Official source",
     category: "Studio",
     tldr:
       "Epic's engine updates keep converging game development, creator economies, and real-time cinematic workflows.",
@@ -243,6 +257,7 @@ export const articles: Article[] = [
     slug: "unity-focuses-on-runtime-performance-and-mobile-monetization",
     title: "Unity focuses on runtime performance and mobile monetization trust",
     source: "Unity",
+    sourceCredibility: "Official source",
     category: "Studio",
     tldr:
       "Unity is emphasizing engine reliability, mobile performance, and monetization clarity to rebuild confidence among developers.",
@@ -271,6 +286,7 @@ export const articles: Article[] = [
     slug: "ai-voice-generation-for-games-faces-union-and-localization-pressure",
     title: "AI voice generation for games faces union and localization pressure",
     source: "SAG-AFTRA",
+    sourceCredibility: "Official source",
     category: "AI",
     tldr:
       "AI voice tools are gaining traction for scratch tracks and localization, but consent, contracts, and performance quality remain gating issues.",
@@ -299,6 +315,7 @@ export const articles: Article[] = [
     slug: "game-industry-layoffs-shift-toward-specialized-hiring",
     title: "Game industry layoffs shift hiring toward AI, backend, and monetization roles",
     source: "S&P Global",
+    sourceCredibility: "Market analysis",
     category: "Business",
     tldr:
       "Broad layoffs continue to reshape studio org charts while demand persists for technical roles tied to efficiency and revenue systems.",
@@ -327,6 +344,7 @@ export const articles: Article[] = [
     slug: "esports-viewership-consolidates-around-fewer-premium-events",
     title: "Esports viewership consolidates around fewer premium global events",
     source: "Esports Insider",
+    sourceCredibility: "Trade press",
     category: "Esports",
     tldr:
       "Top-tier tournaments are holding attention, while smaller leagues face sponsorship pressure and fragmented audiences.",
@@ -355,6 +373,7 @@ export const articles: Article[] = [
     slug: "mobile-gaming-growth-returns-through-hybrid-casual-and-asia",
     title: "Mobile gaming growth returns through hybrid-casual systems and Asia expansion",
     source: "Mistplay",
+    sourceCredibility: "Vendor report",
     category: "Gaming",
     tldr:
       "Mobile studios are finding growth in hybrid-casual loops, deeper progression, and region-specific live operations.",
@@ -383,6 +402,7 @@ export const articles: Article[] = [
     slug: "cloud-gaming-finds-new-role-as-instant-demo-layer",
     title: "Cloud gaming finds new role as an instant demo and trial layer",
     source: "Xbox Wire",
+    sourceCredibility: "Official source",
     category: "Platform",
     tldr:
       "Cloud gaming is gaining practical value as a frictionless trial, marketing, and subscription discovery mechanism.",
@@ -411,6 +431,7 @@ export const articles: Article[] = [
     slug: "ai-qa-agents-cut-regression-testing-time-for-large-games",
     title: "AI QA agents cut regression testing time for large open-world games",
     source: "modl.ai",
+    sourceCredibility: "Vendor report",
     category: "AI",
     tldr:
       "Studios are using AI-driven test agents to navigate builds, detect regressions, and prioritize bug triage before human QA passes.",
@@ -439,6 +460,7 @@ export const articles: Article[] = [
     slug: "creator-led-games-turn-youtube-audiences-into-launch-engines",
     title: "Creator-led games turn YouTube audiences into launch engines",
     source: "Shacknews",
+    sourceCredibility: "Trade press",
     category: "Business",
     tldr:
       "Games built around creator communities are outperforming traditional marketing benchmarks when the product loop matches the audience.",
