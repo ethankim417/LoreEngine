@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   ArrowDownUp,
   ArrowRight,
+  ChevronDown,
   Info,
   Search,
   SlidersHorizontal,
@@ -93,7 +94,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               <select
                 value={category}
                 onChange={(event) => setCategory(event.target.value as ArticleCategory | "All")}
-                className="h-11 w-full min-w-40 appearance-none rounded-lg border border-white/10 bg-black/20 px-10 text-sm font-semibold text-white outline-none transition focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/15"
+                className="h-11 w-full min-w-40 appearance-none rounded-lg border border-cyan-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.08] focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20 [&>option]:bg-slate-950 [&>option]:text-cyan-50"
               >
                 <option value="All">All Categories</option>
                 {categories.map((item) => (
@@ -102,6 +103,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                   </option>
                 ))}
               </select>
+              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-cyan-200/70" />
             </label>
 
             <label className="relative block">
@@ -110,12 +112,13 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               <select
                 value={sortMode}
                 onChange={(event) => setSortMode(event.target.value as SortMode)}
-                className="h-11 w-full min-w-40 appearance-none rounded-lg border border-white/10 bg-black/20 px-10 text-sm font-semibold text-white outline-none transition focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/15"
+                className="h-11 w-full min-w-40 appearance-none rounded-lg border border-violet-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-violet-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-violet-300/35 hover:bg-violet-300/[0.08] focus:border-violet-300/60 focus:ring-2 focus:ring-violet-300/20 [&>option]:bg-slate-950 [&>option]:text-violet-50"
               >
                 <option value="newest">Newest</option>
                 <option value="impact">Impact Score</option>
                 <option value="trend">Trend Score</option>
               </select>
+              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-violet-200/70" />
             </label>
           </div>
         </div>
