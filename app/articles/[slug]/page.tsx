@@ -48,19 +48,20 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </Link>
 
         <article className="glass-panel overflow-hidden rounded-lg">
-          <div className="relative min-h-[18rem] overflow-hidden border-b border-white/10 p-5 sm:min-h-[22rem] sm:p-7">
+          <div className="relative min-h-[22rem] overflow-hidden border-b border-white/10 p-5 sm:min-h-[24rem] sm:p-7">
             <Image
               src={article.visual.image}
               alt={article.visual.alt}
               fill
               priority
               sizes="100vw"
-              className="object-cover opacity-45 [mask-image:linear-gradient(90deg,black,black_64%,transparent_96%)]"
+              className="object-cover object-center opacity-80"
             />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_18%,rgba(50,217,255,0.18),transparent_30%),linear-gradient(90deg,rgba(6,7,13,0.78),rgba(6,7,13,0.52)_56%,rgba(6,7,13,0.28))]" />
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#06070d] to-transparent" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,7,13,0.96),rgba(6,7,13,0.78)_38%,rgba(6,7,13,0.18)_72%),linear-gradient(to_bottom,rgba(6,7,13,0.18),rgba(6,7,13,0.72))]" />
+            <div className="absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_50%_35%,rgba(50,217,255,0.16),transparent_48%)]" />
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#06070d] to-transparent" />
 
-            <div className="relative z-10 max-w-4xl rounded-lg border border-white/10 bg-slate-950/58 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.36),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md sm:p-5">
+            <div className="relative z-10 max-w-3xl rounded-lg border border-white/10 bg-slate-950/72 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.36),inset_0_1px_0_rgba(255,255,255,0.08)] sm:p-5">
               <div className="flex flex-wrap items-center gap-3">
                 <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
                   {article.category}
