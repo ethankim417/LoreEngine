@@ -42,7 +42,7 @@ export const articles: Article[] = [
     id: "le-001",
     slug: "adaptive-ai-npcs-enter-live-service-roadmaps",
     title: "Adaptive AI NPCs move from tech demos into live-service roadmaps",
-    source: "GameSignal Daily",
+    source: "NVIDIA GeForce News",
     category: "AI",
     tldr:
       "Major studios are piloting AI-driven NPC behavior layers for retention, quest variation, and lower content ops cost.",
@@ -60,13 +60,13 @@ export const articles: Article[] = [
     sectors: ["AAA Studios", "Game AI", "Live Ops", "Narrative Design"],
     companies: ["Ubisoft", "NetEase", "Roblox", "Inworld"],
     publishedAt: "2026-05-26",
-    sourceUrl: "#"
+    sourceUrl: "https://www.nvidia.com/en-eu/geforce/news/nvidia-ace-autonomous-ai-companions-pubg-naraka-bladepoint/"
   },
   {
     id: "le-002",
     slug: "generative-asset-pipelines-reach-indie-production",
     title: "Generative asset pipelines reach practical indie production workflows",
-    source: "IndieOps Brief",
+    source: "Tom's Hardware",
     category: "Gaming",
     tldr:
       "Small teams are using generative concept, texture, and prop workflows to increase iteration speed without expanding art headcount.",
@@ -84,13 +84,13 @@ export const articles: Article[] = [
     sectors: ["Indie Devs", "Game Art", "Steam", "Mobile Gaming"],
     companies: ["Scenario", "Unity Asset Store", "itch.io", "Steam"],
     publishedAt: "2026-05-25",
-    sourceUrl: "#"
+    sourceUrl: "https://www.tomshardware.com/video-games/pc-gaming/1-in-5-steam-games-released-in-2025-use-generative-ai-up-nearly-700-percent-year-on-year-7-818-titles-disclose-genai-asset-usage-7-percent-of-entire-steam-library"
   },
   {
     id: "le-003",
     slug: "nvidia-gaming-ai-stack-targets-on-device-agents",
     title: "Nvidia gaming AI stack targets on-device agents and creator tools",
-    source: "Silicon Arcade",
+    source: "NVIDIA Blog",
     category: "Hardware",
     tldr:
       "Nvidia is positioning consumer GPUs as local AI infrastructure for NPCs, modding tools, upscaling, and creator-side automation.",
@@ -108,13 +108,13 @@ export const articles: Article[] = [
     sectors: ["Hardware", "Game AI", "PC Gaming", "Creator Tools"],
     companies: ["Nvidia", "Microsoft", "Epic Games", "Lenovo"],
     publishedAt: "2026-05-24",
-    sourceUrl: "#"
+    sourceUrl: "https://blogs.nvidia.com/blog/ai-decoded-ace-microservices-digital-humans/"
   },
   {
     id: "le-004",
     slug: "xbox-strategy-leans-further-into-cross-platform-releases",
     title: "Xbox strategy leans further into cross-platform releases",
-    source: "Platform Watch",
+    source: "Xbox Wire",
     category: "Platform",
     tldr:
       "Microsoft's publishing posture continues to prioritize reach, subscriptions, and franchise value over traditional hardware exclusivity.",
@@ -132,13 +132,13 @@ export const articles: Article[] = [
     sectors: ["Console", "Subscription Gaming", "AAA Studios", "Cloud Gaming"],
     companies: ["Microsoft", "Xbox", "Activision Blizzard", "Bethesda"],
     publishedAt: "2026-05-23",
-    sourceUrl: "#"
+    sourceUrl: "https://news.xbox.com/en-us/2024/02/21/new-platforms-new-players-xbox-games-switch-playstation/"
   },
   {
     id: "le-005",
     slug: "playstation-doubles-down-on-premium-single-player-and-pc",
     title: "PlayStation balances premium single-player identity with PC expansion",
-    source: "Console Ledger",
+    source: "PlayStation",
     category: "Platform",
     tldr:
       "Sony is protecting blockbuster console launches while using PC ports to extend franchise tails and audience reach.",
@@ -156,13 +156,13 @@ export const articles: Article[] = [
     sectors: ["Console", "PC Gaming", "AAA Studios", "Publishing"],
     companies: ["Sony", "PlayStation Studios", "Nixxes", "Steam"],
     publishedAt: "2026-05-22",
-    sourceUrl: "#"
+    sourceUrl: "https://www.playstation.com/en-us/games/pc-games/"
   },
   {
     id: "le-006",
     slug: "steam-wishlist-conversion-gap-widens-for-mid-tier-games",
     title: "Steam wishlist conversion gap widens for mid-tier launches",
-    source: "Steam Market Intel",
+    source: "GAMES.GG",
     category: "Business",
     tldr:
       "Wishlist counts remain useful, but genre crowding and discount timing are making launch conversion less predictable.",
@@ -180,13 +180,13 @@ export const articles: Article[] = [
     sectors: ["Steam", "Indie Devs", "Publishing", "Marketing"],
     companies: ["Valve", "Devolver Digital", "Hooded Horse", "tinyBuild"],
     publishedAt: "2026-05-21",
-    sourceUrl: "#"
+    sourceUrl: "https://games.gg/news/what-the-data-says-about-wishlist-conversion/"
   },
   {
     id: "le-007",
     slug: "unreal-engine-tooling-pushes-virtual-production-and-ugc",
     title: "Unreal Engine tooling pushes deeper into virtual production and UGC",
-    source: "Engine Room",
+    source: "Unreal Engine",
     category: "Studio",
     tldr:
       "Epic's engine updates keep converging game development, creator economies, and real-time cinematic workflows.",
@@ -204,13 +204,13 @@ export const articles: Article[] = [
     sectors: ["Game Engines", "UGC", "Virtual Production", "Creator Economy"],
     companies: ["Epic Games", "Fortnite", "LEGO", "Disney"],
     publishedAt: "2026-05-20",
-    sourceUrl: "#"
+    sourceUrl: "https://www.unrealengine.com/en-US/blog/unreal-editor-for-fortnite-is-now-available-in-beta"
   },
   {
     id: "le-008",
     slug: "unity-focuses-on-runtime-performance-and-mobile-monetization",
     title: "Unity focuses on runtime performance and mobile monetization trust",
-    source: "Mobile Dev Monitor",
+    source: "Unity",
     category: "Studio",
     tldr:
       "Unity is emphasizing engine reliability, mobile performance, and monetization clarity to rebuild confidence among developers.",
@@ -228,13 +228,13 @@ export const articles: Article[] = [
     sectors: ["Mobile Gaming", "Game Engines", "Indie Devs", "Ad Monetization"],
     companies: ["Unity", "AppLovin", "ironSource", "Niantic"],
     publishedAt: "2026-05-19",
-    sourceUrl: "#"
+    sourceUrl: "https://unity.com/resources/gaming-report-2025"
   },
   {
     id: "le-009",
     slug: "ai-voice-generation-for-games-faces-union-and-localization-pressure",
     title: "AI voice generation for games faces union and localization pressure",
-    source: "VoiceTech Ledger",
+    source: "SAG-AFTRA",
     category: "AI",
     tldr:
       "AI voice tools are gaining traction for scratch tracks and localization, but consent, contracts, and performance quality remain gating issues.",
@@ -252,13 +252,13 @@ export const articles: Article[] = [
     sectors: ["Game AI", "Localization", "Voice Acting", "Legal"],
     companies: ["SAG-AFTRA", "Replica Studios", "ElevenLabs", "Keywords Studios"],
     publishedAt: "2026-05-18",
-    sourceUrl: "#"
+    sourceUrl: "https://www.sagaftra.org/replica-studios-agreement-digital-voice-replicas"
   },
   {
     id: "le-010",
     slug: "game-industry-layoffs-shift-toward-specialized-hiring",
     title: "Game industry layoffs shift hiring toward AI, backend, and monetization roles",
-    source: "Studio Labor Index",
+    source: "S&P Global",
     category: "Business",
     tldr:
       "Broad layoffs continue to reshape studio org charts while demand persists for technical roles tied to efficiency and revenue systems.",
@@ -276,13 +276,13 @@ export const articles: Article[] = [
     sectors: ["Studios", "Hiring", "Live Ops", "Game AI"],
     companies: ["Electronic Arts", "Riot Games", "Embracer Group", "Take-Two"],
     publishedAt: "2026-05-17",
-    sourceUrl: "#"
+    sourceUrl: "https://www.spglobal.com/market-intelligence/en/news-insights/research/video-game-industry-sheds-jobs-to-protect-margins"
   },
   {
     id: "le-011",
     slug: "esports-viewership-consolidates-around-fewer-premium-events",
     title: "Esports viewership consolidates around fewer premium global events",
-    source: "Arena Metrics",
+    source: "Esports Insider",
     category: "Esports",
     tldr:
       "Top-tier tournaments are holding attention, while smaller leagues face sponsorship pressure and fragmented audiences.",
@@ -300,13 +300,13 @@ export const articles: Article[] = [
     sectors: ["Esports", "Streaming", "Sponsorship", "Creator Economy"],
     companies: ["Riot Games", "Valve", "Twitch", "YouTube"],
     publishedAt: "2026-05-16",
-    sourceUrl: "#"
+    sourceUrl: "https://esportsinsider.com/esports-viewership-analysis-2025/"
   },
   {
     id: "le-012",
     slug: "mobile-gaming-growth-returns-through-hybrid-casual-and-asia",
     title: "Mobile gaming growth returns through hybrid-casual systems and Asia expansion",
-    source: "Pocket Revenue",
+    source: "Mistplay",
     category: "Gaming",
     tldr:
       "Mobile studios are finding growth in hybrid-casual loops, deeper progression, and region-specific live operations.",
@@ -324,13 +324,13 @@ export const articles: Article[] = [
     sectors: ["Mobile Gaming", "Live Ops", "Ad Monetization", "Publishing"],
     companies: ["Tencent", "NetEase", "Scopely", "AppLovin"],
     publishedAt: "2026-05-15",
-    sourceUrl: "#"
+    sourceUrl: "https://business.mistplay.com/resources/mobile-gaming-trends-2025"
   },
   {
     id: "le-013",
     slug: "cloud-gaming-finds-new-role-as-instant-demo-layer",
     title: "Cloud gaming finds new role as an instant demo and trial layer",
-    source: "Access Mode",
+    source: "Xbox Wire",
     category: "Platform",
     tldr:
       "Cloud gaming is gaining practical value as a frictionless trial, marketing, and subscription discovery mechanism.",
@@ -348,13 +348,13 @@ export const articles: Article[] = [
     sectors: ["Cloud Gaming", "Subscriptions", "Storefronts", "Marketing"],
     companies: ["Nvidia GeForce Now", "Xbox Cloud Gaming", "Amazon Luna", "Samsung"],
     publishedAt: "2026-05-14",
-    sourceUrl: "#"
+    sourceUrl: "https://news.xbox.com/en-us/2024/11/20/stream-your-own-game-xbox-cloud-gaming-beta/"
   },
   {
     id: "le-014",
     slug: "ai-qa-agents-cut-regression-testing-time-for-large-games",
     title: "AI QA agents cut regression testing time for large open-world games",
-    source: "Build Breaker",
+    source: "modl.ai",
     category: "AI",
     tldr:
       "Studios are using AI-driven test agents to navigate builds, detect regressions, and prioritize bug triage before human QA passes.",
@@ -372,13 +372,13 @@ export const articles: Article[] = [
     sectors: ["QA", "AAA Studios", "Game AI", "DevOps"],
     companies: ["Keywords Studios", "Modl.ai", "Sony", "Electronic Arts"],
     publishedAt: "2026-05-13",
-    sourceUrl: "#"
+    sourceUrl: "https://modl.ai/state-of-games-qa-report"
   },
   {
     id: "le-015",
     slug: "creator-led-games-turn-youtube-audiences-into-launch-engines",
     title: "Creator-led games turn YouTube audiences into launch engines",
-    source: "Creator Economy Playbook",
+    source: "Shacknews",
     category: "Business",
     tldr:
       "Games built around creator communities are outperforming traditional marketing benchmarks when the product loop matches the audience.",
@@ -396,7 +396,7 @@ export const articles: Article[] = [
     sectors: ["Creator Economy", "Publishing", "YouTube", "Indie Devs"],
     companies: ["YouTube", "Roblox", "Mythical", "Offbrand Games"],
     publishedAt: "2026-05-12",
-    sourceUrl: "#"
+    sourceUrl: "https://www.shacknews.com/article/140160/ludwig-offbrand-games-rivals-2"
   }
 ];
 

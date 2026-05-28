@@ -3,7 +3,15 @@
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { Bookmark, BookmarkCheck, ChevronRight, Gauge, RadioTower, TrendingUp } from "lucide-react";
+import {
+  Bookmark,
+  BookmarkCheck,
+  ChevronRight,
+  ExternalLink,
+  Gauge,
+  RadioTower,
+  TrendingUp
+} from "lucide-react";
 import type { Article } from "@/data/articles";
 import { categoryTone, formatDate } from "@/lib/format";
 
@@ -73,7 +81,7 @@ export function ArticleCard({ article }: { article: Article }) {
         </div>
       </div>
 
-      <div className="border-t border-white/10 bg-black/20 p-4">
+      <div className="grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 bg-black/20 p-4">
         <Link
           href={`/articles/${article.slug}`}
           className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-cyan-200"
@@ -81,6 +89,16 @@ export function ArticleCard({ article }: { article: Article }) {
           Read More
           <ChevronRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
         </Link>
+        <a
+          href={article.sourceUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Open source article from ${article.source}`}
+          title={`Open source article from ${article.source}`}
+          className="grid h-12 w-12 place-items-center rounded-lg border border-white/10 bg-white/[0.05] text-slate-200 transition hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-cyan-100"
+        >
+          <ExternalLink className="h-4 w-4" />
+        </a>
       </div>
     </article>
   );

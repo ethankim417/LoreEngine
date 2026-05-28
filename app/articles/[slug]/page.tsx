@@ -105,9 +105,11 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               </div>
               <a
                 href={article.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-cyan-300 px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-cyan-200"
               >
-                Source Link
+                Open Source
                 <ExternalLink className="h-4 w-4" />
               </a>
             </aside>
