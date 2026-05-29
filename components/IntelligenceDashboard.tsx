@@ -189,18 +189,18 @@ function DailyBriefStatus({
         <div className="grid gap-2 sm:grid-cols-3 lg:min-w-[32rem]">
           <BriefPill
             icon={<Database className="h-4 w-4" />}
-            label="Tracked signals"
+            label="Reviewed articles"
             value={articles.length.toString()}
           />
           <BriefPill
             icon={<Sparkles className="h-4 w-4" />}
-            label="Action threshold"
+            label="Important articles"
             value={trendingCount}
           />
           <BriefPill
             icon={<ShieldCheck className="h-4 w-4" />}
-            label="Pipeline mode"
-            value="Mock cache"
+            label="Data source"
+            value="Mock news cache"
           />
         </div>
       </div>
