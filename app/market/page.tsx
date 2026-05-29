@@ -60,8 +60,11 @@ export default function MarketPage() {
                   Gaming Market Watchlists
                 </h1>
                 <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300 sm:text-base">
-                  Mock cached stock board organized around hardware, game engines, and the largest
+                  Sample market board organized around hardware, game engines, and the largest
                   game-revenue leaders. Private companies are labeled clearly when no public ticker exists.
+                </p>
+                <p className="mt-4 inline-flex rounded-full border border-amber-300/20 bg-amber-300/[0.08] px-3 py-1 text-xs font-semibold text-amber-100">
+                  Sample market data, not live prices
                 </p>
               </div>
 
@@ -95,7 +98,7 @@ export default function MarketPage() {
                 <Insight label="Hardware list" value="5 public market signals" />
                 <Insight label="Engine list" value="Unity plus Epic private proxy" />
                 <Insight label="Revenue list" value="10 leaders, excluding Sony and Nintendo" />
-                <Insight label="Portfolio mode" value="Mock cached quotes" />
+                <Insight label="Portfolio mode" value="Sample market data" />
               </div>
               <p className="mt-5 rounded-lg border border-amber-300/15 bg-amber-300/[0.06] p-3 text-xs leading-5 text-amber-100/90">
                 These numbers are sample values for dashboard design only. A production version should fetch quotes server-side on a schedule and cache the results.

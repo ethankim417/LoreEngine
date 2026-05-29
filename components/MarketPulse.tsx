@@ -35,6 +35,9 @@ export function MarketPulse() {
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
                   A compact cached read across hardware, game engines, and top game-revenue leaders.
                 </p>
+                <p className="mt-3 inline-flex rounded-full border border-amber-300/20 bg-amber-300/[0.08] px-3 py-1 text-xs font-semibold text-amber-100">
+                  Sample market data, not live prices
+                </p>
               </div>
               <span className="inline-flex w-fit items-center gap-2 rounded-lg border border-white/10 bg-white/[0.06] px-3 py-2 text-sm font-black text-white transition group-hover:border-cyan-300/35 group-hover:text-cyan-100">
                 Full Market View
@@ -82,7 +85,7 @@ export function MarketPulse() {
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
                 Biggest 30d Changes
               </p>
-              <p className="text-xs text-slate-500">Mock cache</p>
+              <p className="text-xs text-slate-500">Sample data</p>
             </div>
             <div className="divide-y divide-white/10">
               {topMovers.map((player) => (

@@ -102,8 +102,8 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 Intel Readout
               </div>
               <div className="mt-5 space-y-4">
-                <Score label="Impact" value={`${article.impactScore}/100`} />
-                <Score label="Trend" value={`+${article.trendScore}%`} />
+                <Score label="Industry Impact" value={`${article.impactScore}/100`} />
+                <Score label="Momentum" value={`+${article.trendScore}%`} />
                 <Score label="Confidence" value={`${article.confidence}%`} />
               </div>
               <div className="mt-6">

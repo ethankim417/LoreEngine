@@ -84,6 +84,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
             <p className="mt-2 text-sm text-slate-400">
               {filteredArticles.length} brief{filteredArticles.length === 1 ? "" : "s"} matched
             </p>
+            <SourceTypeLegend />
           </div>
 
           <div className="grid gap-3 md:grid-cols-[minmax(14rem,1fr)_auto_auto] xl:w-[46rem]">
@@ -125,8 +126,8 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                 className="h-11 w-full min-w-40 appearance-none rounded-lg border border-violet-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-violet-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-violet-300/35 hover:bg-violet-300/[0.08] focus:border-violet-300/60 focus:ring-2 focus:ring-violet-300/20 [&>option]:bg-slate-950 [&>option]:text-violet-50"
               >
                 <option value="newest">Newest</option>
-                <option value="impact">Impact Score</option>
-                <option value="trend">Trend Score</option>
+                <option value="impact">Industry Impact</option>
+                <option value="trend">Momentum</option>
               </select>
               <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-violet-200/70" />
             </label>
@@ -181,7 +182,7 @@ function DailyBriefStatus({
               </span>
             </div>
             <p className="mt-1 text-sm leading-6 text-slate-400">
-              Last updated {formatDate(latestPublishedAt)} | demo intelligence cache | no live AI calls
+              Sample brief updated {formatDate(latestPublishedAt)} | sample intelligence data | no live AI calls
             </p>
           </div>
         </div>
@@ -200,7 +201,7 @@ function DailyBriefStatus({
           <BriefPill
             icon={<ShieldCheck className="h-4 w-4" />}
             label="Data source"
-            value="Mock news cache"
+            value="Sample intelligence data"
           />
         </div>
       </div>
@@ -228,6 +229,29 @@ function BriefPill({
         </p>
         <p className="truncate font-display text-base font-black text-white">{value}</p>
       </div>
+    </div>
+  );
+}
+
+function SourceTypeLegend() {
+  const sourceTypes = [
+    "Official source",
+    "Trade press",
+    "Market analysis",
+    "Vendor report"
+  ];
+
+  return (
+    <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+      <span className="font-semibold uppercase tracking-[0.16em] text-slate-500">Source type</span>
+      {sourceTypes.map((sourceType) => (
+        <span
+          key={sourceType}
+          className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-medium text-slate-300"
+        >
+          {sourceType}
+        </span>
+      ))}
     </div>
   );
 }

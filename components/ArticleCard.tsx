@@ -78,10 +78,33 @@ export function ArticleCard({ article }: { article: Article }) {
         </h2>
         <p className="mt-3 line-clamp-4 text-sm leading-6 text-slate-300">{article.tldr}</p>
 
+        {article.impactScore >= 85 ? (
+          <div className="mt-4 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-3">
+            <p className="text-[0.66rem] font-black uppercase tracking-[0.16em] text-cyan-200">
+              Why it matters
+            </p>
+            <p className="mt-1 line-clamp-2 text-xs leading-5 text-slate-300">{article.whyItMatters}</p>
+          </div>
+        ) : null}
+
         <div className="mt-5 grid grid-cols-3 gap-2">
-          <MiniMetric icon={<Gauge className="h-4 w-4" />} label="Impact" value={`${article.impactScore}`} />
-          <MiniMetric icon={<TrendingUp className="h-4 w-4" />} label="Trend" value={`+${article.trendScore}%`} />
-          <MiniMetric label="Trust" value={`${article.confidence}%`} />
+          <MiniMetric
+            icon={<Gauge className="h-4 w-4" />}
+            label="Industry Impact"
+            value={`${article.impactScore}`}
+            description="Estimated business or production importance on a 0 to 100 scale."
+          />
+          <MiniMetric
+            icon={<TrendingUp className="h-4 w-4" />}
+            label="Momentum"
+            value={`+${article.trendScore}%`}
+            description="Estimated growth in attention around this topic."
+          />
+          <MiniMetric
+            label="Confidence"
+            value={`${article.confidence}%`}
+            description="How confident the sample brief is in the relevance of this signal."
+          />
         </div>
 
         <div className="mt-5 flex flex-wrap gap-2">
@@ -132,19 +155,29 @@ function readBookmarks() {
 function MiniMetric({
   icon,
   label,
-  value
+  value,
+  description
 }: {
   icon?: ReactNode;
   label: string;
   value: string;
+  description: string;
 }) {
   return (
-    <div className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2">
-      <div className="flex items-center gap-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-slate-500">
+    <div
+      className="group/metric relative min-h-[4rem] rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-2 outline-none transition focus-within:border-cyan-300/35 hover:border-cyan-300/25"
+      title={description}
+      aria-label={`${label}: ${value}. ${description}`}
+      tabIndex={0}
+    >
+      <div className="flex items-center gap-1.5 text-[0.58rem] font-semibold uppercase tracking-[0.12em] text-slate-500">
         {icon}
         {label}
       </div>
       <p className="mt-1 font-display text-lg font-black text-white">{value}</p>
+      <span className="pointer-events-none absolute bottom-[calc(100%+0.5rem)] left-0 z-20 hidden w-52 rounded-lg border border-cyan-300/20 bg-slate-950/95 p-3 text-xs leading-5 text-slate-200 shadow-[0_18px_60px_rgba(0,0,0,0.42)] group-hover/metric:block group-focus/metric:block">
+        {description}
+      </span>
     </div>
   );
 }
