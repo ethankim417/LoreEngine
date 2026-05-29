@@ -8,7 +8,14 @@ import {
   TrendingUp
 } from "lucide-react";
 import { StockLineChart } from "@/components/StockLineChart";
-import { marketPlayers, type MarketPlayer, type MarketSentiment } from "@/data/market";
+import {
+  getMarketFocusPlayers,
+  getMarketGroupPlayers,
+  marketGroups,
+  type MarketGroup,
+  type MarketPlayer,
+  type MarketSentiment
+} from "@/data/market";
 
 const sentimentTone: Record<MarketSentiment, string> = {
   Bullish: "border-emerald-300/25 bg-emerald-300/10 text-emerald-100",
@@ -21,11 +28,11 @@ export const metadata = {
 };
 
 export default function MarketPage() {
-  const sortedPlayers = [...marketPlayers].sort((a, b) => b.thirtyDayChange - a.thirtyDayChange);
+  const focusPlayers = getMarketFocusPlayers();
   const averageThirtyDay =
-    marketPlayers.reduce((total, player) => total + player.thirtyDayChange, 0) / marketPlayers.length;
-  const bullishCount = marketPlayers.filter((player) => player.sentiment === "Bullish").length;
-  const pressureCount = marketPlayers.filter((player) => player.sentiment === "Pressure").length;
+    focusPlayers.reduce((total, player) => total + player.thirtyDayChange, 0) / focusPlayers.length;
+  const bullishCount = focusPlayers.filter((player) => player.sentiment === "Bullish").length;
+  const pressureCount = focusPlayers.filter((player) => player.sentiment === "Pressure").length;
 
   return (
     <main className="relative min-h-screen overflow-hidden px-4 py-6 sm:px-6 lg:px-8">
@@ -50,39 +57,27 @@ export default function MarketPage() {
                   Market Pulse
                 </div>
                 <h1 className="mt-3 font-display text-4xl font-black text-white sm:text-5xl">
-                  Gaming Market Board
+                  Gaming Market Watchlists
                 </h1>
                 <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300 sm:text-base">
-                  Mock cached stock board for the public companies shaping gaming AI, platforms,
-                  engines, publishers, creator ecosystems, and mobile distribution.
+                  Mock cached stock board organized around hardware, game engines, and the largest
+                  game-revenue leaders. Private companies are labeled clearly when no public ticker exists.
                 </p>
               </div>
 
               <div className="grid gap-2 sm:grid-cols-3">
                 <SummaryStat label="Avg 30d" value={formatPercent(averageThirtyDay)} positive={averageThirtyDay >= 0} />
-                <SummaryStat label="Bullish" value={`${bullishCount}/${marketPlayers.length}`} positive />
+                <SummaryStat label="Bullish" value={`${bullishCount}/${focusPlayers.length}`} positive />
                 <SummaryStat label="Pressure" value={`${pressureCount}`} positive={pressureCount === 0} />
               </div>
             </div>
           </div>
 
           <div className="grid gap-0 xl:grid-cols-[1fr_22rem]">
-            <div className="p-4 sm:p-5">
-              <div className="overflow-hidden rounded-lg border border-white/10">
-                <div className="hidden grid-cols-[7rem_1fr_8rem_8rem_8rem_9rem] gap-4 border-b border-white/10 bg-white/[0.035] px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 lg:grid">
-                  <span>Ticker</span>
-                  <span>Company</span>
-                  <span>Price</span>
-                  <span>30d</span>
-                  <span>YTD</span>
-                  <span>Trend</span>
-                </div>
-                <div className="divide-y divide-white/10">
-                  {sortedPlayers.map((player) => (
-                    <MarketRow key={player.ticker} player={player} />
-                  ))}
-                </div>
-              </div>
+            <div className="space-y-4 p-4 sm:p-5">
+              {marketGroups.map((group) => (
+                <MarketGroupSection key={group.id} group={group} players={getMarketGroupPlayers(group)} />
+              ))}
             </div>
 
             <aside className="border-t border-white/10 bg-black/20 p-5 xl:border-l xl:border-t-0">
@@ -91,13 +86,15 @@ export default function MarketPage() {
                 Summary
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-300">
-                The mock board currently favors AI infrastructure and platform-scale names. NVIDIA,
-                Nintendo, and Take-Two show the strongest sample momentum, while Unity remains the
-                clearest pressure signal tied to developer trust and engine economics.
+                The board separates hardware exposure from engine strategy and revenue leadership.
+                Hardware momentum is strongest around AI chips and console-cycle names. Engine coverage
+                includes Unity plus Epic as a private Unreal proxy, while the revenue bucket tracks the
+                broader non-hardware revenue leaders.
               </p>
               <div className="mt-5 space-y-3">
-                <Insight label="Strongest theme" value="Gaming AI infrastructure" />
-                <Insight label="Risk pocket" value="Engine monetization trust" />
+                <Insight label="Hardware list" value="5 public market signals" />
+                <Insight label="Engine list" value="Unity plus Epic private proxy" />
+                <Insight label="Revenue list" value="10 leaders, excluding Sony and Nintendo" />
                 <Insight label="Portfolio mode" value="Mock cached quotes" />
               </div>
               <p className="mt-5 rounded-lg border border-amber-300/15 bg-amber-300/[0.06] p-3 text-xs leading-5 text-amber-100/90">
@@ -108,6 +105,39 @@ export default function MarketPage() {
         </section>
       </div>
     </main>
+  );
+}
+
+function MarketGroupSection({
+  group,
+  players
+}: {
+  group: MarketGroup;
+  players: MarketPlayer[];
+}) {
+  return (
+    <section className="overflow-hidden rounded-lg border border-white/10 bg-white/[0.02]">
+      <div className="flex flex-col gap-2 border-b border-white/10 bg-white/[0.035] px-4 py-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">{group.eyebrow}</p>
+          <h2 className="mt-1 font-display text-2xl font-black text-white">{group.title}</h2>
+          <p className="mt-1 text-sm text-slate-400">{group.description}</p>
+        </div>
+      </div>
+      <div className="hidden grid-cols-[7rem_1fr_8rem_8rem_8rem_9rem] gap-4 border-b border-white/10 bg-black/20 px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 lg:grid">
+        <span>Ticker</span>
+        <span>Company</span>
+        <span>Price</span>
+        <span>30d</span>
+        <span>YTD</span>
+        <span>Trend</span>
+      </div>
+      <div className="divide-y divide-white/10">
+        {players.map((player) => (
+          <MarketRow key={`${group.id}-${player.ticker}`} player={player} />
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -135,7 +165,7 @@ function MarketRow({ player }: { player: MarketPlayer }) {
         <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-500">{player.watchSignal}</p>
       </div>
 
-      <MetricCell label="Price" value={`$${player.price.toFixed(2)}`} />
+      <MetricCell label="Price" value={formatPrice(player)} />
       <MetricCell label="30d" value={formatPercent(player.thirtyDayChange)} positive={positive} />
       <MetricCell label="YTD" value={formatPercent(player.ytdChange)} positive={player.ytdChange >= 0} />
 
@@ -150,6 +180,10 @@ function MarketRow({ player }: { player: MarketPlayer }) {
       </div>
     </article>
   );
+}
+
+function formatPrice(player: MarketPlayer) {
+  return player.price === null ? "Private" : `$${player.price.toFixed(2)}`;
 }
 
 function MetricCell({

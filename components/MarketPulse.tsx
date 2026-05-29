@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ArrowRight, BadgeDollarSign, TrendingDown, TrendingUp } from "lucide-react";
 import { StockLineChart } from "@/components/StockLineChart";
-import { marketPlayers, type MarketPlayer } from "@/data/market";
+import { getMarketFocusPlayers, marketGroups, type MarketPlayer } from "@/data/market";
 
 export function MarketPulse() {
+  const focusPlayers = getMarketFocusPlayers();
   const averageThirtyDay =
-    marketPlayers.reduce((total, player) => total + player.thirtyDayChange, 0) / marketPlayers.length;
-  const topMovers = [...marketPlayers]
+    focusPlayers.reduce((total, player) => total + player.thirtyDayChange, 0) / focusPlayers.length;
+  const topMovers = [...focusPlayers]
     .sort((a, b) => Math.abs(b.thirtyDayChange) - Math.abs(a.thirtyDayChange))
     .slice(0, 5);
   const lead = topMovers[0];
@@ -29,10 +30,10 @@ export function MarketPulse() {
             <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between xl:block">
               <div>
                 <h2 className="font-display text-2xl font-black text-white sm:text-3xl">
-                  Major Players Snapshot
+                  Market Watchlist Snapshot
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-                  A compact cached read on gaming AI, platform, engine, publisher, and UGC market signals.
+                  A compact cached read across hardware, game engines, and top game-revenue leaders.
                 </p>
               </div>
               <span className="inline-flex w-fit items-center gap-2 rounded-lg border border-white/10 bg-white/[0.06] px-3 py-2 text-sm font-black text-white transition group-hover:border-cyan-300/35 group-hover:text-cyan-100">
@@ -71,7 +72,7 @@ export function MarketPulse() {
 
               <div className="grid gap-2">
                 <MarketMiniStat label="Avg 30d" value={formatPercent(averageThirtyDay)} positive={averageThirtyDay >= 0} />
-                <MarketMiniStat label="Tracked" value={`${marketPlayers.length}`} positive />
+                <MarketMiniStat label="Buckets" value={`${marketGroups.length}`} positive />
               </div>
             </div>
           </div>
@@ -117,7 +118,7 @@ function MoverRow({ player }: { player: MarketPlayer }) {
         <p className={positive ? "font-display text-base font-black text-emerald-100" : "font-display text-base font-black text-rose-100"}>
           {formatPercent(player.thirtyDayChange)}
         </p>
-        <p className="text-xs text-slate-500">${player.price.toFixed(2)}</p>
+        <p className="text-xs text-slate-500">{formatPrice(player)}</p>
       </div>
     </div>
   );
@@ -147,4 +148,8 @@ function MarketMiniStat({
 
 function formatPercent(value: number) {
   return `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`;
+}
+
+function formatPrice(player: MarketPlayer) {
+  return player.price === null ? "Private" : `$${player.price.toFixed(2)}`;
 }
