@@ -13,6 +13,13 @@ export type SourceCredibility =
   | "Market analysis"
   | "Vendor report";
 
+export const sourceCredibilityTypes: SourceCredibility[] = [
+  "Official source",
+  "Trade press",
+  "Market analysis",
+  "Vendor report"
+];
+
 export type Article = {
   id: string;
   slug: string;

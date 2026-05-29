@@ -18,7 +18,13 @@ import {
 } from "lucide-react";
 import { ArticleCard } from "@/components/ArticleCard";
 import { MarketPulse } from "@/components/MarketPulse";
-import { categories, type Article, type ArticleCategory } from "@/data/articles";
+import {
+  categories,
+  sourceCredibilityTypes,
+  type Article,
+  type ArticleCategory,
+  type SourceCredibility
+} from "@/data/articles";
 import { formatDate } from "@/lib/format";
 import type { DashboardMetric } from "@/lib/metrics";
 
@@ -32,6 +38,7 @@ type IntelligenceDashboardProps = {
 export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboardProps) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<ArticleCategory | "All">("All");
+  const [sourceType, setSourceType] = useState<SourceCredibility | "All">("All");
   const [sortMode, setSortMode] = useState<SortMode>("impact");
   const [selectedMetric, setSelectedMetric] = useState<DashboardMetric | null>(null);
 
@@ -41,13 +48,14 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
     return articles
       .filter((article) => {
         const matchesCategory = category === "All" || article.category === category;
+        const matchesSourceType = sourceType === "All" || article.sourceCredibility === sourceType;
         const matchesQuery =
           normalizedQuery.length === 0 ||
           article.title.toLowerCase().includes(normalizedQuery) ||
           article.tldr.toLowerCase().includes(normalizedQuery) ||
           article.fullTldr.toLowerCase().includes(normalizedQuery);
 
-        return matchesCategory && matchesQuery;
+        return matchesCategory && matchesSourceType && matchesQuery;
       })
       .sort((a, b) => {
         if (sortMode === "newest") {
@@ -60,7 +68,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
         return b.impactScore - a.impactScore;
       });
-  }, [articles, category, query, sortMode]);
+  }, [articles, category, query, sortMode, sourceType]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -84,7 +92,11 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
             <p className="mt-2 text-sm text-slate-400">
               {filteredArticles.length} brief{filteredArticles.length === 1 ? "" : "s"} matched
             </p>
-            <SourceTypeLegend />
+            <SourceTypeFilter
+              articles={articles}
+              selectedSourceType={sourceType}
+              onSelectSourceType={setSourceType}
+            />
           </div>
 
           <div className="grid gap-3 md:grid-cols-[minmax(14rem,1fr)_auto_auto] xl:w-[46rem]">
@@ -233,27 +245,60 @@ function BriefPill({
   );
 }
 
-function SourceTypeLegend() {
-  const sourceTypes = [
-    "Official source",
-    "Trade press",
-    "Market analysis",
-    "Vendor report"
-  ];
+function SourceTypeFilter({
+  articles,
+  selectedSourceType,
+  onSelectSourceType
+}: {
+  articles: Article[];
+  selectedSourceType: SourceCredibility | "All";
+  onSelectSourceType: (sourceType: SourceCredibility | "All") => void;
+}) {
+  const sourceCounts = sourceCredibilityTypes.reduce<Record<SourceCredibility, number>>(
+    (counts, sourceType) => {
+      counts[sourceType] = articles.filter((article) => article.sourceCredibility === sourceType).length;
+      return counts;
+    },
+    {
+      "Official source": 0,
+      "Trade press": 0,
+      "Market analysis": 0,
+      "Vendor report": 0
+    }
+  );
 
   return (
-    <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+    <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-500" aria-label="Filter by source type">
       <span className="font-semibold uppercase tracking-[0.16em] text-slate-500">Source type</span>
-      {sourceTypes.map((sourceType) => (
-        <span
+      <button
+        type="button"
+        onClick={() => onSelectSourceType("All")}
+        className={sourceTypeButtonClass(selectedSourceType === "All")}
+      >
+        All
+        <span className="text-slate-500">{articles.length}</span>
+      </button>
+      {sourceCredibilityTypes.map((sourceType) => (
+        <button
           key={sourceType}
-          className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-medium text-slate-300"
+          type="button"
+          onClick={() => onSelectSourceType(sourceType)}
+          className={sourceTypeButtonClass(selectedSourceType === sourceType)}
         >
           {sourceType}
-        </span>
+          <span className={selectedSourceType === sourceType ? "text-cyan-100/80" : "text-slate-500"}>
+            {sourceCounts[sourceType]}
+          </span>
+        </button>
       ))}
     </div>
   );
+}
+
+function sourceTypeButtonClass(active: boolean) {
+  return active
+    ? "inline-flex items-center gap-1.5 rounded-full border border-cyan-300/35 bg-cyan-300/12 px-2.5 py-1 font-semibold text-cyan-50 shadow-[0_0_22px_rgba(50,217,255,0.14)] transition hover:border-cyan-300/60"
+    : "inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-medium text-slate-300 transition hover:border-cyan-300/30 hover:text-white";
 }
 
 function MetricCard({
