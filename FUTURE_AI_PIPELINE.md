@@ -1,16 +1,26 @@
-# Future AI Pipeline For LoreEngine
+# Future Weekly AI Pipeline For LoreEngine
 
-LoreEngine is currently a mock-data showcase app. The future production version should generate daily AI summaries on the server and cache the results before users visit the dashboard.
+LoreEngine is currently a mock-data showcase app. The planned production version should generate a weekly intelligence brief on the server, cache the result, and let users read that cached brief.
 
 ## Goals
 
-- Fetch gaming and AI news once per day.
-- Summarize each article once.
-- Score impact, trend strength, confidence, and affected sectors.
+- Fetch gaming and AI news once per week.
+- Summarize selected articles once.
+- Score industry impact, momentum, confidence, and affected sectors.
 - Save the processed result to a database or JSON cache.
 - Let the frontend read only cached summaries.
 - Avoid AI API calls from the browser.
 - Avoid summarizing content on every page load.
+
+## Current Scaffold
+
+The repo now includes:
+
+- `vercel.json` with a weekly Monday cron schedule.
+- `app/api/admin/weekly-ingest/route.ts` as the scheduled server endpoint.
+- `lib/futurePipeline.ts` as the placeholder pipeline entry point.
+
+The scaffold intentionally does not fetch live news or call AI APIs yet. It returns a safe mock response so Vercel can deploy the route without creating API cost.
 
 ## RSS And News Collection
 
@@ -36,9 +46,9 @@ Possible feed categories:
 - Mobile gaming
 - Console and PC storefronts
 
-## Daily Summarization
+## Weekly Summarization
 
-Use a scheduled backend job such as Vercel Cron, GitHub Actions, or a small worker. Run it once per day, ideally during low traffic hours.
+Use a scheduled backend job such as Vercel Cron, GitHub Actions, or a small worker. Run it once per week.
 
 The job should:
 
@@ -52,10 +62,10 @@ The job should:
 
 ## Cache Strategy
 
-For the first production version, a JSON cache can work:
+For the first production version, a JSON cache or hosted blob can work:
 
 ```text
-data/cache/daily-intelligence-2026-05-27.json
+weekly-intelligence-2026-W22.json
 ```
 
 For a larger version, use a database table:
@@ -80,27 +90,51 @@ articles
 - source_url
 - published_at
 - summarized_at
+- brief_week
 ```
 
 ## Cost Control
 
 The most important rule: never call an AI API directly from the browser.
 
-Frontend page views can scale from 10 to 100,000 without increasing summarization cost if users only read cached results. AI spend should be tied to the number of daily articles processed, not the number of visitors.
+Frontend page views can scale from 10 to 100,000 without increasing summarization cost if users only read cached results. AI spend should be tied to the number of weekly articles processed, not the number of visitors.
 
 Recommended limits:
 
-- Run the summarizer once per day.
+- Run the summarizer once per week.
 - Cap the number of articles processed per run.
 - Skip duplicate or low-relevance stories.
 - Store summaries permanently.
 - Reuse cached summaries until the next scheduled refresh.
 - Log token usage and per-run cost.
 
+## Vercel Cron
+
+`vercel.json` currently schedules:
+
+```json
+{
+  "crons": [
+    {
+      "path": "/api/admin/weekly-ingest",
+      "schedule": "0 13 * * 1"
+    }
+  ]
+}
+```
+
+That runs every Monday at 13:00 UTC. Vercel Cron uses UTC.
+
+Add `CRON_SECRET` in Vercel when moving beyond scaffold mode. The route checks for:
+
+```text
+Authorization: Bearer <CRON_SECRET>
+```
+
 ## Pseudo-Code
 
 ```ts
-async function dailyLoreEngineJob() {
+async function weeklyLoreEngineJob() {
   const feeds = [
     "https://example.com/gaming-business.rss",
     "https://example.com/ai-news.rss",
@@ -136,7 +170,7 @@ async function dailyLoreEngineJob() {
     cachedResults.push(scored);
   }
 
-  await saveCachedDailyResults(cachedResults);
+  await saveCachedWeeklyResults(cachedResults);
 
   return {
     processed: cachedResults.length,
@@ -148,8 +182,7 @@ async function dailyLoreEngineJob() {
 ## Next Implementation Steps
 
 1. Add RSS feed configuration.
-2. Add a real storage layer such as Postgres, SQLite, or a durable JSON blob store.
-3. Replace `lib/futurePipeline.ts` with actual fetch, summarize, score, and save functions.
-4. Protect `app/api/admin/daily-ingest/route.ts` with a secret token.
-5. Add a Vercel Cron schedule.
-6. Update the dashboard to read from the cache instead of `data/articles.ts`.
+2. Add a durable storage layer such as Supabase, Neon, Vercel Postgres, Upstash, or blob storage.
+3. Replace the scaffold in `lib/futurePipeline.ts` with actual fetch, summarize, score, and save functions.
+4. Add `CRON_SECRET` in Vercel project environment variables.
+5. Update the dashboard to read from the cache instead of `data/articles.ts`.

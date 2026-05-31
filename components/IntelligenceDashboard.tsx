@@ -73,7 +73,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
   return (
     <div className="flex flex-col gap-6">
-      <DailyBriefStatus articles={articles} metrics={metrics} />
+      <WeeklyBriefStatus articles={articles} metrics={metrics} />
 
       <ExecutiveBrief articles={articles} />
 
@@ -167,7 +167,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
   );
 }
 
-function DailyBriefStatus({
+function WeeklyBriefStatus({
   articles,
   metrics
 }: {
@@ -183,7 +183,7 @@ function DailyBriefStatus({
   const trendingCount = metrics.find((metric) => metric.id === "trending-articles")?.value ?? "0";
 
   return (
-    <section className="glass-panel rounded-lg p-4 sm:p-5" aria-label="Daily brief status">
+    <section className="glass-panel rounded-lg p-4 sm:p-5" aria-label="Weekly brief status">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex items-start gap-3">
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-[0_0_28px_rgba(34,211,238,0.12)]">
@@ -191,13 +191,13 @@ function DailyBriefStatus({
           </span>
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <p className="font-display text-xl font-black text-white">Daily Brief</p>
+              <p className="font-display text-xl font-black text-white">Weekly Brief</p>
               <span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-emerald-100">
                 Cached
               </span>
             </div>
             <p className="mt-1 text-sm leading-6 text-slate-400">
-              Sample brief updated {formatDate(latestPublishedAt)} | sample intelligence data | no live AI calls
+              Weekly sample brief updated {formatDate(latestPublishedAt)} | sample intelligence data | no live AI calls
             </p>
           </div>
         </div>

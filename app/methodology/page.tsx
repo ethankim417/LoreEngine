@@ -50,7 +50,7 @@ export default function MethodologyPage() {
             </h1>
             <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300">
               These indicators are portfolio-showcase mock analytics. They are designed to
-              model how a future daily summarization system could convert cached gaming and
+              model how a future weekly summarization system could convert cached gaming and
               AI news into executive-ready market signals.
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function MethodologyPage() {
           <div className="glass-panel rounded-lg p-5 sm:p-6">
             <h2 className="font-display text-2xl font-black text-white">Future Real Data</h2>
             <p className="mt-3 leading-7 text-slate-300">
-              In production, these scores should be generated once per day on the server,
+              In production, these scores should be generated once per week on the server,
               saved to a database or JSON cache, and read by the frontend. They should never
               be recalculated by browser users or regenerated on every page load.
             </p>

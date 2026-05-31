@@ -64,7 +64,7 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
               Read This First
             </h2>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
-              A short decision layer for the daily brief: the top stories, the main risk,
+              A short decision layer for the weekly brief: the top stories, the main risk,
               the clearest opportunity, and the market signal to keep in view.
             </p>
           </div>
