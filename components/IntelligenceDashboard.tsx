@@ -181,6 +181,7 @@ function WeeklyBriefStatus({
     return articleTime > latestTime ? article.publishedAt : latest;
   }, articles[0]?.publishedAt ?? new Date().toISOString());
   const trendingCount = metrics.find((metric) => metric.id === "trending-articles")?.value ?? "0";
+  const sourceCount = new Set(articles.map((article) => article.source)).size;
 
   return (
     <section className="glass-panel rounded-lg p-4 sm:p-5" aria-label="Weekly brief status">
@@ -215,8 +216,8 @@ function WeeklyBriefStatus({
           />
           <BriefPill
             icon={<ShieldCheck className="h-4 w-4" />}
-            label="Data source"
-            value="Sample intelligence data"
+            label="Sources used"
+            value={`${sourceCount} outlets`}
           />
         </div>
       </div>
