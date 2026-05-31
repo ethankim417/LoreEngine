@@ -17,6 +17,7 @@ import {
   X
 } from "lucide-react";
 import { ArticleCard } from "@/components/ArticleCard";
+import { ExecutiveBrief } from "@/components/ExecutiveBrief";
 import { MarketPulse } from "@/components/MarketPulse";
 import {
   categories,
@@ -73,6 +74,8 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
   return (
     <div className="flex flex-col gap-6">
       <DailyBriefStatus articles={articles} metrics={metrics} />
+
+      <ExecutiveBrief articles={articles} />
 
       <section aria-label="Dashboard metrics" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {metrics.map((metric) => (
