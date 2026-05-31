@@ -197,7 +197,7 @@ function WeeklyBriefStatus({
               </span>
             </div>
             <p className="mt-1 text-sm leading-6 text-slate-400">
-              Weekly sample brief updated {formatDate(latestPublishedAt)} | sample intelligence data | no live AI calls
+              Updated {formatDate(latestPublishedAt)}
             </p>
           </div>
         </div>
