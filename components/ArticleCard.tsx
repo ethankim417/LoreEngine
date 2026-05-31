@@ -19,6 +19,7 @@ import { categoryTone, formatDate } from "@/lib/format";
 
 export function ArticleCard({ article }: { article: Article }) {
   const [bookmarked, setBookmarked] = useState(false);
+  const priority = getPriority(article);
 
   useEffect(() => {
     setBookmarked(readBookmarks().includes(article.id));
@@ -35,7 +36,7 @@ export function ArticleCard({ article }: { article: Article }) {
   }
 
   return (
-    <article className="glass-panel group relative flex min-h-[26rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow">
+    <article className="glass-panel group relative flex min-h-[25rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow">
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <Image
           src={article.visual.image}
@@ -48,14 +49,15 @@ export function ArticleCard({ article }: { article: Article }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(50,217,255,0.13),transparent_24%),linear-gradient(145deg,rgba(6,7,13,0.18),rgba(6,7,13,0.98)_62%)]" />
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col p-5">
+      <div className="relative z-10 flex flex-1 flex-col p-4 sm:p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
+            <span className={`rounded-full border px-2.5 py-1 text-xs font-black uppercase tracking-[0.12em] ${priority.className}`}>
+              {priority.label}
+            </span>
             <span className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
               {article.category}
             </span>
-            <span className="text-xs font-medium text-slate-500">{formatDate(article.publishedAt)}</span>
-            <SourceBadge source={article.source} credibility={article.sourceCredibility} compact />
           </div>
           <button
             type="button"
@@ -68,7 +70,12 @@ export function ArticleCard({ article }: { article: Article }) {
           </button>
         </div>
 
-        <div className="mt-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+        <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+          <span className="font-medium">{formatDate(article.publishedAt)}</span>
+          <SourceBadge source={article.source} credibility={article.sourceCredibility} compact />
+        </div>
+
+        <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
           <RadioTower className="h-3.5 w-3.5" />
           Signal Brief
         </div>
@@ -76,7 +83,7 @@ export function ArticleCard({ article }: { article: Article }) {
         <h2 className="mt-3 font-display text-xl font-black leading-snug tracking-normal text-white">
           {article.title}
         </h2>
-        <p className="mt-3 line-clamp-4 text-sm leading-6 text-slate-300">{article.tldr}</p>
+        <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-300">{article.tldr}</p>
 
         {article.impactScore >= 85 ? (
           <div className="mt-4 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-3">
@@ -87,7 +94,7 @@ export function ArticleCard({ article }: { article: Article }) {
           </div>
         ) : null}
 
-        <div className="mt-5 grid grid-cols-3 gap-2">
+        <div className="mt-4 grid grid-cols-3 gap-2">
           <MiniMetric
             icon={<Gauge className="h-4 w-4" />}
             label="Industry Impact"
@@ -107,7 +114,7 @@ export function ArticleCard({ article }: { article: Article }) {
           />
         </div>
 
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className="mt-4 flex flex-wrap gap-2">
           {article.sectors.slice(0, 4).map((sector) => (
             <span
               key={sector}
@@ -119,7 +126,7 @@ export function ArticleCard({ article }: { article: Article }) {
         </div>
       </div>
 
-      <div className="relative z-10 grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 bg-black/20 p-4">
+      <div className="relative z-10 grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 bg-black/20 p-3 sm:p-4">
         <Link
           href={`/articles/${article.slug}`}
           className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-cyan-200"
@@ -152,6 +159,27 @@ function readBookmarks() {
   }
 }
 
+function getPriority(article: Article) {
+  if (article.impactScore >= 86 || article.trendScore >= 36) {
+    return {
+      label: "Read first",
+      className: "border-emerald-300/25 bg-emerald-300/10 text-emerald-100"
+    };
+  }
+
+  if (article.impactScore >= 78 || article.trendScore >= 25) {
+    return {
+      label: "Monitor",
+      className: "border-cyan-300/25 bg-cyan-300/10 text-cyan-100"
+    };
+  }
+
+  return {
+    label: "Background",
+    className: "border-slate-300/15 bg-slate-300/5 text-slate-300"
+  };
+}
+
 function MiniMetric({
   icon,
   label,
@@ -165,12 +193,12 @@ function MiniMetric({
 }) {
   return (
     <div
-      className="group/metric relative min-h-[4rem] rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-2 outline-none transition focus-within:border-cyan-300/35 hover:border-cyan-300/25"
+      className="group/metric relative min-h-[3.75rem] rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-2 outline-none transition focus-within:border-cyan-300/35 hover:border-cyan-300/25"
       title={description}
       aria-label={`${label}: ${value}. ${description}`}
       tabIndex={0}
     >
-      <div className="flex items-center gap-1.5 text-[0.58rem] font-semibold uppercase tracking-[0.12em] text-slate-500">
+      <div className="flex items-center gap-1.5 text-[0.56rem] font-semibold uppercase tracking-[0.1em] text-slate-500">
         {icon}
         {label}
       </div>

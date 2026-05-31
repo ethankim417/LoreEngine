@@ -52,18 +52,18 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
 
   return (
     <section className="glass-panel overflow-hidden rounded-lg" aria-label="Executive brief">
-      <div className="relative border-b border-white/10 p-4 sm:p-5">
+      <div className="relative border-b border-white/10 p-4">
         <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_88%_12%,rgba(84,240,169,0.14),transparent_26%),radial-gradient(circle_at_18%_0%,rgba(50,217,255,0.14),transparent_28%)]" />
-        <div className="relative z-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="relative z-10 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200">
               <Sparkles className="h-4 w-4" />
               Executive Brief
             </div>
-            <h2 className="mt-2 font-display text-2xl font-black text-white sm:text-3xl">
+            <h2 className="mt-2 font-display text-2xl font-black text-white">
               Read This First
             </h2>
-            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
+            <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-400">
               A short decision layer for the weekly brief: the top stories, the main risk,
               the clearest opportunity, and the market signal to keep in view.
             </p>
@@ -75,15 +75,21 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
         </div>
       </div>
 
-      <div className="grid gap-0 lg:grid-cols-[1fr_24rem]">
+      <div className="grid gap-0 lg:grid-cols-[4rem_1fr_23rem]">
+        <div className="hidden border-r border-white/10 bg-black/20 p-4 lg:block">
+          <div className="[writing-mode:vertical-rl] rotate-180 text-xs font-black uppercase tracking-[0.28em] text-cyan-200/70">
+            Priority Lane
+          </div>
+        </div>
+
         <div className="divide-y divide-white/10">
           {topStories.map((article, index) => (
             <Link
               key={article.id}
               href={`/articles/${article.slug}`}
-              className="group grid gap-3 p-4 transition hover:bg-white/[0.035] sm:grid-cols-[3rem_1fr_auto] sm:items-center sm:p-5"
+              className="group grid gap-3 p-4 transition hover:bg-white/[0.035] sm:grid-cols-[3rem_1fr_auto] sm:items-center"
             >
-              <span className="grid h-11 w-11 place-items-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 font-display text-lg font-black text-cyan-100">
+              <span className="grid h-10 w-10 place-items-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 font-display text-lg font-black text-cyan-100">
                 {index + 1}
               </span>
               <span className="min-w-0">
@@ -105,8 +111,14 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
           ))}
         </div>
 
-        <aside className="border-t border-white/10 bg-black/20 p-4 sm:p-5 lg:border-l lg:border-t-0">
-          <div className="space-y-3">
+        <aside className="border-t border-white/10 bg-black/20 p-4 lg:border-l lg:border-t-0">
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-slate-500">
+              Decision Signals
+            </p>
+            <span className="h-1.5 w-10 rounded-full bg-gradient-to-r from-cyan-300/60 to-emerald-300/60" />
+          </div>
+          <div className="space-y-2">
             {briefItems.map((item) => (
               <BriefSignal key={item.label} item={item} />
             ))}
@@ -133,7 +145,7 @@ function BriefSignal({ item }: { item: BriefItem }) {
         <span className="text-cyan-100">{icon}</span>
         {item.label}
       </div>
-      <p className="mt-2 line-clamp-2 font-display text-base font-black text-white">
+      <p className="mt-2 line-clamp-2 font-display text-sm font-black leading-5 text-white">
         {item.article.title}
       </p>
       <p className="mt-2 text-xs leading-5 text-slate-400">{item.note}</p>

@@ -72,7 +72,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
   }, [articles, category, query, sortMode, sourceType]);
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-5">
       <WeeklyBriefStatus articles={articles} metrics={metrics} />
 
       <ExecutiveBrief articles={articles} />
@@ -148,6 +148,22 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
             </label>
           </div>
         </div>
+        <ActiveFilterChips
+          query={query}
+          category={category}
+          sourceType={sourceType}
+          sortMode={sortMode}
+          onClearQuery={() => setQuery("")}
+          onClearCategory={() => setCategory("All")}
+          onClearSourceType={() => setSourceType("All")}
+          onResetSort={() => setSortMode("impact")}
+          onClearAll={() => {
+            setQuery("");
+            setCategory("All");
+            setSourceType("All");
+            setSortMode("impact");
+          }}
+        />
       </section>
 
       <section className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
@@ -158,7 +174,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
       {filteredArticles.length === 0 ? (
         <div className="glass-panel rounded-lg p-8 text-center text-slate-300">
-          No matching intelligence briefs.
+          No briefs match these filters. Try clearing source type, category, or search.
         </div>
       ) : null}
 
@@ -184,20 +200,20 @@ function WeeklyBriefStatus({
   const sourceCount = new Set(articles.map((article) => article.source)).size;
 
   return (
-    <section className="glass-panel rounded-lg p-4 sm:p-5" aria-label="Weekly brief status">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+    <section className="glass-panel rounded-lg p-3 sm:p-4" aria-label="Weekly brief status">
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex items-start gap-3">
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-[0_0_28px_rgba(34,211,238,0.12)]">
-            <CalendarDays className="h-5 w-5" />
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-[0_0_28px_rgba(34,211,238,0.12)]">
+            <CalendarDays className="h-4 w-4" />
           </span>
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <p className="font-display text-xl font-black text-white">Weekly Brief</p>
+              <p className="font-display text-lg font-black text-white">Weekly Brief</p>
               <span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-emerald-100">
                 Cached
               </span>
             </div>
-            <p className="mt-1 text-sm leading-6 text-slate-400">
+            <p className="mt-0.5 text-sm leading-5 text-slate-400">
               Updated {formatDate(latestPublishedAt)}
             </p>
           </div>
@@ -235,15 +251,15 @@ function BriefPill({
   value: string;
 }) {
   return (
-    <div className="flex min-h-16 items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-white/10 bg-black/20 text-cyan-100">
+    <div className="flex min-h-12 items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg border border-white/10 bg-black/20 text-cyan-100">
         {icon}
       </span>
       <div className="min-w-0">
-        <p className="truncate text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-slate-500">
+        <p className="truncate text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-slate-500">
           {label}
         </p>
-        <p className="truncate font-display text-base font-black text-white">{value}</p>
+        <p className="truncate font-display text-sm font-black text-white sm:text-base">{value}</p>
       </div>
     </div>
   );
@@ -305,6 +321,75 @@ function sourceTypeButtonClass(active: boolean) {
     : "inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-medium text-slate-300 transition hover:border-cyan-300/30 hover:text-white";
 }
 
+function ActiveFilterChips({
+  query,
+  category,
+  sourceType,
+  sortMode,
+  onClearQuery,
+  onClearCategory,
+  onClearSourceType,
+  onResetSort,
+  onClearAll
+}: {
+  query: string;
+  category: ArticleCategory | "All";
+  sourceType: SourceCredibility | "All";
+  sortMode: SortMode;
+  onClearQuery: () => void;
+  onClearCategory: () => void;
+  onClearSourceType: () => void;
+  onResetSort: () => void;
+  onClearAll: () => void;
+}) {
+  const normalizedQuery = query.trim();
+  const hasFilters =
+    normalizedQuery.length > 0 || category !== "All" || sourceType !== "All" || sortMode !== "impact";
+
+  if (!hasFilters) {
+    return null;
+  }
+
+  return (
+    <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-white/10 pt-4">
+      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+        Active filters
+      </span>
+      {normalizedQuery.length > 0 ? (
+        <FilterChip label={`Search: ${normalizedQuery}`} onClear={onClearQuery} />
+      ) : null}
+      {category !== "All" ? <FilterChip label={`Category: ${category}`} onClear={onClearCategory} /> : null}
+      {sourceType !== "All" ? (
+        <FilterChip label={`Source: ${sourceType}`} onClear={onClearSourceType} />
+      ) : null}
+      {sortMode !== "impact" ? (
+        <FilterChip label={`Sorted by ${sortMode === "newest" ? "Newest" : "Momentum"}`} onClear={onResetSort} />
+      ) : null}
+      <button
+        type="button"
+        onClick={onClearAll}
+        className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-semibold text-slate-300 transition hover:border-rose-300/30 hover:text-rose-100"
+      >
+        Clear all
+      </button>
+    </div>
+  );
+}
+
+function FilterChip({ label, onClear }: { label: string; onClear: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClear}
+      className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-2.5 py-1 text-xs font-semibold text-cyan-50 transition hover:border-cyan-300/50"
+      title={`Remove ${label}`}
+    >
+      <span className="truncate">{label}</span>
+      <X className="h-3.5 w-3.5 shrink-0" />
+    </button>
+  );
+}
+
 function MetricCard({
   metric,
   onSelect
@@ -324,7 +409,7 @@ function MetricCard({
       type="button"
       onClick={onSelect}
       aria-label={`Explain ${metric.label}`}
-      className="glass-panel group rounded-lg p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
+      className="glass-panel group rounded-lg p-3 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cyan-300/30 sm:p-4"
     >
       <div className="flex items-center justify-between gap-3">
         <div className={`h-1.5 w-16 rounded-full bg-gradient-to-r ${toneClass}`} />
@@ -332,11 +417,11 @@ function MetricCard({
           <Info className="h-4 w-4" />
         </span>
       </div>
-      <p className="mt-4 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+      <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
         {metric.label}
       </p>
       <div className="mt-2 flex items-end justify-between gap-4">
-        <p className="font-display text-3xl font-black text-white">{metric.value}</p>
+        <p className="font-display text-2xl font-black text-white sm:text-3xl">{metric.value}</p>
         <p className="pb-1 text-sm font-semibold text-slate-300">{metric.delta}</p>
       </div>
       <p className="mt-3 line-clamp-2 text-xs leading-5 text-slate-400">{metric.shortDescription}</p>
