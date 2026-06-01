@@ -15,7 +15,7 @@ export function MarketPulse() {
   return (
     <Link
       href="/market"
-      className="glass-panel group block overflow-hidden rounded-lg transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
+      className="glass-panel premium-hover group relative block overflow-hidden rounded-lg transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
       aria-label="Open full market pulse view"
     >
       <section aria-label="Market pulse preview" className="relative p-3 sm:p-4">

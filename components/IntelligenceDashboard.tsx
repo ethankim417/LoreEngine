@@ -432,10 +432,12 @@ function MetricCard({
       type="button"
       onClick={onSelect}
       aria-label={`Explain ${metric.label}`}
-      className="glass-panel group rounded-lg p-3 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cyan-300/30 sm:p-4"
+      className="glass-panel premium-hover group relative overflow-hidden rounded-lg p-3 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cyan-300/30 sm:p-4"
     >
       <div className="flex items-center justify-between gap-3">
-        <div className={`h-1.5 w-16 rounded-full bg-gradient-to-r ${toneClass}`} />
+        <div className="h-1.5 w-16 overflow-hidden rounded-full bg-white/[0.06]">
+          <div className={`metric-fill h-full rounded-full bg-gradient-to-r ${toneClass}`} />
+        </div>
         <span className="grid h-8 w-8 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-400 transition group-hover:border-cyan-300/35 group-hover:text-cyan-100">
           <Info className="h-4 w-4" />
         </span>

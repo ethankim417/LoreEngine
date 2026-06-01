@@ -36,7 +36,7 @@ export function ArticleCard({ article }: { article: Article }) {
   }
 
   return (
-    <article className="glass-panel group relative flex min-h-[24rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[25rem]">
+    <article className="glass-panel premium-hover group relative flex min-h-[24rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[25rem]">
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <Image
           src={article.visual.image}
@@ -47,6 +47,7 @@ export function ArticleCard({ article }: { article: Article }) {
           loading="lazy"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(50,217,255,0.13),transparent_24%),linear-gradient(145deg,rgba(6,7,13,0.18),rgba(6,7,13,0.98)_62%)]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/40 to-transparent opacity-0 transition group-hover:opacity-100" />
       </div>
 
       <div className="relative z-10 flex flex-1 flex-col p-4 sm:p-5">

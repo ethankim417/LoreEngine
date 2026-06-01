@@ -51,7 +51,7 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
   ];
 
   return (
-    <section className="glass-panel overflow-hidden rounded-lg" aria-label="Executive brief">
+    <section className="glass-panel premium-hover relative overflow-hidden rounded-lg" aria-label="Executive brief">
       <div className="relative border-b border-white/10 p-4">
         <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_88%_12%,rgba(84,240,169,0.14),transparent_26%),radial-gradient(circle_at_18%_0%,rgba(50,217,255,0.14),transparent_28%)]" />
         <div className="relative z-10 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">

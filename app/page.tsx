@@ -19,6 +19,8 @@ function AmbientBackground() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="mesh-grid absolute inset-0 opacity-80" />
+      <div className="ambient-particles absolute inset-0 opacity-35" />
+      <div className="page-scanline absolute left-0 top-0 h-40 w-full opacity-70" />
       <div className="absolute left-[-14rem] top-[-12rem] h-[34rem] w-[34rem] animate-slow-pan rounded-full bg-cyan-400/[0.12] blur-3xl" />
       <div className="absolute right-[-10rem] top-10 h-[30rem] w-[30rem] animate-slow-pan rounded-full bg-violet-500/[0.14] blur-3xl [animation-delay:2s]" />
       <div className="absolute bottom-[-14rem] left-1/3 h-[28rem] w-[28rem] animate-slow-pan rounded-full bg-emerald-400/[0.08] blur-3xl [animation-delay:4s]" />
@@ -32,7 +34,7 @@ function Hero() {
       <div className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_70%_35%,rgba(50,217,255,0.2),transparent_32rem)]" />
       <div className="relative flex flex-col gap-4">
         <div className="flex items-center gap-4">
-          <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-200/35 bg-slate-950/60 shadow-glow sm:h-16 sm:w-16">
+          <div className="soft-float relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-200/35 bg-slate-950/60 shadow-glow sm:h-16 sm:w-16">
             <div className="absolute inset-1 rounded-xl border border-violet-300/25" />
             <div className="absolute h-8 w-8 rounded-full border border-cyan-300/25" />
             <Radar className="relative h-7 w-7 text-cyan-100 sm:h-8 sm:w-8" />

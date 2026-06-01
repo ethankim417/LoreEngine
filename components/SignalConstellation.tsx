@@ -171,6 +171,7 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
               return (
                 <line
                   key={`${fromId}-${toId}`}
+                  className="signal-line-flow"
                   x1={from.x}
                   y1={from.y}
                   x2={to.x}
