@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, BadgeDollarSign } from "lucide-react";
+import { MarketHeatStrip } from "@/components/MarketHeatStrip";
 import { StockLineChart } from "@/components/StockLineChart";
 import { getMarketFocusPlayers, marketSnapshotDate, type MarketPlayer } from "@/data/market";
 import { formatDate } from "@/lib/format";
@@ -22,18 +23,22 @@ export function MarketPulse() {
       <section aria-label="Market pulse preview" className="relative p-3 sm:p-4">
         <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_82%_16%,rgba(50,217,255,0.14),transparent_24%),radial-gradient(circle_at_18%_0%,rgba(138,92,255,0.12),transparent_24%)]" />
 
-        <div className="relative z-10 grid gap-3 xl:grid-cols-[15rem_1fr_auto] xl:items-center">
-          <div>
-            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200">
-              <BadgeDollarSign className="h-4 w-4" />
-              Market Pulse
+        <div className="relative z-10 flex flex-col gap-3">
+          <div className="grid gap-3 xl:grid-cols-[15rem_1fr] xl:items-center">
+            <div>
+              <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200">
+                <BadgeDollarSign className="h-4 w-4" />
+                Market Pulse
+              </div>
+              <p className="mt-1 text-xs leading-5 text-slate-500">
+                Updated {formatDate(marketSnapshotDate)}
+              </p>
             </div>
-            <p className="mt-1 text-xs leading-5 text-slate-500">
-              Updated {formatDate(marketSnapshotDate)}
-            </p>
+            <MarketHeatStrip players={focusPlayers} />
           </div>
 
-          <div className="grid gap-2 md:grid-cols-[minmax(12rem,18rem)_1fr] md:items-center">
+          <div className="grid gap-3 xl:grid-cols-[1fr_auto] xl:items-center">
+            <div className="grid gap-2 md:grid-cols-[minmax(12rem,18rem)_1fr] md:items-center">
             <div className="rounded-lg border border-white/10 bg-black/20 p-3">
               <div className="flex items-start justify-between gap-3">
                 <div>
@@ -82,6 +87,7 @@ export function MarketPulse() {
               Full Market
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
             </span>
+          </div>
           </div>
         </div>
       </section>

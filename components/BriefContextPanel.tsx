@@ -70,12 +70,7 @@ export function BriefContextPanel({ articles }: { articles: Article[] }) {
                 The brief separates source type from story confidence so readers can see the evidence mix.
               </p>
             </div>
-            <div className="rounded-lg border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-2 text-right">
-              <p className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-emerald-100/70">
-                Avg
-              </p>
-              <p className="font-display text-2xl font-black text-white">{averageConfidence}%</p>
-            </div>
+            <SourceConfidenceDonut sourceCounts={sourceCounts} total={articles.length} average={averageConfidence} />
           </div>
 
           <div className="mt-5 space-y-3">
@@ -91,6 +86,57 @@ export function BriefContextPanel({ articles }: { articles: Article[] }) {
         </div>
       </aside>
     </section>
+  );
+}
+
+function SourceConfidenceDonut({
+  sourceCounts,
+  total,
+  average
+}: {
+  sourceCounts: Array<{ sourceType: SourceCredibility; count: number }>;
+  total: number;
+  average: number;
+}) {
+  let offset = 0;
+  const colors: Record<SourceCredibility, string> = {
+    "Official source": "#67e8f9",
+    "Trade press": "#c4b5fd",
+    "Market analysis": "#6ee7b7",
+    "Vendor report": "#fcd34d"
+  };
+
+  return (
+    <div className="relative grid h-24 w-24 shrink-0 place-items-center rounded-lg border border-white/10 bg-black/20">
+      <svg className="absolute inset-2 h-20 w-20 -rotate-90" viewBox="0 0 42 42" aria-hidden="true">
+        <circle cx="21" cy="21" r="15.5" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="5" />
+        {sourceCounts.map(({ sourceType, count }) => {
+          const share = total ? (count / total) * 100 : 0;
+          const dash = `${share} ${100 - share}`;
+          const segment = (
+            <circle
+              key={sourceType}
+              cx="21"
+              cy="21"
+              r="15.5"
+              fill="none"
+              stroke={colors[sourceType]}
+              strokeDasharray={dash}
+              strokeDashoffset={-offset}
+              strokeLinecap="round"
+              strokeWidth="5"
+              pathLength="100"
+            />
+          );
+          offset += share;
+          return segment;
+        })}
+      </svg>
+      <div className="relative text-center">
+        <p className="text-[0.58rem] font-black uppercase tracking-[0.14em] text-emerald-100/70">Avg</p>
+        <p className="font-display text-xl font-black text-white">{average}%</p>
+      </div>
+    </div>
   );
 }
 

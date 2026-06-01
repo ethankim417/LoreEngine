@@ -7,6 +7,7 @@ import {
   TrendingDown,
   TrendingUp
 } from "lucide-react";
+import { MarketHeatStrip } from "@/components/MarketHeatStrip";
 import { StockLineChart } from "@/components/StockLineChart";
 import {
   getMarketFocusPlayers,
@@ -76,6 +77,9 @@ export default function MarketPage() {
                 <SummaryStat label="Pressure" value={`${pressureCount}`} positive={pressureCount === 0} />
               </div>
             </div>
+            <div className="relative z-10 mt-5">
+              <MarketHeatStrip players={focusPlayers} />
+            </div>
           </div>
 
           <div className="grid gap-0 xl:grid-cols-[1fr_22rem]">
@@ -129,7 +133,7 @@ function MarketGroupSection({
           <p className="mt-1 text-sm text-slate-400">{group.description}</p>
         </div>
       </div>
-      <div className="hidden grid-cols-[7rem_1fr_8rem_8rem_8rem_9rem] gap-4 border-b border-white/10 bg-black/20 px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 lg:grid">
+      <div className="hidden grid-cols-[7rem_1fr_8rem_8rem_8rem_12rem] gap-4 border-b border-white/10 bg-black/20 px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 lg:grid">
         <span>Ticker</span>
         <span>Company</span>
         <span>Price</span>
@@ -150,7 +154,7 @@ function MarketRow({ player }: { player: MarketPlayer }) {
   const positive = player.thirtyDayChange >= 0;
 
   return (
-    <article className="grid gap-3 bg-white/[0.015] px-4 py-4 transition hover:bg-white/[0.04] lg:grid-cols-[7rem_1fr_8rem_8rem_8rem_9rem] lg:items-center">
+    <article className="grid gap-3 bg-white/[0.015] px-4 py-4 transition hover:bg-white/[0.04] lg:grid-cols-[7rem_1fr_8rem_8rem_8rem_12rem] lg:items-center">
       <div className="flex items-center justify-between gap-3 lg:block">
         <div>
           <p className="font-display text-lg font-black text-white">{player.ticker}</p>
@@ -190,7 +194,12 @@ function MarketRow({ player }: { player: MarketPlayer }) {
       <MetricCell label="30d" value={formatPercent(player.thirtyDayChange)} positive={positive} />
       <MetricCell label="YTD" value={formatPercent(player.ytdChange)} positive={player.ytdChange >= 0} />
 
-      <div className="h-16 lg:h-12">
+      <div>
+        <div className="mb-2 grid grid-cols-2 gap-1.5">
+          <PerformanceBar label="30d" value={player.thirtyDayChange} />
+          <PerformanceBar label="YTD" value={player.ytdChange} />
+        </div>
+        <div className="h-16 lg:h-12">
         <StockLineChart
           values={player.trend}
           positive={positive}
@@ -198,6 +207,7 @@ function MarketRow({ player }: { player: MarketPlayer }) {
           strokeWidth={2.25}
           label={`${player.company} 30 day line chart`}
         />
+        </div>
       </div>
     </article>
   );
@@ -222,6 +232,26 @@ function MetricCell({
     <div className="flex items-center justify-between gap-3 lg:block">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 lg:hidden">{label}</p>
       <p className={`font-display text-xl font-black ${color}`}>{value}</p>
+    </div>
+  );
+}
+
+function PerformanceBar({ label, value }: { label: string; value: number }) {
+  const positive = value >= 0;
+  const width = `${Math.min(Math.abs(value), 45) * 2.2}%`;
+
+  return (
+    <div>
+      <div className="flex items-center justify-between gap-2 text-[0.58rem] font-black uppercase tracking-[0.12em] text-slate-500">
+        <span>{label}</span>
+        <span className={positive ? "text-emerald-100" : "text-rose-100"}>{formatPercent(value)}</span>
+      </div>
+      <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-white/[0.07]">
+        <div
+          className={`h-full rounded-full ${positive ? "bg-emerald-300/70" : "bg-rose-300/70"}`}
+          style={{ width }}
+        />
+      </div>
     </div>
   );
 }

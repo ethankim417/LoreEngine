@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink, RadioTower } from "lucide-react";
+import { SectorSignalArt } from "@/components/SectorSignalArt";
 import { SourceBadge } from "@/components/SourceBadge";
 import { articles, getArticleBySlug } from "@/data/articles";
 import { categoryTone, formatDate } from "@/lib/format";
@@ -38,7 +39,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         aria-hidden="true"
         className="absolute right-[-12rem] top-[-12rem] h-[32rem] w-[32rem] rounded-full bg-violet-500/15 blur-3xl"
       />
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6">
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6">
         <Link
           href="/"
           className="inline-flex w-fit items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/40 hover:text-white"
@@ -48,20 +49,22 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </Link>
 
         <article className="glass-panel overflow-hidden rounded-lg">
-          <div className="relative min-h-[22rem] overflow-hidden border-b border-white/10 p-5 sm:min-h-[24rem] sm:p-7">
+          <div className="relative min-h-[30rem] overflow-hidden border-b border-white/10 p-5 sm:p-7">
             <Image
               src={article.visual.image}
               alt={article.visual.alt}
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center opacity-80"
+              className="object-cover object-center opacity-[0.42]"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,7,13,0.96),rgba(6,7,13,0.78)_38%,rgba(6,7,13,0.18)_72%),linear-gradient(to_bottom,rgba(6,7,13,0.18),rgba(6,7,13,0.72))]" />
+            <SectorSignalArt article={article} />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,7,13,0.97),rgba(6,7,13,0.82)_44%,rgba(6,7,13,0.22)_78%),linear-gradient(to_bottom,rgba(6,7,13,0.18),rgba(6,7,13,0.82))]" />
             <div className="absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_50%_35%,rgba(50,217,255,0.16),transparent_48%)]" />
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#06070d] to-transparent" />
 
-            <div className="relative z-10 max-w-3xl rounded-lg border border-white/10 bg-slate-950/72 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.36),inset_0_1px_0_rgba(255,255,255,0.08)] sm:p-5">
+            <div className="relative z-10 grid min-h-[26rem] gap-5 lg:grid-cols-[1fr_18rem] lg:items-end">
+            <div className="max-w-3xl">
               <div className="flex flex-wrap items-center gap-3">
                 <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
                   {article.category}
@@ -73,6 +76,23 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 {article.title}
               </h1>
               <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-200">{article.fullTldr}</p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {article.sectors.slice(0, 5).map((sector) => (
+                  <span
+                    key={sector}
+                    className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-bold text-cyan-50"
+                  >
+                    {sector}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid gap-2 rounded-lg border border-white/10 bg-slate-950/62 p-3 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
+              <HeaderGauge label="Impact" value={article.impactScore} suffix="/100" />
+              <HeaderGauge label="Momentum" value={article.trendScore} prefix="+" suffix="%" />
+              <HeaderGauge label="Confidence" value={article.confidence} suffix="%" />
+            </div>
             </div>
           </div>
 
@@ -141,6 +161,37 @@ function DetailBlock({ title, body }: { title: string; body: string }) {
       <h2 className="font-display text-xl font-bold text-white">{title}</h2>
       <p className="mt-3 leading-7 text-slate-300">{body}</p>
     </section>
+  );
+}
+
+function HeaderGauge({
+  label,
+  value,
+  prefix = "",
+  suffix = ""
+}: {
+  label: string;
+  value: number;
+  prefix?: string;
+  suffix?: string;
+}) {
+  return (
+    <div className="rounded-lg border border-white/10 bg-white/[0.045] p-3">
+      <div className="flex items-center justify-between gap-3">
+        <p className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-slate-500">{label}</p>
+        <p className="font-display text-xl font-black text-white">
+          {prefix}
+          {value}
+          {suffix}
+        </p>
+      </div>
+      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/[0.07]">
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-cyan-300 to-violet-300"
+          style={{ width: `${Math.min(value, 100)}%` }}
+        />
+      </div>
+    </div>
   );
 }
 
