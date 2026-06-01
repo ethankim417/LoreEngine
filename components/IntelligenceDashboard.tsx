@@ -19,6 +19,7 @@ import {
 import { ArticleCard } from "@/components/ArticleCard";
 import { ExecutiveBrief } from "@/components/ExecutiveBrief";
 import { MarketPulse } from "@/components/MarketPulse";
+import { SignalConstellation } from "@/components/SignalConstellation";
 import {
   categories,
   sourceCredibilityTypes,
@@ -82,6 +83,8 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
       <WeeklyBriefStatus articles={articles} metrics={metrics} />
 
       <ExecutiveBrief articles={articles} />
+
+      <SignalConstellation articles={articles} />
 
       <section aria-label="Dashboard metrics" className="grid gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
         {metrics.map((metric) => (
