@@ -17,6 +17,7 @@ import {
   X
 } from "lucide-react";
 import { ArticleCard } from "@/components/ArticleCard";
+import { BriefContextPanel } from "@/components/BriefContextPanel";
 import { ExecutiveBrief } from "@/components/ExecutiveBrief";
 import { MarketPulse } from "@/components/MarketPulse";
 import { SignalConstellation } from "@/components/SignalConstellation";
@@ -83,6 +84,8 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
       <WeeklyBriefStatus articles={articles} metrics={metrics} />
 
       <ExecutiveBrief articles={articles} />
+
+      <BriefContextPanel articles={articles} />
 
       <SignalConstellation articles={articles} />
 
