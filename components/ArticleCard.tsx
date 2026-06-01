@@ -36,7 +36,7 @@ export function ArticleCard({ article }: { article: Article }) {
   }
 
   return (
-    <article className="glass-panel group relative flex min-h-[25rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow">
+    <article className="glass-panel group relative flex min-h-[24rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[25rem]">
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <Image
           src={article.visual.image}
@@ -75,12 +75,12 @@ export function ArticleCard({ article }: { article: Article }) {
           <SourceBadge source={article.source} credibility={article.sourceCredibility} compact />
         </div>
 
-        <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+        <div className="mt-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 sm:mt-4">
           <RadioTower className="h-3.5 w-3.5" />
           Signal Brief
         </div>
 
-        <h2 className="mt-3 font-display text-xl font-black leading-snug tracking-normal text-white">
+        <h2 className="mt-2 font-display text-lg font-black leading-snug tracking-normal text-white sm:mt-3 sm:text-xl">
           {article.title}
         </h2>
         <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-300">{article.tldr}</p>

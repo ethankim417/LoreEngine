@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden">
       <AmbientBackground />
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-6 px-3 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
         <Hero />
         <IntelligenceDashboard articles={articles} metrics={getDashboardMetrics(articles)} />
       </div>
@@ -27,10 +27,10 @@ function AmbientBackground() {
 
 function Hero() {
   return (
-    <section className="flex flex-col gap-5">
-      <div className="flex flex-col gap-5">
+    <section className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
-          <div className="relative flex h-12 w-12 items-center justify-center rounded-lg border border-cyan-300/30 bg-cyan-300/10 shadow-glow">
+          <div className="relative flex h-11 w-11 items-center justify-center rounded-lg border border-cyan-300/30 bg-cyan-300/10 shadow-glow sm:h-12 sm:w-12">
             <div className="absolute inset-1 rounded-md border border-violet-300/20" />
             <span className="font-display text-lg font-black tracking-[0.18em] text-cyan-100">
               LE
@@ -50,7 +50,7 @@ function Hero() {
           <p className="text-balance text-xl font-medium text-cyan-50 sm:text-2xl">
             AI-powered gaming industry intelligence
           </p>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300 sm:mt-3 sm:text-base">
             A command-center dashboard for tracking the signals shaping studios,
             platforms, game AI, hardware, esports, and creator-led markets.
           </p>

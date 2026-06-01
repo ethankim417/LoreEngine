@@ -42,6 +42,12 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
   const [sourceType, setSourceType] = useState<SourceCredibility | "All">("All");
   const [sortMode, setSortMode] = useState<SortMode>("impact");
   const [selectedMetric, setSelectedMetric] = useState<DashboardMetric | null>(null);
+  const resetFilters = () => {
+    setQuery("");
+    setCategory("All");
+    setSourceType("All");
+    setSortMode("impact");
+  };
 
   const filteredArticles = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -72,12 +78,12 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
   }, [articles, category, query, sortMode, sourceType]);
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-4 sm:gap-5">
       <WeeklyBriefStatus articles={articles} metrics={metrics} />
 
       <ExecutiveBrief articles={articles} />
 
-      <section aria-label="Dashboard metrics" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <section aria-label="Dashboard metrics" className="grid gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
         {metrics.map((metric) => (
           <MetricCard key={metric.label} metric={metric} onSelect={() => setSelectedMetric(metric)} />
         ))}
@@ -85,7 +91,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
       <MarketPulse />
 
-      <section className="glass-panel rounded-lg p-4 sm:p-5">
+      <section className="glass-panel rounded-lg p-3 sm:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
           <div>
             <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-cyan-200">
@@ -157,28 +163,42 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
           onClearCategory={() => setCategory("All")}
           onClearSourceType={() => setSourceType("All")}
           onResetSort={() => setSortMode("impact")}
-          onClearAll={() => {
-            setQuery("");
-            setCategory("All");
-            setSourceType("All");
-            setSortMode("impact");
-          }}
+          onClearAll={resetFilters}
         />
       </section>
 
-      <section className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
+      <section className="grid gap-3 sm:gap-4 lg:grid-cols-2 xl:grid-cols-3">
         {filteredArticles.map((article) => (
           <ArticleCard key={article.id} article={article} />
         ))}
       </section>
 
       {filteredArticles.length === 0 ? (
-        <div className="glass-panel rounded-lg p-8 text-center text-slate-300">
-          No briefs match these filters. Try clearing source type, category, or search.
-        </div>
+        <EmptyFilterState onClearAll={resetFilters} />
       ) : null}
 
       <MetricExplainerDialog metric={selectedMetric} onClose={() => setSelectedMetric(null)} />
+    </div>
+  );
+}
+
+function EmptyFilterState({ onClearAll }: { onClearAll: () => void }) {
+  return (
+    <div className="glass-panel rounded-lg p-6 text-center sm:p-8">
+      <div className="mx-auto grid h-11 w-11 place-items-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 text-cyan-100">
+        <Search className="h-5 w-5" />
+      </div>
+      <h2 className="mt-4 font-display text-xl font-black text-white">No briefs match these filters</h2>
+      <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-400">
+        Try clearing the source type, category, or search query to bring the weekly brief back into view.
+      </p>
+      <button
+        type="button"
+        onClick={onClearAll}
+        className="mt-5 inline-flex items-center justify-center rounded-lg bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-cyan-200"
+      >
+        Clear filters
+      </button>
     </div>
   );
 }
