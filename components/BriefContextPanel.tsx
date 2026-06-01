@@ -1,4 +1,5 @@
 import { BookOpenCheck, FileSearch, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 import {
   sourceCredibilityTypes,
   type Article,
@@ -95,16 +96,21 @@ export function BriefContextPanel({ articles }: { articles: Article[] }) {
 
 function ThesisSignal({ label, article }: { label: string; article: Article }) {
   return (
-    <div className="rounded-lg border border-white/10 bg-black/20 p-3">
+    <Link
+      href={`/articles/${article.slug}`}
+      className="group rounded-lg border border-white/10 bg-black/20 p-3 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.07]"
+    >
       <div className="flex items-center gap-2 text-[0.65rem] font-black uppercase tracking-[0.16em] text-slate-500">
-        <FileSearch className="h-3.5 w-3.5 text-cyan-100" />
+        <FileSearch className="h-3.5 w-3.5 text-cyan-100 transition group-hover:text-white" />
         {label}
       </div>
-      <p className="mt-2 line-clamp-2 text-sm font-bold leading-5 text-white">{article.title}</p>
+      <p className="mt-2 line-clamp-2 text-sm font-bold leading-5 text-white transition group-hover:text-cyan-50">
+        {article.title}
+      </p>
       <p className="mt-2 text-xs leading-5 text-slate-500">
         Impact {article.impactScore}/100 · Momentum +{article.trendScore}%
       </p>
-    </div>
+    </Link>
   );
 }
 
