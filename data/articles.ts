@@ -55,6 +55,8 @@ export const categories: ArticleCategory[] = [
   "Studio"
 ];
 
+export const briefSnapshotDate = "2026-06-01";
+
 export const articles: Article[] = [
   {
     id: "le-001",

@@ -22,6 +22,7 @@ import { ExecutiveBrief } from "@/components/ExecutiveBrief";
 import { MarketPulse } from "@/components/MarketPulse";
 import { SignalConstellation } from "@/components/SignalConstellation";
 import {
+  briefSnapshotDate,
   categories,
   sourceCredibilityTypes,
   type Article,
@@ -216,12 +217,6 @@ function WeeklyBriefStatus({
   articles: Article[];
   metrics: DashboardMetric[];
 }) {
-  const latestPublishedAt = articles.reduce((latest, article) => {
-    const articleTime = new Date(article.publishedAt).getTime();
-    const latestTime = new Date(latest).getTime();
-
-    return articleTime > latestTime ? article.publishedAt : latest;
-  }, articles[0]?.publishedAt ?? new Date().toISOString());
   const trendingCount = metrics.find((metric) => metric.id === "trending-articles")?.value ?? "0";
   const sourceCount = new Set(articles.map((article) => article.source)).size;
 
@@ -240,7 +235,7 @@ function WeeklyBriefStatus({
               </span>
             </div>
             <p className="mt-0.5 text-sm leading-5 text-slate-400">
-              Updated {formatDate(latestPublishedAt)}
+              Updated {formatDate(briefSnapshotDate)}
             </p>
           </div>
         </div>
