@@ -130,10 +130,10 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
   return (
     <section className="glass-panel overflow-hidden rounded-lg" aria-label="Signal constellation map">
       <div className="grid lg:grid-cols-[minmax(0,1.25fr)_24rem]">
-        <div className="relative min-h-[24rem] overflow-hidden p-4 sm:min-h-[29rem] sm:p-6">
+        <div className="relative min-h-[18rem] overflow-hidden p-4 sm:min-h-[22rem] sm:p-5">
           <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(34,211,238,0.08),transparent_40%,rgba(167,139,250,0.1)),radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.08),transparent_1px)] bg-[length:auto,42px_42px]" />
-          <div className="absolute left-1/2 top-1/2 h-[18rem] w-[18rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-200/10 sm:h-[24rem] sm:w-[24rem]" />
-          <div className="absolute left-1/2 top-1/2 h-[11rem] w-[11rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-violet-200/10 sm:h-[16rem] sm:w-[16rem]" />
+          <div className="absolute left-1/2 top-1/2 h-[15rem] w-[15rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-200/10 sm:h-[19rem] sm:w-[19rem]" />
+          <div className="absolute left-1/2 top-1/2 h-[9rem] w-[9rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-violet-200/10 sm:h-[13rem] sm:w-[13rem]" />
 
           <div className="relative z-10 flex items-start justify-between gap-4">
             <div>
@@ -185,10 +185,10 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
             })}
           </svg>
 
-          <div className="absolute inset-x-4 bottom-4 top-24 sm:inset-x-6 sm:bottom-6 sm:top-28">
+          <div className="absolute inset-x-4 bottom-4 top-20 sm:inset-x-5 sm:bottom-5 sm:top-24">
             {signals.map((signal, index) => {
               const active = selectedSignal?.id === signal.id;
-              const size = 4.7 + Math.min(signal.related.length, 5) * 0.34;
+              const size = 3.7 + Math.min(signal.related.length, 5) * 0.26;
 
               return (
                 <button
@@ -213,7 +213,7 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
                     <span className="text-[0.65rem] font-black uppercase tracking-[0.14em] text-current/70">
                       {signal.shortLabel}
                     </span>
-                    <span className="font-display text-xl font-black text-white sm:text-2xl">
+                    <span className="font-display text-lg font-black text-white sm:text-xl">
                       {signal.intensity}
                     </span>
                   </span>

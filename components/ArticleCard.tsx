@@ -110,7 +110,7 @@ export function ArticleCard({ article }: { article: Article }) {
       <div className="relative z-10 grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 bg-black/20 p-3 sm:p-4">
         <Link
           href={`/articles/${article.slug}`}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-cyan-200"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.07] px-4 py-3 text-sm font-black text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12] hover:text-cyan-50"
         >
           Read More
           <ChevronRight className="h-4 w-4 transition group-hover:translate-x-0.5" />

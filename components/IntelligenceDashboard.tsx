@@ -93,8 +93,6 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         ))}
       </section>
 
-      <MarketPulse />
-
       <section className="glass-panel rounded-lg p-3 sm:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
           <div>
@@ -105,14 +103,9 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
             <p className="mt-2 text-sm text-slate-400">
               {filteredArticles.length} brief{filteredArticles.length === 1 ? "" : "s"} matched
             </p>
-            <SourceTypeFilter
-              articles={articles}
-              selectedSourceType={sourceType}
-              onSelectSourceType={setSourceType}
-            />
           </div>
 
-          <div className="grid gap-3 md:grid-cols-[minmax(14rem,1fr)_auto_auto] xl:w-[46rem]">
+          <div className="grid gap-3 md:grid-cols-[minmax(14rem,1fr)_auto_auto_auto] xl:w-[58rem]">
             <label className="relative block">
               <span className="sr-only">Search articles</span>
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
@@ -143,6 +136,24 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
             </label>
 
             <label className="relative block">
+              <span className="sr-only">Filter source type</span>
+              <ShieldCheck className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+              <select
+                value={sourceType}
+                onChange={(event) => setSourceType(event.target.value as SourceCredibility | "All")}
+                className="h-11 w-full min-w-40 appearance-none rounded-lg border border-emerald-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-emerald-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-emerald-300/35 hover:bg-emerald-300/[0.08] focus:border-emerald-300/60 focus:ring-2 focus:ring-emerald-300/20 [&>option]:bg-slate-950 [&>option]:text-emerald-50"
+              >
+                <option value="All">All Sources</option>
+                {sourceCredibilityTypes.map((item) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-emerald-200/70" />
+            </label>
+
+            <label className="relative block">
               <span className="sr-only">Sort articles</span>
               <ArrowDownUp className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <select
@@ -170,6 +181,8 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
           onClearAll={resetFilters}
         />
       </section>
+
+      <MarketPulse />
 
       <section className="grid gap-3 sm:gap-4 lg:grid-cols-2 xl:grid-cols-3">
         {filteredArticles.map((article) => (
@@ -281,62 +294,6 @@ function BriefPill({
       </div>
     </div>
   );
-}
-
-function SourceTypeFilter({
-  articles,
-  selectedSourceType,
-  onSelectSourceType
-}: {
-  articles: Article[];
-  selectedSourceType: SourceCredibility | "All";
-  onSelectSourceType: (sourceType: SourceCredibility | "All") => void;
-}) {
-  const sourceCounts = sourceCredibilityTypes.reduce<Record<SourceCredibility, number>>(
-    (counts, sourceType) => {
-      counts[sourceType] = articles.filter((article) => article.sourceCredibility === sourceType).length;
-      return counts;
-    },
-    {
-      "Official source": 0,
-      "Trade press": 0,
-      "Market analysis": 0,
-      "Vendor report": 0
-    }
-  );
-
-  return (
-    <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-500" aria-label="Filter by source type">
-      <span className="font-semibold uppercase tracking-[0.16em] text-slate-500">Source type</span>
-      <button
-        type="button"
-        onClick={() => onSelectSourceType("All")}
-        className={sourceTypeButtonClass(selectedSourceType === "All")}
-      >
-        All
-        <span className="text-slate-500">{articles.length}</span>
-      </button>
-      {sourceCredibilityTypes.map((sourceType) => (
-        <button
-          key={sourceType}
-          type="button"
-          onClick={() => onSelectSourceType(sourceType)}
-          className={sourceTypeButtonClass(selectedSourceType === sourceType)}
-        >
-          {sourceType}
-          <span className={selectedSourceType === sourceType ? "text-cyan-100/80" : "text-slate-500"}>
-            {sourceCounts[sourceType]}
-          </span>
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function sourceTypeButtonClass(active: boolean) {
-  return active
-    ? "inline-flex items-center gap-1.5 rounded-full border border-cyan-300/35 bg-cyan-300/12 px-2.5 py-1 font-semibold text-cyan-50 shadow-[0_0_22px_rgba(50,217,255,0.14)] transition hover:border-cyan-300/60"
-    : "inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-medium text-slate-300 transition hover:border-cyan-300/30 hover:text-white";
 }
 
 function ActiveFilterChips({

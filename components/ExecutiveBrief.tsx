@@ -1,54 +1,15 @@
 import Link from "next/link";
 import {
-  AlertTriangle,
   ArrowRight,
-  BadgeDollarSign,
-  Lightbulb,
   ListChecks,
   Sparkles
 } from "lucide-react";
 import type { Article } from "@/data/articles";
 
-type BriefItem = {
-  label: string;
-  article: Article;
-  note: string;
-};
-
 export function ExecutiveBrief({ articles }: { articles: Article[] }) {
   const topStories = [...articles]
     .sort((a, b) => b.impactScore + b.trendScore * 0.6 - (a.impactScore + a.trendScore * 0.6))
     .slice(0, 3);
-  const riskArticle =
-    articles.find((article) => article.slug.includes("voice-generation")) ??
-    articles.find((article) => article.slug.includes("layoffs")) ??
-    topStories[0];
-  const opportunityArticle =
-    articles.find((article) => article.slug.includes("adaptive-ai-npcs")) ??
-    articles.find((article) => article.slug.includes("generative-asset")) ??
-    topStories[1];
-  const marketArticle =
-    articles.find((article) => article.slug.includes("nvidia-gaming-ai-stack")) ??
-    articles.find((article) => article.category === "Hardware") ??
-    topStories[2];
-
-  const briefItems: BriefItem[] = [
-    {
-      label: "Risk to monitor",
-      article: riskArticle,
-      note: "Rights, labor, regulation, or execution risk that could slow adoption."
-    },
-    {
-      label: "Opportunity",
-      article: opportunityArticle,
-      note: "A signal with practical upside for studios, tools, creators, or platforms."
-    },
-    {
-      label: "Market signal",
-      article: marketArticle,
-      note: "A hardware, platform, or capital-market read worth tracking alongside the news."
-    }
-  ];
 
   return (
     <section className="glass-panel premium-hover relative overflow-hidden rounded-lg" aria-label="Executive brief">
@@ -75,7 +36,7 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
         </div>
       </div>
 
-      <div className="grid gap-0 lg:grid-cols-[4rem_1fr_23rem]">
+      <div className="grid gap-0 lg:grid-cols-[4rem_1fr]">
         <div className="hidden border-r border-white/10 bg-black/20 p-4 lg:block">
           <div className="[writing-mode:vertical-rl] rotate-180 text-xs font-black uppercase tracking-[0.28em] text-cyan-200/70">
             Priority Lane
@@ -110,45 +71,7 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
             </Link>
           ))}
         </div>
-
-        <aside className="border-t border-white/10 bg-black/20 p-4 lg:border-l lg:border-t-0">
-          <div className="mb-3 flex items-center justify-between gap-3">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-slate-500">
-              Decision Signals
-            </p>
-            <span className="h-1.5 w-10 rounded-full bg-gradient-to-r from-cyan-300/60 to-emerald-300/60" />
-          </div>
-          <div className="space-y-2">
-            {briefItems.map((item) => (
-              <BriefSignal key={item.label} item={item} />
-            ))}
-          </div>
-        </aside>
       </div>
     </section>
-  );
-}
-
-function BriefSignal({ item }: { item: BriefItem }) {
-  const icon = {
-    "Risk to monitor": <AlertTriangle className="h-4 w-4" />,
-    Opportunity: <Lightbulb className="h-4 w-4" />,
-    "Market signal": <BadgeDollarSign className="h-4 w-4" />
-  }[item.label];
-
-  return (
-    <Link
-      href={`/articles/${item.article.slug}`}
-      className="group block rounded-lg border border-white/10 bg-white/[0.035] p-3 transition hover:border-cyan-300/30 hover:bg-white/[0.055]"
-    >
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-        <span className="text-cyan-100">{icon}</span>
-        {item.label}
-      </div>
-      <p className="mt-2 line-clamp-2 font-display text-sm font-black leading-5 text-white">
-        {item.article.title}
-      </p>
-      <p className="mt-2 text-xs leading-5 text-slate-400">{item.note}</p>
-    </Link>
   );
 }
