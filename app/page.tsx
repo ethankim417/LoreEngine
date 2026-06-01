@@ -30,8 +30,10 @@ function AmbientBackground() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-5 shadow-glow backdrop-blur-2xl sm:px-6 sm:py-7">
-      <div className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_70%_35%,rgba(50,217,255,0.2),transparent_32rem)]" />
+    <section className="relative overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(135deg,rgba(9,13,26,0.82),rgba(8,10,20,0.62))] px-4 py-5 shadow-glow backdrop-blur-2xl sm:px-6 sm:py-7">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_82%_18%,rgba(50,217,255,0.18),transparent_42%),radial-gradient(ellipse_at_18%_92%,rgba(138,92,255,0.14),transparent_38%),linear-gradient(90deg,rgba(255,255,255,0.045),transparent_34%,rgba(84,240,169,0.045))]" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/40 to-transparent" />
+      <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-cyan-300/[0.06] blur-3xl" />
       <div className="relative flex flex-col gap-4">
         <div className="flex items-center gap-4">
           <div className="soft-float relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-200/35 bg-slate-950/60 shadow-glow sm:h-16 sm:w-16">
