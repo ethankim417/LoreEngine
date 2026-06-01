@@ -1,6 +1,7 @@
 import { IntelligenceDashboard } from "@/components/IntelligenceDashboard";
 import { articles } from "@/data/articles";
 import { getDashboardMetrics } from "@/lib/metrics";
+import { Radar, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
@@ -27,14 +28,15 @@ function AmbientBackground() {
 
 function Hero() {
   return (
-    <section className="flex flex-col gap-4">
-      <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-3">
-          <div className="relative flex h-11 w-11 items-center justify-center rounded-lg border border-cyan-300/30 bg-cyan-300/10 shadow-glow sm:h-12 sm:w-12">
-            <div className="absolute inset-1 rounded-md border border-violet-300/20" />
-            <span className="font-display text-lg font-black tracking-[0.18em] text-cyan-100">
-              LE
-            </span>
+    <section className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-5 shadow-glow backdrop-blur-2xl sm:px-6 sm:py-7">
+      <div className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_70%_35%,rgba(50,217,255,0.2),transparent_32rem)]" />
+      <div className="relative flex flex-col gap-4">
+        <div className="flex items-center gap-4">
+          <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-200/35 bg-slate-950/60 shadow-glow sm:h-16 sm:w-16">
+            <div className="absolute inset-1 rounded-xl border border-violet-300/25" />
+            <div className="absolute h-8 w-8 rounded-full border border-cyan-300/25" />
+            <Radar className="relative h-7 w-7 text-cyan-100 sm:h-8 sm:w-8" />
+            <Sparkles className="absolute -right-1 -top-1 h-4 w-4 rounded-full bg-cyan-300/20 p-0.5 text-cyan-100" />
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.34em] text-cyan-200/75">
@@ -46,13 +48,14 @@ function Hero() {
           </div>
         </div>
 
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <p className="text-balance text-xl font-medium text-cyan-50 sm:text-2xl">
-            AI-powered gaming industry intelligence
+            Weekly intelligence for the business of games.
           </p>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300 sm:mt-3 sm:text-base">
-            A command-center dashboard for tracking the signals shaping studios,
-            platforms, game AI, hardware, esports, and creator-led markets.
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300 sm:mt-3 sm:text-base">
+            LoreEngine turns gaming, AI, platform, hardware, esports, and market
+            stories into a ranked executive brief: what changed, why it matters,
+            and which studios, tools, and sectors are likely to feel it next.
           </p>
         </div>
       </div>
