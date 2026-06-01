@@ -103,7 +103,7 @@ export default function MarketPage() {
                 <Insight label="Snapshot date" value={formatDate(marketSnapshotDate)} />
               </div>
               <p className="mt-5 rounded-lg border border-amber-300/15 bg-amber-300/[0.06] p-3 text-xs leading-5 text-amber-100/90">
-                This is a cached weekly market snapshot for the portfolio build. A production version should fetch quotes server-side on a schedule and cache the results.
+                Prices are refreshed from a public close-data feed for this snapshot. A production version should fetch quotes server-side on a schedule and cache the results.
               </p>
             </aside>
           </div>
