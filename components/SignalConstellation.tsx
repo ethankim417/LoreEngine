@@ -152,12 +152,6 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
             </div>
           </div>
 
-          <div className="relative z-10 mt-4 flex flex-wrap gap-2">
-            <MapLegendItem label="Node glow = intensity" tone="bg-cyan-300/60" />
-            <MapLegendItem label="Line glow = relationship" tone="bg-violet-300/60" />
-            <MapLegendItem label="Click node for briefs" tone="bg-emerald-300/60" />
-          </div>
-
           <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
               <linearGradient id="signal-line" x1="0" x2="1" y1="0" y2="1">
@@ -275,14 +269,5 @@ function ConstellationStat({ label, value }: { label: string; value: string }) {
       <p className="text-[0.65rem] font-black uppercase tracking-[0.16em] text-slate-500">{label}</p>
       <p className="mt-1 font-display text-xl font-black text-white">{value}</p>
     </div>
-  );
-}
-
-function MapLegendItem({ label, tone }: { label: string; tone: string }) {
-  return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/25 px-2.5 py-1 text-[0.68rem] font-bold text-slate-300">
-      <span className={`h-2 w-2 rounded-full ${tone} shadow-[0_0_14px_currentColor]`} />
-      {label}
-    </span>
   );
 }

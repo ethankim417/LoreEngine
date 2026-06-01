@@ -444,7 +444,6 @@ function MetricCard({
         <p className="font-display text-2xl font-black text-white sm:text-3xl">{metric.value}</p>
         <p className="pb-1 text-sm font-semibold text-slate-300">{metric.delta}</p>
       </div>
-      <p className="mt-3 line-clamp-2 text-xs leading-5 text-slate-400">{metric.shortDescription}</p>
     </button>
   );
 }
