@@ -56,11 +56,11 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center opacity-[0.42]"
+              className="object-cover object-center opacity-[0.26]"
             />
-            <SectorSignalArt article={article} />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,7,13,0.97),rgba(6,7,13,0.82)_44%,rgba(6,7,13,0.22)_78%),linear-gradient(to_bottom,rgba(6,7,13,0.18),rgba(6,7,13,0.82))]" />
-            <div className="absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_50%_35%,rgba(50,217,255,0.16),transparent_48%)]" />
+            <SectorSignalArt article={article} opacity="subtle" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,7,13,0.98),rgba(6,7,13,0.9)_46%,rgba(6,7,13,0.46)_78%),linear-gradient(to_bottom,rgba(6,7,13,0.34),rgba(6,7,13,0.9))]" />
+            <div className="absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_50%_35%,rgba(50,217,255,0.1),transparent_48%)]" />
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#06070d] to-transparent" />
 
             <div className="relative z-10 grid min-h-[26rem] gap-5 lg:grid-cols-[1fr_18rem] lg:items-end">

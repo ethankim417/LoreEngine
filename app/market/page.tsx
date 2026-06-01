@@ -7,7 +7,6 @@ import {
   TrendingDown,
   TrendingUp
 } from "lucide-react";
-import { MarketHeatStrip } from "@/components/MarketHeatStrip";
 import { StockLineChart } from "@/components/StockLineChart";
 import {
   getMarketFocusPlayers,
@@ -76,9 +75,6 @@ export default function MarketPage() {
                 <SummaryStat label="Bullish" value={`${bullishCount}/${focusPlayers.length}`} positive />
                 <SummaryStat label="Pressure" value={`${pressureCount}`} positive={pressureCount === 0} />
               </div>
-            </div>
-            <div className="relative z-10 mt-5">
-              <MarketHeatStrip players={focusPlayers} />
             </div>
           </div>
 
