@@ -11,11 +11,13 @@ import { StockLineChart } from "@/components/StockLineChart";
 import {
   getMarketFocusPlayers,
   getMarketGroupPlayers,
+  marketSnapshotDate,
   marketGroups,
   type MarketGroup,
   type MarketPlayer,
   type MarketSentiment
 } from "@/data/market";
+import { formatDate } from "@/lib/format";
 
 const sentimentTone: Record<MarketSentiment, string> = {
   Bullish: "border-emerald-300/25 bg-emerald-300/10 text-emerald-100",
@@ -60,11 +62,11 @@ export default function MarketPage() {
                   Gaming Market Watchlists
                 </h1>
                 <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300 sm:text-base">
-                  Sample market board organized around hardware, game engines, and the largest
+                  Weekly market board organized around hardware, game engines, and the largest
                   game-revenue leaders. Private companies are labeled clearly when no public ticker exists.
                 </p>
-                <p className="mt-4 inline-flex rounded-full border border-amber-300/20 bg-amber-300/[0.08] px-3 py-1 text-xs font-semibold text-amber-100">
-                  Sample market data, not live prices
+                <p className="mt-4 inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-1 text-xs font-semibold text-cyan-100">
+                  Updated {formatDate(marketSnapshotDate)}
                 </p>
               </div>
 
@@ -98,10 +100,10 @@ export default function MarketPage() {
                 <Insight label="Hardware list" value="5 public market signals" />
                 <Insight label="Engine list" value="Unity plus Epic private proxy" />
                 <Insight label="Revenue list" value="10 leaders, excluding Sony and Nintendo" />
-                <Insight label="Portfolio mode" value="Sample market data" />
+                <Insight label="Snapshot date" value={formatDate(marketSnapshotDate)} />
               </div>
               <p className="mt-5 rounded-lg border border-amber-300/15 bg-amber-300/[0.06] p-3 text-xs leading-5 text-amber-100/90">
-                These numbers are sample values for dashboard design only. A production version should fetch quotes server-side on a schedule and cache the results.
+                This is a cached weekly market snapshot for the portfolio build. A production version should fetch quotes server-side on a schedule and cache the results.
               </p>
             </aside>
           </div>
@@ -119,7 +121,7 @@ function MarketGroupSection({
   players: MarketPlayer[];
 }) {
   return (
-    <section className="overflow-hidden rounded-lg border border-white/10 bg-white/[0.02]">
+    <section className="rounded-lg border border-white/10 bg-white/[0.02]">
       <div className="flex flex-col gap-2 border-b border-white/10 bg-white/[0.035] px-4 py-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">{group.eyebrow}</p>
@@ -165,7 +167,23 @@ function MarketRow({ player }: { player: MarketPlayer }) {
           <Building2 className="h-3.5 w-3.5 text-slate-500" />
           {player.segment}
         </p>
-        <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-500">{player.watchSignal}</p>
+        <div className="group/readout relative mt-2 max-w-2xl">
+          <p className="line-clamp-2 text-xs leading-5 text-slate-500">{player.summary}</p>
+          <div className="pointer-events-none absolute left-0 top-[calc(100%+0.5rem)] z-30 hidden w-full max-w-xl rounded-lg border border-cyan-300/20 bg-slate-950/95 p-3 text-xs leading-5 text-slate-200 shadow-[0_18px_60px_rgba(0,0,0,0.42)] backdrop-blur-xl group-hover/readout:block group-focus-within/readout:block lg:w-[32rem]">
+            <p className="font-black uppercase tracking-[0.16em] text-cyan-200">
+              {player.sentiment} read
+            </p>
+            <p className="mt-2">{player.summary}</p>
+            <p className="mt-2 text-slate-500">Watch: {player.watchSignal}</p>
+          </div>
+          <button
+            type="button"
+            className="mt-1 text-[0.68rem] font-bold text-cyan-200/75 underline decoration-cyan-300/20 underline-offset-4 transition hover:text-cyan-100"
+            aria-label={`Show full market read for ${player.company}`}
+          >
+            Full read
+          </button>
+        </div>
       </div>
 
       <MetricCell label="Price" value={formatPrice(player)} />

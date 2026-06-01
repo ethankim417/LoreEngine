@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, BadgeDollarSign } from "lucide-react";
 import { StockLineChart } from "@/components/StockLineChart";
-import { getMarketFocusPlayers, type MarketPlayer } from "@/data/market";
+import { getMarketFocusPlayers, marketSnapshotDate, type MarketPlayer } from "@/data/market";
+import { formatDate } from "@/lib/format";
 
 export function MarketPulse() {
   const focusPlayers = getMarketFocusPlayers();
@@ -28,7 +29,7 @@ export function MarketPulse() {
               Market Pulse
             </div>
             <p className="mt-1 text-xs leading-5 text-slate-500">
-              Sample market data, not live prices
+              Updated {formatDate(marketSnapshotDate)}
             </p>
           </div>
 

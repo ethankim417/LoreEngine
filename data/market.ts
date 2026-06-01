@@ -27,6 +27,8 @@ export type MarketGroup = {
 // Mock cached market data for the portfolio version.
 // Future production path: fetch quotes in a scheduled backend job, save the weekly
 // snapshot to a database/cache, and let the frontend read that cached result only.
+export const marketSnapshotDate = "2026-05-26";
+
 export const marketPlayers: MarketPlayer[] = [
   {
     ticker: "NVDA",
