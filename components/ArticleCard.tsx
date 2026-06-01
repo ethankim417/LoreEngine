@@ -10,7 +10,6 @@ import {
   ChevronRight,
   ExternalLink,
   Gauge,
-  RadioTower,
   TrendingUp
 } from "lucide-react";
 import { SourceBadge } from "@/components/SourceBadge";
@@ -78,12 +77,7 @@ export function ArticleCard({ article }: { article: Article }) {
           <SourceBadge source={article.source} credibility={article.sourceCredibility} compact />
         </div>
 
-        <div className="mt-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 sm:mt-4">
-          <RadioTower className="h-3.5 w-3.5" />
-          Signal Brief
-        </div>
-
-        <h2 className="mt-2 font-display text-lg font-black leading-snug tracking-normal text-white sm:mt-3 sm:text-xl">
+        <h2 className="mt-4 font-display text-lg font-black leading-snug tracking-normal text-white sm:text-xl">
           {article.title}
         </h2>
         <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-300">{article.tldr}</p>
@@ -97,7 +91,7 @@ export function ArticleCard({ article }: { article: Article }) {
           </div>
         ) : null}
 
-        <div className="mt-4 grid grid-cols-3 gap-2">
+        <div className="mt-4 grid grid-cols-2 gap-2">
           <MiniMetric
             icon={<Gauge className="h-4 w-4" />}
             label="Industry Impact"
@@ -110,22 +104,6 @@ export function ArticleCard({ article }: { article: Article }) {
             value={`+${article.trendScore}%`}
             description="Estimated growth in attention around this topic."
           />
-          <MiniMetric
-            label="Confidence"
-            value={`${article.confidence}%`}
-            description="How confident the sample brief is in the relevance of this signal."
-          />
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          {article.sectors.slice(0, 4).map((sector) => (
-            <span
-              key={sector}
-              className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-medium text-slate-300"
-            >
-              {sector}
-            </span>
-          ))}
         </div>
       </div>
 
