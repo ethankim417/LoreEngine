@@ -141,10 +141,6 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
                 <Network className="h-4 w-4" />
                 Signal Map
               </div>
-              <p className="mt-2 max-w-xl text-sm leading-6 text-slate-300">
-                A relationship view of this week&apos;s gaming intelligence. Brighter nodes carry more article
-                volume, impact, and trend pressure.
-              </p>
             </div>
             <div className="hidden rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-right sm:block">
               <p className="text-[0.65rem] font-black uppercase tracking-[0.1em] text-slate-500">Signals</p>

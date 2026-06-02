@@ -19,10 +19,10 @@ function AmbientBackground() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="mesh-grid absolute inset-0 opacity-80" />
-      <div className="ambient-particles absolute inset-0 opacity-35" />
-      <div className="page-scanline absolute left-0 top-0 h-40 w-full opacity-70" />
-      <div className="absolute left-[-14rem] top-[-12rem] h-[34rem] w-[34rem] animate-slow-pan rounded-full bg-cyan-400/[0.12] blur-3xl" />
-      <div className="absolute right-[-10rem] top-10 h-[30rem] w-[30rem] animate-slow-pan rounded-full bg-violet-500/[0.14] blur-3xl [animation-delay:2s]" />
+      <div className="ambient-particles absolute inset-0 opacity-20" />
+      <div className="page-scanline absolute left-0 top-0 h-40 w-full opacity-35" />
+      <div className="absolute left-[-14rem] top-[-12rem] h-[34rem] w-[34rem] animate-slow-pan rounded-full bg-cyan-400/[0.09] blur-3xl" />
+      <div className="absolute right-[-10rem] top-10 h-[30rem] w-[30rem] animate-slow-pan rounded-full bg-violet-500/[0.1] blur-3xl [animation-delay:2s]" />
       <div className="absolute bottom-[-14rem] left-1/3 h-[28rem] w-[28rem] animate-slow-pan rounded-full bg-emerald-400/[0.08] blur-3xl [animation-delay:4s]" />
     </div>
   );

@@ -36,7 +36,7 @@ export function ArticleCard({ article }: { article: Article }) {
   }
 
   return (
-    <article className="glass-panel premium-hover group relative flex min-h-[24rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[25rem]">
+    <article className="glass-panel premium-hover group relative flex min-h-[21.5rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[22.5rem]">
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <Image
           src={article.visual.image}
@@ -51,7 +51,7 @@ export function ArticleCard({ article }: { article: Article }) {
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/40 to-transparent opacity-0 transition group-hover:opacity-100" />
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col p-4 sm:p-5">
+      <div className="relative z-10 flex flex-1 flex-col p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <span className={`rounded-full border px-2.5 py-1 text-xs font-black uppercase tracking-[0.08em] ${priority.className}`}>
@@ -77,13 +77,13 @@ export function ArticleCard({ article }: { article: Article }) {
           <SourceBadge source={article.source} credibility={article.sourceCredibility} compact />
         </div>
 
-        <h2 className="mt-4 font-display text-lg font-black leading-snug tracking-normal text-white sm:text-xl">
+        <h2 className="mt-3 font-display text-lg font-black leading-snug tracking-normal text-white sm:text-xl">
           {article.title}
         </h2>
-        <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-300">{article.tldr}</p>
+        <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-300">{article.tldr}</p>
 
         {article.impactScore >= 85 ? (
-          <div className="mt-4 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-3">
+          <div className="mt-3 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-3">
             <p className="text-[0.66rem] font-black uppercase tracking-[0.1em] text-cyan-200">
               Why it matters
             </p>
@@ -91,7 +91,7 @@ export function ArticleCard({ article }: { article: Article }) {
           </div>
         ) : null}
 
-        <div className="mt-4 grid grid-cols-2 gap-2">
+        <div className="mt-3 grid grid-cols-2 gap-2">
           <MiniMetric
             icon={<Gauge className="h-4 w-4" />}
             label="Industry Impact"
@@ -107,7 +107,7 @@ export function ArticleCard({ article }: { article: Article }) {
         </div>
       </div>
 
-      <div className="relative z-10 grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 bg-black/20 p-3 sm:p-4">
+      <div className="relative z-10 grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 bg-black/20 p-3">
         <Link
           href={`/articles/${article.slug}`}
           className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.07] px-4 py-3 text-sm font-black text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12] hover:text-cyan-50"

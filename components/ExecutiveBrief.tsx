@@ -24,10 +24,6 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
             <h2 className="mt-2 font-display text-2xl font-black text-white">
               Read This First
             </h2>
-            <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-400">
-              A short decision layer for the weekly brief: the top stories, the main risk,
-              the clearest opportunity, and the market signal to keep in view.
-            </p>
           </div>
           <div className="inline-flex w-fit items-center gap-2 rounded-lg border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-2 text-xs font-black uppercase tracking-[0.1em] text-emerald-100">
             <ListChecks className="h-4 w-4" />
