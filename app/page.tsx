@@ -1,7 +1,7 @@
 import { IntelligenceDashboard } from "@/components/IntelligenceDashboard";
 import { articles } from "@/data/articles";
 import { getDashboardMetrics } from "@/lib/metrics";
-import { Radar, Sparkles } from "lucide-react";
+import { Mail, Radar, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
@@ -35,6 +35,15 @@ function Hero() {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/40 to-transparent" />
       <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-cyan-300/[0.06] blur-3xl" />
       <div className="relative flex flex-col gap-4">
+        <a
+          href="mailto:lore-engine@ethankim.cc"
+          className="absolute right-0 top-0 hidden items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/[0.07] px-3 py-1.5 text-xs font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] backdrop-blur-xl transition hover:border-cyan-300/45 hover:bg-cyan-300/[0.12] sm:inline-flex"
+          aria-label="Email LoreEngine"
+        >
+          <Mail className="h-3.5 w-3.5" />
+          lore-engine@ethankim.cc
+        </a>
+
         <div className="flex items-center gap-4">
           <div className="soft-float relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-200/35 bg-slate-950/60 shadow-glow sm:h-16 sm:w-16">
             <div className="absolute inset-1 rounded-xl border border-violet-300/25" />
@@ -62,6 +71,15 @@ function Hero() {
             and which studios, tools, and sectors are likely to feel it next.
           </p>
         </div>
+
+        <a
+          href="mailto:lore-engine@ethankim.cc"
+          className="inline-flex w-fit items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/[0.07] px-3 py-1.5 text-xs font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl transition hover:border-cyan-300/45 hover:bg-cyan-300/[0.12] sm:hidden"
+          aria-label="Email LoreEngine"
+        >
+          <Mail className="h-3.5 w-3.5" />
+          lore-engine@ethankim.cc
+        </a>
       </div>
     </section>
   );
