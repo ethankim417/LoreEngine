@@ -20,15 +20,15 @@ const signalNodes: SignalNode[] = [
     label: "Game AI",
     shortLabel: "AI",
     x: 50,
-    y: 22,
+    y: 18,
     match: (article) => article.category === "AI" || article.sectors.includes("Game AI")
   },
   {
     id: "platforms",
     label: "Platforms",
     shortLabel: "Platform",
-    x: 78,
-    y: 35,
+    x: 76,
+    y: 42,
     match: (article) =>
       article.category === "Platform" ||
       article.sectors.some((sector) => ["Console", "Cloud Gaming", "Storefronts", "Subscriptions"].includes(sector))
@@ -38,14 +38,14 @@ const signalNodes: SignalNode[] = [
     label: "Hardware",
     shortLabel: "HW",
     x: 70,
-    y: 68,
+    y: 76,
     match: (article) => article.category === "Hardware" || article.sectors.includes("Hardware")
   },
   {
     id: "engines",
     label: "Engines",
     shortLabel: "Engines",
-    x: 43,
+    x: 30,
     y: 76,
     match: (article) => article.sectors.includes("Game Engines") || article.category === "Studio"
   },
@@ -53,8 +53,8 @@ const signalNodes: SignalNode[] = [
     id: "studios",
     label: "Studios",
     shortLabel: "Studios",
-    x: 22,
-    y: 58,
+    x: 24,
+    y: 42,
     match: (article) =>
       article.category === "Studio" ||
       article.sectors.some((sector) => ["AAA Studios", "Indie Devs", "Studios"].includes(sector))
@@ -63,8 +63,8 @@ const signalNodes: SignalNode[] = [
     id: "market",
     label: "Market",
     shortLabel: "Market",
-    x: 28,
-    y: 30,
+    x: 50,
+    y: 88,
     match: (article) =>
       article.category === "Business" ||
       article.sectors.some((sector) => ["Publishing", "Marketing", "Steam", "Mobile Gaming"].includes(sector))
@@ -73,8 +73,8 @@ const signalNodes: SignalNode[] = [
     id: "creators",
     label: "Creators",
     shortLabel: "Creators",
-    x: 54,
-    y: 52,
+    x: 50,
+    y: 54,
     match: (article) =>
       article.sectors.some((sector) => ["Creator Economy", "YouTube", "UGC", "Streaming", "Esports"].includes(sector))
   }
@@ -148,43 +148,42 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
             </div>
           </div>
 
-          <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="signal-line" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0%" stopColor="rgba(34,211,238,0.1)" />
-                <stop offset="50%" stopColor="rgba(167,139,250,0.38)" />
-                <stop offset="100%" stopColor="rgba(52,211,153,0.12)" />
-              </linearGradient>
-            </defs>
-            {signalLinks.map(([fromId, toId]) => {
-              const from = signals.find((signal) => signal.id === fromId);
-              const to = signals.find((signal) => signal.id === toId);
-
-              if (!from || !to) return null;
-
-              const active = selectedSignal && (selectedSignal.id === from.id || selectedSignal.id === to.id);
-
-              return (
-                <line
-                  key={`${fromId}-${toId}`}
-                  className="signal-line-flow"
-                  x1={from.x}
-                  y1={from.y}
-                  x2={to.x}
-                  y2={to.y}
-                  stroke="url(#signal-line)"
-                  strokeWidth={active ? 0.42 : 0.22}
-                  opacity={active ? 0.95 : 0.42}
-                  vectorEffect="non-scaling-stroke"
-                />
-              );
-            })}
-          </svg>
-
           <div className="absolute inset-x-4 bottom-4 top-20 sm:inset-x-5 sm:bottom-5 sm:top-24">
+            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="signal-line" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stopColor="rgba(34,211,238,0.08)" />
+                  <stop offset="50%" stopColor="rgba(167,139,250,0.34)" />
+                  <stop offset="100%" stopColor="rgba(52,211,153,0.1)" />
+                </linearGradient>
+              </defs>
+              {signalLinks.map(([fromId, toId]) => {
+                const from = signals.find((signal) => signal.id === fromId);
+                const to = signals.find((signal) => signal.id === toId);
+
+                if (!from || !to) return null;
+
+                const active = selectedSignal && (selectedSignal.id === from.id || selectedSignal.id === to.id);
+
+                return (
+                  <path
+                    key={`${fromId}-${toId}`}
+                    className="signal-line-flow"
+                    d={getLinkPath(from, to)}
+                    fill="none"
+                    stroke="url(#signal-line)"
+                    strokeLinecap="round"
+                    strokeWidth={active ? 0.48 : 0.24}
+                    opacity={active ? 0.9 : 0.36}
+                    vectorEffect="non-scaling-stroke"
+                  />
+                );
+              })}
+            </svg>
+
             {signals.map((signal, index) => {
               const active = selectedSignal?.id === signal.id;
-              const size = 3.7 + Math.min(signal.related.length, 5) * 0.26;
+              const size = 3.25 + Math.min(signal.related.length, 5) * 0.2;
 
               return (
                 <button
@@ -256,6 +255,17 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
       </div>
     </section>
   );
+}
+
+function getLinkPath(from: SignalNode, to: SignalNode) {
+  const centerX = 50;
+  const centerY = 54;
+  const controlOneX = from.x + (centerX - from.x) * 0.38;
+  const controlOneY = from.y + (centerY - from.y) * 0.38;
+  const controlTwoX = to.x + (centerX - to.x) * 0.38;
+  const controlTwoY = to.y + (centerY - to.y) * 0.38;
+
+  return `M ${from.x} ${from.y} C ${controlOneX} ${controlOneY}, ${controlTwoX} ${controlTwoY}, ${to.x} ${to.y}`;
 }
 
 function ConstellationStat({ label, value }: { label: string; value: string }) {
