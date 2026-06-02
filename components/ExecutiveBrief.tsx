@@ -17,7 +17,7 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
         <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_88%_12%,rgba(84,240,169,0.14),transparent_26%),radial-gradient(circle_at_18%_0%,rgba(50,217,255,0.14),transparent_28%)]" />
         <div className="relative z-10 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200">
+            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-emerald-200">
               <Sparkles className="h-4 w-4" />
               Executive Brief
             </div>
@@ -29,7 +29,7 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
               the clearest opportunity, and the market signal to keep in view.
             </p>
           </div>
-          <div className="inline-flex w-fit items-center gap-2 rounded-lg border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-2 text-xs font-black uppercase tracking-[0.16em] text-emerald-100">
+          <div className="inline-flex w-fit items-center gap-2 rounded-lg border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-2 text-xs font-black uppercase tracking-[0.1em] text-emerald-100">
             <ListChecks className="h-4 w-4" />
             3 things to know
           </div>
@@ -38,7 +38,7 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
 
       <div className="grid gap-0 lg:grid-cols-[4rem_1fr]">
         <div className="hidden border-r border-white/10 bg-black/20 p-4 lg:block">
-          <div className="[writing-mode:vertical-rl] rotate-180 text-xs font-black uppercase tracking-[0.28em] text-cyan-200/70">
+          <div className="[writing-mode:vertical-rl] rotate-180 text-xs font-black uppercase tracking-[0.16em] text-cyan-200/70">
             Priority Lane
           </div>
         </div>
@@ -54,7 +54,7 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
                 {index + 1}
               </span>
               <span className="min-w-0">
-                <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                <span className="block text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
                   {article.category} | Impact {article.impactScore}
                 </span>
                 <span className="mt-1 block font-display text-lg font-black text-white">

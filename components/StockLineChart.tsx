@@ -31,7 +31,7 @@ export function StockLineChart({
     `${points[points.length - 1]?.x ?? width - padding},${height - padding}`
   ].join(" ");
   const gradientId = `chart-${positive ? "up" : "down"}-${values.join("-")}`;
-  const stroke = positive ? "#54f0a9" : "#fb7185";
+  const stroke = positive ? "#9ff5c8" : "#fda4af";
 
   return (
     <svg
@@ -43,7 +43,7 @@ export function StockLineChart({
     >
       <defs>
         <linearGradient id={gradientId} x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor={stroke} stopOpacity="0.28" />
+          <stop offset="0%" stopColor={stroke} stopOpacity="0.14" />
           <stop offset="100%" stopColor={stroke} stopOpacity="0" />
         </linearGradient>
       </defs>
@@ -55,13 +55,15 @@ export function StockLineChart({
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={strokeWidth}
+        opacity="0.86"
         vectorEffect="non-scaling-stroke"
       />
       <circle
         cx={points[points.length - 1]?.x ?? width - padding}
         cy={points[points.length - 1]?.y ?? padding}
-        r="3"
+        r="2.25"
         fill={stroke}
+        opacity="0.9"
       />
     </svg>
   );

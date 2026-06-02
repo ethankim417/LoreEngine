@@ -96,7 +96,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
       <section className="glass-panel rounded-lg p-3 sm:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
           <div>
-            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-cyan-200">
+            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-cyan-200">
               <Sparkles className="h-4 w-4" />
               Intelligence Feed
             </div>
@@ -240,7 +240,7 @@ function WeeklyBriefStatus({
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <p className="font-display text-lg font-black text-white">Weekly Brief</p>
-              <span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-emerald-100">
+              <span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-emerald-100">
                 Cached
               </span>
             </div>
@@ -287,7 +287,7 @@ function BriefPill({
         {icon}
       </span>
       <div className="min-w-0">
-        <p className="truncate text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-slate-500">
+        <p className="truncate text-[0.62rem] font-semibold uppercase tracking-[0.1em] text-slate-500">
           {label}
         </p>
         <p className="truncate font-display text-sm font-black text-white sm:text-base">{value}</p>
@@ -327,7 +327,7 @@ function ActiveFilterChips({
 
   return (
     <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-white/10 pt-4">
-      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+      <span className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
         Active filters
       </span>
       {normalizedQuery.length > 0 ? (
@@ -394,7 +394,7 @@ function MetricCard({
           <Info className="h-4 w-4" />
         </span>
       </div>
-      <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+      <p className="mt-3 text-xs font-semibold uppercase tracking-[0.11em] text-slate-500">
         {metric.label}
       </p>
       <div className="mt-2 flex items-end justify-between gap-4">

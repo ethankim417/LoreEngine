@@ -24,7 +24,7 @@ export function MarketPulse() {
 
         <div className="relative z-10 flex flex-col gap-3">
           <div>
-            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200">
+            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-cyan-200">
               <BadgeDollarSign className="h-4 w-4" />
               Market Pulse
             </div>
@@ -38,7 +38,7 @@ export function MarketPulse() {
               <div className="rounded-lg border border-white/10 bg-black/20 p-3">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                    <p className="text-[0.64rem] font-semibold uppercase tracking-[0.1em] text-slate-500">
                       Lead mover
                     </p>
                     <p className="mt-1 font-display text-2xl font-black text-white">{lead.ticker}</p>
@@ -47,7 +47,7 @@ export function MarketPulse() {
                     <p className={lead.thirtyDayChange >= 0 ? "font-display text-2xl font-black text-emerald-100" : "font-display text-2xl font-black text-rose-100"}>
                       {formatPercent(lead.thirtyDayChange)}
                     </p>
-                    <p className="text-[0.64rem] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    <p className="text-[0.64rem] font-semibold uppercase tracking-[0.08em] text-slate-500">
                       30d
                     </p>
                   </div>
@@ -57,7 +57,7 @@ export function MarketPulse() {
                     values={lead.trend}
                     positive={lead.thirtyDayChange >= 0}
                     height={44}
-                    strokeWidth={2.4}
+                    strokeWidth={1.8}
                     label={`${lead.company} 30 day line chart`}
                   />
                 </div>
@@ -72,7 +72,7 @@ export function MarketPulse() {
 
             <div className="flex items-center justify-between gap-3 xl:block xl:text-right">
               <div>
-                <p className="text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                <p className="text-[0.64rem] font-semibold uppercase tracking-[0.1em] text-slate-500">
                   Avg 30d
                 </p>
                 <p className={averageThirtyDay >= 0 ? "font-display text-xl font-black text-emerald-100" : "font-display text-xl font-black text-rose-100"}>
@@ -110,7 +110,7 @@ function TickerCell({ player }: { player: MarketPlayer }) {
           values={player.trend}
           positive={positive}
           height={28}
-          strokeWidth={1.8}
+          strokeWidth={1.35}
           label={`${player.company} 30 day line chart`}
         />
       </div>

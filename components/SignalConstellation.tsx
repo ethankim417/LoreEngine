@@ -137,7 +137,7 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
 
           <div className="relative z-10 flex items-start justify-between gap-4">
             <div>
-              <div className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.22em] text-cyan-200">
+              <div className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.12em] text-cyan-200">
                 <Network className="h-4 w-4" />
                 Signal Map
               </div>
@@ -147,7 +147,7 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
               </p>
             </div>
             <div className="hidden rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-right sm:block">
-              <p className="text-[0.65rem] font-black uppercase tracking-[0.18em] text-slate-500">Signals</p>
+              <p className="text-[0.65rem] font-black uppercase tracking-[0.1em] text-slate-500">Signals</p>
               <p className="font-display text-2xl font-black text-white">{signals.length}</p>
             </div>
           </div>
@@ -205,12 +205,11 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
                     height: `${size}rem`
                   }}
                 >
-                  <span
-                    className="absolute inset-[-0.45rem] rounded-full border border-current opacity-15 animate-ping"
-                    style={{ animationDuration: `${2.6 + index * 0.24}s` }}
-                  />
+                  {active ? (
+                    <span className="absolute inset-[-0.45rem] rounded-full border border-current opacity-15 animate-ping [animation-duration:3.8s]" />
+                  ) : null}
                   <span className="relative flex h-full flex-col items-center justify-center px-2 text-center">
-                    <span className="text-[0.65rem] font-black uppercase tracking-[0.14em] text-current/70">
+                    <span className="text-[0.65rem] font-black uppercase tracking-[0.08em] text-current/70">
                       {signal.shortLabel}
                     </span>
                     <span className="font-display text-lg font-black text-white sm:text-xl">
@@ -229,7 +228,7 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
               <Radar className="h-4 w-4" />
             </span>
             <div>
-              <p className="text-[0.68rem] font-black uppercase tracking-[0.2em] text-slate-500">Selected Signal</p>
+              <p className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-slate-500">Selected Signal</p>
               <h2 className="font-display text-2xl font-black text-white">{selectedSignal.label}</h2>
             </div>
           </div>
@@ -266,7 +265,7 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
 function ConstellationStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-lg border border-white/10 bg-black/20 p-3">
-      <p className="text-[0.65rem] font-black uppercase tracking-[0.16em] text-slate-500">{label}</p>
+      <p className="text-[0.65rem] font-black uppercase tracking-[0.1em] text-slate-500">{label}</p>
       <p className="mt-1 font-display text-xl font-black text-white">{value}</p>
     </div>
   );

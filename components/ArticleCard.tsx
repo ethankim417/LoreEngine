@@ -54,7 +54,7 @@ export function ArticleCard({ article }: { article: Article }) {
       <div className="relative z-10 flex flex-1 flex-col p-4 sm:p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span className={`rounded-full border px-2.5 py-1 text-xs font-black uppercase tracking-[0.12em] ${priority.className}`}>
+            <span className={`rounded-full border px-2.5 py-1 text-xs font-black uppercase tracking-[0.08em] ${priority.className}`}>
               {priority.label}
             </span>
             <span className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
@@ -84,7 +84,7 @@ export function ArticleCard({ article }: { article: Article }) {
 
         {article.impactScore >= 85 ? (
           <div className="mt-4 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-3">
-            <p className="text-[0.66rem] font-black uppercase tracking-[0.16em] text-cyan-200">
+            <p className="text-[0.66rem] font-black uppercase tracking-[0.1em] text-cyan-200">
               Why it matters
             </p>
             <p className="mt-1 line-clamp-2 text-xs leading-5 text-slate-300">{article.whyItMatters}</p>
@@ -179,7 +179,7 @@ function MiniMetric({
       aria-label={`${label}: ${value}. ${description}`}
       tabIndex={0}
     >
-      <div className="flex items-center gap-1.5 text-[0.56rem] font-semibold uppercase tracking-[0.1em] text-slate-500">
+      <div className="flex items-center gap-1.5 text-[0.56rem] font-semibold uppercase tracking-[0.06em] text-slate-500">
         {icon}
         {label}
       </div>

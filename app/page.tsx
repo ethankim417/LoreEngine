@@ -43,7 +43,7 @@ function Hero() {
             <Sparkles className="absolute -right-1 -top-1 h-4 w-4 rounded-full bg-cyan-300/20 p-0.5 text-cyan-100" />
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-cyan-200/75">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-200/75">
               Weekly Brief
             </p>
             <h1 className="font-display text-4xl font-black tracking-normal text-white sm:text-6xl">
