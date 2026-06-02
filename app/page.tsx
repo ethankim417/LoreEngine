@@ -39,12 +39,10 @@ function Hero() {
         <a
           href="mailto:lore-engine@ethankim.cc"
           className="absolute right-0 top-0 hidden items-center gap-2 rounded-full border border-cyan-300/20 bg-slate-950/45 px-3 py-1.5 text-xs font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] backdrop-blur-xl transition hover:border-cyan-300/45 hover:bg-cyan-300/[0.1] sm:inline-flex"
-          aria-label="Email LoreEngine"
+          aria-label="Contact LoreEngine at lore-engine@ethankim.cc"
         >
           <Mail className="h-3.5 w-3.5" />
-          <span className="text-cyan-200/70">Signal Desk</span>
-          <span className="h-1 w-1 rounded-full bg-cyan-200/45" />
-          <span>lore-engine@ethankim.cc</span>
+          Contact
         </a>
 
         <div className="flex items-center gap-4">
@@ -81,12 +79,10 @@ function Hero() {
         <a
           href="mailto:lore-engine@ethankim.cc"
           className="inline-flex w-fit items-center gap-2 rounded-full border border-cyan-300/20 bg-slate-950/45 px-3 py-1.5 text-xs font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl transition hover:border-cyan-300/45 hover:bg-cyan-300/[0.1] sm:hidden"
-          aria-label="Email LoreEngine"
+          aria-label="Contact LoreEngine at lore-engine@ethankim.cc"
         >
           <Mail className="h-3.5 w-3.5" />
-          <span className="text-cyan-200/70">Signal Desk</span>
-          <span className="h-1 w-1 rounded-full bg-cyan-200/45" />
-          <span>lore-engine@ethankim.cc</span>
+          Contact
         </a>
       </div>
     </section>
