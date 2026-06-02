@@ -107,12 +107,12 @@ export function ArticleCard({ article }: { article: Article }) {
         </div>
       </div>
 
-      <div className="relative z-10 grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 bg-black/20 p-3">
+      <div className="relative z-10 flex items-center justify-between gap-3 border-t border-white/10 bg-black/10 px-4 py-3">
         <Link
           href={`/articles/${article.slug}`}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.07] px-4 py-3 text-sm font-black text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12] hover:text-cyan-50"
+          className="inline-flex items-center gap-2 text-sm font-black text-white transition hover:text-cyan-100"
         >
-          Read More
+          Read brief
           <ChevronRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
         </Link>
         <a
@@ -120,7 +120,7 @@ export function ArticleCard({ article }: { article: Article }) {
           aria-label={`Open source article from ${article.source}`}
           title={`Open source article from ${article.source}`}
           data-testid={`source-link-${article.slug}`}
-          className="grid h-12 w-12 place-items-center rounded-lg border border-white/10 bg-white/[0.05] text-slate-200 transition hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-cyan-100"
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.035] text-slate-300 transition hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-cyan-100"
         >
           <ExternalLink className="h-4 w-4" />
         </a>

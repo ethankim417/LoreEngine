@@ -14,6 +14,7 @@ import { formatDate } from "@/lib/format";
 
 export function MarketPulse() {
   const [snapshot, setSnapshot] = useState<MarketSnapshot>(staticMarketSnapshot);
+  const [isRefreshing, setIsRefreshing] = useState(process.env.NEXT_PUBLIC_GITHUB_PAGES !== "true");
   const focusPlayers = getMarketFocusPlayersFromSnapshot(snapshot);
   const averageThirtyDay =
     focusPlayers.reduce((total, player) => total + player.thirtyDayChange, 0) / focusPlayers.length;
@@ -24,6 +25,7 @@ export function MarketPulse() {
 
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_GITHUB_PAGES === "true") {
+      setIsRefreshing(false);
       return;
     }
 
@@ -38,6 +40,11 @@ export function MarketPulse() {
       })
       .catch(() => {
         // Keep the static fallback snapshot if the runtime API is unavailable.
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsRefreshing(false);
+        }
       });
 
     return () => {
@@ -60,9 +67,15 @@ export function MarketPulse() {
               <BadgeDollarSign className="h-4 w-4" />
               Market Pulse
             </div>
-            <p className="mt-1 text-xs leading-5 text-slate-500">
-              Updated {formatDate(snapshot.snapshotDate)}
-            </p>
+            <div className="mt-1 flex flex-wrap items-center gap-2 text-xs leading-5 text-slate-500" aria-live="polite">
+              <span>Updated {formatDate(snapshot.snapshotDate)}</span>
+              {isRefreshing ? (
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-300/15 bg-cyan-300/[0.06] px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-[0.1em] text-cyan-100">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-200" />
+                  Refreshing
+                </span>
+              ) : null}
+            </div>
           </div>
 
           <div className="grid gap-3 xl:grid-cols-[1fr_auto] xl:items-center">

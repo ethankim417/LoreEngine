@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden">
       <AmbientBackground />
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-6 px-3 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-5 px-3 py-4 sm:gap-6 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
         <Hero />
         <IntelligenceDashboard articles={articles} metrics={getDashboardMetrics(articles)} />
       </div>

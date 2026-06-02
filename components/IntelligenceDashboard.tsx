@@ -80,20 +80,20 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
   }, [articles, category, query, sortMode, sourceType]);
 
   return (
-    <div className="flex flex-col gap-4 sm:gap-5">
+    <div className="flex flex-col gap-5 sm:gap-6">
       <WeeklyBriefStatus articles={articles} metrics={metrics} />
 
       <ExecutiveBrief articles={articles} />
 
       <SignalConstellation articles={articles} />
 
-      <section aria-label="Dashboard metrics" className="grid gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
+      <section aria-label="Dashboard metrics" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {metrics.map((metric) => (
           <MetricCard key={metric.label} metric={metric} onSelect={() => setSelectedMetric(metric)} />
         ))}
       </section>
 
-      <section className="glass-panel rounded-lg p-3 sm:p-5">
+      <section className="glass-panel rounded-lg p-4 sm:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
           <div>
             <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-cyan-200">
@@ -105,7 +105,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
             </p>
           </div>
 
-          <div className="grid gap-3 md:grid-cols-[minmax(14rem,1fr)_auto_auto_auto] xl:w-[58rem]">
+          <div className="grid gap-2.5 sm:gap-3 md:grid-cols-[minmax(14rem,1fr)_auto_auto_auto] xl:w-[58rem]">
             <label className="relative block">
               <span className="sr-only">Search articles</span>
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
@@ -184,7 +184,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
       <MarketPulse />
 
-      <section className="grid gap-3 sm:gap-4 lg:grid-cols-2 xl:grid-cols-3">
+      <section className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
         {filteredArticles.map((article) => (
           <ArticleCard key={article.id} article={article} />
         ))}
@@ -231,7 +231,7 @@ function WeeklyBriefStatus({
   const sourceCount = new Set(articles.map((article) => article.source)).size;
 
   return (
-    <section className="glass-panel rounded-lg p-3 sm:p-4" aria-label="Weekly brief status">
+    <section className="glass-panel rounded-lg p-4" aria-label="Weekly brief status">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex items-start gap-3">
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-[0_0_28px_rgba(34,211,238,0.12)]">

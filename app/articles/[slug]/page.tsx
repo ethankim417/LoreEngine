@@ -33,13 +33,13 @@ export default function ArticlePage({ params }: ArticlePageProps) {
   }
 
   return (
-    <main className="relative min-h-screen overflow-hidden px-4 py-6 sm:px-6 lg:px-8">
+    <main className="relative min-h-screen overflow-hidden px-4 py-5 sm:px-6 sm:py-6 lg:px-8">
       <div aria-hidden="true" className="mesh-grid absolute inset-0 opacity-70" />
       <div
         aria-hidden="true"
         className="absolute right-[-12rem] top-[-12rem] h-[32rem] w-[32rem] rounded-full bg-violet-500/15 blur-3xl"
       />
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6">
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-4 sm:gap-6">
         <Link
           href="/"
           className="inline-flex w-fit items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/40 hover:text-white"
@@ -49,7 +49,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </Link>
 
         <article className="glass-panel overflow-hidden rounded-lg">
-          <div className="relative min-h-[30rem] overflow-hidden border-b border-white/10 p-5 sm:p-7">
+          <div className="relative min-h-[28rem] overflow-hidden border-b border-white/10 p-4 sm:min-h-[30rem] sm:p-7">
             <Image
               src={article.visual.image}
               alt={article.visual.alt}
@@ -63,41 +63,43 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             <div className="absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_50%_35%,rgba(50,217,255,0.085),transparent_48%)]" />
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#06070d] to-transparent" />
 
-            <div className="relative z-10 grid min-h-[26rem] gap-5 lg:grid-cols-[1fr_18rem] lg:items-end">
-            <div className="max-w-3xl">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
-                  {article.category}
-                </span>
-                <SourceBadge source={article.source} credibility={article.sourceCredibility} />
-                <span className="text-sm text-slate-300">{formatDate(article.publishedAt)}</span>
-              </div>
-              <h1 className="mt-5 max-w-4xl font-display text-3xl font-black leading-tight tracking-normal text-white sm:text-5xl">
-                {article.title}
-              </h1>
-              <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-200">{article.fullTldr}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {article.sectors.slice(0, 5).map((sector) => (
-                  <span
-                    key={sector}
-                    className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-bold text-cyan-50"
-                  >
-                    {sector}
+            <div className="relative z-10 grid min-h-[25rem] gap-5 sm:min-h-[26rem] lg:grid-cols-[1fr_18rem] lg:items-end">
+              <div className="max-w-3xl">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
+                    {article.category}
                   </span>
-                ))}
+                  <SourceBadge source={article.source} credibility={article.sourceCredibility} />
+                  <span className="text-sm text-slate-300">{formatDate(article.publishedAt)}</span>
+                </div>
+                <h1 className="mt-5 max-w-4xl font-display text-3xl font-black leading-tight tracking-normal text-white sm:text-5xl">
+                  {article.title}
+                </h1>
+                <p className="mt-4 max-w-3xl text-base leading-7 text-slate-200 sm:text-lg sm:leading-8">
+                  {article.fullTldr}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {article.sectors.slice(0, 5).map((sector) => (
+                    <span
+                      key={sector}
+                      className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-bold text-cyan-50"
+                    >
+                      {sector}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div className="grid gap-2 rounded-lg border border-white/10 bg-slate-950/62 p-3 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
-              <HeaderGauge label="Impact" value={article.impactScore} suffix="/100" />
-              <HeaderGauge label="Momentum" value={article.trendScore} prefix="+" suffix="%" />
-              <HeaderGauge label="Confidence" value={article.confidence} suffix="%" />
-            </div>
+              <div className="grid gap-2 rounded-lg border border-white/10 bg-slate-950/62 p-3 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
+                <HeaderGauge label="Impact" value={article.impactScore} suffix="/100" />
+                <HeaderGauge label="Momentum" value={article.trendScore} prefix="+" suffix="%" />
+                <HeaderGauge label="Confidence" value={article.confidence} suffix="%" />
+              </div>
             </div>
           </div>
 
           <div className="grid gap-0 lg:grid-cols-[1fr_18rem]">
-            <div className="space-y-7 p-5 sm:p-7">
+            <div className="space-y-8 p-5 sm:space-y-10 sm:p-8">
               <DetailBlock title="Why It Matters" body={article.whyItMatters} />
               <DetailBlock title="Possible Industry Impact" body={article.possibleImpact} />
               <DetailBlock title="Trend Analysis" body={article.trendAnalysis} />
@@ -157,9 +159,9 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
 function DetailBlock({ title, body }: { title: string; body: string }) {
   return (
-    <section>
+    <section className="border-l border-cyan-300/20 pl-4 sm:pl-5">
       <h2 className="font-display text-xl font-bold text-white">{title}</h2>
-      <p className="mt-3 leading-7 text-slate-300">{body}</p>
+      <p className="mt-3 max-w-3xl text-base leading-8 text-slate-300">{body}</p>
     </section>
   );
 }
