@@ -10,7 +10,7 @@ export function StockLineChart({
   values,
   positive,
   height = 56,
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   label = "Price trend"
 }: StockLineChartProps) {
   const width = 180;
@@ -30,8 +30,9 @@ export function StockLineChart({
     ...points.map((point) => `${point.x},${point.y}`),
     `${points[points.length - 1]?.x ?? width - padding},${height - padding}`
   ].join(" ");
-  const gradientId = `chart-${positive ? "up" : "down"}-${values.join("-")}`;
+  const gradientId = `chart-${positive ? "up" : "down"}-${values.join("-").replaceAll(".", "_")}`;
   const stroke = positive ? "#9ff5c8" : "#fda4af";
+  const guide = positive ? "rgba(159, 245, 200, 0.12)" : "rgba(253, 164, 175, 0.12)";
 
   return (
     <svg
@@ -43,10 +44,22 @@ export function StockLineChart({
     >
       <defs>
         <linearGradient id={gradientId} x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor={stroke} stopOpacity="0.14" />
+          <stop offset="0%" stopColor={stroke} stopOpacity="0.11" />
           <stop offset="100%" stopColor={stroke} stopOpacity="0" />
         </linearGradient>
       </defs>
+      {[0.28, 0.56, 0.84].map((ratio) => (
+        <line
+          key={ratio}
+          x1={padding}
+          x2={width - padding}
+          y1={height * ratio}
+          y2={height * ratio}
+          stroke={guide}
+          strokeWidth="0.8"
+          vectorEffect="non-scaling-stroke"
+        />
+      ))}
       <polygon points={area} fill={`url(#${gradientId})`} />
       <polyline
         points={line}
@@ -55,15 +68,15 @@ export function StockLineChart({
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={strokeWidth}
-        opacity="0.86"
+        opacity="0.82"
         vectorEffect="non-scaling-stroke"
       />
       <circle
         cx={points[points.length - 1]?.x ?? width - padding}
         cy={points[points.length - 1]?.y ?? padding}
-        r="2.25"
+        r="1.9"
         fill={stroke}
-        opacity="0.9"
+        opacity="0.82"
       />
     </svg>
   );

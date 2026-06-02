@@ -23,13 +23,13 @@ export function SectorSignalArt({
   const theme = getSectorTheme(article);
   const opacityClass =
     opacity === "subtle"
-      ? "opacity-[0.14] group-hover:opacity-[0.2]"
-      : "opacity-[0.22] group-hover:opacity-[0.3]";
+      ? "opacity-[0.11] group-hover:opacity-[0.17]"
+      : "opacity-[0.18] group-hover:opacity-[0.25]";
 
   return (
     <div
       aria-hidden="true"
-      className={`pointer-events-none absolute inset-0 ${themeClass[theme]} ${opacityClass} mix-blend-screen transition duration-500 [mask-image:radial-gradient(circle_at_80%_24%,black_0%,black_34%,transparent_74%)]`}
+      className={`pointer-events-none absolute inset-0 ${themeClass[theme]} ${opacityClass} mix-blend-screen transition duration-500 [mask-image:radial-gradient(ellipse_at_80%_24%,black_0%,black_30%,transparent_70%)]`}
     >
       <div className="absolute right-[-3rem] top-[-1rem] h-64 w-80 transition duration-500 group-hover:scale-[1.04] sm:right-[-2rem]">
         {theme === "ai" ? <AiSignal /> : null}

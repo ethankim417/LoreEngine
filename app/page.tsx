@@ -48,7 +48,7 @@ function Hero() {
         </a>
 
         <div className="flex items-center gap-4">
-          <div className="soft-float relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-200/30 bg-slate-950/65 shadow-[0_0_42px_rgba(34,211,238,0.14),inset_0_1px_0_rgba(255,255,255,0.08)] sm:h-16 sm:w-16">
+          <div className="signal-logo soft-float relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-200/30 bg-slate-950/65 shadow-[0_0_42px_rgba(34,211,238,0.14),inset_0_1px_0_rgba(255,255,255,0.08)] sm:h-16 sm:w-16">
             <div className="absolute inset-1 rounded-xl border border-violet-300/20" />
             <div className="absolute h-9 w-9 rounded-full border border-cyan-300/20" />
             <div className="absolute h-5 w-5 rounded-full border border-emerald-200/20" />

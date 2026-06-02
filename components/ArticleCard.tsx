@@ -43,10 +43,10 @@ export function ArticleCard({ article }: { article: Article }) {
           alt=""
           fill
           sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 50vw, 100vw"
-          className="translate-x-[18%] translate-y-[-10%] scale-[0.72] object-contain object-right-top opacity-[0.12] transition duration-500 [mask-image:radial-gradient(circle_at_72%_22%,black_0%,black_30%,transparent_70%)] group-hover:scale-[0.76] group-hover:opacity-[0.18]"
+          className="translate-x-[14%] translate-y-[-8%] scale-[0.68] object-contain object-right-top opacity-[0.105] saturate-[0.85] transition duration-500 [mask-image:radial-gradient(ellipse_at_76%_24%,black_0%,black_28%,transparent_66%),linear-gradient(to_bottom,black,transparent_78%)] group-hover:scale-[0.71] group-hover:opacity-[0.15]"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(50,217,255,0.08),transparent_22%),linear-gradient(145deg,rgba(6,7,13,0.42),rgba(6,7,13,0.98)_58%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(50,217,255,0.075),transparent_22%),linear-gradient(145deg,rgba(6,7,13,0.46),rgba(6,7,13,0.96)_58%)]" />
         <SectorSignalArt article={article} opacity="subtle" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/40 to-transparent opacity-0 transition group-hover:opacity-100" />
       </div>
