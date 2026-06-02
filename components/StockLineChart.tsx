@@ -33,13 +33,14 @@ export function StockLineChart({
   const gradientId = `chart-${positive ? "up" : "down"}-${values.join("-").replaceAll(".", "_")}`;
   const stroke = positive ? "#9ff5c8" : "#fda4af";
   const guide = positive ? "rgba(159, 245, 200, 0.12)" : "rgba(253, 164, 175, 0.12)";
+  const endpoint = points[points.length - 1] ?? { x: width - padding, y: padding };
 
   return (
     <svg
       role="img"
       aria-label={label}
       viewBox={`0 0 ${width} ${height}`}
-      className="h-full w-full overflow-visible"
+      className="stock-chart h-full w-full overflow-visible"
       preserveAspectRatio="none"
     >
       <defs>
@@ -61,6 +62,16 @@ export function StockLineChart({
         />
       ))}
       <polygon points={area} fill={`url(#${gradientId})`} />
+      <line
+        className="stock-chart-end-marker"
+        x1={endpoint.x}
+        x2={endpoint.x}
+        y1={endpoint.y}
+        y2={height - padding}
+        stroke={stroke}
+        strokeWidth="0.9"
+        vectorEffect="non-scaling-stroke"
+      />
       <polyline
         points={line}
         fill="none"
@@ -72,8 +83,9 @@ export function StockLineChart({
         vectorEffect="non-scaling-stroke"
       />
       <circle
-        cx={points[points.length - 1]?.x ?? width - padding}
-        cy={points[points.length - 1]?.y ?? padding}
+        className="stock-chart-endpoint"
+        cx={endpoint.x}
+        cy={endpoint.y}
         r="1.9"
         fill={stroke}
         opacity="0.82"

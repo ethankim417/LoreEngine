@@ -162,6 +162,25 @@ select {
   mask-image: radial-gradient(circle, transparent 0 42%, black 44% 48%, transparent 50%);
 }
 
+.stock-chart-end-marker {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.stock-chart-endpoint {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 180ms ease;
+}
+
+.stock-chart:hover .stock-chart-end-marker {
+  animation: chart-end-blink 1.35s ease-in-out infinite;
+}
+
+.stock-chart:hover .stock-chart-endpoint {
+  animation: chart-dot-pulse 1.35s ease-in-out infinite;
+}
+
 @keyframes particle-drift {
   from {
     transform: translate3d(0, 0, 0);
@@ -218,13 +237,37 @@ select {
   }
 }
 
+@keyframes chart-end-blink {
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+  45% {
+    opacity: 0.48;
+  }
+}
+
+@keyframes chart-dot-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ambient-particles,
   .page-scanline,
   .metric-fill,
   .signal-line-flow,
   .soft-float,
-  .signal-logo::after {
+  .signal-logo::after,
+  .stock-chart:hover .stock-chart-end-marker,
+  .stock-chart:hover .stock-chart-endpoint {
     animation: none !important;
   }
 
