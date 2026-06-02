@@ -35,7 +35,7 @@ The design should make the user feel like they are opening a useful brief, not b
 The current version is not live intelligence yet.
 
 - News and summaries are mock records.
-- Market prices are cached/manual snapshots.
+- Market prices can refresh weekly on Vercel from public close-price data, with cached/manual fallback data.
 - AI summaries are not generated at runtime.
 - No AI API is called from the browser.
 

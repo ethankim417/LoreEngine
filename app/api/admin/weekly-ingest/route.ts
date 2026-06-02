@@ -3,7 +3,8 @@ import { runWeeklyIntelligencePipeline } from "@/lib/futurePipeline";
 
 export const dynamic = "force-dynamic";
 
-// Vercel Cron should call this route once per week.
+// Future news/AI route. The active Vercel Cron currently calls
+// /api/admin/market-refresh, while this endpoint remains a safe scaffold.
 // Keep future AI/news work on the server: fetch articles, summarize once,
 // score once, save cached results, then let the frontend read saved summaries.
 export async function GET(request: NextRequest) {

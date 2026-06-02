@@ -17,10 +17,25 @@ LoreEngine is currently a mock-data showcase app. The planned production version
 The repo now includes:
 
 - `vercel.json` with a weekly Monday cron schedule.
-- `app/api/admin/weekly-ingest/route.ts` as the scheduled server endpoint.
+- `app/api/admin/market-refresh/route.ts` as the active scheduled market refresh endpoint.
+- `app/api/market/route.ts` as the server-read market snapshot endpoint.
+- `app/api/admin/weekly-ingest/route.ts` as an unscheduled future AI/news endpoint.
+- `lib/marketData.ts` for weekly public close-price refresh and fallback behavior.
 - `lib/futurePipeline.ts` as the placeholder pipeline entry point.
 
-The scaffold intentionally does not fetch live news or call AI APIs yet. It returns a safe mock response so Vercel can deploy the route without creating API cost.
+The market refresh does not use AI. The news/AI scaffold intentionally does not fetch live news or call AI APIs yet, so Vercel can deploy the route without creating API cost.
+
+## Current Market Refresh
+
+The current Vercel Cron job can update market close-price data without an AI API:
+
+1. Vercel Cron calls `/api/admin/market-refresh` once per week.
+2. The route refreshes the `market-snapshot` server cache.
+3. `lib/marketData.ts` fetches public chart close-price rows where symbols are available.
+4. The app recalculates latest price, daily change, 30-day change, and trend lines.
+5. Any failed ticker falls back to `data/market.ts`.
+
+This is not real-time financial data. It is a lightweight weekly market pulse for product context.
 
 ## RSS And News Collection
 
@@ -116,7 +131,7 @@ Recommended limits:
 {
   "crons": [
     {
-      "path": "/api/admin/weekly-ingest",
+      "path": "/api/admin/market-refresh",
       "schedule": "0 13 * * 1"
     }
   ]
@@ -181,8 +196,8 @@ async function weeklyLoreEngineJob() {
 
 ## Next Implementation Steps
 
-1. Add RSS feed configuration.
-2. Add a durable storage layer such as Supabase, Neon, Vercel Postgres, Upstash, or blob storage.
-3. Replace the scaffold in `lib/futurePipeline.ts` with actual fetch, summarize, score, and save functions.
-4. Add `CRON_SECRET` in Vercel project environment variables.
-5. Update the dashboard to read from the cache instead of `data/articles.ts`.
+1. Add `CRON_SECRET` in Vercel project environment variables.
+2. Add RSS feed configuration.
+3. Add a durable storage layer such as Supabase, Neon, Vercel Postgres, Upstash, or blob storage.
+4. Replace the scaffold in `lib/futurePipeline.ts` with actual fetch, summarize, score, and save functions.
+5. Update the dashboard to read article briefs from the cache instead of `data/articles.ts`.

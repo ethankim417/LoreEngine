@@ -1,17 +1,49 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { ArrowRight, BadgeDollarSign } from "lucide-react";
 import { StockLineChart } from "@/components/StockLineChart";
-import { getMarketFocusPlayers, marketSnapshotDate, type MarketPlayer } from "@/data/market";
+import {
+  getMarketFocusPlayersFromSnapshot,
+  staticMarketSnapshot,
+  type MarketPlayer,
+  type MarketSnapshot
+} from "@/data/market";
 import { formatDate } from "@/lib/format";
 
 export function MarketPulse() {
-  const focusPlayers = getMarketFocusPlayers();
+  const [snapshot, setSnapshot] = useState<MarketSnapshot>(staticMarketSnapshot);
+  const focusPlayers = getMarketFocusPlayersFromSnapshot(snapshot);
   const averageThirtyDay =
     focusPlayers.reduce((total, player) => total + player.thirtyDayChange, 0) / focusPlayers.length;
   const topMovers = [...focusPlayers]
     .sort((a, b) => Math.abs(b.thirtyDayChange) - Math.abs(a.thirtyDayChange))
     .slice(0, 5);
   const lead = topMovers[0];
+
+  useEffect(() => {
+    if (process.env.NEXT_PUBLIC_GITHUB_PAGES === "true") {
+      return;
+    }
+
+    let isMounted = true;
+
+    fetch("/api/market")
+      .then((response) => (response.ok ? response.json() : null))
+      .then((nextSnapshot: MarketSnapshot | null) => {
+        if (isMounted && nextSnapshot?.players?.length) {
+          setSnapshot(nextSnapshot);
+        }
+      })
+      .catch(() => {
+        // Keep the static fallback snapshot if the runtime API is unavailable.
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <Link
@@ -29,7 +61,7 @@ export function MarketPulse() {
               Market Pulse
             </div>
             <p className="mt-1 text-xs leading-5 text-slate-500">
-              Updated {formatDate(marketSnapshotDate)}
+              Updated {formatDate(snapshot.snapshotDate)}
             </p>
           </div>
 

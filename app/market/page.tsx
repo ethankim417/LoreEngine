@@ -9,15 +9,15 @@ import {
 } from "lucide-react";
 import { StockLineChart } from "@/components/StockLineChart";
 import {
-  getMarketFocusPlayers,
-  getMarketGroupPlayers,
-  marketSnapshotDate,
-  marketGroups,
+  getMarketFocusPlayersFromSnapshot,
+  getMarketGroupPlayersFrom,
   type MarketGroup,
   type MarketPlayer,
+  type MarketSnapshot,
   type MarketSentiment
 } from "@/data/market";
 import { formatDate } from "@/lib/format";
+import { getMarketSnapshot } from "@/lib/marketData";
 
 const sentimentTone: Record<MarketSentiment, string> = {
   Bullish: "border-emerald-300/25 bg-emerald-300/10 text-emerald-100",
@@ -29,8 +29,11 @@ export const metadata = {
   title: "Market Pulse | LoreEngine"
 };
 
-export default function MarketPage() {
-  const focusPlayers = getMarketFocusPlayers();
+export const dynamic = "force-dynamic";
+
+export default async function MarketPage() {
+  const snapshot = await getMarketSnapshot();
+  const focusPlayers = getMarketFocusPlayersFromSnapshot(snapshot);
   const averageThirtyDay =
     focusPlayers.reduce((total, player) => total + player.thirtyDayChange, 0) / focusPlayers.length;
   const bullishCount = focusPlayers.filter((player) => player.sentiment === "Bullish").length;
@@ -66,7 +69,7 @@ export default function MarketPage() {
                   game-revenue leaders. Private companies are labeled clearly when no public ticker exists.
                 </p>
                 <p className="mt-4 inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-1 text-xs font-semibold text-cyan-100">
-                  Updated {formatDate(marketSnapshotDate)}
+                  Updated {formatDate(snapshot.snapshotDate)}
                 </p>
               </div>
 
@@ -80,8 +83,12 @@ export default function MarketPage() {
 
           <div className="grid gap-0 xl:grid-cols-[1fr_22rem]">
             <div className="space-y-4 p-4 sm:p-5">
-              {marketGroups.map((group) => (
-                <MarketGroupSection key={group.id} group={group} players={getMarketGroupPlayers(group)} />
+              {snapshot.groups.map((group) => (
+                <MarketGroupSection
+                  key={group.id}
+                  group={group}
+                  players={getMarketGroupPlayersFrom(group, snapshot.players)}
+                />
               ))}
             </div>
 
@@ -100,10 +107,12 @@ export default function MarketPage() {
                 <Insight label="Hardware list" value="5 public market signals" />
                 <Insight label="Engine list" value="Unity plus Epic private proxy" />
                 <Insight label="Revenue list" value="10 leaders, excluding Sony and Nintendo" />
-                <Insight label="Snapshot date" value={formatDate(marketSnapshotDate)} />
+                <Insight label="Snapshot date" value={formatDate(snapshot.snapshotDate)} />
+                <Insight label="Data source" value={formatSource(snapshot)} />
               </div>
               <p className="mt-5 rounded-lg border border-amber-300/15 bg-amber-300/[0.06] p-3 text-xs leading-5 text-amber-100/90">
-                Prices are refreshed from a public close-data feed for this snapshot. A production version should fetch quotes server-side on a schedule and cache the results.
+                On Vercel, prices refresh server-side from a public close-data feed and use the local
+                snapshot as fallback. The GitHub Pages mirror remains static.
               </p>
             </aside>
           </div>
@@ -211,6 +220,14 @@ function MarketRow({ player }: { player: MarketPlayer }) {
 
 function formatPrice(player: MarketPlayer) {
   return player.price === null ? "Private" : `$${player.price.toFixed(2)}`;
+}
+
+function formatSource(snapshot: MarketSnapshot) {
+  if (snapshot.mode === "weekly-close-feed") {
+    return `${snapshot.dataSourceLabel}, ${snapshot.updatedTickers.length} tickers`;
+  }
+
+  return snapshot.dataSourceLabel;
 }
 
 function MetricCell({

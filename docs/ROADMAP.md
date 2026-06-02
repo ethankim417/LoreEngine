@@ -2,8 +2,9 @@
 
 ## Now
 
-- Keep the portfolio MVP stable and easy to demo.
+- Keep the current demo stable and easy to share.
 - Maintain mock article data and cached market snapshots.
+- Run the weekly Vercel market refresh where backend routes are available.
 - Keep README and docs clear for first-time readers.
 - Add real screenshots or GIFs after deployment.
 - Add the final Vercel live demo URL.
@@ -13,6 +14,7 @@
 - Connect a small weekly RSS/news collection proof of concept.
 - Add source freshness and source count metadata.
 - Save generated weekly briefs to a database, blob store, or JSON cache.
+- Consider a more complete quote provider if market coverage needs to move beyond public chart close-price data.
 - Add automated tests for filtering, sorting, scoring, and article detail routing.
 - Add a lightweight editorial review state for future AI-generated summaries.
 
@@ -25,7 +27,7 @@
 - Add alerts for major category movement.
 - Add real market data through a licensed or approved data provider.
 
-## Out Of Scope For The Portfolio MVP
+## Out Of Scope For The Current Demo
 
 - Real-time financial data.
 - Paid subscriptions.

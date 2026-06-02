@@ -24,9 +24,21 @@ export type MarketGroup = {
   tickers: string[];
 };
 
-// Mock cached market data for the portfolio version.
-// Future production path: fetch quotes in a scheduled backend job, save the weekly
-// snapshot to a database/cache, and let the frontend read that cached result only.
+export type MarketDataMode = "cached-fallback" | "weekly-close-feed";
+
+export type MarketSnapshot = {
+  snapshotDate: string;
+  players: MarketPlayer[];
+  groups: MarketGroup[];
+  dataSourceLabel: string;
+  mode: MarketDataMode;
+  refreshedAt: string;
+  updatedTickers: string[];
+  failedTickers: string[];
+};
+
+// Local fallback data. On Vercel, /api/market can refresh public close-price
+// fields from a scheduled server job. The static mirror keeps reading this file.
 export const marketSnapshotDate = "2026-06-01";
 
 export const marketPlayers: MarketPlayer[] = [
@@ -328,21 +340,40 @@ export const marketGroups: MarketGroup[] = [
   }
 ];
 
+export const staticMarketSnapshot: MarketSnapshot = {
+  snapshotDate: marketSnapshotDate,
+  players: marketPlayers,
+  groups: marketGroups,
+  dataSourceLabel: "Cached fallback snapshot",
+  mode: "cached-fallback",
+  refreshedAt: `${marketSnapshotDate}T00:00:00.000Z`,
+  updatedTickers: [],
+  failedTickers: []
+};
+
 export function getMarketPlayer(ticker: string) {
   return marketPlayers.find((player) => player.ticker === ticker);
 }
 
 export function getMarketGroupPlayers(group: MarketGroup) {
+  return getMarketGroupPlayersFrom(group, marketPlayers);
+}
+
+export function getMarketGroupPlayersFrom(group: MarketGroup, players: MarketPlayer[]) {
   return group.tickers
-    .map((ticker) => getMarketPlayer(ticker))
+    .map((ticker) => players.find((player) => player.ticker === ticker))
     .filter((player): player is MarketPlayer => Boolean(player));
 }
 
 export function getMarketFocusPlayers() {
+  return getMarketFocusPlayersFromSnapshot(staticMarketSnapshot);
+}
+
+export function getMarketFocusPlayersFromSnapshot(snapshot: MarketSnapshot) {
   const seen = new Set<string>();
 
-  return marketGroups.flatMap((group) =>
-    getMarketGroupPlayers(group).filter((player) => {
+  return snapshot.groups.flatMap((group) =>
+    getMarketGroupPlayersFrom(group, snapshot.players).filter((player) => {
       if (seen.has(player.ticker)) {
         return false;
       }

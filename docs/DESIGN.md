@@ -49,7 +49,7 @@ The dashboard is structured around the way a serious industry brief is consumed:
 ## Demo Simplifications
 
 - Article data is mocked to keep the current demo stable.
-- Market data is cached/manual and should not be treated as financial advice.
+- Market data is weekly/cached close-price context and should not be treated as financial advice.
 - Source links are representative and can be swapped for real collected articles later.
 - Scores are calculated from local data and intended to test the product model.
 

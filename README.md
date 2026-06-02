@@ -35,17 +35,19 @@ The second goal was to test Codex as a product-building partner. I used it to mo
 - Supports search, category filters, source-type filters, and sorting.
 - Opens article detail pages with TLDRs, why-it-matters context, and trend analysis.
 - Includes a Market Pulse view for major public companies connected to gaming.
-- Includes a future weekly ingest scaffold for server-side AI summarization.
+- Includes a weekly Vercel Cron refresh for market close-price data.
+- Includes a future weekly ingest scaffold for server-side AI/news summarization.
 
 ## Current Data Status
 
 This version uses mock and cached data on purpose.
 
 - Articles live in [data/articles.ts](./data/articles.ts).
-- Market snapshots live in [data/market.ts](./data/market.ts).
+- Market fallback snapshots live in [data/market.ts](./data/market.ts).
+- On Vercel, `/api/market` can refresh public close-price data server-side.
 - The browser does not call a news API.
 - The browser does not call an AI API.
-- Stock prices are not real-time financial data.
+- Stock prices are weekly/cached close-price data, not real-time financial data.
 
 The intended future version would fetch sources on a schedule, summarize selected articles once on the server, cache the finished brief, and let users read that cached result.
 
@@ -67,7 +69,8 @@ See [docs/screenshots/README.md](./docs/screenshots/README.md).
 - **UI:** React components, Lucide icons
 - **Data:** Local TypeScript mock/cached datasets
 - **Deployment:** Vercel-ready, GitHub Pages static export workflow
-- **Future backend:** Scheduled weekly ingest route and cache-first AI pipeline scaffold
+- **Runtime data:** Vercel API route for weekly/cached market close-price refresh
+- **Future backend:** Scheduled weekly ingest route and cache-first AI/news pipeline scaffold
 
 ## Architecture Overview
 
@@ -110,6 +113,13 @@ The most important AI architecture rule in this repo is simple: never call AI AP
 ## Product Direction
 
 LoreEngine is meant to feel like a daily or weekly command brief for the gaming industry. The design goal is closer to an intelligence dashboard than a blog: fewer paragraphs, clearer signals, stronger prioritization, and fast paths into detail when something matters.
+
+Current market automation:
+
+- Vercel Cron calls `/api/admin/market-refresh` weekly.
+- The refresh pulls public chart close-price data where available.
+- The app falls back to the local snapshot if a ticker or provider fails.
+- The GitHub Pages mirror remains static because it cannot run backend routes.
 
 Future improvements:
 

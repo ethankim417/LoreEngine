@@ -6,7 +6,9 @@ LoreEngine is a Next.js App Router project.
 
 ```text
 app/
+  api/admin/market-refresh/route.ts
   api/admin/weekly-ingest/route.ts
+  api/market/route.ts
   articles/[slug]/page.tsx
   market/page.tsx
   methodology/page.tsx
@@ -23,6 +25,7 @@ data/
 lib/
   format.ts
   futurePipeline.ts
+  marketData.ts
   metrics.ts
 ```
 
@@ -72,15 +75,15 @@ The future design ties AI cost to article volume, not visitor traffic.
 
 - **Vercel:** preferred deployment target for the full Next.js app and future cron route.
 - **GitHub Pages:** static portfolio mirror through `.github/workflows/pages.yml`.
-- **No required environment variables** for the current mock/cached version.
-- **Future optional variable:** `CRON_SECRET` for protecting scheduled admin ingest.
+- **No required environment variables** for the current demo.
+- **Optional variable:** `CRON_SECRET` for protecting scheduled admin refresh routes.
 
 ## External Services And APIs
 
 Current version:
 
 - No live news API.
-- No live market API.
+- Vercel can refresh weekly market close-price data through `/api/market`.
 - No AI API.
 - No database.
 
@@ -89,12 +92,13 @@ Future version:
 - RSS/news sources for article collection.
 - AI provider for once-per-week summarization.
 - Database, object storage, or JSON cache for generated briefs.
-- Optional quote provider for refreshed public-company snapshots.
+- Optional paid/licensed quote provider if the market module needs production-grade coverage.
 
 ## Tradeoffs
 
 - Local mock data makes the demo fast and reliable but limits real-world freshness.
 - Static deployment is simple for sharing, while Vercel unlocks scheduled server functionality later.
+- Weekly close-price refresh is useful for context but is not real-time financial data.
 - Scores are useful for product storytelling but need calibration with real editorial review.
 - Keeping AI out of the browser improves cost control, privacy, and security.
 

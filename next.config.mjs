@@ -7,6 +7,9 @@ const nextConfig = {
   basePath: isGitHubPages ? "/LoreEngine" : undefined,
   assetPrefix: isGitHubPages ? "/LoreEngine/" : undefined,
   trailingSlash: isGitHubPages,
+  env: {
+    NEXT_PUBLIC_GITHUB_PAGES: isGitHubPages ? "true" : "false"
+  },
   images: {
     unoptimized: true
   }

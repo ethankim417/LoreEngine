@@ -33,7 +33,8 @@ Create a polished weekly intelligence dashboard that helps me keep up with gamin
 - Impact, trend, confidence, category, source type, and sector metadata.
 - Article search, filtering, and sorting.
 - Article detail pages with impact reasoning.
-- Market Pulse page with cached public-company context.
+- Market Pulse page with weekly/cached public-company context.
+- Vercel Cron route for refreshing public close-price market data.
 - Documentation for future AI summarization and deployment.
 
 ## Prioritization
@@ -48,7 +49,7 @@ The MVP prioritizes:
 
 Lower priority for the MVP:
 
-- Real ingestion.
+- Real news ingestion.
 - User accounts.
 - Payments.
 - Alerts.
@@ -88,6 +89,6 @@ For a future live version:
 
 ## Roadmap Summary
 
-- **Now:** portfolio MVP with mock/cached data and polished documentation.
+- **Now:** current demo with mock article data, weekly market refresh, and clear documentation.
 - **Next:** real Vercel deployment URL, screenshots, and weekly ingestion proof of concept.
 - **Later:** database-backed briefs, source ranking, editorial review, saved views, and alerting.
