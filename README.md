@@ -1,25 +1,71 @@
 # LoreEngine
 
-LoreEngine is a production-ready portfolio web app for gaming industry intelligence. It presents trending gaming news and AI-related market signals in a dark, executive-grade dashboard inspired by Bloomberg terminals, IGN energy, Steam market awareness, and AI command-center interfaces.
+LoreEngine is a portfolio web app for gaming industry intelligence. It presents a weekly executive-style brief for gaming news, AI disruption, market movement, and company/platform strategy in a polished dark dashboard.
 
-The current version uses static mock data only. It does not call a paid AI API, fetch live news, or summarize articles at runtime.
+The product direction is simple: give a studio executive, investor, creator, or analyst a fast read on what changed, why it matters, and which parts of the games business may be affected next.
 
 ## Live Demo
 
-[Open the LoreEngine sample dashboard](https://ethankim417.github.io/LoreEngine/)
+[Open the LoreEngine dashboard](https://ethankim417.github.io/LoreEngine/)
 
-## Features
+## What This Project Shows
 
-- Next.js, TypeScript, and Tailwind CSS
-- Responsive dark interface with glassmorphism cards and animated glow background
-- 15 realistic mock intelligence briefs across gaming, AI, business, hardware, esports, platform, and studio categories
-- Dashboard metrics for Industry Heat, AI Disruption Index, Trending Articles, and Market Momentum
-- Search by title or summary
-- Category filtering
-- Sorting by newest, impact score, or trend score
-- Article detail pages with TLDR, why it matters, industry impact, trend analysis, affected companies, and sectors
-- Local browser bookmarks for showcase interaction
-- Weekly brief UI framing with a Vercel Cron scaffold for future scheduled ingest
+- Product-minded dashboard design for a specific audience
+- Next.js App Router with TypeScript
+- Tailwind CSS responsive UI
+- Component-based frontend architecture
+- Mock intelligence data shaped for a future real backend
+- Article detail pages with impact analysis and source links
+- Search, category filtering, source filtering, and sorting
+- Local bookmark interactions
+- Market Pulse watchlist with cached quote snapshot data
+- Cost-conscious scaffold for future scheduled AI summarization
+
+## Current Data Status
+
+LoreEngine is currently a showcase build.
+
+- Article briefs are static mock intelligence records in `data/articles.ts`.
+- Market prices are a cached portfolio snapshot in `data/market.ts`.
+- The app does not fetch live news in the browser.
+- The app does not call an AI API.
+- The app does not stream real-time stock prices.
+
+This is intentional for the portfolio version. The code is structured so a scheduled server job can later fetch news, summarize once, score once, cache the results, and let all users read the cached brief.
+
+## Core Features
+
+- Weekly gaming industry brief
+- Executive brief with ranked stories
+- Interactive Signal Map for sector relationships
+- Dashboard metrics:
+  - Industry Heat
+  - AI Disruption Index
+  - Trending Articles
+  - Market Momentum
+- Article cards with impact and momentum scoring
+- Article detail pages with:
+  - Full TLDR
+  - Why it matters
+  - Possible industry impact
+  - Trend analysis
+  - Affected companies and sectors
+- Market Pulse page organized by:
+  - Hardware-related companies
+  - Game engines
+  - Game revenue leaders
+- Vercel Cron scaffold for future weekly ingest
+- GitHub Pages workflow for static portfolio deployment
+
+## Tech Stack
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- React
+- Lucide icons
+- GitHub Actions
+- Vercel-ready server route scaffold
 
 ## Run Locally
 
@@ -28,7 +74,11 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open:
+
+```text
+http://localhost:3000
+```
 
 Useful checks:
 
@@ -38,45 +88,43 @@ npm run lint
 npm run build
 ```
 
-## Deploy On Vercel
+## Deployment
 
-1. Push this project to a GitHub repository.
-2. Import the repository in Vercel.
-3. Use the default Next.js settings.
-4. Deploy.
+### GitHub Pages
 
-No environment variables are required for the mock-data version.
+This repository includes `.github/workflows/pages.yml`.
 
-For the future weekly ingest route, add this only when you move beyond scaffold mode:
+Every push to `main` builds the app and deploys the static export to GitHub Pages.
+
+### Vercel
+
+The project can also be imported into Vercel with the default Next.js settings.
+
+No environment variables are required for the current mock-data build.
+
+For the future weekly ingest scaffold, add this only when enabling protected scheduled jobs:
 
 ```text
 CRON_SECRET=your-random-secret
 ```
 
-## Deploy On GitHub Pages
-
-This repo includes a GitHub Actions workflow at `.github/workflows/pages.yml`.
-
-After changes are pushed to `main`, GitHub Pages builds a static export and publishes it to:
-
-[https://ethankim417.github.io/LoreEngine/](https://ethankim417.github.io/LoreEngine/)
-
-## Mock Data
-
-All current article data lives in `data/articles.ts`. The mock records are typed and structured to resemble future cached AI summaries, including impact score, trend score, confidence, sectors, affected companies, and long-form analysis fields.
-
-## Future AI Summaries
+## Future AI Pipeline
 
 The intended production architecture is cost-conscious:
 
-- A scheduled backend job fetches RSS/news articles once per week.
-- The server summarizes and scores each article once with an AI API.
-- Results are saved to a database or JSON cache.
-- Frontend users read cached summaries only.
-- AI APIs are never called directly from the browser.
-- Articles are never summarized on every page load.
+1. A scheduled backend job fetches gaming and AI news once per week.
+2. The backend summarizes selected articles with an AI API.
+3. Impact, momentum, confidence, companies, and sectors are scored once.
+4. Results are saved to a database or JSON/blob cache.
+5. Frontend users read cached summaries only.
 
-See `FUTURE_AI_PIPELINE.md` for the planned pipeline and pseudo-code.
+Important constraints:
+
+- Never call AI APIs from the browser.
+- Never summarize articles on every page load.
+- Tie AI cost to weekly article volume, not visitor count.
+
+See [FUTURE_AI_PIPELINE.md](./FUTURE_AI_PIPELINE.md) for the planned architecture and pseudo-code.
 
 ## Project Structure
 
@@ -84,15 +132,25 @@ See `FUTURE_AI_PIPELINE.md` for the planned pipeline and pseudo-code.
 app/
   api/admin/weekly-ingest/route.ts
   articles/[slug]/page.tsx
+  market/page.tsx
   page.tsx
 components/
   ArticleCard.tsx
+  ExecutiveBrief.tsx
   IntelligenceDashboard.tsx
+  MarketPulse.tsx
+  SignalConstellation.tsx
 data/
   articles.ts
+  market.ts
 lib/
   format.ts
   futurePipeline.ts
   metrics.ts
-vercel.json
 ```
+
+## Portfolio Notes
+
+This project is designed as a polished product prototype, not a basic news blog. The focus is on interaction design, data modeling, frontend architecture, and a credible path toward server-side AI automation.
+
+For reviewer context, see [PORTFOLIO_NOTES.md](./PORTFOLIO_NOTES.md).

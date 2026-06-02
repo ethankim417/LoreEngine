@@ -1,7 +1,13 @@
 {
   "name": "loreengine",
   "version": "1.0.0",
+  "description": "A portfolio-grade gaming industry intelligence dashboard built with Next.js, TypeScript, and Tailwind CSS.",
   "private": true,
+  "author": "Ethan Kim <ethankim417@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ethankim417/LoreEngine.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
