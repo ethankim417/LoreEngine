@@ -8,7 +8,7 @@ People who need to make decisions rarely need every article. They need a concise
 
 ## Goal
 
-Create a polished weekly intelligence dashboard that demonstrates how gaming, AI, and market signals can be summarized into an executive-ready brief.
+Create a polished weekly intelligence dashboard that helps me keep up with gaming industry movement while testing how Codex can support product ideation, iteration, and implementation.
 
 ## Non-Goals
 
@@ -24,7 +24,7 @@ Create a polished weekly intelligence dashboard that demonstrates how gaming, AI
 - Investors and analysts tracking interactive entertainment
 - Gaming creators and commentators
 - Product managers studying AI impact on games
-- Recruiters evaluating product, technical, and AI fluency
+- People curious about AI-assisted product building
 
 ## MVP Scope
 
@@ -42,7 +42,7 @@ The MVP prioritizes:
 
 1. Clear product concept.
 2. Strong first impression.
-3. Recruiter-readable repository.
+3. Clear repository documentation.
 4. Cost-conscious AI architecture.
 5. Expandable data model.
 
@@ -70,10 +70,10 @@ Lower priority for the MVP:
 
 ## Success Metrics
 
-For the portfolio version:
+For the current version:
 
-- Recruiters understand the product in under 30 seconds.
-- The README communicates role, stack, live demo, tradeoffs, and next steps.
+- A first-time reader understands why the project exists in under 30 seconds.
+- The README communicates motivation, stack, live demo, tradeoffs, and next steps.
 - The dashboard feels polished on desktop and mobile.
 - The repo structure is easy to inspect.
 - Local setup works with standard Next.js commands.

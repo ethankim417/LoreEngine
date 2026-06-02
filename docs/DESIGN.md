@@ -2,7 +2,7 @@
 
 ## Target User
 
-LoreEngine is designed for a studio executive, investor, gaming creator, analyst, or product leader who wants a fast read on the gaming business without opening ten news tabs.
+LoreEngine is designed first for me: someone who wants to keep up with the gaming business without opening ten news tabs. The same experience could also serve a studio operator, investor, creator, analyst, or product leader.
 
 The product assumes the user has limited time and wants to know:
 
@@ -26,7 +26,7 @@ The product assumes the user has limited time and wants to know:
 - **Clear hierarchy:** metrics, executive brief, article cards, then deeper detail.
 - **Decision framing:** every story should answer why it matters.
 - **Low clutter:** show fewer decorative tags and reserve detail for hover states or detail pages.
-- **Portfolio impact:** make the first screen feel polished enough for a recruiter demo.
+- **First-screen clarity:** make the product's purpose obvious before the user starts exploring.
 
 ## Visual Principles
 
@@ -48,10 +48,10 @@ The dashboard is structured around the way a serious industry brief is consumed:
 
 ## Demo Simplifications
 
-- Article data is mocked to keep the portfolio demo stable.
+- Article data is mocked to keep the current demo stable.
 - Market data is cached/manual and should not be treated as financial advice.
 - Source links are representative and can be swapped for real collected articles later.
-- Scores are calculated from local data and intended to demonstrate the product model.
+- Scores are calculated from local data and intended to test the product model.
 
 ## Future Design Improvements
 

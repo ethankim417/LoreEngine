@@ -94,7 +94,7 @@ Future version:
 ## Tradeoffs
 
 - Local mock data makes the demo fast and reliable but limits real-world freshness.
-- Static deployment is simple for recruiters, while Vercel unlocks scheduled server functionality later.
+- Static deployment is simple for sharing, while Vercel unlocks scheduled server functionality later.
 - Scores are useful for product storytelling but need calibration with real editorial review.
 - Keeping AI out of the browser improves cost control, privacy, and security.
 

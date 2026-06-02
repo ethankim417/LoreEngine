@@ -4,72 +4,60 @@
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=nextdotjs)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Frontend-blue?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38bdf8?style=for-the-badge&logo=tailwindcss)
-![Vercel Ready](https://img.shields.io/badge/Vercel-Ready-black?style=for-the-badge&logo=vercel)
 ![AI Assisted](https://img.shields.io/badge/AI--assisted-build-purple?style=for-the-badge)
-![Portfolio Project](https://img.shields.io/badge/Portfolio-Project-22c55e?style=for-the-badge)
 
-LoreEngine is a recruiter-facing portfolio prototype for gaming industry intelligence. It turns gaming, AI, market, studio, platform, and hardware signals into a polished weekly executive brief.
+LoreEngine is an AI-assisted gaming industry intelligence dashboard. I built it to test how far Codex can help me turn an idea into a usable product, while also creating a tool that helps me stay current on gaming, AI, market, studio, platform, and hardware signals.
 
 **Live Demo:** [Live Demo - Vercel link here]  
 **Current Public Mirror:** [GitHub Pages](https://ethankim417.github.io/LoreEngine/)  
 **GitHub Repo:** [ethankim417/LoreEngine](https://github.com/ethankim417/LoreEngine)
 
-## For Recruiters
+## Why I Built This
 
-LoreEngine is designed to demonstrate the kind of hybrid product and technical judgment expected from a Technical Program Manager, AI-savvy technical manager, or product-minded operator.
+I wanted a project that was useful to me, not just a generic demo.
 
-- **Product thinking:** turns a vague domain need into a focused weekly intelligence workflow.
-- **Technical fluency:** uses Next.js, TypeScript, Tailwind CSS, component architecture, static data modeling, and a future backend ingest scaffold.
-- **Program management instincts:** separates MVP scope from future automation, documents tradeoffs, and makes deployment/readiness visible.
-- **AI-native workflow:** uses AI as an execution accelerator while keeping product direction, architecture decisions, and cost controls explicit.
+The gaming industry moves across too many disconnected sources: AI tools, game engines, public companies, console strategy, esports, creators, layoffs, hiring, and hardware. LoreEngine is my attempt to shape that noise into a weekly brief I would actually want to open.
 
-## What This Demonstrates
+The second goal was to test Codex as a product-building partner. I used it to move quickly through UI iteration, component structure, documentation, and deployment cleanup, while I directed the product decisions and kept the scope honest.
 
-- Turning an ambiguous product idea into a scoped MVP.
-- Designing a dashboard for executive scanning instead of casual browsing.
-- Structuring a modern frontend with reusable typed components.
-- Thinking ahead about AI cost, caching, deployment, and operational risk.
-- Communicating tradeoffs clearly through repo documentation.
+## What I Am Testing
 
-## Why This Project Is Interesting
+- Can Codex help build a polished product from a rough idea?
+- Can I use AI to iterate faster without losing product judgment?
+- Can a static prototype be structured so it can later support real weekly summaries?
+- Can gaming industry news be framed more like an intelligence brief than a news feed?
 
-Gaming leaders often need to scan news across AI tools, engines, platforms, esports, creators, hardware, and public markets. A normal news feed is noisy; LoreEngine reframes that stream as an executive brief with impact scores, trend movement, affected sectors, and market context.
+## What LoreEngine Does
 
-The current version is a portfolio MVP using mock/cached data, but the repository is structured for a later scheduled backend job that can fetch articles, summarize them once, score them once, cache the result, and serve the same brief to every visitor without calling AI APIs from the browser.
+- Presents a weekly gaming industry brief.
+- Tracks mock gaming, AI, market, studio, platform, esports, and hardware signals.
+- Scores articles by impact, trend, confidence, and affected sectors.
+- Supports search, category filters, source-type filters, and sorting.
+- Opens article detail pages with TLDRs, why-it-matters context, and trend analysis.
+- Includes a Market Pulse view for major public companies connected to gaming.
+- Includes a future weekly ingest scaffold for server-side AI summarization.
+
+## Current Data Status
+
+This version uses mock and cached data on purpose.
+
+- Articles live in [data/articles.ts](./data/articles.ts).
+- Market snapshots live in [data/market.ts](./data/market.ts).
+- The browser does not call a news API.
+- The browser does not call an AI API.
+- Stock prices are not real-time financial data.
+
+The intended future version would fetch sources on a schedule, summarize selected articles once on the server, cache the finished brief, and let users read that cached result.
 
 ## Screenshot / GIF
 
-Screenshots are intentionally not invented in this repo. Add real captures after deployment:
+Real screenshots should be added after the final Vercel deployment:
 
 - `docs/screenshots/loreengine-dashboard.png`
 - `docs/screenshots/loreengine-article-detail.png`
 - `docs/screenshots/loreengine-market-pulse.png`
 
-See [docs/screenshots/README.md](./docs/screenshots/README.md) for capture guidance.
-
-## My Role
-
-Built and directed by **Ethan Kim** as an AI-assisted portfolio project.
-
-Responsibilities represented in the repo:
-
-- Defined the product concept, target user, and weekly brief framing.
-- Iterated on information hierarchy, dashboard language, and visual clarity.
-- Structured the frontend into reusable components and typed data models.
-- Added documentation for design rationale, architecture, roadmap, and future AI ingestion.
-- Kept the MVP cost-conscious by using mock/cached data instead of live AI calls.
-
-## Features
-
-- Weekly executive brief dashboard for gaming and AI industry signals
-- Futuristic dark interface with responsive layouts and subtle visual systems
-- Article cards with TLDRs, impact scoring, trend scoring, confidence, sectors, and source links
-- Search, category filtering, source-type filtering, and sorting
-- Article detail pages with why-it-matters analysis and trend context
-- Market Pulse view for hardware companies, game engines, and game revenue leaders
-- Static/cached market snapshot data for portfolio realism
-- Vercel Cron scaffold for future weekly ingest
-- GitHub Pages workflow for public portfolio hosting
+See [docs/screenshots/README.md](./docs/screenshots/README.md).
 
 ## Tech Stack
 
@@ -105,8 +93,6 @@ lib/
   metrics.ts
 ```
 
-The frontend reads local mock/cached records today. The planned production path is server-side only: collect RSS/news sources on a schedule, summarize with an AI provider once, save the results, and let the dashboard read from the cache.
-
 Read more:
 
 - [Architecture](./docs/ARCHITECTURE.md)
@@ -115,51 +101,23 @@ Read more:
 - [Roadmap](./docs/ROADMAP.md)
 - [Future AI Pipeline](./FUTURE_AI_PIPELINE.md)
 
-## Product And Design Reasoning
-
-LoreEngine is not meant to feel like a generic blog. The interface is built around a daily/weekly brief mental model: quick headline scanning, stronger signals surfaced first, market context nearby, and deeper article analysis one click away.
-
-Key decisions:
-
-- Use mock data first so the product story and UI can be judged without backend complexity.
-- Show scores and sectors to make each article feel decision-oriented.
-- Keep detailed methodology available without overloading the dashboard.
-- Use a compact market view to support industry context without turning the product into a trading terminal.
-- Document the AI pipeline before enabling it, so cost and privacy constraints are clear.
-
 ## AI-Assisted Workflow
 
-AI accelerated implementation, design iteration, copy refinement, and documentation drafting. Ethan directed the product goals, selected the scope, evaluated the UI, requested design changes, and made the core tradeoff decisions.
+Codex helped accelerate implementation, copy iteration, layout adjustments, documentation, and repo cleanup. I used it as a build partner, not as an autopilot: the product framing, audience, iteration requests, and tradeoff decisions came from me.
 
-The app does **not** call an AI API in the browser. The intended future approach is to use AI only in a scheduled backend workflow, then serve cached summaries to users.
+The most important AI architecture rule in this repo is simple: never call AI APIs directly from the browser, and never summarize articles on every page load. Future summaries should be generated in a scheduled backend job and served from cache.
 
-## Data Status
+## Product Direction
 
-Current version:
+LoreEngine is meant to feel like a daily or weekly command brief for the gaming industry. The design goal is closer to an intelligence dashboard than a blog: fewer paragraphs, clearer signals, stronger prioritization, and fast paths into detail when something matters.
 
-- Uses mock article intelligence in [data/articles.ts](./data/articles.ts)
-- Uses cached/manual market snapshot data in [data/market.ts](./data/market.ts)
-- Does not fetch live news on page load
-- Does not stream real-time stock prices
-- Does not call a paid AI API
+Future improvements:
 
-This keeps the portfolio demo reliable, fast, and free to run.
-
-## Tradeoffs
-
-- Mock data makes the demo stable but does not prove live data ingestion yet.
-- Cached market prices communicate the product concept but should not be treated as financial data.
-- The future ingest route is scaffolded, not connected to real RSS feeds, databases, or AI providers.
-- The design prioritizes executive scanning over exhaustive article detail.
-
-## Next Improvements
-
-- Add the real Vercel deployment URL to this README.
-- Capture and add real dashboard screenshots/GIFs.
-- Connect a weekly RSS/news collection job.
-- Store generated briefs in a database or object cache.
-- Add source freshness metadata and editorial review status.
-- Add tests around scoring, filtering, and data validation.
+- Replace mock articles with a weekly RSS/news ingest.
+- Add a database or object cache for generated briefs.
+- Add source freshness and editorial review status.
+- Add tests around filtering, sorting, scoring, and article routing.
+- Add real screenshots and the final Vercel URL.
 
 ## Run Locally
 
@@ -198,16 +156,16 @@ CRON_SECRET=your-random-secret
 
 This repository also includes `.github/workflows/pages.yml` for static portfolio deployment from `main`.
 
-## GitHub Repo Polish
+## Suggested GitHub Metadata
 
-Suggested GitHub repository description:
+Description:
 
 ```text
 AI-assisted gaming industry intelligence dashboard built with Next.js, TypeScript, and Tailwind CSS.
 ```
 
-Suggested topics:
+Topics:
 
 ```text
-nextjs, typescript, tailwindcss, portfolio, dashboard, gaming, ai, product-management, vercel
+nextjs, typescript, tailwindcss, dashboard, gaming, ai, codex, vercel
 ```

@@ -4,7 +4,7 @@
 
 - Keep the portfolio MVP stable and easy to demo.
 - Maintain mock article data and cached market snapshots.
-- Keep README and docs recruiter-readable.
+- Keep README and docs clear for first-time readers.
 - Add real screenshots or GIFs after deployment.
 - Add the final Vercel live demo URL.
 
