@@ -1,7 +1,7 @@
 import { IntelligenceDashboard } from "@/components/IntelligenceDashboard";
 import { articles } from "@/data/articles";
 import { getDashboardMetrics } from "@/lib/metrics";
-import { Activity, Mail, Radar, Sparkles } from "lucide-react";
+import { Mail, Radar, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
@@ -78,12 +78,6 @@ function Hero() {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2">
-          <HeroSignal label="Briefs" value="15" />
-          <HeroSignal label="Market signals" value="17" />
-          <HeroSignal label="Refresh" value="Weekly" />
-        </div>
-
         <a
           href="mailto:lore-engine@ethankim.cc"
           className="inline-flex w-fit items-center gap-2 rounded-full border border-cyan-300/20 bg-slate-950/45 px-3 py-1.5 text-xs font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl transition hover:border-cyan-300/45 hover:bg-cyan-300/[0.1] sm:hidden"
@@ -96,15 +90,5 @@ function Hero() {
         </a>
       </div>
     </section>
-  );
-}
-
-function HeroSignal({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-3 py-1.5 text-xs shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-      <Activity className="h-3.5 w-3.5 text-cyan-200/75" />
-      <span className="font-black text-white">{value}</span>
-      <span className="font-semibold uppercase tracking-[0.12em] text-slate-500">{label}</span>
-    </div>
   );
 }
