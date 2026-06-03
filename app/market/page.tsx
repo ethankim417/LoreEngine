@@ -4,6 +4,7 @@ import {
   BadgeDollarSign,
   Building2,
   Database,
+  Info,
   TrendingDown,
   TrendingUp
 } from "lucide-react";
@@ -110,15 +111,45 @@ export default async function MarketPage() {
                 <Insight label="Snapshot date" value={formatDate(snapshot.snapshotDate)} />
                 <Insight label="Data source" value={formatSource(snapshot)} />
               </div>
-              <p className="mt-5 rounded-lg border border-amber-300/15 bg-amber-300/[0.06] p-3 text-xs leading-5 text-amber-100/90">
-                On Vercel, prices refresh server-side from a public close-data feed and use the local
-                snapshot as fallback. The GitHub Pages mirror remains static.
-              </p>
+              <MarketDisclosure />
             </aside>
           </div>
         </section>
       </div>
     </main>
+  );
+}
+
+function MarketDisclosure() {
+  return (
+    <div className="group/disclosure relative mt-5 rounded-lg border border-amber-300/15 bg-amber-300/[0.055] p-3 text-xs leading-5 text-amber-100/90">
+      <div className="flex items-center gap-2">
+        <Info className="h-3.5 w-3.5 shrink-0 text-amber-100" />
+        <span>Weekly/cached market context, not investment advice.</span>
+        <button
+          type="button"
+          className="font-bold text-cyan-100 underline decoration-cyan-300/25 underline-offset-4 outline-none transition hover:text-white focus:text-white"
+          aria-label="Show Market Pulse disclaimer"
+        >
+          Details
+        </button>
+      </div>
+      <div className="pointer-events-none absolute bottom-[calc(100%+0.75rem)] right-0 z-30 hidden w-[min(34rem,calc(100vw-2rem))] rounded-lg border border-cyan-300/18 bg-slate-950/95 p-4 text-left text-xs leading-5 text-slate-300 shadow-[0_24px_80px_rgba(0,0,0,0.48)] backdrop-blur-xl group-hover/disclosure:block group-focus-within/disclosure:block">
+        <p className="font-black uppercase tracking-[0.14em] text-cyan-200">Market Pulse Disclaimer</p>
+        <p className="mt-2">
+          Market Pulse is for informational and educational context only. It is not financial,
+          investment, legal, or professional advice.
+        </p>
+        <p className="mt-2">
+          Prices refresh server-side on Vercel from a public chart data source where available and
+          fall back to the local snapshot when needed. Data may be delayed, incomplete, or inaccurate.
+        </p>
+        <p className="mt-2">
+          Do not use this page for trading or investment decisions. Company names, tickers, and
+          trademarks belong to their respective owners.
+        </p>
+      </div>
+    </div>
   );
 }
 
