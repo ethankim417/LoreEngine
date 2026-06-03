@@ -1,7 +1,7 @@
 import { IntelligenceDashboard } from "@/components/IntelligenceDashboard";
 import { articles } from "@/data/articles";
 import { getDashboardMetrics } from "@/lib/metrics";
-import { Mail, Radar, Sparkles } from "lucide-react";
+import { Info, Mail, Radar, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
@@ -10,6 +10,7 @@ export default function Home() {
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-5 px-3 py-4 sm:gap-6 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
         <Hero />
         <IntelligenceDashboard articles={articles} metrics={getDashboardMetrics(articles)} />
+        <DisclosureFooter />
       </div>
     </main>
   );
@@ -86,5 +87,40 @@ function Hero() {
         </a>
       </div>
     </section>
+  );
+}
+
+function DisclosureFooter() {
+  return (
+    <footer className="pb-3">
+      <div className="group/disclosure relative inline-flex max-w-full flex-wrap items-center gap-2 rounded-lg border border-white/10 bg-slate-950/45 px-3 py-2 text-xs text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl sm:rounded-full">
+        <Info className="h-3.5 w-3.5 shrink-0 text-cyan-200/80" />
+        <span>
+          Informational demo. Market data is weekly/cached, not real-time financial data.
+        </span>
+        <button
+          type="button"
+          className="rounded-full text-cyan-200/80 underline decoration-cyan-300/25 underline-offset-4 outline-none transition hover:text-cyan-100 focus:text-cyan-100"
+          aria-label="Show LoreEngine disclaimer"
+        >
+          Disclaimer
+        </button>
+        <div className="pointer-events-none absolute bottom-[calc(100%+0.75rem)] left-0 z-30 hidden w-[min(34rem,calc(100vw-2rem))] rounded-lg border border-cyan-300/18 bg-slate-950/95 p-4 text-left text-xs leading-5 text-slate-300 shadow-[0_24px_80px_rgba(0,0,0,0.48)] backdrop-blur-xl group-hover/disclosure:block group-focus-within/disclosure:block">
+          <p className="font-black uppercase tracking-[0.14em] text-cyan-200">LoreEngine Disclaimer</p>
+          <p className="mt-2">
+            LoreEngine is an experimental industry intelligence dashboard for informational and educational
+            purposes only. It is not financial, investment, legal, or professional advice.
+          </p>
+          <p className="mt-2">
+            Market data may be delayed, incomplete, or inaccurate and should not be used for trading or
+            investment decisions. Company names, tickers, and trademarks belong to their respective owners.
+          </p>
+          <p className="mt-2">
+            Article intelligence uses mock/cached data unless stated otherwise. Future AI-generated summaries
+            may contain errors and should be checked against original sources.
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 }
