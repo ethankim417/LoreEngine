@@ -9,6 +9,7 @@
 LoreEngine is an AI-assisted gaming industry intelligence dashboard. I built it to test how far Codex can help me turn an idea into a usable product, while also creating a tool that helps me stay current on gaming, AI, market, studio, platform, and hardware signals.
 
 **Live Demo:** [Live Demo - Vercel link here]  
+**Planned Custom Domain:** `https://lore-engine.ethankim.cc`  
 **Current Public Mirror:** [GitHub Pages](https://ethankim417.github.io/LoreEngine/)  
 **GitHub Repo:** [ethankim417/LoreEngine](https://github.com/ethankim417/LoreEngine)
 
@@ -36,6 +37,7 @@ The second goal was to test Codex as a product-building partner. I used it to mo
 - Opens article detail pages with TLDRs, why-it-matters context, and trend analysis.
 - Includes a Market Pulse view for major public companies connected to gaming.
 - Includes a weekly Vercel Cron refresh for market close-price data.
+- Includes compact dashboard and Market Pulse disclaimers for data/financial context.
 - Includes a future weekly ingest scaffold for server-side AI/news summarization.
 
 ## Current Data Status
@@ -48,6 +50,7 @@ This version uses mock and cached data on purpose.
 - The browser does not call a news API.
 - The browser does not call an AI API.
 - Stock prices are weekly/cached close-price data, not real-time financial data.
+- Dashboard and Market Pulse disclosures clarify that the project is informational only.
 
 The intended future version would fetch sources on a schedule, summarize selected articles once on the server, cache the finished brief, and let users read that cached result.
 
@@ -60,6 +63,11 @@ Real screenshots should be added after the final Vercel deployment:
 - `docs/screenshots/loreengine-market-pulse.png`
 
 See [docs/screenshots/README.md](./docs/screenshots/README.md).
+
+The app also includes a branded favicon and Open Graph preview asset:
+
+- [public/favicon.svg](./public/favicon.svg)
+- [public/loreengine-og.svg](./public/loreengine-og.svg)
 
 ## Tech Stack
 
@@ -77,6 +85,8 @@ See [docs/screenshots/README.md](./docs/screenshots/README.md).
 ```text
 app/
   api/admin/weekly-ingest/route.ts
+  api/admin/market-refresh/route.ts
+  api/market/route.ts
   articles/[slug]/page.tsx
   market/page.tsx
   methodology/page.tsx
@@ -93,7 +103,10 @@ data/
 lib/
   format.ts
   futurePipeline.ts
+  marketData.ts
   metrics.ts
+scripts/
+  smoke.mjs
 ```
 
 Read more:
@@ -148,6 +161,13 @@ Useful checks:
 npm run typecheck
 npm run lint
 npm run build
+```
+
+Smoke checks against a running local or deployed app:
+
+```bash
+npm run smoke
+BASE_URL=https://lore-engine.ethankim.cc npm run smoke
 ```
 
 ## Deployment

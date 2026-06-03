@@ -1,0 +1,33 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#06070D"/>
+  <g opacity="0.28">
+    <path d="M0 92H1200M0 184H1200M0 276H1200M0 368H1200M0 460H1200M0 552H1200" stroke="#E7ECFF" stroke-opacity="0.12"/>
+    <path d="M110 0V630M220 0V630M330 0V630M440 0V630M550 0V630M660 0V630M770 0V630M880 0V630M990 0V630M1100 0V630" stroke="#E7ECFF" stroke-opacity="0.12"/>
+  </g>
+  <circle cx="930" cy="126" r="310" fill="#32D9FF" fill-opacity="0.14"/>
+  <circle cx="1010" cy="462" r="260" fill="#8A5CFF" fill-opacity="0.13"/>
+  <circle cx="250" cy="520" r="230" fill="#54F0A9" fill-opacity="0.08"/>
+  <rect x="72" y="72" width="1056" height="486" rx="28" fill="#0B1020" fill-opacity="0.78" stroke="white" stroke-opacity="0.12"/>
+  <rect x="104" y="104" width="88" height="88" rx="20" fill="#06070D" stroke="#32D9FF" stroke-opacity="0.42"/>
+  <circle cx="148" cy="148" r="28" stroke="#32D9FF" stroke-opacity="0.34" stroke-width="3"/>
+  <circle cx="148" cy="148" r="16" stroke="#8A5CFF" stroke-opacity="0.38" stroke-width="3"/>
+  <path d="M148 148L176 124" stroke="#32D9FF" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="176" cy="124" r="5" fill="#54F0A9"/>
+  <path d="M118 121H128V162H154V171H118V121Z" fill="#E7ECFF"/>
+  <path d="M156 121H181V130H170V171H156V121Z" fill="#8A5CFF"/>
+  <text x="104" y="262" fill="#E7ECFF" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="900" letter-spacing="-1">LoreEngine</text>
+  <text x="104" y="326" fill="#BDEFFF" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">The gaming industry, distilled weekly.</text>
+  <text x="104" y="386" fill="#A8B3CF" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="500">Gaming, AI, platform, hardware, esports, and market signals in one ranked brief.</text>
+  <g transform="translate(104 448)">
+    <rect width="172" height="48" rx="14" fill="#32D9FF" fill-opacity="0.1" stroke="#32D9FF" stroke-opacity="0.24"/>
+    <text x="24" y="31" fill="#D9FBFF" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="1.2">WEEKLY BRIEF</text>
+  </g>
+  <g transform="translate(300 448)">
+    <rect width="210" height="48" rx="14" fill="#8A5CFF" fill-opacity="0.1" stroke="#8A5CFF" stroke-opacity="0.24"/>
+    <text x="24" y="31" fill="#E5DDFF" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="1.2">MARKET PULSE</text>
+  </g>
+  <g transform="translate(534 448)">
+    <rect width="180" height="48" rx="14" fill="#54F0A9" fill-opacity="0.08" stroke="#54F0A9" stroke-opacity="0.2"/>
+    <text x="24" y="31" fill="#D8FFE9" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="1.2">AI ASSISTED</text>
+  </g>
+</svg>
