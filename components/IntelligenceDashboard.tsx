@@ -83,7 +83,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
   }, [articles, category, query, sortMode, sourceType]);
 
   return (
-    <div className="flex flex-col gap-5 sm:gap-6">
+    <div className="flex flex-col gap-5 sm:gap-7 lg:gap-8">
       <WeeklyBriefStatus articles={articles} metrics={metrics} />
 
       <ExecutiveBrief articles={articles} />

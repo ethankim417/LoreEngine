@@ -4,6 +4,7 @@ type StockLineChartProps = {
   height?: number;
   strokeWidth?: number;
   label?: string;
+  endLabel?: string;
 };
 
 export function StockLineChart({
@@ -11,7 +12,8 @@ export function StockLineChart({
   positive,
   height = 56,
   strokeWidth = 2,
-  label = "Price trend"
+  label = "Price trend",
+  endLabel
 }: StockLineChartProps) {
   const width = 180;
   const padding = 6;
@@ -90,6 +92,19 @@ export function StockLineChart({
         fill={stroke}
         opacity="0.82"
       />
+      {endLabel ? (
+        <text
+          className="stock-chart-end-label"
+          x={Math.max(endpoint.x - 3, padding)}
+          y={Math.max(endpoint.y - 5, 8)}
+          textAnchor="end"
+          fill={stroke}
+          fontSize="7"
+          fontWeight="800"
+        >
+          {endLabel}
+        </text>
+      ) : null}
     </svg>
   );
 }

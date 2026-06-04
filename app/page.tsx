@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden">
       <AmbientBackground />
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-5 px-3 py-4 sm:gap-6 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-5 px-3 py-4 sm:gap-7 sm:px-6 sm:py-6 lg:gap-8 lg:px-8 lg:py-8">
         <Hero />
         <IntelligenceDashboard articles={articles} metrics={getDashboardMetrics(articles)} />
         <DisclosureFooter />
@@ -36,6 +36,7 @@ function Hero() {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/40 to-transparent" />
       <div className="absolute inset-y-0 left-[-18%] w-1/3 animate-slow-pan bg-gradient-to-r from-transparent via-cyan-200/[0.055] to-transparent blur-sm [animation-duration:14s]" />
       <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-cyan-300/[0.06] blur-3xl" />
+      <HeroRadar />
       <div className="relative flex flex-col gap-4">
         <a
           href="mailto:lore-engine@ethankim.cc"
@@ -87,6 +88,50 @@ function Hero() {
         </a>
       </div>
     </section>
+  );
+}
+
+function HeroRadar() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute bottom-4 right-5 hidden h-40 w-40 opacity-80 sm:block lg:h-48 lg:w-48"
+    >
+      <svg className="h-full w-full overflow-visible" viewBox="0 0 180 180" fill="none">
+        <circle cx="90" cy="90" r="58" stroke="rgba(50,217,255,0.18)" strokeWidth="1" />
+        <circle cx="90" cy="90" r="36" stroke="rgba(167,139,250,0.16)" strokeWidth="1" />
+        <circle cx="90" cy="90" r="14" stroke="rgba(84,240,169,0.16)" strokeWidth="1" />
+        <path
+          className="hero-radar-sweep"
+          d="M90 90 L90 25 A65 65 0 0 1 142 52 Z"
+          fill="url(#hero-radar-glow)"
+        />
+        <path d="M38 90H162" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+        <path d="M90 38V162" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+        {[
+          [55, 68],
+          [122, 76],
+          [104, 124],
+          [73, 111]
+        ].map(([x, y], index) => (
+          <circle
+            key={`${x}-${y}`}
+            className="hero-radar-dot"
+            cx={x}
+            cy={y}
+            r="2.8"
+            fill={index % 2 ? "#a78bfa" : "#67e8f9"}
+            style={{ animationDelay: `${index * 0.35}s` }}
+          />
+        ))}
+        <defs>
+          <radialGradient id="hero-radar-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(90 90) rotate(-44) scale(74)">
+            <stop stopColor="rgba(50,217,255,0.2)" />
+            <stop offset="1" stopColor="rgba(50,217,255,0)" />
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
   );
 }
 

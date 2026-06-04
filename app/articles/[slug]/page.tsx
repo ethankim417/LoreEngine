@@ -65,7 +65,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
             <div className="relative z-10 grid gap-5 sm:min-h-[26rem] lg:grid-cols-[1fr_18rem] lg:items-end">
               <div className="max-w-3xl">
-                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                <div className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-lg border border-white/10 bg-slate-950/50 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:gap-3">
                   <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
                     {article.category}
                   </span>
@@ -90,7 +90,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 </div>
               </div>
 
-              <div className="grid gap-2 rounded-lg border border-white/10 bg-slate-950/62 p-3 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
+              <div className="grid gap-2 rounded-lg border border-white/10 bg-slate-950/70 p-2.5 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:p-3">
                 <HeaderGauge label="Impact" value={article.impactScore} suffix="/100" />
                 <HeaderGauge label="Momentum" value={article.trendScore} prefix="+" suffix="%" />
                 <HeaderGauge label="Confidence" value={article.confidence} suffix="%" />

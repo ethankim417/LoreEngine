@@ -37,6 +37,7 @@ export function ArticleCard({ article }: { article: Article }) {
 
   return (
     <article className="glass-panel premium-hover group relative flex min-h-[19.5rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[22.5rem]">
+      <div className={`absolute inset-y-0 left-0 z-20 w-1 ${priority.railClass}`} aria-hidden="true" />
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <Image
           src={article.visual.image}
@@ -146,20 +147,23 @@ function getPriority(article: Article) {
   if (article.impactScore >= 86 || article.trendScore >= 36) {
     return {
       label: "Read first",
-      className: "border-emerald-300/25 bg-emerald-300/10 text-emerald-100"
+      className: "border-emerald-300/25 bg-emerald-300/10 text-emerald-100",
+      railClass: "bg-gradient-to-b from-emerald-200 via-cyan-300 to-transparent"
     };
   }
 
   if (article.impactScore >= 78 || article.trendScore >= 25) {
     return {
       label: "Monitor",
-      className: "border-cyan-300/25 bg-cyan-300/10 text-cyan-100"
+      className: "border-cyan-300/25 bg-cyan-300/10 text-cyan-100",
+      railClass: "bg-gradient-to-b from-cyan-200 via-violet-300 to-transparent"
     };
   }
 
   return {
     label: "Background",
-    className: "border-slate-300/15 bg-slate-300/5 text-slate-300"
+    className: "border-slate-300/15 bg-slate-300/5 text-slate-300",
+    railClass: "bg-gradient-to-b from-slate-300/55 via-slate-500/25 to-transparent"
   };
 }
 

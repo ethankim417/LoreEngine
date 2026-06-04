@@ -97,14 +97,16 @@ export function MarketPulse() {
                     </p>
                   </div>
                 </div>
-                <div className="mt-2 h-12">
+                <div className="relative mt-2 h-12 overflow-hidden rounded-md">
                   <StockLineChart
                     values={lead.trend}
                     positive={lead.thirtyDayChange >= 0}
                     height={44}
                     strokeWidth={1.8}
                     label={`${lead.company} 30 day line chart`}
+                    endLabel={formatPercent(lead.thirtyDayChange)}
                   />
+                  {isRefreshing ? <div className="market-skeleton absolute inset-0 rounded-md" /> : null}
                 </div>
               </div>
 

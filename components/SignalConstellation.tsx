@@ -140,6 +140,7 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
             <p className="truncate font-display text-lg font-black text-white">{selectedSignal.label}</p>
           </div>
         </div>
+        <MiniConstellation />
         <button
           type="button"
           onClick={() => setMapOpen((open) => !open)}
@@ -274,6 +275,19 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
         </aside>
       </div>
     </section>
+  );
+}
+
+function MiniConstellation() {
+  return (
+    <svg className="hidden h-9 w-14 shrink-0 sm:hidden min-[390px]:block" viewBox="0 0 56 36" fill="none" aria-hidden="true">
+      <path d="M12 20 C22 5 32 30 44 12" stroke="rgba(50,217,255,0.32)" strokeWidth="1" strokeLinecap="round" />
+      <path d="M18 28 C26 14 34 18 46 26" stroke="rgba(167,139,250,0.24)" strokeWidth="1" strokeLinecap="round" />
+      <circle cx="12" cy="20" r="3" fill="#67e8f9" opacity="0.85" />
+      <circle cx="28" cy="15" r="3.5" fill="#a78bfa" opacity="0.85" />
+      <circle cx="44" cy="12" r="3" fill="#6ee7b7" opacity="0.85" />
+      <circle cx="46" cy="26" r="2.7" fill="#fcd34d" opacity="0.8" />
+    </svg>
   );
 }
 
