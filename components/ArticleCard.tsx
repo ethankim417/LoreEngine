@@ -36,7 +36,7 @@ export function ArticleCard({ article }: { article: Article }) {
   }
 
   return (
-    <article className="glass-panel premium-hover group relative flex min-h-[21.5rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[22.5rem]">
+    <article className="glass-panel premium-hover group relative flex min-h-[19.5rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[22.5rem]">
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <Image
           src={article.visual.image}
@@ -82,7 +82,7 @@ export function ArticleCard({ article }: { article: Article }) {
         </h2>
         <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-300">{article.tldr}</p>
 
-        {article.impactScore >= 85 ? (
+        {article.impactScore >= 90 ? (
           <div className="mt-3 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-3">
             <p className="text-[0.66rem] font-black uppercase tracking-[0.1em] text-cyan-200">
               Why it matters

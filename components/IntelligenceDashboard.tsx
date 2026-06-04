@@ -44,6 +44,9 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
   const [sourceType, setSourceType] = useState<SourceCredibility | "All">("All");
   const [sortMode, setSortMode] = useState<SortMode>("impact");
   const [selectedMetric, setSelectedMetric] = useState<DashboardMetric | null>(null);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const activeFilterCount =
+    (query.trim() ? 1 : 0) + (category !== "All" ? 1 : 0) + (sourceType !== "All" ? 1 : 0) + (sortMode !== "impact" ? 1 : 0);
   const resetFilters = () => {
     setQuery("");
     setCategory("All");
@@ -95,14 +98,25 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
       <section className="glass-panel rounded-lg p-4 sm:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-          <div>
-            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-cyan-200">
-              <Sparkles className="h-4 w-4" />
-              Intelligence Feed
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-cyan-200">
+                <Sparkles className="h-4 w-4" />
+                Intelligence Feed
+              </div>
+              <p className="mt-2 text-sm text-slate-400">
+                {filteredArticles.length} brief{filteredArticles.length === 1 ? "" : "s"} matched
+              </p>
             </div>
-            <p className="mt-2 text-sm text-slate-400">
-              {filteredArticles.length} brief{filteredArticles.length === 1 ? "" : "s"} matched
-            </p>
+            <button
+              type="button"
+              onClick={() => setFiltersOpen((open) => !open)}
+              aria-expanded={filtersOpen}
+              className="inline-flex items-center gap-2 rounded-lg border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-2 text-xs font-black text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-cyan-300/45 md:hidden"
+            >
+              <SlidersHorizontal className="h-4 w-4" />
+              Filters{activeFilterCount ? ` (${activeFilterCount})` : ""}
+            </button>
           </div>
 
           <div className="grid gap-2.5 sm:gap-3 md:grid-cols-[minmax(14rem,1fr)_auto_auto_auto] xl:w-[58rem]">
@@ -117,7 +131,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               />
             </label>
 
-            <label className="relative block">
+            <label className={`${filtersOpen ? "block" : "hidden"} relative md:block`}>
               <span className="sr-only">Filter category</span>
               <SlidersHorizontal className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <select
@@ -135,7 +149,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-cyan-200/70" />
             </label>
 
-            <label className="relative block">
+            <label className={`${filtersOpen ? "block" : "hidden"} relative md:block`}>
               <span className="sr-only">Filter source type</span>
               <ShieldCheck className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <select
@@ -153,7 +167,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-emerald-200/70" />
             </label>
 
-            <label className="relative block">
+            <label className={`${filtersOpen ? "block" : "hidden"} relative md:block`}>
               <span className="sr-only">Sort articles</span>
               <ArrowDownUp className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <select

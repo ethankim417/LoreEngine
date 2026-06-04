@@ -125,11 +125,31 @@ export function SignalConstellation({ articles }: { articles: Article[] }) {
     [articles]
   );
   const [selectedId, setSelectedId] = useState(signals[0]?.id ?? "game-ai");
+  const [mapOpen, setMapOpen] = useState(false);
   const selectedSignal = signals.find((signal) => signal.id === selectedId) ?? signals[0];
 
   return (
     <section className="glass-panel overflow-hidden rounded-lg" aria-label="Signal constellation map">
-      <div className="grid lg:grid-cols-[minmax(0,1.25fr)_24rem]">
+      <div className="flex items-center justify-between gap-3 border-b border-white/10 p-4 sm:hidden">
+        <div className="flex min-w-0 items-center gap-3">
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-cyan-300/25 bg-cyan-300/10 text-cyan-100">
+            <Network className="h-4 w-4" />
+          </span>
+          <div className="min-w-0">
+            <p className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-cyan-200">Signal Map</p>
+            <p className="truncate font-display text-lg font-black text-white">{selectedSignal.label}</p>
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={() => setMapOpen((open) => !open)}
+          aria-expanded={mapOpen}
+          className="shrink-0 rounded-lg border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-2 text-xs font-black text-cyan-50 transition hover:border-cyan-300/45"
+        >
+          {mapOpen ? "Hide" : "View"}
+        </button>
+      </div>
+      <div className={`${mapOpen ? "grid" : "hidden"} sm:grid lg:grid-cols-[minmax(0,1.25fr)_24rem]`}>
         <div className="relative min-h-[18rem] overflow-hidden p-4 sm:min-h-[22rem] sm:p-5">
           <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(34,211,238,0.08),transparent_40%,rgba(167,139,250,0.1)),radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.08),transparent_1px)] bg-[length:auto,42px_42px]" />
           <div className="absolute left-1/2 top-1/2 h-[15rem] w-[15rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-200/10 sm:h-[19rem] sm:w-[19rem]" />
