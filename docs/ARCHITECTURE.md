@@ -8,10 +8,13 @@ LoreEngine is a Next.js App Router project.
 app/
   api/admin/market-refresh/route.ts
   api/admin/weekly-ingest/route.ts
+  api/health/route.ts
   api/market/route.ts
   articles/[slug]/page.tsx
   market/page.tsx
   methodology/page.tsx
+  robots.ts
+  sitemap.ts
   page.tsx
 components/
   ArticleCard.tsx
@@ -55,6 +58,7 @@ The current portfolio build is static/cached:
 - Filtering and sorting happen in the client experience.
 - No browser route calls a paid AI API.
 - No page load triggers summarization.
+- `/api/health` exposes a lightweight operational status payload for deployment checks.
 
 ## Future Weekly AI Pipeline
 

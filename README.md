@@ -86,10 +86,13 @@ The app also includes a branded favicon and Open Graph preview asset:
 app/
   api/admin/weekly-ingest/route.ts
   api/admin/market-refresh/route.ts
+  api/health/route.ts
   api/market/route.ts
   articles/[slug]/page.tsx
   market/page.tsx
   methodology/page.tsx
+  robots.ts
+  sitemap.ts
   page.tsx
 components/
   ArticleCard.tsx
@@ -113,6 +116,7 @@ Read more:
 
 - [Architecture](./docs/ARCHITECTURE.md)
 - [Design Rationale](./docs/DESIGN.md)
+- [Data Model](./docs/DATA_MODEL.md)
 - [Product Brief](./docs/PRODUCT_BRIEF.md)
 - [Roadmap](./docs/ROADMAP.md)
 - [Future AI Pipeline](./FUTURE_AI_PIPELINE.md)

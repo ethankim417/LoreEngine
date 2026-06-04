@@ -7,7 +7,10 @@ const checks = [
     path: "/articles/nvidia-gaming-ai-stack-targets-on-device-agents",
     expect: "NVIDIA"
   },
-  { path: "/api/market", expect: "snapshotDate" }
+  { path: "/api/market", expect: "snapshotDate" },
+  { path: "/api/health", expect: "\"status\":\"ok\"" },
+  { path: "/robots.txt", expect: "sitemap" },
+  { path: "/sitemap.xml", expect: "lore-engine.ethankim.cc" }
 ];
 
 async function checkRoute({ path, expect }) {

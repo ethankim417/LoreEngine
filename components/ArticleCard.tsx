@@ -117,6 +117,8 @@ export function ArticleCard({ article }: { article: Article }) {
         </Link>
         <a
           href={article.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={`Open source article from ${article.source}`}
           title={`Open source article from ${article.source}`}
           data-testid={`source-link-${article.slug}`}
