@@ -49,7 +49,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </Link>
 
         <article className="glass-panel overflow-hidden rounded-lg">
-          <div className="relative min-h-[28rem] overflow-hidden border-b border-white/10 p-4 sm:min-h-[30rem] sm:p-7">
+          <div className="relative overflow-hidden border-b border-white/10 p-4 sm:min-h-[30rem] sm:p-7">
             <Image
               src={article.visual.image}
               alt={article.visual.alt}
@@ -63,7 +63,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             <div className="absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_50%_35%,rgba(50,217,255,0.085),transparent_48%)]" />
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#06070d] to-transparent" />
 
-            <div className="relative z-10 grid min-h-[25rem] gap-5 sm:min-h-[26rem] lg:grid-cols-[1fr_18rem] lg:items-end">
+            <div className="relative z-10 grid gap-5 sm:min-h-[26rem] lg:grid-cols-[1fr_18rem] lg:items-end">
               <div className="max-w-3xl">
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
@@ -72,7 +72,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                   <SourceBadge source={article.source} credibility={article.sourceCredibility} />
                   <span className="text-sm text-slate-300">{formatDate(article.publishedAt)}</span>
                 </div>
-                <h1 className="mt-5 max-w-4xl font-display text-3xl font-black leading-tight tracking-normal text-white sm:text-5xl">
+                <h1 className="mt-5 max-w-4xl text-balance font-display text-3xl font-black leading-tight tracking-normal text-white sm:text-5xl">
                   {article.title}
                 </h1>
                 <p className="mt-4 max-w-3xl text-base leading-7 text-slate-200 sm:text-lg sm:leading-8">

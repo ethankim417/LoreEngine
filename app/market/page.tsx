@@ -125,7 +125,7 @@ function MarketDisclosure() {
     <div className="group/disclosure relative mt-5 rounded-lg border border-amber-300/15 bg-amber-300/[0.055] p-3 text-xs leading-5 text-amber-100/90">
       <div className="flex items-center gap-2">
         <Info className="h-3.5 w-3.5 shrink-0 text-amber-100" />
-        <span>Weekly/cached market context, not investment advice.</span>
+        <span className="min-w-0">Weekly/cached market context, not investment advice.</span>
         <button
           type="button"
           className="font-bold text-cyan-100 underline decoration-cyan-300/25 underline-offset-4 outline-none transition hover:text-white focus:text-white"
@@ -165,7 +165,7 @@ function MarketGroupSection({
       <div className="flex flex-col gap-2 border-b border-white/10 bg-white/[0.035] px-4 py-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">{group.eyebrow}</p>
-          <h2 className="mt-1 font-display text-2xl font-black text-white">{group.title}</h2>
+          <h2 className="mt-1 text-balance font-display text-2xl font-black text-white">{group.title}</h2>
           <p className="mt-1 text-sm text-slate-400">{group.description}</p>
         </div>
       </div>
@@ -203,9 +203,9 @@ function MarketRow({ player }: { player: MarketPlayer }) {
 
       <div className="min-w-0">
         <h2 className="truncate font-display text-lg font-black text-white">{player.company}</h2>
-        <p className="mt-1 flex items-center gap-1.5 text-sm text-slate-400">
+        <p className="mt-1 flex min-w-0 items-center gap-1.5 text-sm text-slate-400">
           <Building2 className="h-3.5 w-3.5 text-slate-500" />
-          {player.segment}
+          <span className="min-w-0 break-words">{player.segment}</span>
         </p>
         <div className="group/readout relative mt-2 max-w-2xl">
           <p className="line-clamp-2 text-xs leading-5 text-slate-500">{player.summary}</p>

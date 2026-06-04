@@ -441,7 +441,7 @@ function MetricExplainerDialog({
       onClick={onClose}
     >
       <div
-        className="glass-panel w-full max-w-2xl overflow-hidden rounded-lg"
+        className="glass-panel max-h-[calc(100vh-1.5rem)] w-full max-w-2xl overflow-y-auto rounded-lg"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4 border-b border-white/10 p-5 sm:p-6">
