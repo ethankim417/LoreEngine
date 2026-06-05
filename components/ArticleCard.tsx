@@ -17,7 +17,7 @@ import { SectorSignalArt } from "@/components/SectorSignalArt";
 import type { Article } from "@/data/articles";
 import { categoryTone, formatDate } from "@/lib/format";
 
-export function ArticleCard({ article }: { article: Article }) {
+export function ArticleCard({ article, featured = false }: { article: Article; featured?: boolean }) {
   const [bookmarked, setBookmarked] = useState(false);
   const priority = getPriority(article);
 
@@ -36,7 +36,7 @@ export function ArticleCard({ article }: { article: Article }) {
   }
 
   return (
-    <article className="glass-panel premium-hover group relative flex min-h-[16.75rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[22.5rem]">
+    <article className={`glass-panel premium-hover group relative flex min-h-[16.75rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[22.5rem] ${featured ? "xl:col-span-2 xl:min-h-[24rem]" : ""}`}>
       <div className={`absolute inset-y-0 left-0 z-20 w-1 ${priority.railClass}`} aria-hidden="true" />
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <Image
@@ -80,10 +80,10 @@ export function ArticleCard({ article }: { article: Article }) {
           </span>
         </div>
 
-        <h2 className="mt-2 line-clamp-3 font-display text-base font-black leading-snug tracking-normal text-white sm:mt-3 sm:text-xl">
+        <h2 className={`mt-2 line-clamp-3 font-display font-black leading-snug tracking-normal text-white sm:mt-3 ${featured ? "text-base sm:text-xl xl:max-w-2xl xl:text-3xl" : "text-base sm:text-xl"}`}>
           {article.title}
         </h2>
-        <p className="mt-2 line-clamp-1 text-sm leading-6 text-slate-300 sm:line-clamp-2">{article.tldr}</p>
+        <p className={`mt-2 text-sm leading-6 text-slate-300 ${featured ? "line-clamp-1 sm:line-clamp-2 xl:max-w-2xl xl:line-clamp-3" : "line-clamp-1 sm:line-clamp-2"}`}>{article.tldr}</p>
 
         {article.impactScore >= 90 ? (
           <div className="mt-3 hidden rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-3 sm:block">

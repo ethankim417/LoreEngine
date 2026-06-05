@@ -98,6 +98,11 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
           <MarketPulse />
         </div>
       </div>
+      <div className="flex justify-center gap-1.5 md:hidden" aria-hidden="true">
+        <span className="h-1.5 w-5 rounded-full bg-cyan-200/70" />
+        <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
+        <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
+      </div>
 
       <div className="hidden md:block">
         <ExecutiveBrief articles={articles} />
@@ -113,7 +118,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         ))}
       </section>
 
-      <section id="feed" className="glass-panel rounded-lg p-4 sm:p-5">
+      <section id="feed" className="glass-panel glass-panel-soft rounded-lg p-4 sm:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
           <div className="flex items-start justify-between gap-3">
             <div>
@@ -311,8 +316,8 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
       </div>
 
       <section className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
-        {filteredArticles.map((article) => (
-          <ArticleCard key={article.id} article={article} />
+        {filteredArticles.map((article, index) => (
+          <ArticleCard key={article.id} article={article} featured={index === 0} />
         ))}
       </section>
 
@@ -377,7 +382,7 @@ function WeeklyBriefStatus({
   const sourceCount = new Set(articles.map((article) => article.source)).size;
 
   return (
-    <section className="glass-panel rounded-lg p-4" aria-label="Weekly brief status">
+    <section className="glass-panel glass-panel-soft rounded-lg p-4" aria-label="Weekly brief status">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex items-start gap-3">
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-[0_0_28px_rgba(34,211,238,0.12)]">
@@ -530,7 +535,7 @@ function MetricCard({
       type="button"
       onClick={onSelect}
       aria-label={`Explain ${metric.label}`}
-      className="glass-panel premium-hover group relative overflow-hidden rounded-lg p-3 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
+      className="glass-panel glass-panel-soft premium-hover group relative overflow-hidden rounded-lg p-3 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
     >
       <div className="flex items-center justify-between gap-3">
         <div className="h-1.5 w-16 overflow-hidden rounded-full bg-white/[0.06]">

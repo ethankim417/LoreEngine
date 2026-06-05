@@ -47,6 +47,13 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <ArrowLeft className="h-4 w-4" />
           Dashboard
         </Link>
+        <Link
+          href="/#feed"
+          className="fixed bottom-3 left-3 right-3 z-40 inline-flex items-center justify-center gap-2 rounded-lg border border-cyan-300/20 bg-slate-950/85 px-4 py-3 text-sm font-black text-cyan-50 shadow-[0_20px_80px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:hidden"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to feed
+        </Link>
 
         <article className="glass-panel overflow-hidden rounded-lg">
           <div className="relative overflow-hidden border-b border-white/10 p-4 sm:min-h-[30rem] sm:p-7">
@@ -110,7 +117,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </div>
 
           <div className="grid gap-0 lg:grid-cols-[1fr_18rem]">
-            <div className="space-y-8 p-5 sm:space-y-10 sm:p-8">
+            <div className="space-y-8 p-5 pb-20 sm:space-y-10 sm:p-8">
               <DetailBlock title="Why It Matters" body={article.whyItMatters} />
               <DetailBlock title="Possible Industry Impact" body={article.possibleImpact} />
               <DetailBlock title="Trend Analysis" body={article.trendAnalysis} />
