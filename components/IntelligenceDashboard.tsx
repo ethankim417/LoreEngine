@@ -407,10 +407,14 @@ function WeeklyBriefStatus({
               </Link>
               <Link
                 href="/sources"
-                className="inline-flex items-center gap-1.5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.06] px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-emerald-100 transition hover:border-emerald-300/35"
+                aria-label={`View source strategy for ${sourceCount} sources used`}
+                className="group/source inline-flex items-center gap-2 rounded-full border border-emerald-200/30 bg-[radial-gradient(circle_at_20%_15%,rgba(255,255,255,0.16),transparent_34%),linear-gradient(135deg,rgba(16,185,129,0.2),rgba(34,211,238,0.1),rgba(15,23,42,0.42))] px-3 py-1.5 text-[0.68rem] font-black uppercase tracking-[0.1em] text-emerald-50 shadow-[0_0_26px_rgba(16,185,129,0.16),inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-emerald-200/55 hover:shadow-[0_0_34px_rgba(16,185,129,0.26),0_0_18px_rgba(34,211,238,0.12),inset_0_1px_0_rgba(255,255,255,0.18)]"
               >
-                <Shield className="h-3 w-3" />
-                {sourceCount} Sources
+                <span className="grid h-5 w-5 place-items-center rounded-full border border-emerald-100/25 bg-emerald-200/12 text-emerald-100 shadow-[0_0_18px_rgba(52,211,153,0.18)]">
+                  <Shield className="h-3 w-3" />
+                </span>
+                {sourceCount} Sources Used
+                <ArrowRight className="h-3 w-3 text-cyan-100/80 transition group-hover/source:translate-x-0.5 group-hover/source:text-cyan-50" />
               </Link>
             </div>
             <p className="mt-0.5 text-sm leading-5 text-slate-400">
