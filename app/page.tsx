@@ -5,7 +5,7 @@ import { Info, Mail, Radar, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden">
+    <main id="top" className="relative min-h-screen overflow-hidden">
       <AmbientBackground />
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-5 px-3 py-4 sm:gap-7 sm:px-6 sm:py-6 lg:gap-8 lg:px-8 lg:py-8">
         <Hero />

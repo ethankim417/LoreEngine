@@ -52,6 +52,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
     setCategory("All");
     setSourceType("All");
     setSortMode("impact");
+    setFiltersOpen(false);
   };
 
   const filteredArticles = useMemo(() => {
@@ -83,12 +84,28 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
   }, [articles, category, query, sortMode, sourceType]);
 
   return (
-    <div className="flex flex-col gap-5 sm:gap-7 lg:gap-8">
+    <div className="flex flex-col gap-5 pb-20 sm:gap-7 sm:pb-0 lg:gap-8">
       <WeeklyBriefStatus articles={articles} metrics={metrics} />
 
-      <ExecutiveBrief articles={articles} />
+      <div id="mobile-brief" className="-mx-3 flex snap-x gap-3 overflow-x-auto px-3 pb-1 md:hidden">
+        <div className="w-[min(22rem,calc(100vw-2rem))] shrink-0 snap-center">
+          <ExecutiveBrief articles={articles} compact />
+        </div>
+        <div className="w-[min(22rem,calc(100vw-2rem))] shrink-0 snap-center">
+          <SignalConstellation articles={articles} />
+        </div>
+        <div id="mobile-market" className="w-[min(22rem,calc(100vw-2rem))] shrink-0 snap-center">
+          <MarketPulse />
+        </div>
+      </div>
 
-      <SignalConstellation articles={articles} />
+      <div className="hidden md:block">
+        <ExecutiveBrief articles={articles} />
+      </div>
+
+      <div className="hidden md:block">
+        <SignalConstellation articles={articles} />
+      </div>
 
       <section aria-label="Dashboard metrics" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {metrics.map((metric) => (
@@ -96,7 +113,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         ))}
       </section>
 
-      <section className="glass-panel rounded-lg p-4 sm:p-5">
+      <section id="feed" className="glass-panel rounded-lg p-4 sm:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
           <div className="flex items-start justify-between gap-3">
             <div>
@@ -131,7 +148,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               />
             </label>
 
-            <label className={`${filtersOpen ? "block" : "hidden"} relative md:block`}>
+            <label className="relative hidden md:block">
               <span className="sr-only">Filter category</span>
               <SlidersHorizontal className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <select
@@ -149,7 +166,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-cyan-200/70" />
             </label>
 
-            <label className={`${filtersOpen ? "block" : "hidden"} relative md:block`}>
+            <label className="relative hidden md:block">
               <span className="sr-only">Filter source type</span>
               <ShieldCheck className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <select
@@ -167,7 +184,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-emerald-200/70" />
             </label>
 
-            <label className={`${filtersOpen ? "block" : "hidden"} relative md:block`}>
+            <label className="relative hidden md:block">
               <span className="sr-only">Sort articles</span>
               <ArrowDownUp className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <select
@@ -196,7 +213,102 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         />
       </section>
 
-      <MarketPulse />
+      {filtersOpen ? (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Article filters"
+          className="fixed inset-0 z-50 flex items-end bg-black/65 p-3 backdrop-blur-md md:hidden"
+          onClick={() => setFiltersOpen(false)}
+        >
+          <div className="glass-panel w-full rounded-lg p-4" onClick={(event) => event.stopPropagation()}>
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-200">Filters</p>
+                <p className="mt-1 text-sm text-slate-400">{filteredArticles.length} briefs matched</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setFiltersOpen(false)}
+                className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-300"
+                aria-label="Close filters"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <div className="grid gap-3">
+              <label className="relative block">
+                <span className="sr-only">Filter category</span>
+                <SlidersHorizontal className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+                <select
+                  value={category}
+                  onChange={(event) => setCategory(event.target.value as ArticleCategory | "All")}
+                  className="h-11 w-full appearance-none rounded-lg border border-cyan-300/15 bg-slate-950/55 px-10 pr-9 text-sm font-semibold text-cyan-50 outline-none"
+                >
+                  <option value="All">All Categories</option>
+                  {categories.map((item) => (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-cyan-200/70" />
+              </label>
+              <label className="relative block">
+                <span className="sr-only">Filter source type</span>
+                <ShieldCheck className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+                <select
+                  value={sourceType}
+                  onChange={(event) => setSourceType(event.target.value as SourceCredibility | "All")}
+                  className="h-11 w-full appearance-none rounded-lg border border-emerald-300/15 bg-slate-950/55 px-10 pr-9 text-sm font-semibold text-emerald-50 outline-none"
+                >
+                  <option value="All">All Sources</option>
+                  {sourceCredibilityTypes.map((item) => (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-emerald-200/70" />
+              </label>
+              <label className="relative block">
+                <span className="sr-only">Sort articles</span>
+                <ArrowDownUp className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+                <select
+                  value={sortMode}
+                  onChange={(event) => setSortMode(event.target.value as SortMode)}
+                  className="h-11 w-full appearance-none rounded-lg border border-violet-300/15 bg-slate-950/55 px-10 pr-9 text-sm font-semibold text-violet-50 outline-none"
+                >
+                  <option value="newest">Newest</option>
+                  <option value="impact">Industry Impact</option>
+                  <option value="trend">Momentum</option>
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-violet-200/70" />
+              </label>
+            </div>
+            <div className="mt-4 grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={resetFilters}
+                className="rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-black text-slate-200"
+              >
+                Reset
+              </button>
+              <button
+                type="button"
+                onClick={() => setFiltersOpen(false)}
+                className="rounded-lg bg-cyan-300 px-4 py-3 text-sm font-black text-slate-950"
+              >
+                Apply
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      <div className="hidden md:block">
+        <MarketPulse />
+      </div>
 
       <section className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
         {filteredArticles.map((article) => (
@@ -209,7 +321,27 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
       ) : null}
 
       <MetricExplainerDialog metric={selectedMetric} onClose={() => setSelectedMetric(null)} />
+      <MobileActionBar onOpenFilters={() => setFiltersOpen(true)} activeFilterCount={activeFilterCount} />
     </div>
+  );
+}
+
+function MobileActionBar({
+  onOpenFilters,
+  activeFilterCount
+}: {
+  onOpenFilters: () => void;
+  activeFilterCount: number;
+}) {
+  return (
+    <nav className="fixed inset-x-3 bottom-3 z-40 grid grid-cols-4 overflow-hidden rounded-lg border border-white/10 bg-slate-950/82 text-[0.68rem] font-black text-slate-300 shadow-[0_20px_80px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl md:hidden">
+      <a href="#mobile-brief" className="px-2 py-3 text-center text-cyan-100">Brief</a>
+      <a href="#mobile-market" className="px-2 py-3 text-center">Market</a>
+      <button type="button" onClick={onOpenFilters} className="px-2 py-3 text-center">
+        Filters{activeFilterCount ? ` ${activeFilterCount}` : ""}
+      </button>
+      <a href="#top" className="px-2 py-3 text-center">Top</a>
+    </nav>
   );
 }
 

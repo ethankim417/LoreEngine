@@ -90,7 +90,18 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 </div>
               </div>
 
-              <div className="grid gap-2 rounded-lg border border-white/10 bg-slate-950/70 p-2.5 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:p-3">
+              <details className="mt-4 rounded-lg border border-white/10 bg-slate-950/70 p-3 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:hidden">
+                <summary className="cursor-pointer text-xs font-black uppercase tracking-[0.14em] text-cyan-200">
+                  Scores
+                </summary>
+                <div className="mt-3 grid gap-2">
+                  <HeaderGauge label="Impact" value={article.impactScore} suffix="/100" />
+                  <HeaderGauge label="Momentum" value={article.trendScore} prefix="+" suffix="%" />
+                  <HeaderGauge label="Confidence" value={article.confidence} suffix="%" />
+                </div>
+              </details>
+
+              <div className="hidden gap-2 rounded-lg border border-white/10 bg-slate-950/70 p-2.5 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:grid sm:p-3">
                 <HeaderGauge label="Impact" value={article.impactScore} suffix="/100" />
                 <HeaderGauge label="Momentum" value={article.trendScore} prefix="+" suffix="%" />
                 <HeaderGauge label="Confidence" value={article.confidence} suffix="%" />

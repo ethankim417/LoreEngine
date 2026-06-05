@@ -36,7 +36,7 @@ export function ArticleCard({ article }: { article: Article }) {
   }
 
   return (
-    <article className="glass-panel premium-hover group relative flex min-h-[19.5rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[22.5rem]">
+    <article className="glass-panel premium-hover group relative flex min-h-[16.75rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[22.5rem]">
       <div className={`absolute inset-y-0 left-0 z-20 w-1 ${priority.railClass}`} aria-hidden="true" />
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <Image
@@ -52,7 +52,7 @@ export function ArticleCard({ article }: { article: Article }) {
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/40 to-transparent opacity-0 transition group-hover:opacity-100" />
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col p-4">
+      <div className="relative z-10 flex flex-1 flex-col p-3.5 sm:p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <span className={`rounded-full border px-2.5 py-1 text-xs font-black uppercase tracking-[0.08em] ${priority.className}`}>
@@ -73,18 +73,20 @@ export function ArticleCard({ article }: { article: Article }) {
           </button>
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+        <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-500 sm:mt-4">
           <span className="font-medium">{formatDate(article.publishedAt)}</span>
-          <SourceBadge source={article.source} credibility={article.sourceCredibility} compact />
+          <span className="hidden sm:inline-flex">
+            <SourceBadge source={article.source} credibility={article.sourceCredibility} compact />
+          </span>
         </div>
 
-        <h2 className="mt-3 font-display text-lg font-black leading-snug tracking-normal text-white sm:text-xl">
+        <h2 className="mt-2 line-clamp-3 font-display text-base font-black leading-snug tracking-normal text-white sm:mt-3 sm:text-xl">
           {article.title}
         </h2>
-        <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-300">{article.tldr}</p>
+        <p className="mt-2 line-clamp-1 text-sm leading-6 text-slate-300 sm:line-clamp-2">{article.tldr}</p>
 
         {article.impactScore >= 90 ? (
-          <div className="mt-3 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-3">
+          <div className="mt-3 hidden rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-3 sm:block">
             <p className="text-[0.66rem] font-black uppercase tracking-[0.1em] text-cyan-200">
               Why it matters
             </p>

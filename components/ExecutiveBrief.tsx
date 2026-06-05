@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import type { Article } from "@/data/articles";
 
-export function ExecutiveBrief({ articles }: { articles: Article[] }) {
+export function ExecutiveBrief({ articles, compact = false }: { articles: Article[]; compact?: boolean }) {
   const topStories = [...articles]
     .sort((a, b) => b.impactScore + b.trendScore * 0.6 - (a.impactScore + a.trendScore * 0.6))
     .slice(0, 3);
@@ -44,7 +44,7 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
             <Link
               key={article.id}
               href={`/articles/${article.slug}`}
-              className="group grid gap-3 p-4 transition hover:bg-white/[0.035] sm:grid-cols-[3rem_1fr_auto] sm:items-center"
+              className={`group grid gap-3 p-4 transition hover:bg-white/[0.035] sm:grid-cols-[3rem_1fr_auto] sm:items-center ${compact ? "min-h-[9.5rem]" : ""}`}
             >
               <span className="grid h-10 w-10 place-items-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 font-display text-lg font-black text-cyan-100">
                 {index + 1}
@@ -56,7 +56,7 @@ export function ExecutiveBrief({ articles }: { articles: Article[] }) {
                 <span className="mt-1 block font-display text-lg font-black text-white">
                   {article.title}
                 </span>
-                <span className="mt-1 line-clamp-2 block text-sm leading-6 text-slate-400">
+                <span className={`${compact ? "line-clamp-1" : "line-clamp-2"} mt-1 block text-sm leading-6 text-slate-400`}>
                   {article.tldr}
                 </span>
               </span>

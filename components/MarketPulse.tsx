@@ -110,7 +110,13 @@ export function MarketPulse() {
                 </div>
               </div>
 
-              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="grid gap-2 sm:hidden">
+                {topMovers.slice(1, 3).map((player) => (
+                  <TickerCell key={player.ticker} player={player} compact />
+                ))}
+              </div>
+
+              <div className="hidden gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-4">
                 {topMovers.slice(1).map((player) => (
                   <TickerCell key={player.ticker} player={player} />
                 ))}
@@ -138,7 +144,7 @@ export function MarketPulse() {
   );
 }
 
-function TickerCell({ player }: { player: MarketPlayer }) {
+function TickerCell({ player, compact = false }: { player: MarketPlayer; compact?: boolean }) {
   const positive = player.thirtyDayChange >= 0;
 
   return (
@@ -152,7 +158,7 @@ function TickerCell({ player }: { player: MarketPlayer }) {
           {formatPercent(player.thirtyDayChange)}
         </p>
       </div>
-      <div className="mt-1.5 h-7">
+      <div className={compact ? "hidden" : "mt-1.5 h-7"}>
         <StockLineChart
           values={player.trend}
           positive={positive}
