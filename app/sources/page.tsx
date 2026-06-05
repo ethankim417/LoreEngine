@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ArrowLeft, CalendarDays, CheckCircle2, Clock3, Database, ShieldCheck } from "lucide-react";
-import { articles, sourceCredibilityTypes } from "@/data/articles";
+import { ArrowLeft, CalendarDays, CheckCircle2, Clock3, Database, ExternalLink, ShieldCheck } from "lucide-react";
+import { articles, sourceCredibilityTypes, type ArticleCategory, type SourceCredibility } from "@/data/articles";
 import { sourcePrinciples, sourceTiers, weeklyBriefCadence } from "@/data/sourceStrategy";
 import { formatDate } from "@/lib/format";
 
@@ -14,6 +14,7 @@ export default function SourcesPage() {
   const activeSourceTypes = sourceCredibilityTypes.filter((type) =>
     articles.some((article) => article.sourceCredibility === type)
   );
+  const briefSources = getBriefSources();
 
   return (
     <main className="relative min-h-screen overflow-hidden px-4 py-6 sm:px-6 lg:px-8">
@@ -95,6 +96,48 @@ export default function SourcesPage() {
           </div>
         </section>
 
+        <section className="glass-panel rounded-lg p-5 sm:p-6">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-200">
+                Current Brief Sources
+              </p>
+              <h2 className="mt-3 font-display text-2xl font-black text-white">
+                {sourceCount} outlets used this week
+              </h2>
+            </div>
+            <p className="text-sm font-semibold text-slate-400">
+              Updated {formatDate(weeklyBriefCadence.snapshotDate)}
+            </p>
+          </div>
+
+          <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            {briefSources.map((source) => (
+              <a
+                key={source.name}
+                href={source.url}
+                target="_blank"
+                rel="noreferrer"
+                className="premium-hover group rounded-lg border border-white/10 bg-white/[0.035] p-4 transition hover:border-cyan-300/28 hover:bg-white/[0.055]"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="font-display text-base font-black text-white">{source.name}</h3>
+                    <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-emerald-200/80">
+                      {source.credibility}
+                    </p>
+                  </div>
+                  <ExternalLink className="h-4 w-4 shrink-0 text-slate-500 transition group-hover:text-cyan-100" />
+                </div>
+                <p className="mt-3 text-sm leading-6 text-slate-300">
+                  Used for {source.articleCount} brief{source.articleCount === 1 ? "" : "s"} across{" "}
+                  {source.categories.join(", ")}.
+                </p>
+              </a>
+            ))}
+          </div>
+        </section>
+
         <section className="grid gap-4 lg:grid-cols-2">
           {sourceTiers.map((tier) => (
             <details key={tier.tier} className="glass-panel group rounded-lg p-5 sm:p-6">
@@ -135,6 +178,53 @@ export default function SourcesPage() {
       </div>
     </main>
   );
+}
+
+function getBriefSources() {
+  const sourceMap = new Map<
+    string,
+    {
+      name: string;
+      credibility: SourceCredibility;
+      url: string;
+      articleCount: number;
+      categories: Set<ArticleCategory>;
+    }
+  >();
+
+  articles.forEach((article) => {
+    const existing = sourceMap.get(article.source);
+
+    if (existing) {
+      existing.articleCount += 1;
+      existing.categories.add(article.category);
+      return;
+    }
+
+    sourceMap.set(article.source, {
+      name: article.source,
+      credibility: article.sourceCredibility,
+      url: article.sourceUrl,
+      articleCount: 1,
+      categories: new Set([article.category])
+    });
+  });
+
+  return Array.from(sourceMap.values())
+    .map((source) => ({
+      ...source,
+      categories: Array.from(source.categories)
+    }))
+    .sort((a, b) => {
+      const tierDelta =
+        sourceCredibilityTypes.indexOf(a.credibility) - sourceCredibilityTypes.indexOf(b.credibility);
+
+      if (tierDelta !== 0) {
+        return tierDelta;
+      }
+
+      return a.name.localeCompare(b.name);
+    });
 }
 
 function SourceStat({
