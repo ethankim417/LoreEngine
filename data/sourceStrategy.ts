@@ -9,6 +9,13 @@ export const weeklyBriefCadence = {
   snapshotDate: briefSnapshotDate
 };
 
+export const sourcePipeline = {
+  candidateTarget: 40,
+  shortlistTarget: 15,
+  description:
+    "Each weekly run is designed to review about 40 candidate sources, dedupe overlapping coverage, then promote the strongest 15 signals into the public brief."
+};
+
 export const sourcePrinciples = [
   {
     title: "Start With Primary Evidence",

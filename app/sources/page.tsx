@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowLeft, CalendarDays, CheckCircle2, Clock3, Database, ExternalLink, ShieldCheck } from "lucide-react";
 import { articles, sourceCredibilityTypes, type ArticleCategory, type SourceCredibility } from "@/data/articles";
-import { sourcePrinciples, sourceTiers, weeklyBriefCadence } from "@/data/sourceStrategy";
+import { sourcePipeline, sourcePrinciples, sourceTiers, weeklyBriefCadence } from "@/data/sourceStrategy";
 import { formatDate } from "@/lib/format";
 
 export const metadata = {
@@ -55,12 +55,12 @@ export default function SourcesPage() {
 
           <div className="grid gap-3 p-5 sm:grid-cols-3 sm:p-7">
             <SourceStat icon={<CalendarDays className="h-4 w-4" />} label="Current brief" value={formatDate(weeklyBriefCadence.snapshotDate)} />
-            <SourceStat icon={<Database className="h-4 w-4" />} label="Outlets sampled" value={`${sourceCount}`} />
+            <SourceStat icon={<Database className="h-4 w-4" />} label="Sources cited" value={`${sourceCount}`} />
             <SourceStat icon={<Clock3 className="h-4 w-4" />} label="Cadence" value={weeklyBriefCadence.label} />
           </div>
         </section>
 
-        <section className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+        <section className="grid gap-4 lg:grid-cols-3">
           <div className="glass-panel rounded-lg p-5 sm:p-6">
             <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-200">
               Publishing Window
@@ -72,6 +72,18 @@ export default function SourcesPage() {
               {weeklyBriefCadence.localReadout}
             </p>
             <p className="mt-4 leading-7 text-slate-300">{weeklyBriefCadence.reason}</p>
+          </div>
+
+          <div className="glass-panel rounded-lg p-5 sm:p-6">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-violet-200">
+              Weekly Triage
+            </p>
+            <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+              <TriageNumber label="Candidates" value={sourcePipeline.candidateTarget.toString()} />
+              <span className="h-px bg-gradient-to-r from-cyan-300/40 via-white/20 to-emerald-300/40" />
+              <TriageNumber label="Shortlist" value={sourcePipeline.shortlistTarget.toString()} />
+            </div>
+            <p className="mt-4 leading-7 text-slate-300">{sourcePipeline.description}</p>
           </div>
 
           <div className="glass-panel rounded-lg p-5 sm:p-6">
@@ -243,6 +255,17 @@ function SourceStat({
         <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">{label}</p>
       </div>
       <p className="mt-2 font-display text-2xl font-black text-white">{value}</p>
+    </div>
+  );
+}
+
+function TriageNumber({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg border border-white/10 bg-white/[0.035] p-3 text-center">
+      <p className="font-display text-3xl font-black text-white">{value}</p>
+      <p className="mt-1 text-[0.62rem] font-black uppercase tracking-[0.12em] text-slate-500">
+        {label}
+      </p>
     </div>
   );
 }
