@@ -1,14 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import type { ReactNode } from "react";
 import Link from "next/link";
 import {
   ArrowDownUp,
   ArrowRight,
   CalendarDays,
   ChevronDown,
-  Database,
   Info,
   Search,
   Shield,
@@ -86,7 +84,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
   return (
     <div className="flex flex-col gap-5 pb-20 sm:gap-7 sm:pb-0 lg:gap-8">
-      <WeeklyBriefStatus articles={articles} metrics={metrics} />
+      <WeeklyBriefStatus articles={articles} />
 
       <div id="mobile-brief" className="-mx-3 flex snap-x gap-3 overflow-x-auto px-3 pb-1 md:hidden">
         <div className="w-[min(22rem,calc(100vw-2rem))] shrink-0 snap-center">
@@ -385,18 +383,15 @@ function EmptyFilterState({ onClearAll }: { onClearAll: () => void }) {
 }
 
 function WeeklyBriefStatus({
-  articles,
-  metrics
+  articles
 }: {
   articles: Article[];
-  metrics: DashboardMetric[];
 }) {
-  const trendingCount = metrics.find((metric) => metric.id === "trending-articles")?.value ?? "0";
   const sourceCount = new Set(articles.map((article) => article.source)).size;
 
   return (
     <section className="glass-panel glass-panel-soft rounded-lg p-4" aria-label="Weekly brief status">
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-start gap-3">
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-[0_0_28px_rgba(34,211,238,0.12)]">
             <CalendarDays className="h-4 w-4" />
@@ -404,9 +399,6 @@ function WeeklyBriefStatus({
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <p className="font-display text-lg font-black text-white">Weekly Brief</p>
-              <span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-emerald-100">
-                Cached
-              </span>
               <Link
                 href="/archive"
                 className="rounded-full border border-cyan-300/15 bg-cyan-300/[0.06] px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-cyan-100 transition hover:border-cyan-300/35"
@@ -418,7 +410,7 @@ function WeeklyBriefStatus({
                 className="inline-flex items-center gap-1.5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.06] px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-emerald-100 transition hover:border-emerald-300/35"
               >
                 <Shield className="h-3 w-3" />
-                Sources
+                {sourceCount} Sources
               </Link>
             </div>
             <p className="mt-0.5 text-sm leading-5 text-slate-400">
@@ -426,50 +418,8 @@ function WeeklyBriefStatus({
             </p>
           </div>
         </div>
-
-        <div className="grid gap-2 sm:grid-cols-3 lg:min-w-[32rem]">
-          <BriefPill
-            icon={<Database className="h-4 w-4" />}
-            label="Reviewed articles"
-            value={articles.length.toString()}
-          />
-          <BriefPill
-            icon={<Sparkles className="h-4 w-4" />}
-            label="Important articles"
-            value={trendingCount}
-          />
-          <BriefPill
-            icon={<ShieldCheck className="h-4 w-4" />}
-            label="Sources used"
-            value={`${sourceCount} outlets`}
-          />
-        </div>
       </div>
     </section>
-  );
-}
-
-function BriefPill({
-  icon,
-  label,
-  value
-}: {
-  icon: ReactNode;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="flex min-h-12 items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg border border-white/10 bg-black/20 text-cyan-100">
-        {icon}
-      </span>
-      <div className="min-w-0">
-        <p className="truncate text-[0.62rem] font-semibold uppercase tracking-[0.1em] text-slate-500">
-          {label}
-        </p>
-        <p className="truncate font-display text-sm font-black text-white sm:text-base">{value}</p>
-      </div>
-    </div>
   );
 }
 
