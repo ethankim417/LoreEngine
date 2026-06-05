@@ -3,6 +3,7 @@ const baseUrl = process.env.BASE_URL ?? "http://localhost:3000";
 const checks = [
   { path: "/", expect: "LoreEngine" },
   { path: "/market", expect: "Market Pulse" },
+  { path: "/archive", expect: "Weekly Archive" },
   {
     path: "/articles/nvidia-gaming-ai-stack-targets-on-device-agents",
     expect: "NVIDIA"

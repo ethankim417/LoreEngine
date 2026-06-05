@@ -112,10 +112,22 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         <SignalConstellation articles={articles} />
       </div>
 
-      <section aria-label="Dashboard metrics" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {metrics.map((metric) => (
-          <MetricCard key={metric.label} metric={metric} onSelect={() => setSelectedMetric(metric)} />
-        ))}
+      <section aria-label="Dashboard metrics" className="space-y-3">
+        <div className="flex items-center justify-between gap-3 px-1">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">Dashboard Scores</p>
+          <Link
+            href="/methodology"
+            className="inline-flex items-center gap-1.5 text-xs font-black text-cyan-200/85 transition hover:text-cyan-100"
+          >
+            How scores work
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {metrics.map((metric) => (
+            <MetricCard key={metric.label} metric={metric} onSelect={() => setSelectedMetric(metric)} />
+          ))}
+        </div>
       </section>
 
       <section id="feed" className="glass-panel glass-panel-soft rounded-lg p-4 sm:p-5">
@@ -394,6 +406,12 @@ function WeeklyBriefStatus({
               <span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-emerald-100">
                 Cached
               </span>
+              <Link
+                href="/archive"
+                className="rounded-full border border-cyan-300/15 bg-cyan-300/[0.06] px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-cyan-100 transition hover:border-cyan-300/35"
+              >
+                Archive
+              </Link>
             </div>
             <p className="mt-0.5 text-sm leading-5 text-slate-400">
               Updated {formatDate(briefSnapshotDate)}

@@ -202,17 +202,6 @@ select {
   opacity: 0.9;
 }
 
-.hero-radar-sweep {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: radar-sweep 8s linear infinite;
-}
-
-.hero-radar-dot {
-  filter: drop-shadow(0 0 10px currentColor);
-  animation: chart-dot-pulse 2.8s ease-in-out infinite;
-}
-
 .market-skeleton {
   background:
     linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent),
@@ -317,8 +306,6 @@ select {
   .signal-logo::after,
   .stock-chart:hover .stock-chart-end-marker,
   .stock-chart:hover .stock-chart-endpoint,
-  .hero-radar-sweep,
-  .hero-radar-dot,
   .market-skeleton {
     animation: none !important;
   }
