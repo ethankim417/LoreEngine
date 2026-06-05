@@ -16,7 +16,7 @@ LoreEngine is currently a mock-data showcase app. The planned production version
 
 The repo now includes:
 
-- `vercel.json` with a weekly Monday cron schedule.
+- `vercel.json` with a weekly Tuesday cron schedule.
 - `app/api/admin/market-refresh/route.ts` as the active scheduled market refresh endpoint.
 - `app/api/market/route.ts` as the server-read market snapshot endpoint.
 - `app/api/admin/weekly-ingest/route.ts` as an unscheduled future AI/news endpoint.
@@ -132,13 +132,13 @@ Recommended limits:
   "crons": [
     {
       "path": "/api/admin/market-refresh",
-      "schedule": "0 13 * * 1"
+      "schedule": "0 14 * * 2"
     }
   ]
 }
 ```
 
-That runs every Monday at 13:00 UTC. Vercel Cron uses UTC.
+That runs every Tuesday at 14:00 UTC. Vercel Cron uses UTC. The Tuesday window is meant to catch Monday market closes, early-week company updates, and weekend gaming-event coverage after the first wave of reporting has settled.
 
 Add `CRON_SECRET` in Vercel when moving beyond scaffold mode. The route checks for:
 

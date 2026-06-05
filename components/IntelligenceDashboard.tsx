@@ -11,6 +11,7 @@ import {
   Database,
   Info,
   Search,
+  Shield,
   ShieldCheck,
   SlidersHorizontal,
   Sparkles,
@@ -411,6 +412,13 @@ function WeeklyBriefStatus({
                 className="rounded-full border border-cyan-300/15 bg-cyan-300/[0.06] px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-cyan-100 transition hover:border-cyan-300/35"
               >
                 Archive
+              </Link>
+              <Link
+                href="/sources"
+                className="inline-flex items-center gap-1.5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.06] px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-emerald-100 transition hover:border-emerald-300/35"
+              >
+                <Shield className="h-3 w-3" />
+                Sources
               </Link>
             </div>
             <p className="mt-0.5 text-sm leading-5 text-slate-400">

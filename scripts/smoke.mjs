@@ -4,6 +4,7 @@ const checks = [
   { path: "/", expect: "LoreEngine" },
   { path: "/market", expect: "Market Pulse" },
   { path: "/archive", expect: "Weekly Archive" },
+  { path: "/sources", expect: "Source Strategy" },
   {
     path: "/articles/summer-game-fest-ai-disclosures-put-genai-under-spotlight",
     expect: "Summer Game Fest"

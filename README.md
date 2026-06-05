@@ -36,6 +36,7 @@ The second goal was to test Codex as a product-building partner. I used it to mo
 - Supports search, category filters, source-type filters, and sorting.
 - Opens article detail pages with TLDRs, why-it-matters context, and trend analysis.
 - Includes a Market Pulse view for major public companies connected to gaming.
+- Explains source selection and weekly cadence through a dedicated source strategy page.
 - Includes a weekly Vercel Cron refresh for market close-price data.
 - Includes compact dashboard and Market Pulse disclaimers for data/financial context.
 - Includes a future weekly ingest scaffold for server-side AI/news summarization.
@@ -91,6 +92,7 @@ app/
   articles/[slug]/page.tsx
   market/page.tsx
   methodology/page.tsx
+  sources/page.tsx
   robots.ts
   sitemap.ts
   page.tsx
@@ -103,6 +105,7 @@ components/
 data/
   articles.ts
   market.ts
+  sourceStrategy.ts
 lib/
   format.ts
   futurePipeline.ts
@@ -134,6 +137,7 @@ LoreEngine is meant to feel like a daily or weekly command brief for the gaming 
 Current market automation:
 
 - Vercel Cron calls `/api/admin/market-refresh` weekly.
+- The active schedule is Tuesday at 14:00 UTC.
 - The refresh pulls public chart close-price data where available.
 - The app falls back to the local snapshot if a ticker or provider fails.
 - The GitHub Pages mirror remains static because it cannot run backend routes.

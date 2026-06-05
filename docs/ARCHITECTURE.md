@@ -13,6 +13,7 @@ app/
   articles/[slug]/page.tsx
   market/page.tsx
   methodology/page.tsx
+  sources/page.tsx
   robots.ts
   sitemap.ts
   page.tsx
@@ -49,6 +50,7 @@ flowchart LR
   A --> D["Article detail pages"]
   E["data/market.ts"] --> F["Market Pulse"]
   E --> G["Market page"]
+  H["data/sourceStrategy.ts"] --> I["Source strategy page"]
 ```
 
 The current portfolio build is static/cached:
@@ -88,6 +90,7 @@ Current version:
 
 - No live news API.
 - Vercel can refresh weekly market close-price data through `/api/market`.
+- `/sources` explains source selection rules, cadence, and source tiers without crowding the dashboard.
 - No AI API.
 - No database.
 
