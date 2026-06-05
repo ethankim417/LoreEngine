@@ -32,7 +32,7 @@ type QuoteRow = {
 
 export const getMarketSnapshot = unstable_cache(
   async () => refreshMarketSnapshot(),
-  ["loreengine-market-snapshot-v1"],
+    ["loreengine-market-snapshot-v2"],
   {
     revalidate: WEEK_SECONDS,
     tags: ["market-snapshot"]

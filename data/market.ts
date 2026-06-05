@@ -39,7 +39,7 @@ export type MarketSnapshot = {
 
 // Local fallback data. On Vercel, /api/market can refresh public close-price
 // fields from a scheduled server job. The static mirror keeps reading this file.
-export const marketSnapshotDate = "2026-06-01";
+export const marketSnapshotDate = "2026-06-04";
 
 export const marketPlayers: MarketPlayer[] = [
   {
@@ -47,112 +47,112 @@ export const marketPlayers: MarketPlayer[] = [
     company: "NVIDIA",
     segment: "Gaming AI / GPUs",
     exchange: "NASDAQ",
-    price: 211.14,
-    dayChange: -1.5,
-    thirtyDayChange: 14.6,
+    price: 218.66,
+    dayChange: 1.8,
+    thirtyDayChange: 11.3,
     ytdChange: 38.2,
     marketCap: "$3.1T",
     sentiment: "Bullish",
     summary:
       "GPU demand, local AI inference, and RTX creator tooling keep NVIDIA positioned as the strongest gaming AI infrastructure signal.",
     watchSignal: "On-device agents, DLSS adoption, and AI PC attach rates",
-    trend: [42, 45, 43, 48, 52, 56, 61, 58, 64, 69, 73, 78]
+    trend: [20, 37, 43, 49, 55, 57, 65, 80, 64, 59, 57, 61, 55, 49, 48, 45, 47, 42, 63, 60, 48, 54]
   },
   {
     ticker: "AMD",
     company: "AMD",
     segment: "Gaming CPUs / GPUs",
     exchange: "NASDAQ",
-    price: 516.1,
-    dayChange: -0.4,
-    thirtyDayChange: 9.7,
+    price: 523.2,
+    dayChange: -3.6,
+    thirtyDayChange: 47.3,
     ytdChange: 24.9,
     marketCap: "$272B",
     sentiment: "Bullish",
     summary:
       "AMD remains a key gaming hardware read through console silicon, PC CPUs, Radeon GPUs, and AI accelerator adjacency.",
     watchSignal: "Console refresh silicon, AI PC demand, and GPU attach rate",
-    trend: [46, 47, 45, 49, 52, 54, 57, 55, 59, 63, 66, 70]
+    trend: [20, 41, 37, 52, 53, 50, 49, 50, 42, 41, 39, 50, 50, 56, 68, 65, 72, 72, 70, 73, 80, 74]
   },
   {
     ticker: "INTC",
     company: "Intel",
     segment: "PC Gaming / Chips",
     exchange: "NASDAQ",
-    price: 114.68,
-    dayChange: -5.1,
-    thirtyDayChange: -2.4,
+    price: 111.78,
+    dayChange: -0.8,
+    thirtyDayChange: 3.4,
     ytdChange: -8.1,
     marketCap: "$134B",
-    sentiment: "Pressure",
+    sentiment: "Watch",
     summary:
       "Intel is still relevant to PC gaming and handheld hardware, but execution and foundry transition risk keep the stock signal mixed.",
     watchSignal: "GPU driver maturity, handheld wins, and AI PC share",
-    trend: [52, 51, 50, 48, 49, 47, 45, 46, 44, 43, 42, 41]
+    trend: [21, 34, 25, 67, 80, 55, 54, 42, 22, 21, 28, 51, 49, 53, 63, 59, 56, 39, 24, 20, 33, 31]
   },
   {
     ticker: "MSFT",
     company: "Microsoft",
     segment: "Xbox / Cloud / AI",
     exchange: "NASDAQ",
-    price: 450.24,
-    dayChange: 5.4,
-    thirtyDayChange: 5.1,
+    price: 428.05,
+    dayChange: 0.2,
+    thirtyDayChange: 4.1,
     ytdChange: 16.4,
     marketCap: "$3.2T",
-    sentiment: "Bullish",
+    sentiment: "Watch",
     summary:
       "Xbox's cross-platform posture is increasingly tied to Microsoft cloud, subscriptions, and AI tooling rather than console unit economics alone.",
     watchSignal: "Game Pass mix, first-party release cadence, and Azure AI bundling",
-    trend: [50, 51, 54, 53, 57, 60, 58, 62, 63, 65, 67, 69]
+    trend: [27, 29, 37, 31, 28, 23, 20, 25, 38, 40, 33, 37, 35, 34, 32, 28, 44, 69, 80, 59, 44, 45]
   },
   {
     ticker: "SONY",
     company: "Sony Group",
     segment: "PlayStation / Hardware",
     exchange: "NYSE ADR",
-    price: 21.57,
-    dayChange: -0.7,
-    thirtyDayChange: 3.2,
+    price: 22.23,
+    dayChange: 0.1,
+    thirtyDayChange: 10.5,
     ytdChange: 9.8,
     marketCap: "$115B",
-    sentiment: "Watch",
+    sentiment: "Bullish",
     summary:
       "Sony remains a premium console and IP compounder, with PlayStation hardware, services, and first-party releases driving the read.",
     watchSignal: "First-party slate visibility, console margins, and PC expansion",
-    trend: [45, 47, 46, 48, 51, 50, 52, 54, 53, 55, 56, 57]
+    trend: [25, 37, 20, 25, 49, 66, 79, 66, 70, 78, 79, 80, 75, 66, 66, 60, 57, 54, 75, 79, 67, 68]
   },
   {
     ticker: "NTDOY",
     company: "Nintendo",
     segment: "Console / IP",
     exchange: "OTC ADR",
-    price: 11.17,
-    dayChange: 2.3,
-    thirtyDayChange: 8.4,
+    price: 11.43,
+    dayChange: 0,
+    thirtyDayChange: -5.5,
     ytdChange: 21.7,
     marketCap: "$76B",
-    sentiment: "Bullish",
+    sentiment: "Pressure",
     summary:
       "Nintendo's hardware cycle and evergreen IP library give it a distinct counter-position to subscription-heavy platform strategies.",
     watchSignal: "Next-gen hardware ramp, attach rate, and software launch density",
-    trend: [40, 42, 44, 48, 46, 49, 53, 57, 59, 62, 61, 66]
+    trend: [75, 80, 64, 20, 41, 50, 44, 32, 44, 53, 63, 69, 56, 51, 40, 42, 36, 43, 47, 55, 52, 52]
   },
   {
     ticker: "U",
     company: "Unity",
     segment: "Game Engine / Ads",
     exchange: "NYSE",
-    price: 30.47,
-    dayChange: 1.8,
-    thirtyDayChange: -6.3,
+    price: 30.03,
+    dayChange: 2.8,
+    thirtyDayChange: 9.8,
     ytdChange: -12.6,
     marketCap: "$10B",
-    sentiment: "Pressure",
+    sentiment: "Bullish",
     summary:
       "Unity is still strategically important to mobile and indie developers, but the market wants clearer evidence of trust repair and durable growth.",
     watchSignal: "Runtime adoption, mobile ad demand, and developer retention",
-    trend: [58, 56, 53, 51, 49, 48, 45, 43, 42, 39, 37, 35]
+    trend: [36, 36, 31, 44, 32, 32, 32, 36, 35, 31, 26, 26, 20, 20, 31, 40, 60, 65, 80, 67, 53, 61]
   },
   {
     ticker: "EPIC",
@@ -175,144 +175,144 @@ export const marketPlayers: MarketPlayer[] = [
     company: "Tencent",
     segment: "Global Games / Mobile",
     exchange: "OTC ADR",
-    price: 54.62,
-    dayChange: 0,
-    thirtyDayChange: 4.4,
+    price: 58.19,
+    dayChange: 0.1,
+    thirtyDayChange: -3.6,
     ytdChange: 13.9,
     marketCap: "$480B",
-    sentiment: "Bullish",
+    sentiment: "Watch",
     summary:
       "Tencent provides broad exposure to mobile, Asian publishing, esports ecosystems, and global studio investments.",
     watchSignal: "China approvals, mobile monetization, and overseas studio performance",
-    trend: [46, 48, 49, 51, 50, 53, 55, 58, 57, 60, 62, 64]
+    trend: [73, 77, 76, 68, 65, 54, 80, 60, 58, 46, 57, 57, 40, 34, 34, 29, 20, 20, 26, 73, 53, 53]
   },
   {
     ticker: "NTES",
     company: "NetEase",
     segment: "Online Games / Mobile",
     exchange: "NASDAQ ADR",
-    price: 122.82,
-    dayChange: -1,
-    thirtyDayChange: 6.1,
+    price: 122.73,
+    dayChange: 0.1,
+    thirtyDayChange: 6.6,
     ytdChange: 15.8,
     marketCap: "$63B",
     sentiment: "Bullish",
     summary:
       "NetEase is a strong China and global online-games signal, with mobile publishing, PC titles, and overseas expansion in focus.",
     watchSignal: "New game approvals, international launches, and live-ops durability",
-    trend: [43, 44, 46, 45, 48, 50, 52, 54, 53, 56, 58, 60]
+    trend: [29, 46, 40, 33, 35, 39, 54, 35, 20, 21, 26, 38, 25, 37, 73, 76, 76, 70, 72, 80, 69, 69]
   },
   {
     ticker: "EA",
     company: "Electronic Arts",
     segment: "Sports / Live Services",
     exchange: "NASDAQ",
-    price: 201.72,
-    dayChange: 0.3,
-    thirtyDayChange: 2.6,
+    price: 203.4,
+    dayChange: 0.4,
+    thirtyDayChange: 0.9,
     ytdChange: 7.4,
     marketCap: "$37B",
     sentiment: "Watch",
     summary:
       "EA remains a core public read on sports games, live services, annualized franchises, and catalog monetization.",
     watchSignal: "Sports retention, Ultimate Team bookings, and catalog performance",
-    trend: [51, 52, 51, 53, 54, 55, 54, 56, 57, 58, 57, 59]
+    trend: [46, 31, 32, 25, 21, 20, 20, 31, 29, 36, 48, 46, 51, 35, 38, 29, 38, 49, 54, 54, 66, 80]
   },
   {
     ticker: "TTWO",
     company: "Take-Two",
     segment: "AAA Publishing",
     exchange: "NASDAQ",
-    price: 224.16,
-    dayChange: 2.9,
-    thirtyDayChange: 6.9,
+    price: 216.65,
+    dayChange: 0.4,
+    thirtyDayChange: -2.9,
     ytdChange: 18.3,
     marketCap: "$28B",
-    sentiment: "Bullish",
+    sentiment: "Watch",
     summary:
       "Take-Two is a high-beta publishing signal because major franchise timing can reshape expectations for premium game demand.",
     watchSignal: "AAA release timing, marketing spend, and preorder momentum",
-    trend: [44, 46, 45, 47, 52, 55, 57, 56, 60, 63, 66, 68]
+    trend: [36, 34, 37, 30, 33, 43, 45, 80, 80, 79, 70, 67, 70, 46, 31, 26, 25, 39, 45, 35, 20, 22]
   },
   {
     ticker: "RBLX",
     company: "Roblox",
     segment: "UGC / Creator Economy",
     exchange: "NYSE",
-    price: 47.15,
-    dayChange: 0.7,
-    thirtyDayChange: -4.8,
+    price: 43.35,
+    dayChange: -0.8,
+    thirtyDayChange: -1.6,
     ytdChange: 7.5,
     marketCap: "$25B",
     sentiment: "Watch",
     summary:
       "Roblox remains one of the clearest public UGC indicators, with monetization quality and safety investment driving the debate.",
     watchSignal: "Bookings growth, creator payouts, and age-up engagement",
-    trend: [55, 57, 54, 52, 49, 51, 48, 47, 45, 46, 44, 43]
+    trend: [44, 41, 50, 25, 20, 22, 26, 41, 33, 70, 48, 59, 62, 80, 61, 58, 68, 71, 70, 52, 41, 38]
   },
   {
     ticker: "CCOEY",
     company: "Capcom",
     segment: "Premium IP / Catalog",
     exchange: "OTC ADR",
-    price: 9.44,
-    dayChange: -2.1,
-    thirtyDayChange: 5.8,
+    price: 8.77,
+    dayChange: -3.9,
+    thirtyDayChange: -17.4,
     ytdChange: 14.1,
     marketCap: "$11B",
-    sentiment: "Bullish",
+    sentiment: "Pressure",
     summary:
       "Capcom is a durable pure-play read on premium game IP, catalog compounding, and disciplined franchise extension.",
     watchSignal: "Monster Hunter cadence, Resident Evil catalog, and digital sales mix",
-    trend: [44, 45, 47, 48, 50, 49, 52, 54, 55, 57, 58, 61]
+    trend: [68, 72, 67, 76, 80, 73, 70, 41, 42, 39, 52, 55, 53, 50, 47, 52, 43, 38, 39, 36, 29, 20]
   },
   {
     ticker: "KONMY",
     company: "Konami Group",
     segment: "Games / IP / Amusement",
     exchange: "OTC ADR",
-    price: 59.47,
+    price: 60.46,
     dayChange: 0,
-    thirtyDayChange: 4.1,
+    thirtyDayChange: -0.1,
     ytdChange: 12.4,
     marketCap: "$13B",
     sentiment: "Watch",
     summary:
       "Konami offers exposure to long-lived Japanese IP, sports franchises, and a mixed entertainment portfolio beyond games.",
     watchSignal: "Silent Hill execution, eFootball retention, and digital entertainment margin",
-    trend: [46, 46, 47, 49, 48, 50, 52, 51, 53, 55, 56, 58]
+    trend: [33, 33, 33, 80, 80, 80, 80, 80, 80, 80, 65, 65, 20, 20, 20, 20, 20, 32, 32, 32, 32]
   },
   {
     ticker: "NCBDY",
     company: "Bandai Namco",
     segment: "Games / Toys / Anime IP",
     exchange: "OTC ADR",
-    price: 11.38,
-    dayChange: -1.5,
-    thirtyDayChange: 7.2,
+    price: 11.57,
+    dayChange: 0.1,
+    thirtyDayChange: 1.2,
     ytdChange: 18.6,
     marketCap: "$20B",
-    sentiment: "Bullish",
+    sentiment: "Watch",
     summary:
       "Bandai Namco is a major anime, toy, and game IP operator with strong cross-media revenue optionality.",
     watchSignal: "Elden Ring tail, anime licensing, and transmedia release timing",
-    trend: [42, 44, 45, 47, 50, 51, 54, 56, 55, 58, 61, 64]
+    trend: [23, 32, 22, 30, 30, 26, 58, 30, 36, 21, 72, 71, 45, 33, 22, 39, 32, 20, 34, 43, 31, 31]
   },
   {
     ticker: "SQNXF",
     company: "Square Enix",
     segment: "RPGs / Publishing",
     exchange: "OTC",
-    price: 16,
+    price: 16.02,
     dayChange: 0,
-    thirtyDayChange: 1.9,
+    thirtyDayChange: 0.1,
     ytdChange: 5.3,
     marketCap: "$5B",
     sentiment: "Watch",
     summary:
       "Square Enix remains a meaningful RPG and publishing signal, though investors are watching slate focus and margin quality.",
     watchSignal: "Final Fantasy pipeline, HD-2D output, and catalog monetization",
-    trend: [48, 49, 48, 50, 51, 50, 52, 53, 52, 54, 55, 56]
+    trend: [79, 79, 79, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 79, 79, 80, 80, 80, 80]
   }
 ];
 

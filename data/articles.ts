@@ -55,33 +55,34 @@ export const categories: ArticleCategory[] = [
   "Studio"
 ];
 
-export const briefSnapshotDate = "2026-06-01";
+export const briefSnapshotDate = "2026-06-05";
 
 export const articles: Article[] = [
   {
     id: "le-001",
-    slug: "adaptive-ai-npcs-enter-live-service-roadmaps",
-    title: "Adaptive AI NPCs move from tech demos into live-service roadmaps",
-    source: "NVIDIA GeForce News",
-    sourceCredibility: "Official source",
+    slug: "summer-game-fest-ai-disclosures-put-genai-under-spotlight",
+    title: "Summer Game Fest AI disclosures put generative tools under the spotlight",
+    source: "PC Gamer",
+    sourceCredibility: "Trade press",
     category: "AI",
     tldr:
-      "Major studios are piloting AI-driven NPC behavior layers for retention, quest variation, and lower content ops cost.",
+      "Showcase season is making AI disclosure a visible player-facing issue instead of a quiet production note.",
     fullTldr:
-      "Several large studios are reportedly testing adaptive NPC systems that can remix dialogue, quest beats, and encounter logic within strict narrative guardrails. The immediate value is not infinite characters, but cheaper content variation for live-service teams that need weekly reasons for players to return.",
+      "Summer Game Fest coverage is already framing generative AI disclosures as part of how players judge new games. The issue is less whether AI appears in a pipeline and more whether studios can explain where it was used, why it was used, and how much human art direction remains.",
     whyItMatters:
-      "NPC intelligence is becoming a product operations lever. Teams that can safely generate fresh character interactions may reduce event fatigue while keeping narrative quality under editorial control.",
+      "AI transparency is becoming part of marketing trust. Studios that cannot explain their AI usage may face backlash even when the underlying work is legally or technically acceptable.",
     possibleImpact:
-      "Expect more investment in simulation design, narrative tooling, safety review, and telemetry-driven content pipelines. Outsourced writing and routine live-ops content may be repriced before core narrative roles are replaced.",
+      "Expect more AI disclosure language in trailers, Steam pages, press kits, and publisher QA before major showcases.",
     trendAnalysis:
-      "Momentum is strongest among multiplayer RPGs, extraction games, and social sandbox titles where systemic variety has measurable retention upside.",
-    impactScore: 91,
-    trendScore: 42,
-    confidence: 86,
-    sectors: ["AAA Studios", "Game AI", "Live Ops", "Narrative Design"],
-    companies: ["Ubisoft", "NetEase", "Roblox", "Inworld"],
-    publishedAt: "2026-05-26",
-    sourceUrl: "https://www.nvidia.com/en-eu/geforce/news/nvidia-ace-autonomous-ai-companions-pubg-naraka-bladepoint/",
+      "Momentum is strongest around trailers, store-page art, localization, and small-team production workflows where audiences are actively looking for disclosure gaps.",
+    impactScore: 90,
+    trendScore: 41,
+    confidence: 84,
+    sectors: ["Game AI", "Marketing", "Steam", "Indie Devs"],
+    companies: ["Summer Game Fest", "Steam", "Valve", "Independent Studios"],
+    publishedAt: "2026-06-04",
+    sourceUrl:
+      "https://www.pcgamer.com/software/ai/summer-game-fest-is-here-so-get-ready-for-a-lot-of-ugh-that-game-with-the-cool-trailer-used-ai/",
     visual: {
       image: "/images/intelligence/ai-npcs.webp",
       alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
@@ -89,86 +90,88 @@ export const articles: Article[] = [
   },
   {
     id: "le-002",
-    slug: "generative-asset-pipelines-reach-indie-production",
-    title: "Generative asset pipelines reach practical indie production workflows",
-    source: "Tom's Hardware",
-    sourceCredibility: "Trade press",
-    category: "Gaming",
-    tldr:
-      "Small teams are using generative concept, texture, and prop workflows to increase iteration speed without expanding art headcount.",
-    fullTldr:
-      "Indie studios are standardizing AI-assisted preproduction for moodboards, prop ideation, tiling texture drafts, and market capsule variations. The winning pattern is human art direction plus fast generation, followed by manual cleanup for consistency and rights safety.",
-    whyItMatters:
-      "The biggest productivity gain is earlier in the funnel, where teams can explore more visual directions before committing scarce art resources.",
-    possibleImpact:
-      "More polished small-budget games may reach Steam, but discoverability pressure will intensify as asset quality rises across the market.",
-    trendAnalysis:
-      "Adoption is rising in cozy games, roguelites, horror prototypes, and mobile puzzle production where asset volume is high and art direction can be tightly templated.",
-    impactScore: 84,
-    trendScore: 36,
-    confidence: 82,
-    sectors: ["Indie Devs", "Game Art", "Steam", "Mobile Gaming"],
-    companies: ["Scenario", "Unity Asset Store", "itch.io", "Steam"],
-    publishedAt: "2026-05-25",
-    sourceUrl: "https://www.tomshardware.com/video-games/pc-gaming/1-in-5-steam-games-released-in-2025-use-generative-ai-up-nearly-700-percent-year-on-year-7-818-titles-disclose-genai-asset-usage-7-percent-of-entire-steam-library",
-    visual: {
-      image: "/images/intelligence/studio-engine.webp",
-      alt: "Holographic game engine viewport with asset pipeline geometry"
-    }
-  },
-  {
-    id: "le-003",
-    slug: "nvidia-gaming-ai-stack-targets-on-device-agents",
-    title: "Nvidia gaming AI stack targets on-device agents and creator tools",
-    source: "NVIDIA Blog",
+    slug: "nvidia-ace-keeps-ai-companions-in-pc-gaming-conversation",
+    title: "NVIDIA ACE keeps AI companions in the PC gaming conversation",
+    source: "NVIDIA Newsroom",
     sourceCredibility: "Official source",
     category: "Hardware",
     tldr:
-      "Nvidia is positioning consumer GPUs as local AI infrastructure for NPCs, modding tools, upscaling, and creator-side automation.",
+      "NVIDIA continues to position RTX PCs as local AI infrastructure for companions, NPC behavior, and creator-side tooling.",
     fullTldr:
-      "Nvidia's gaming AI push is increasingly framed around local inference: speech, animation, player assistance, mod tooling, and RTX-enhanced performance features. The strategy could turn high-end GPUs into developer-facing AI deployment targets rather than only rendering hardware.",
+      "NVIDIA's gaming AI message is increasingly about local inference, not only graphics. AI companions, speech, animation, and creator automation are being bundled into the broader RTX upgrade story as the company tries to make gaming PCs feel like AI deployment targets.",
     whyItMatters:
-      "If local AI features become marketable requirements, hardware vendors can influence game design priorities and middleware selection.",
+      "If AI features become part of the premium PC gaming pitch, hardware vendors can influence middleware decisions and game design priorities.",
     possibleImpact:
-      "Studios may build optional premium AI experiences for PC first, then compress them for console or cloud deployment once costs improve.",
+      "Studios may prototype PC-first AI features, then decide whether to compress, stream, or cut them for console and handheld builds.",
     trendAnalysis:
-      "The strongest signal is in hybrid graphics plus AI roadmaps, where performance, content generation, and assistant features are sold as one upgrade cycle.",
+      "The highest-signal area is hybrid graphics plus AI, where DLSS-style performance, assistants, and content tools reinforce the same hardware cycle.",
     impactScore: 88,
-    trendScore: 29,
-    confidence: 80,
+    trendScore: 31,
+    confidence: 82,
     sectors: ["Hardware", "Game AI", "PC Gaming", "Creator Tools"],
-    companies: ["Nvidia", "Microsoft", "Epic Games", "Lenovo"],
-    publishedAt: "2026-05-24",
-    sourceUrl: "https://blogs.nvidia.com/blog/ai-decoded-ace-microservices-digital-humans/",
+    companies: ["NVIDIA", "Microsoft", "Lenovo", "Inworld"],
+    publishedAt: "2026-06-03",
+    sourceUrl: "https://nvidianews.nvidia.com/_gallery/download_pdf/64741877ed6ae51e55fe851a/",
     visual: {
       image: "/images/intelligence/hardware-ai.webp",
       alt: "Glowing GPU-like silicon die and dark circuit intelligence visual"
     }
   },
   {
-    id: "le-004",
-    slug: "xbox-strategy-leans-further-into-cross-platform-releases",
-    title: "Xbox strategy leans further into cross-platform releases",
-    source: "Xbox Wire",
-    sourceCredibility: "Official source",
+    id: "le-003",
+    slug: "xbox-showcase-cross-platform-language-becomes-default",
+    title: "Xbox showcase language makes cross-platform releases feel like the default",
+    source: "Windows Central",
+    sourceCredibility: "Trade press",
     category: "Platform",
     tldr:
-      "Microsoft's publishing posture continues to prioritize reach, subscriptions, and franchise value over traditional hardware exclusivity.",
+      "Microsoft is expected to keep labeling where first-party games are headed, including PlayStation and other platforms.",
     fullTldr:
-      "Xbox is increasingly acting like a platform-agnostic publisher with hardware, cloud, PC, and console storefront assets. The near-term signal for studios is that franchise monetization may matter more than exclusivity as a strategic default.",
+      "Xbox's showcase strategy is shifting from exclusivity ambiguity toward clearer multi-platform messaging. The practical read is that Microsoft is operating more like a scaled publisher with hardware, PC, cloud, and subscription assets rather than a console-only platform holder.",
     whyItMatters:
-      "The console war framing is giving way to portfolio economics, where IP can move across devices while services keep the customer relationship.",
+      "The distribution question is now central to Xbox economics. Franchise reach, recurring revenue, and release cadence are becoming more important than traditional exclusivity optics.",
     possibleImpact:
-      "Third-party partners may negotiate broader release windows, while first-party teams face pressure to make launches work across more ecosystems.",
+      "Studios under Microsoft may plan launches around more platforms earlier, while competitors use Xbox's openness to pressure their own release strategies.",
     trendAnalysis:
-      "The market is rewarding flexible distribution, especially for franchises with older audiences and strong live-service monetization.",
-    impactScore: 86,
-    trendScore: 24,
-    confidence: 84,
+      "Momentum favors high-reach IP, especially franchises that can benefit from PC, PlayStation, cloud, and Game Pass discovery at different points in the lifecycle.",
+    impactScore: 87,
+    trendScore: 28,
+    confidence: 85,
     sectors: ["Console", "Subscription Gaming", "AAA Studios", "Cloud Gaming"],
     companies: ["Microsoft", "Xbox", "Activision Blizzard", "Bethesda"],
-    publishedAt: "2026-05-23",
-    sourceUrl: "https://news.xbox.com/en-us/2024/02/21/new-platforms-new-players-xbox-games-switch-playstation/",
+    publishedAt: "2026-05-29",
+    sourceUrl:
+      "https://www.windowscentral.com/gaming/xbox/xbox-games-chief-confirms-microsoft-will-show-when-its-titles-are-coming-to-ps5-and-other-platforms-at-the-xbox-games-showcase",
+    visual: {
+      image: "/images/intelligence/platform-strategy.webp",
+      alt: "Abstract cross-platform gaming network with cloud and device nodes"
+    }
+  },
+  {
+    id: "le-004",
+    slug: "playstation-state-of-play-keeps-premium-pipeline-visible",
+    title: "PlayStation State of Play keeps premium pipeline visibility in focus",
+    source: "GamesRadar+",
+    sourceCredibility: "Trade press",
+    category: "Platform",
+    tldr:
+      "Sony's June showcase cadence keeps first-party, partner, and PC-adjacent expectations concentrated in short event windows.",
+    fullTldr:
+      "PlayStation's June State of Play coverage reinforces how much platform perception now depends on tightly packaged showcase moments. For Sony, the signal is not only what ships soon, but how convincingly the company can communicate premium releases, partner titles, and lifecycle plans.",
+    whyItMatters:
+      "Showcase confidence affects platform narrative, creator coverage, and investor expectations before the actual release calendar lands.",
+    possibleImpact:
+      "Studios may treat showcase readiness as a production milestone, with trailers, demos, PC messaging, and wishlist paths coordinated earlier.",
+    trendAnalysis:
+      "The strongest signal is in event-driven publishing, where platform holders concentrate attention into fewer, higher-pressure media beats.",
+    impactScore: 79,
+    trendScore: 23,
+    confidence: 82,
+    sectors: ["Console", "PC Gaming", "AAA Studios", "Publishing"],
+    companies: ["Sony", "PlayStation Studios", "Bungie", "Nixxes"],
+    publishedAt: "2026-06-02",
+    sourceUrl:
+      "https://www.gamesradar.com/games/events-conferences/playstation-state-of-play-stream-june-2026-how-to-watch/",
     visual: {
       image: "/images/intelligence/platform-strategy.webp",
       alt: "Abstract cross-platform gaming network with cloud and device nodes"
@@ -176,86 +179,86 @@ export const articles: Article[] = [
   },
   {
     id: "le-005",
-    slug: "playstation-doubles-down-on-premium-single-player-and-pc",
-    title: "PlayStation balances premium single-player identity with PC expansion",
-    source: "PlayStation",
+    slug: "steam-next-fest-turns-demos-into-indie-discovery-battleground",
+    title: "Steam Next Fest turns demos into the indie discovery battleground",
+    source: "Steam",
     sourceCredibility: "Official source",
-    category: "Platform",
-    tldr:
-      "Sony is protecting blockbuster console launches while using PC ports to extend franchise tails and audience reach.",
-    fullTldr:
-      "PlayStation's strategy remains anchored in prestige first-party releases, but the PC window has become a durable second revenue beat. The model gives Sony stronger lifecycle economics without fully diluting console launch demand.",
-    whyItMatters:
-      "Premium single-player remains investable when publishers can monetize multiple release windows and use PC to revive social conversation.",
-    possibleImpact:
-      "Studios may design with PC scalability, ultrawide support, and mod-aware communities earlier in production.",
-    trendAnalysis:
-      "The trend is not day-one parity, but increasingly professionalized multi-window publishing for expensive narrative games.",
-    impactScore: 78,
-    trendScore: 18,
-    confidence: 83,
-    sectors: ["Console", "PC Gaming", "AAA Studios", "Publishing"],
-    companies: ["Sony", "PlayStation Studios", "Nixxes", "Steam"],
-    publishedAt: "2026-05-22",
-    sourceUrl: "https://www.playstation.com/en-us/games/pc-games/",
-    visual: {
-      image: "/images/intelligence/platform-strategy.webp",
-      alt: "Abstract cross-platform gaming network with cloud and device nodes"
-    }
-  },
-  {
-    id: "le-006",
-    slug: "steam-wishlist-conversion-gap-widens-for-mid-tier-games",
-    title: "Steam wishlist conversion gap widens for mid-tier launches",
-    source: "GAMES.GG",
-    sourceCredibility: "Market analysis",
     category: "Business",
     tldr:
-      "Wishlist counts remain useful, but genre crowding and discount timing are making launch conversion less predictable.",
+      "The June demo cycle gives indie teams another high-leverage window for wishlist quality, creator coverage, and launch conversion.",
     fullTldr:
-      "Steam's mid-market is seeing a sharper divide between high-velocity hits and games with respectable wishlists but soft launch conversion. Influencer timing, demo quality, price anchoring, and festival placement are becoming decisive.",
+      "Steam Next Fest remains one of the few discovery windows where small teams can generate measurable demand without a full paid marketing push. The key signal is shifting from raw wishlist volume to demo quality, creator pickup, and whether attention survives after the event.",
     whyItMatters:
-      "Portfolio teams can no longer treat wishlist volume as a simple revenue proxy. Quality of demand matters more than top-line audience size.",
+      "For indie publishers, demos are no longer optional polish. They are the storefront's strongest live test of product-market fit.",
     possibleImpact:
-      "Expect heavier investment in playable demos, creator outreach, regional pricing strategy, and launch-week analytics.",
+      "Expect more teams to budget for public demo milestones, festival analytics, and post-demo community follow-up before launch dates are locked.",
     trendAnalysis:
-      "The strongest performers are games with clear hooks, streamable moments, and communities activated before Steam festivals.",
-    impactScore: 82,
-    trendScore: 31,
+      "Momentum favors games with quick hooks, replayable demos, and streamable moments that can travel beyond Steam's event surface.",
+    impactScore: 83,
+    trendScore: 35,
     confidence: 88,
     sectors: ["Steam", "Indie Devs", "Publishing", "Marketing"],
-    companies: ["Valve", "Devolver Digital", "Hooded Horse", "tinyBuild"],
-    publishedAt: "2026-05-21",
-    sourceUrl: "https://games.gg/news/what-the-data-says-about-wishlist-conversion/",
+    companies: ["Valve", "Independent Studios", "Hooded Horse", "Devolver Digital"],
+    publishedAt: "2026-06-05",
+    sourceUrl: "https://store.steampowered.com/sale/nextfest",
     visual: {
       image: "/images/intelligence/business-market.webp",
       alt: "Dark gaming market intelligence terminal with holographic charts"
     }
   },
   {
-    id: "le-007",
-    slug: "unreal-engine-tooling-pushes-virtual-production-and-ugc",
-    title: "Unreal Engine tooling pushes deeper into virtual production and UGC",
-    source: "Unreal Engine",
+    id: "le-006",
+    slug: "unity-2026-report-points-to-ai-and-mobile-monetization-pressure",
+    title: "Unity 2026 report points to AI workflows and mobile monetization pressure",
+    source: "Unity",
     sourceCredibility: "Official source",
     category: "Studio",
     tldr:
-      "Epic's engine updates keep converging game development, creator economies, and real-time cinematic workflows.",
+      "Unity's latest gaming report frames AI, mobile production, and monetization efficiency as core developer concerns.",
     fullTldr:
-      "Unreal's roadmap is increasingly valuable outside traditional game teams, with creator commerce, UGC publishing, cinematic pipelines, and real-time production features reinforcing one ecosystem.",
+      "Unity's 2026 gaming report positions practical AI usage, mobile performance, and production efficiency as central industry themes. The report matters because Unity is still heavily exposed to mobile, indie, and cross-platform teams that need predictable tooling more than hype.",
     whyItMatters:
-      "Engine choice is becoming a platform decision. Teams are evaluating not only rendering, but monetization, distribution, and creator extension paths.",
+      "Unity's developer trust and mobile relevance remain important market reads, especially for studios balancing engine choice with ad-tech and live-ops requirements.",
     possibleImpact:
-      "Studios with UGC ambitions may prioritize Unreal talent and pipeline compatibility earlier, even for projects that are not graphically maximalist.",
+      "Mobile and indie teams may continue demanding clearer pricing, stronger runtime performance, and AI tools that fit existing pipelines.",
     trendAnalysis:
-      "The signal is strongest where branded worlds, Fortnite-adjacent creation, and transmedia production overlap.",
-    impactScore: 80,
-    trendScore: 27,
-    confidence: 81,
+      "The trend favors pragmatic production support: fewer flashy demos, more workflow, monetization, and retention tooling.",
+    impactScore: 76,
+    trendScore: 22,
+    confidence: 80,
+    sectors: ["Mobile Gaming", "Game Engines", "Indie Devs", "Ad Monetization"],
+    companies: ["Unity", "AppLovin", "ironSource", "Niantic"],
+    publishedAt: "2026-06-03",
+    sourceUrl: "https://unity.com/resources/gaming-report",
+    visual: {
+      image: "/images/intelligence/studio-engine.webp",
+      alt: "Holographic game engine viewport with asset pipeline geometry"
+    }
+  },
+  {
+    id: "le-007",
+    slug: "unreal-and-uefn-convergence-strengthens-engine-platform-thesis",
+    title: "Unreal and UEFN convergence strengthens the engine-as-platform thesis",
+    source: "GameBusiness.jp",
+    sourceCredibility: "Trade press",
+    category: "Studio",
+    tldr:
+      "Epic's engine direction keeps blending game development, creator economies, and Fortnite-adjacent publishing.",
+    fullTldr:
+      "Coverage around Epic's long-term Unreal and UEFN direction keeps reinforcing a larger shift: engine choice is also becoming a distribution, creator, and monetization decision. Unreal is not just rendering tech; it is increasingly tied to how content can become playable, social, and commercial.",
+    whyItMatters:
+      "Studios with UGC or transmedia ambitions may choose engines based on ecosystem leverage, not just graphics capability.",
+    possibleImpact:
+      "Expect Unreal talent, UEFN familiarity, creator payouts, and branded-world production to become more strategically linked.",
+    trendAnalysis:
+      "The strongest signal is where Fortnite creation, enterprise real-time workflows, and game studio pipelines overlap.",
+    impactScore: 81,
+    trendScore: 29,
+    confidence: 78,
     sectors: ["Game Engines", "UGC", "Virtual Production", "Creator Economy"],
-    companies: ["Epic Games", "Fortnite", "LEGO", "Disney"],
-    publishedAt: "2026-05-20",
-    sourceUrl: "https://www.unrealengine.com/en-US/blog/unreal-editor-for-fortnite-is-now-available-in-beta",
+    companies: ["Epic Games", "Unreal Engine", "Fortnite", "Disney"],
+    publishedAt: "2026-05-25",
+    sourceUrl: "https://www.gamebusiness.jp/article/2026/05/25/27035.html",
     visual: {
       image: "/images/intelligence/studio-engine.webp",
       alt: "Holographic game engine viewport with asset pipeline geometry"
@@ -263,115 +266,118 @@ export const articles: Article[] = [
   },
   {
     id: "le-008",
-    slug: "unity-focuses-on-runtime-performance-and-mobile-monetization",
-    title: "Unity focuses on runtime performance and mobile monetization trust",
-    source: "Unity",
-    sourceCredibility: "Official source",
-    category: "Studio",
-    tldr:
-      "Unity is emphasizing engine reliability, mobile performance, and monetization clarity to rebuild confidence among developers.",
-    fullTldr:
-      "Unity's current posture is less about flashy engine narratives and more about trust repair: predictable economics, stronger mobile runtime performance, and practical tooling for teams shipping across devices.",
-    whyItMatters:
-      "Unity remains central to mobile and indie production. Confidence in pricing and platform stability directly affects engine lock-in decisions.",
-    possibleImpact:
-      "Mobile studios may continue to stay with Unity when roadmap clarity improves, while new indie teams compare long-term business risk more carefully.",
-    trendAnalysis:
-      "The trend favors pragmatic engine updates over headline features, especially for teams with existing Unity pipelines.",
-    impactScore: 74,
-    trendScore: 16,
-    confidence: 79,
-    sectors: ["Mobile Gaming", "Game Engines", "Indie Devs", "Ad Monetization"],
-    companies: ["Unity", "AppLovin", "ironSource", "Niantic"],
-    publishedAt: "2026-05-19",
-    sourceUrl: "https://unity.com/resources/gaming-report-2025",
-    visual: {
-      image: "/images/intelligence/studio-engine.webp",
-      alt: "Holographic game engine viewport with asset pipeline geometry"
-    }
-  },
-  {
-    id: "le-009",
-    slug: "ai-voice-generation-for-games-faces-union-and-localization-pressure",
-    title: "AI voice generation for games faces union and localization pressure",
-    source: "SAG-AFTRA",
-    sourceCredibility: "Official source",
+    slug: "ai-voice-debate-centers-on-studio-responsibility",
+    title: "AI voice debate centers on studio responsibility and consent",
+    source: "PC Gamer",
+    sourceCredibility: "Trade press",
     category: "AI",
     tldr:
-      "AI voice tools are gaining traction for scratch tracks and localization, but consent, contracts, and performance quality remain gating issues.",
+      "Voice performers are pushing the industry to treat AI use as a studio governance issue, not only a vendor capability.",
     fullTldr:
-      "Studios are exploring AI voice for prototyping, localization expansion, NPC barks, and accessibility modes. The commercial path depends on performer consent, transparent compensation, and production workflows that preserve high-value human performances.",
+      "Recent AI voice coverage highlights a sharper accountability argument: studios choose how voice data, synthetic replicas, and vendor tools are used. The production value is real for scratch tracks and localization, but the reputational risk is concentrated around consent and compensation.",
     whyItMatters:
-      "Voice is a reputational risk area. Missteps can create backlash from talent, players, and regulators faster than purely internal tooling.",
+      "Voice is one of the highest-risk AI categories because players recognize performers and talent communities can organize quickly.",
     possibleImpact:
-      "Expect contract language, talent licensing systems, and audit trails to become core procurement requirements for voice vendors.",
+      "Expect more contract language, consent logs, audit trails, and procurement review before AI voice vendors are approved for shipped work.",
     trendAnalysis:
-      "Adoption is likely to grow first in placeholder production and narrow live-service content, then expand as rights systems mature.",
+      "Adoption is likely to grow first in prototyping, accessibility, and low-stakes barks while high-profile roles remain tightly controlled.",
     impactScore: 89,
-    trendScore: 34,
-    confidence: 85,
+    trendScore: 36,
+    confidence: 86,
     sectors: ["Game AI", "Localization", "Voice Acting", "Legal"],
     companies: ["SAG-AFTRA", "Replica Studios", "ElevenLabs", "Keywords Studios"],
-    publishedAt: "2026-05-18",
-    sourceUrl: "https://www.sagaftra.org/replica-studios-agreement-digital-voice-replicas",
+    publishedAt: "2026-06-01",
+    sourceUrl:
+      "https://www.pcgamer.com/gaming-industry/mass-effect-and-metal-gear-actor-jennifer-hale-calls-on-studios-to-take-responsibility-for-their-ai-use-aint-nobody-making-you-do-it/",
     visual: {
       image: "/images/intelligence/ai-npcs.webp",
       alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
     }
   },
   {
-    id: "le-010",
-    slug: "game-industry-layoffs-shift-toward-specialized-hiring",
-    title: "Game industry layoffs shift hiring toward AI, backend, and monetization roles",
-    source: "S&P Global",
-    sourceCredibility: "Market analysis",
+    id: "le-009",
+    slug: "ai-linked-layoffs-make-game-hiring-more-specialized",
+    title: "AI-linked layoffs make game hiring more specialized",
+    source: "TechSpot",
+    sourceCredibility: "Trade press",
     category: "Business",
     tldr:
-      "Broad layoffs continue to reshape studio org charts while demand persists for technical roles tied to efficiency and revenue systems.",
+      "Broader tech layoffs are increasing pressure on studios to hire around pipeline leverage, data, backend, and AI-adjacent production roles.",
     fullTldr:
-      "The labor market remains uneven: studios are reducing layers and canceling speculative projects, yet still hiring for backend infrastructure, technical art, economy design, AI tooling, and data science.",
+      "The 2026 layoff tracker conversation is bigger than games, but the read for game teams is direct: companies are cutting broad headcount while protecting roles tied to automation, infrastructure, analytics, and revenue systems. Hiring is not disappearing; it is becoming more targeted.",
     whyItMatters:
       "The hiring mix reveals where executives expect leverage: production efficiency, durable live services, and monetization systems.",
     possibleImpact:
-      "Mid-career developers may need to position around pipeline impact, shipped systems, and cross-functional production value.",
+      "Developers may need to frame portfolios around shipped systems, tooling impact, and cross-functional production value instead of general craft alone.",
     trendAnalysis:
-      "Hiring recovery is likely to be role-specific before it becomes broad-based, with platform and tooling experience outperforming generalist demand.",
-    impactScore: 87,
-    trendScore: 22,
-    confidence: 87,
+      "Recovery is likely role-specific before it becomes broad-based, with technical production, backend, economy, and AI workflow experience outperforming generalist demand.",
+    impactScore: 86,
+    trendScore: 25,
+    confidence: 83,
     sectors: ["Studios", "Hiring", "Live Ops", "Game AI"],
     companies: ["Electronic Arts", "Riot Games", "Embracer Group", "Take-Two"],
-    publishedAt: "2026-05-17",
-    sourceUrl: "https://www.spglobal.com/market-intelligence/en/news-insights/research/video-game-industry-sheds-jobs-to-protect-margins",
+    publishedAt: "2026-06-02",
+    sourceUrl:
+      "https://www.techspot.com/news/112493-tech-layoffs-pass-100000-2026-tracker-points-ai.html",
     visual: {
       image: "/images/intelligence/business-market.webp",
       alt: "Dark gaming market intelligence terminal with holographic charts"
     }
   },
   {
-    id: "le-011",
-    slug: "esports-viewership-consolidates-around-fewer-premium-events",
-    title: "Esports viewership consolidates around fewer premium global events",
-    source: "Esports Insider",
+    id: "le-010",
+    slug: "cloud-gaming-on-tvs-revives-no-console-distribution-thesis",
+    title: "Cloud gaming on TVs revives the no-console distribution thesis",
+    source: "TechRadar",
     sourceCredibility: "Trade press",
+    category: "Platform",
+    tldr:
+      "Cloud gaming is finding a more practical role through TVs, trials, and access layers rather than full hardware replacement.",
+    fullTldr:
+      "The latest cloud gaming discussion is less about replacing every console and more about reducing friction. TV apps, instant access, and game trials can make cloud useful as a discovery and subscription layer even when dedicated hardware remains the premium experience.",
+    whyItMatters:
+      "Cloud's near-term commercial value may be conversion and access, not full-time play. That makes it relevant to platform strategy and marketing funnels.",
+    possibleImpact:
+      "Expect more one-click trials, TV partnerships, cloud-first demos, and subscription discovery paths tied to major storefronts.",
+    trendAnalysis:
+      "Momentum is strongest for back catalog discovery, family games, sports, racing, and demo use cases where latency tolerance is higher.",
+    impactScore: 73,
+    trendScore: 27,
+    confidence: 77,
+    sectors: ["Cloud Gaming", "Subscriptions", "Storefronts", "Marketing"],
+    companies: ["Xbox Cloud Gaming", "NVIDIA GeForce Now", "Amazon Luna", "Samsung"],
+    publishedAt: "2026-06-04",
+    sourceUrl:
+      "https://www.techradar.com/televisions/cloud-gaming-on-tvs-suddenly-looks-like-the-future-2026-is-the-year-the-no-console-world-becomes-realistic-thanks-developments-and-hardware-shortages",
+    visual: {
+      image: "/images/intelligence/platform-strategy.webp",
+      alt: "Abstract cross-platform gaming network with cloud and device nodes"
+    }
+  },
+  {
+    id: "le-011",
+    slug: "playstation-state-of-play-viewership-shows-showcase-economics",
+    title: "State of Play viewership shows the economics of showcase attention",
+    source: "Streams Charts",
+    sourceCredibility: "Market analysis",
     category: "Esports",
     tldr:
-      "Top-tier tournaments are holding attention, while smaller leagues face sponsorship pressure and fragmented audiences.",
+      "Record live viewership for a platform showcase shows how concentrated event attention can shape creator and publisher strategy.",
     fullTldr:
-      "Esports engagement is increasingly concentrated around tentpole championships, creator-led co-streams, and games with resilient ranked ecosystems. Smaller circuits are struggling to justify production budgets without stronger sponsor conversion.",
+      "Streams Charts reporting on State of Play viewership shows that showcase events can now behave like competitive attention markets. Even when the event is not esports, it uses the same creator, co-stream, and live audience mechanics that shape gaming media economics.",
     whyItMatters:
-      "The business is maturing away from growth-at-all-costs toward event scarcity, creator distribution, and measurable sponsor outcomes.",
+      "Platform events are becoming media products. Live viewership, co-streaming, and creator reaction cycles can materially affect game awareness.",
     possibleImpact:
-      "Publishers may reduce league sprawl, invest in fewer flagship events, and bring creator co-streaming deeper into rights strategy.",
+      "Publishers may coordinate trailers, demos, creator access, and wishlist pushes more tightly around showcase windows.",
     trendAnalysis:
-      "The healthiest ecosystems combine global events, accessible ranked play, and personalities who can carry audiences between tournaments.",
-    impactScore: 76,
-    trendScore: 19,
-    confidence: 84,
-    sectors: ["Esports", "Streaming", "Sponsorship", "Creator Economy"],
-    companies: ["Riot Games", "Valve", "Twitch", "YouTube"],
-    publishedAt: "2026-05-16",
-    sourceUrl: "https://esportsinsider.com/esports-viewership-analysis-2025/",
+      "Momentum favors fewer, higher-impact live events with creator amplification rather than a constant drip of isolated announcements.",
+    impactScore: 78,
+    trendScore: 32,
+    confidence: 81,
+    sectors: ["Streaming", "Creator Economy", "Marketing", "Platform"],
+    companies: ["Sony", "YouTube", "Twitch", "Streams Charts"],
+    publishedAt: "2026-06-03",
+    sourceUrl: "https://streamscharts.com/news/state-play-hits-record-breaking-3-million-live-viewers",
     visual: {
       image: "/images/intelligence/esports-arena.webp",
       alt: "Futuristic esports arena with viewership heatmap and stage lighting"
@@ -379,28 +385,29 @@ export const articles: Article[] = [
   },
   {
     id: "le-012",
-    slug: "mobile-gaming-growth-returns-through-hybrid-casual-and-asia",
-    title: "Mobile gaming growth returns through hybrid-casual systems and Asia expansion",
-    source: "Mistplay",
-    sourceCredibility: "Vendor report",
+    slug: "gdc-2026-mobile-trends-emphasize-d2c-and-co-development",
+    title: "GDC mobile trends emphasize D2C, co-development, and live-ops efficiency",
+    source: "PocketGamer.biz",
+    sourceCredibility: "Trade press",
     category: "Gaming",
     tldr:
-      "Mobile studios are finding growth in hybrid-casual loops, deeper progression, and region-specific live operations.",
+      "Mobile teams are balancing direct-to-consumer ambitions, co-development, and tighter live-ops economics.",
     fullTldr:
-      "The mobile market is recovering unevenly, with winners blending approachable onboarding, mid-core retention mechanics, and regionally tuned events. User acquisition remains expensive, so product-led retention is doing more of the work.",
+      "GDC trend coverage points to a mobile market that is still active but more operationally demanding. D2C monetization, co-development, and production discipline are becoming important as teams look for growth beyond classic user acquisition loops.",
     whyItMatters:
-      "Mobile is no longer a simple scale game. The operational winners combine data, creative testing, economy design, and local content cadence.",
+      "Mobile gaming is still one of the industry's biggest revenue centers, but growth now requires sharper retention, monetization, and publishing execution.",
     possibleImpact:
-      "Studios may merge casual and mid-core teams, prioritize first-party analytics, and invest in regional publishing expertise.",
+      "Studios may invest more in first-party communities, regional publishing, cross-platform support, and live-ops tooling that reduces UA dependence.",
     trendAnalysis:
-      "Asia-led launches and hybrid monetization models show the clearest momentum, particularly in puzzle, simulation, and strategy categories.",
-    impactScore: 79,
-    trendScore: 28,
-    confidence: 81,
+      "The strongest signal is in teams that combine casual accessibility with deeper retention systems and better owned customer relationships.",
+    impactScore: 80,
+    trendScore: 30,
+    confidence: 82,
     sectors: ["Mobile Gaming", "Live Ops", "Ad Monetization", "Publishing"],
     companies: ["Tencent", "NetEase", "Scopely", "AppLovin"],
-    publishedAt: "2026-05-15",
-    sourceUrl: "https://business.mistplay.com/resources/mobile-gaming-trends-2025",
+    publishedAt: "2026-05-31",
+    sourceUrl:
+      "https://www.pocketgamer.biz/d2c-co-development-and-volume-over-viability-gdc-2026-trends-revealed/",
     visual: {
       image: "/images/intelligence/mobile-gaming.webp",
       alt: "Mobile gaming live operations network with floating phones and data arcs"
@@ -408,56 +415,56 @@ export const articles: Article[] = [
   },
   {
     id: "le-013",
-    slug: "cloud-gaming-finds-new-role-as-instant-demo-layer",
-    title: "Cloud gaming finds new role as an instant demo and trial layer",
-    source: "Xbox Wire",
+    slug: "youtube-creator-partnerships-deepen-launch-distribution-options",
+    title: "YouTube creator partnerships deepen launch distribution options",
+    source: "YouTube Blog",
     sourceCredibility: "Official source",
-    category: "Platform",
+    category: "Business",
     tldr:
-      "Cloud gaming is gaining practical value as a frictionless trial, marketing, and subscription discovery mechanism.",
+      "YouTube's creator partnership push reinforces how creator ecosystems are becoming go-to-market infrastructure for games.",
     fullTldr:
-      "Instead of replacing local hardware, cloud gaming is increasingly useful for instant demos, embedded store trials, and short-session discovery. The model fits publishers that want lower install friction and platforms that need subscription engagement.",
+      "YouTube's NewFronts creator partnership messaging is not game-specific, but the implications for games are clear: creators are increasingly treated as distribution, brand, and community partners. For game launches, that means audience-native marketing can be built earlier into campaign planning.",
     whyItMatters:
-      "Cloud's near-term commercial win may be conversion, not full-time play. That makes it a marketing and platform retention tool.",
+      "Creators are becoming distribution partners, publishers, and IP amplifiers. Games with streamable systems can use that infrastructure more efficiently than traditional paid media alone.",
     possibleImpact:
-      "Expect more one-click trials, creator-linked demos, and store integrations where cloud sessions feed wishlist or subscription funnels.",
+      "Expect more publisher-creator deals, launch campaigns built around creator formats, and game designs that support repeatable social content.",
     trendAnalysis:
-      "Momentum is strongest around sports, racing, family games, and back catalog discovery where latency tolerance is higher.",
-    impactScore: 72,
-    trendScore: 25,
-    confidence: 76,
-    sectors: ["Cloud Gaming", "Subscriptions", "Storefronts", "Marketing"],
-    companies: ["Nvidia GeForce Now", "Xbox Cloud Gaming", "Amazon Luna", "Samsung"],
-    publishedAt: "2026-05-14",
-    sourceUrl: "https://news.xbox.com/en-us/2024/11/20/stream-your-own-game-xbox-cloud-gaming-beta/",
+      "The best-performing projects turn creator identity into mechanics, rituals, or community participation rather than simple logo placement.",
+    impactScore: 77,
+    trendScore: 34,
+    confidence: 78,
+    sectors: ["Creator Economy", "Publishing", "YouTube", "Marketing"],
+    companies: ["YouTube", "Google", "Roblox", "Offbrand Games"],
+    publishedAt: "2026-05-29",
+    sourceUrl: "https://blog.youtube/news-and-events/youtube-creator-partnerships-newfronts-2026/",
     visual: {
-      image: "/images/intelligence/platform-strategy.webp",
-      alt: "Abstract cross-platform gaming network with cloud and device nodes"
+      image: "/images/intelligence/business-market.webp",
+      alt: "Dark gaming market intelligence terminal with holographic charts"
     }
   },
   {
     id: "le-014",
-    slug: "ai-qa-agents-cut-regression-testing-time-for-large-games",
-    title: "AI QA agents cut regression testing time for large open-world games",
+    slug: "ai-qa-agents-remain-high-leverage-production-tooling-signal",
+    title: "AI QA agents remain a high-leverage production tooling signal",
     source: "modl.ai",
     sourceCredibility: "Vendor report",
     category: "AI",
     tldr:
-      "Studios are using AI-driven test agents to navigate builds, detect regressions, and prioritize bug triage before human QA passes.",
+      "AI-driven QA remains one of the clearest practical use cases for studios because it targets repetitive regression risk.",
     fullTldr:
-      "AI QA systems are becoming practical for repetitive traversal, crash reproduction, UI flow checks, and anomaly detection. Human QA remains essential for feel, exploit discovery, and subjective quality, but agents can widen baseline coverage.",
+      "AI QA systems are becoming useful for repetitive traversal, smoke tests, crash reproduction, and anomaly detection. Human QA remains essential for feel, exploits, and subjective quality, but agents can widen baseline coverage and reduce late-cycle uncertainty.",
     whyItMatters:
       "Testing cost is a major constraint for large games. Better automated coverage can shorten release risk cycles without reducing quality ambition.",
     possibleImpact:
-      "Technical QA, telemetry design, and build pipeline integration become more strategic as AI agents move into nightly testing.",
+      "Technical QA, telemetry design, and build pipeline integration should become more strategic as AI agents move into nightly testing.",
     trendAnalysis:
-      "Adoption is rising fastest for open-world traversal, multiplayer smoke tests, and platform certification preparation.",
-    impactScore: 90,
-    trendScore: 39,
+      "Adoption is strongest for open-world traversal, multiplayer smoke tests, certification prep, and build verification where repeatability matters.",
+    impactScore: 91,
+    trendScore: 38,
     confidence: 83,
     sectors: ["QA", "AAA Studios", "Game AI", "DevOps"],
-    companies: ["Keywords Studios", "Modl.ai", "Sony", "Electronic Arts"],
-    publishedAt: "2026-05-13",
+    companies: ["Keywords Studios", "modl.ai", "Sony", "Electronic Arts"],
+    publishedAt: "2026-06-01",
     sourceUrl: "https://modl.ai/state-of-games-qa-report",
     visual: {
       image: "/images/intelligence/ai-npcs.webp",
@@ -466,28 +473,28 @@ export const articles: Article[] = [
   },
   {
     id: "le-015",
-    slug: "creator-led-games-turn-youtube-audiences-into-launch-engines",
-    title: "Creator-led games turn YouTube audiences into launch engines",
-    source: "Shacknews",
+    slug: "future-games-show-and-showcase-week-concentrate-discovery",
+    title: "Future Games Show and showcase week concentrate discovery pressure",
+    source: "GamesRadar+",
     sourceCredibility: "Trade press",
     category: "Business",
     tldr:
-      "Games built around creator communities are outperforming traditional marketing benchmarks when the product loop matches the audience.",
+      "June showcase week is concentrating game discovery into a few crowded attention windows across PC, console, and creator channels.",
     fullTldr:
-      "Creator-led launches are proving that built-in attention can reduce paid marketing dependence, but only when the game design supports repeatable social content. Audience size alone is not enough; the game needs moments fans want to share.",
+      "Future Games Show and adjacent June events create one of the year's densest discovery weeks. For studios, the opportunity is high, but the competition for attention is brutal: trailers, demos, wishlist calls, creator coverage, and platform messaging all collide.",
     whyItMatters:
-      "Creators are becoming distribution partners, publishers, and IP engines. Studios that understand community-native design can access lower-cost demand.",
+      "Discovery is increasingly event-shaped. A strong showing can compress months of awareness building into one week, while a weak one can disappear instantly.",
     possibleImpact:
-      "More publishers will structure deals with creators earlier, while developers build around streamability, memes, and viewer participation.",
+      "Studios may put more production effort into trailer clarity, demo readiness, creator kits, and post-event conversion flows.",
     trendAnalysis:
-      "The best-performing projects turn creator identity into mechanics or community rituals rather than simple branding.",
-    impactScore: 77,
-    trendScore: 33,
-    confidence: 78,
-    sectors: ["Creator Economy", "Publishing", "YouTube", "Indie Devs"],
-    companies: ["YouTube", "Roblox", "Mythical", "Offbrand Games"],
-    publishedAt: "2026-05-12",
-    sourceUrl: "https://www.shacknews.com/article/140160/ludwig-offbrand-games-rivals-2",
+      "Momentum favors teams that pair a clear hook with immediate action: demo, wishlist, playtest, creator access, or release date.",
+    impactScore: 82,
+    trendScore: 37,
+    confidence: 80,
+    sectors: ["Publishing", "Marketing", "Indie Devs", "Creator Economy"],
+    companies: ["GamesRadar+", "Future Games Show", "Steam", "YouTube"],
+    publishedAt: "2026-06-05",
+    sourceUrl: "https://www.gamesradar.com/future-games-show/",
     visual: {
       image: "/images/intelligence/business-market.webp",
       alt: "Dark gaming market intelligence terminal with holographic charts"

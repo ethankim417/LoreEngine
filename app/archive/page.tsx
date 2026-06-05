@@ -4,8 +4,8 @@ import { articles } from "@/data/articles";
 
 const archiveWeeks = [
   {
-    date: "2026-06-01",
-    title: "AI Production Pressure",
+    date: "2026-06-05",
+    title: "Showcase Week AI Pressure",
     summary:
       "Adaptive NPCs, generative asset workflows, and AI voice licensing shaped the highest-impact production signals.",
     focus: ["Game AI", "Engines", "Voice"]
