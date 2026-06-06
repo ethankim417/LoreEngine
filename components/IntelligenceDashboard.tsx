@@ -27,6 +27,7 @@ import {
   type ArticleCategory,
   type SourceCredibility
 } from "@/data/articles";
+import { weeklyBriefCadence } from "@/data/sourceStrategy";
 import { formatDate } from "@/lib/format";
 import type { DashboardMetric } from "@/lib/metrics";
 
@@ -399,7 +400,7 @@ function WeeklyBriefStatus({
               </Link>
             </div>
             <p className="mt-0.5 text-sm leading-5 text-slate-400">
-              Updated {formatDate(briefSnapshotDate)}
+              Updated {formatDate(briefSnapshotDate)} · Scheduled {weeklyBriefCadence.schedule}
             </p>
           </div>
         </div>
@@ -510,6 +511,9 @@ function MetricCard({
             <p className="font-display text-xl font-black text-white">{metric.value}</p>
             <p className="pb-0.5 text-xs font-semibold text-slate-300">{metric.delta}</p>
           </div>
+          <p className="mt-1 truncate text-[0.68rem] font-semibold text-cyan-100/65">
+            {metric.formulaHint}
+          </p>
         </div>
         <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-400 transition group-hover:border-cyan-300/35 group-hover:text-cyan-100">
           <Info className="h-4 w-4" />

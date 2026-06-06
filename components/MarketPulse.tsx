@@ -22,6 +22,7 @@ export function MarketPulse() {
     .sort((a, b) => Math.abs(b.thirtyDayChange) - Math.abs(a.thirtyDayChange))
     .slice(0, 5);
   const lead = topMovers[0];
+  const marketRead = getMarketRead(lead);
 
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_GITHUB_PAGES === "true") {
@@ -67,6 +68,9 @@ export function MarketPulse() {
               <BadgeDollarSign className="h-4 w-4" />
               Market Pulse
             </div>
+            <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-400">
+              Market context for hardware, engines, platforms, and major game revenue leaders.
+            </p>
             <div className="mt-1 flex flex-wrap items-center gap-2 text-xs leading-5 text-slate-500" aria-live="polite">
               <span>Updated {formatDate(snapshot.snapshotDate)}</span>
               {isRefreshing ? (
@@ -132,6 +136,9 @@ export function MarketPulse() {
                 <p className={averageThirtyDay >= 0 ? "font-display text-xl font-black text-emerald-100" : "font-display text-xl font-black text-rose-100"}>
                   {formatPercent(averageThirtyDay)}
                 </p>
+                <p className="mt-2 max-w-[15rem] text-xs leading-5 text-slate-500 xl:ml-auto">
+                  {marketRead}
+                </p>
               </div>
               <span className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.06] px-3 py-2 text-sm font-black text-white transition group-hover:border-cyan-300/35 group-hover:text-cyan-100">
                 Full Market
@@ -188,4 +195,22 @@ function TickerCell({
 
 function formatPercent(value: number) {
   return `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`;
+}
+
+function getMarketRead(player: MarketPlayer) {
+  const direction = player.thirtyDayChange >= 0 ? "strength" : "pressure";
+
+  if (player.segment.toLowerCase().includes("hardware")) {
+    return `Hardware ${direction} can shape the read on game AI, GPU demand, and creator tooling.`;
+  }
+
+  if (player.segment.toLowerCase().includes("engine")) {
+    return `Engine ${direction} matters because tools influence production budgets and studio pipeline confidence.`;
+  }
+
+  if (player.segment.toLowerCase().includes("platform")) {
+    return `Platform ${direction} can change how publishers think about distribution and audience reach.`;
+  }
+
+  return `Game revenue leader ${direction} helps frame how investors may read demand across the broader sector.`;
 }

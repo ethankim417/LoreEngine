@@ -10,6 +10,16 @@ export function ExecutiveBrief({ articles, compact = false }: { articles: Articl
   const topStories = [...articles]
     .sort((a, b) => b.impactScore + b.trendScore * 0.6 - (a.impactScore + a.trendScore * 0.6))
     .slice(0, 3);
+  const topAiStory =
+    topStories.find((article) => article.category === "AI" || article.sectors.some((sector) => sector.includes("AI"))) ??
+    articles.find((article) => article.category === "AI") ??
+    topStories[0];
+  const marketStory =
+    articles.find((article) =>
+      article.category === "Business" ||
+      article.sectors.some((sector) => ["Hardware", "Platform", "Steam", "Mobile Gaming"].includes(sector))
+    ) ?? topStories[0];
+  const watchItem = topStories[1] ?? topStories[0];
 
   return (
     <section className="glass-panel premium-hover relative overflow-hidden rounded-lg" aria-label="Executive brief">
@@ -19,11 +29,14 @@ export function ExecutiveBrief({ articles, compact = false }: { articles: Articl
           <div>
             <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-emerald-200">
               <Sparkles className="h-4 w-4" />
-              Executive Brief
+              This Week&apos;s Read
             </div>
             <h2 className="mt-2 font-display text-2xl font-black text-white">
-              Read This First
+              {topStories[0]?.category ?? "Industry"} is setting the tone
             </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
+              Start with the biggest strategic shift, then scan the AI signal, market context, and next item to watch.
+            </p>
           </div>
           <div className="inline-flex w-fit items-center gap-2 rounded-lg border border-emerald-300/20 bg-emerald-300/[0.08] px-3 py-2 text-xs font-black uppercase tracking-[0.1em] text-emerald-100">
             <ListChecks className="h-4 w-4" />
@@ -39,7 +52,14 @@ export function ExecutiveBrief({ articles, compact = false }: { articles: Articl
           </div>
         </div>
 
-        <div className="divide-y divide-white/10">
+        <div>
+          <div className="grid gap-2 border-b border-white/10 p-4 md:grid-cols-4">
+            <NarrativeCell label="Biggest shift" body={topStories[0]?.tldr ?? "No lead story available."} />
+            <NarrativeCell label="AI signal" body={topAiStory?.tldr ?? "No AI signal available."} />
+            <NarrativeCell label="Market signal" body={marketStory?.tldr ?? "No market signal available."} />
+            <NarrativeCell label="Watch next" body={watchItem?.trendAnalysis ?? "No watch item available."} />
+          </div>
+          <div className="divide-y divide-white/10">
           {topStories.map((article, index) => (
             <Link
               key={article.id}
@@ -66,8 +86,20 @@ export function ExecutiveBrief({ articles, compact = false }: { articles: Articl
               </span>
             </Link>
           ))}
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function NarrativeCell({ label, body }: { label: string; body: string }) {
+  return (
+    <div className="rounded-lg border border-white/10 bg-white/[0.03] p-3">
+      <p className="text-[0.62rem] font-black uppercase tracking-[0.12em] text-emerald-200/75">
+        {label}
+      </p>
+      <p className="mt-2 line-clamp-3 text-xs leading-5 text-slate-300">{body}</p>
+    </div>
   );
 }

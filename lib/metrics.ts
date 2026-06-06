@@ -11,6 +11,7 @@ export type DashboardMetric = {
   calculation: string;
   interpretation: string;
   inputs: string[];
+  formulaHint: string;
 };
 
 const average = (values: number[]) =>
@@ -43,7 +44,8 @@ export function getDashboardMetrics(source: Article[] = articles): DashboardMetr
         "Average of all article Industry Impact Scores, rounded to the nearest whole number.",
       interpretation:
         "70+ suggests an unusually active news cycle. 85+ means several stories could affect strategy, budgets, hiring, or platform positioning.",
-      inputs: ["Article impact scores", "Current filtered intelligence corpus", "Mock analyst scoring"]
+      inputs: ["Article impact scores", "Current filtered intelligence corpus", "Mock analyst scoring"],
+      formulaHint: "Avg impact"
     },
     {
       id: "ai-disruption-index",
@@ -58,7 +60,8 @@ export function getDashboardMetrics(source: Article[] = articles): DashboardMetr
         "Average impact score for articles categorized as AI or tagged with an AI-related affected sector.",
       interpretation:
         "A high score means AI is not just present in the feed; it is attached to stories with credible production, labor, platform, or cost implications.",
-      inputs: ["AI category stories", "Affected sectors containing AI", "Article impact scores"]
+      inputs: ["AI category stories", "Affected sectors containing AI", "Article impact scores"],
+      formulaHint: "AI stories only"
     },
     {
       id: "trending-articles",
@@ -73,7 +76,8 @@ export function getDashboardMetrics(source: Article[] = articles): DashboardMetr
         "Count of articles with an impact score of 80+ or a trend score of 30%+.",
       interpretation:
         "This is a workload signal. If it jumps, the feed has more items worth reading during the weekly brief review.",
-      inputs: ["Impact score threshold", "Trend growth threshold", "Total tracked articles"]
+      inputs: ["Impact score threshold", "Trend growth threshold", "Total tracked articles"],
+      formulaHint: "80+ impact or 30%+ trend"
     },
     {
       id: "market-momentum",
@@ -88,7 +92,8 @@ export function getDashboardMetrics(source: Article[] = articles): DashboardMetr
         "Average of all article Trend Scores, expressed as percentage growth.",
       interpretation:
         "Higher momentum favors fast-moving narratives such as platform shifts, AI tooling launches, layoffs, and creator-market spikes.",
-      inputs: ["Article trend scores", "Theme velocity assumptions", "Mock growth estimates"]
+      inputs: ["Article trend scores", "Theme velocity assumptions", "Mock growth estimates"],
+      formulaHint: "Avg trend score"
     }
   ];
 }
