@@ -87,6 +87,7 @@ export function MarketPulse() {
                       Lead mover
                     </p>
                     <p className="mt-1 font-display text-2xl font-black text-white">{lead.ticker}</p>
+                    {isRefreshing ? <div className="market-skeleton mt-1 h-2 w-20 rounded-full" aria-hidden="true" /> : null}
                   </div>
                   <div className="text-right">
                     <p className={lead.thirtyDayChange >= 0 ? "font-display text-2xl font-black text-emerald-100" : "font-display text-2xl font-black text-rose-100"}>
@@ -112,13 +113,13 @@ export function MarketPulse() {
 
               <div className="grid gap-2 sm:hidden">
                 {topMovers.slice(1, 3).map((player) => (
-                  <TickerCell key={player.ticker} player={player} compact />
+                  <TickerCell key={player.ticker} player={player} compact isRefreshing={isRefreshing} />
                 ))}
               </div>
 
               <div className="hidden gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-4">
                 {topMovers.slice(1).map((player) => (
-                  <TickerCell key={player.ticker} player={player} />
+                  <TickerCell key={player.ticker} player={player} isRefreshing={isRefreshing} />
                 ))}
               </div>
             </div>
@@ -144,11 +145,19 @@ export function MarketPulse() {
   );
 }
 
-function TickerCell({ player, compact = false }: { player: MarketPlayer; compact?: boolean }) {
+function TickerCell({
+  player,
+  compact = false,
+  isRefreshing = false
+}: {
+  player: MarketPlayer;
+  compact?: boolean;
+  isRefreshing?: boolean;
+}) {
   const positive = player.thirtyDayChange >= 0;
 
   return (
-    <div className="rounded-lg border border-white/10 bg-white/[0.035] px-3 py-2">
+    <div className="relative overflow-hidden rounded-lg border border-white/10 bg-white/[0.035] px-3 py-2">
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
           <p className="font-display text-sm font-black text-white">{player.ticker}</p>
@@ -167,6 +176,12 @@ function TickerCell({ player, compact = false }: { player: MarketPlayer; compact
           label={`${player.company} 30 day line chart`}
         />
       </div>
+      {isRefreshing ? (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-black/10">
+          <div className="market-skeleton absolute left-3 top-3 h-2 w-12 rounded-full" />
+          <div className="market-skeleton absolute bottom-3 left-3 right-3 h-1.5 rounded-full opacity-80" />
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -233,6 +233,57 @@ select {
   animation: skeleton-sheen 1.4s ease-in-out infinite;
 }
 
+@media (max-width: 640px) {
+  body {
+    background:
+      radial-gradient(circle at 18% 10%, rgba(50, 217, 255, 0.12), transparent 22rem),
+      radial-gradient(circle at 78% 8%, rgba(138, 92, 255, 0.12), transparent 22rem),
+      #06070d;
+  }
+
+  .glass-panel {
+    background:
+      linear-gradient(145deg, rgba(13, 18, 36, 0.86), rgba(8, 11, 22, 0.76)),
+      radial-gradient(circle at 78% 0%, rgba(50, 217, 255, 0.04), transparent 20rem);
+    box-shadow:
+      0 12px 38px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+  }
+
+  .glass-panel-soft {
+    background:
+      linear-gradient(145deg, rgba(12, 16, 31, 0.72), rgba(7, 10, 20, 0.64)),
+      radial-gradient(circle at 78% 0%, rgba(50, 217, 255, 0.025), transparent 18rem);
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(10px);
+  }
+
+  .premium-hover:hover::before,
+  .premium-hover:focus-visible::before,
+  .premium-hover:hover::after,
+  .premium-hover:focus-visible::after {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-particles,
+  .page-scanline,
+  .source-shimmer::after,
+  .metric-fill,
+  .signal-line-flow,
+  .soft-float,
+  .signal-logo::after,
+  .market-skeleton,
+  .stock-chart:hover .stock-chart-end-marker,
+  .stock-chart:hover .stock-chart-endpoint {
+    animation: none;
+  }
+}
+
 @keyframes particle-drift {
   from {
     transform: translate3d(0, 0, 0);

@@ -58,6 +58,16 @@ export default function SourcesPage() {
             <SourceStat icon={<Database className="h-4 w-4" />} label="Sources cited" value={`${sourceCount}`} />
             <SourceStat icon={<Clock3 className="h-4 w-4" />} label="Cadence" value={weeklyBriefCadence.label} />
           </div>
+
+          <div className="border-t border-white/10 px-5 py-4 sm:px-7">
+            <div className="grid gap-2 rounded-lg border border-white/10 bg-white/[0.035] p-3 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-center">
+              <MethodStep value={sourcePipeline.candidateTarget.toString()} label="Candidates reviewed" />
+              <MethodArrow />
+              <MethodStep value={sourcePipeline.shortlistTarget.toString()} label="Signals selected" />
+              <MethodArrow />
+              <MethodStep value={sourceCount.toString()} label="Sources cited" />
+            </div>
+          </div>
         </section>
 
         <section className="grid gap-4 lg:grid-cols-3">
@@ -267,5 +277,25 @@ function TriageNumber({ label, value }: { label: string; value: string }) {
         {label}
       </p>
     </div>
+  );
+}
+
+function MethodStep({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-center justify-between gap-3 rounded-lg bg-black/15 px-3 py-2 sm:block sm:bg-transparent sm:p-0 sm:text-center">
+      <p className="font-display text-xl font-black text-white sm:text-2xl">{value}</p>
+      <p className="text-[0.62rem] font-black uppercase tracking-[0.12em] text-slate-500">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+function MethodArrow() {
+  return (
+    <span
+      aria-hidden="true"
+      className="hidden h-px w-10 bg-gradient-to-r from-cyan-300/20 via-cyan-100/45 to-emerald-300/20 sm:block"
+    />
   );
 }
