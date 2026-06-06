@@ -19,7 +19,6 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { ExecutiveBrief } from "@/components/ExecutiveBrief";
 import { MarketPulse } from "@/components/MarketPulse";
 import { SignalConstellation } from "@/components/SignalConstellation";
-import { SourceBadge } from "@/components/SourceBadge";
 import {
   briefSnapshotDate,
   categories,
@@ -82,13 +81,6 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         return b.impactScore - a.impactScore;
       });
   }, [articles, category, query, sortMode, sourceType]);
-  const leadArticle = useMemo(
-    () =>
-      [...articles].sort(
-        (a, b) => b.impactScore + b.trendScore * 0.6 - (a.impactScore + a.trendScore * 0.6)
-      )[0],
-    [articles]
-  );
 
   return (
     <div className="flex flex-col gap-5 pb-20 sm:gap-7 sm:pb-0 lg:gap-8">
@@ -98,12 +90,9 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         <ExecutiveBrief articles={articles} />
       </div>
 
-      <section className="grid gap-4 xl:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.92fr)] xl:items-stretch">
-        <LeadSignal article={leadArticle} />
-        <div id="mobile-market">
-          <MarketPulse />
-        </div>
-      </section>
+      <div id="mobile-market">
+        <MarketPulse />
+      </div>
 
       <section aria-label="Dashboard metrics" className="space-y-3">
         <div className="flex items-center justify-between gap-3 px-1">
@@ -332,67 +321,6 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
       <MetricExplainerDialog metric={selectedMetric} onClose={() => setSelectedMetric(null)} />
       <MobileActionBar onOpenFilters={() => setFiltersOpen(true)} activeFilterCount={activeFilterCount} />
-    </div>
-  );
-}
-
-function LeadSignal({ article }: { article?: Article }) {
-  if (!article) {
-    return null;
-  }
-
-  return (
-    <Link
-      href={`/articles/${article.slug}`}
-      className="glass-panel premium-hover group relative flex min-h-[20rem] overflow-hidden rounded-lg transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/28 hover:shadow-glow"
-    >
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-cover bg-center opacity-[0.22] grayscale-[20%]"
-        style={{ backgroundImage: `url(${article.visual.image})` }}
-      />
-      <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(115deg,rgba(4,7,14,0.96)_0%,rgba(5,10,20,0.88)_42%,rgba(5,10,20,0.58)_100%)]" />
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/45 to-transparent" />
-
-      <div className="relative z-10 flex min-h-full flex-col justify-between gap-6 p-5 sm:p-6">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded-full border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.14em] text-cyan-100">
-            Lead Signal
-          </span>
-          <SourceBadge source={article.source} credibility={article.sourceCredibility} compact />
-        </div>
-
-        <div>
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">
-            Why it leads this week
-          </p>
-          <h2 className="mt-3 max-w-3xl font-display text-2xl font-black leading-tight text-white sm:text-4xl">
-            {article.title}
-          </h2>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
-            {article.whyItMatters}
-          </p>
-        </div>
-
-        <div className="grid gap-3 sm:grid-cols-[auto_auto_1fr_auto] sm:items-center">
-          <LeadSignalStat label="Impact" value={`${article.impactScore}/100`} />
-          <LeadSignalStat label="Trend" value={`+${article.trendScore}%`} />
-          <p className="line-clamp-2 text-sm leading-6 text-slate-400">{article.tldr}</p>
-          <span className="inline-flex items-center gap-2 text-sm font-black text-cyan-100 transition group-hover:text-cyan-50">
-            Read brief
-            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-          </span>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-function LeadSignalStat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-lg border border-white/10 bg-black/25 px-3 py-2">
-      <p className="text-[0.62rem] font-black uppercase tracking-[0.12em] text-slate-500">{label}</p>
-      <p className="font-display text-xl font-black text-white">{value}</p>
     </div>
   );
 }
