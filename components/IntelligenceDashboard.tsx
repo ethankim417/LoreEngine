@@ -19,6 +19,7 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { ExecutiveBrief } from "@/components/ExecutiveBrief";
 import { MarketPulse } from "@/components/MarketPulse";
 import { SignalConstellation } from "@/components/SignalConstellation";
+import { SourceBadge } from "@/components/SourceBadge";
 import {
   briefSnapshotDate,
   categories,
@@ -81,35 +82,28 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         return b.impactScore - a.impactScore;
       });
   }, [articles, category, query, sortMode, sourceType]);
+  const leadArticle = useMemo(
+    () =>
+      [...articles].sort(
+        (a, b) => b.impactScore + b.trendScore * 0.6 - (a.impactScore + a.trendScore * 0.6)
+      )[0],
+    [articles]
+  );
 
   return (
     <div className="flex flex-col gap-5 pb-20 sm:gap-7 sm:pb-0 lg:gap-8">
       <WeeklyBriefStatus articles={articles} />
 
-      <div id="mobile-brief" className="-mx-3 flex snap-x gap-3 overflow-x-auto px-3 pb-1 md:hidden">
-        <div className="w-[min(22rem,calc(100vw-2rem))] shrink-0 snap-center">
-          <ExecutiveBrief articles={articles} compact />
-        </div>
-        <div className="w-[min(22rem,calc(100vw-2rem))] shrink-0 snap-center">
-          <SignalConstellation articles={articles} />
-        </div>
-        <div id="mobile-market" className="w-[min(22rem,calc(100vw-2rem))] shrink-0 snap-center">
-          <MarketPulse />
-        </div>
-      </div>
-      <div className="flex justify-center gap-1.5 md:hidden" aria-hidden="true">
-        <span className="h-1.5 w-5 rounded-full bg-cyan-200/70" />
-        <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
-        <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
-      </div>
-
-      <div className="hidden md:block">
+      <div id="mobile-brief">
         <ExecutiveBrief articles={articles} />
       </div>
 
-      <div className="hidden md:block">
-        <SignalConstellation articles={articles} />
-      </div>
+      <section className="grid gap-4 xl:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.92fr)] xl:items-stretch">
+        <LeadSignal article={leadArticle} />
+        <div id="mobile-market">
+          <MarketPulse />
+        </div>
+      </section>
 
       <section aria-label="Dashboard metrics" className="space-y-3">
         <div className="flex items-center justify-between gap-3 px-1">
@@ -122,12 +116,16 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-4">
           {metrics.map((metric) => (
             <MetricCard key={metric.label} metric={metric} onSelect={() => setSelectedMetric(metric)} />
           ))}
         </div>
       </section>
+
+      <div className="opacity-90">
+        <SignalConstellation articles={articles} compact />
+      </div>
 
       <section id="feed" className="glass-panel glass-panel-soft rounded-lg p-4 sm:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
@@ -322,10 +320,6 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         </div>
       ) : null}
 
-      <div className="hidden md:block">
-        <MarketPulse />
-      </div>
-
       <section className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
         {filteredArticles.map((article, index) => (
           <ArticleCard key={article.id} article={article} featured={index === 0} />
@@ -338,6 +332,67 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
       <MetricExplainerDialog metric={selectedMetric} onClose={() => setSelectedMetric(null)} />
       <MobileActionBar onOpenFilters={() => setFiltersOpen(true)} activeFilterCount={activeFilterCount} />
+    </div>
+  );
+}
+
+function LeadSignal({ article }: { article?: Article }) {
+  if (!article) {
+    return null;
+  }
+
+  return (
+    <Link
+      href={`/articles/${article.slug}`}
+      className="glass-panel premium-hover group relative flex min-h-[20rem] overflow-hidden rounded-lg transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/28 hover:shadow-glow"
+    >
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-cover bg-center opacity-[0.22] grayscale-[20%]"
+        style={{ backgroundImage: `url(${article.visual.image})` }}
+      />
+      <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(115deg,rgba(4,7,14,0.96)_0%,rgba(5,10,20,0.88)_42%,rgba(5,10,20,0.58)_100%)]" />
+      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/45 to-transparent" />
+
+      <div className="relative z-10 flex min-h-full flex-col justify-between gap-6 p-5 sm:p-6">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="rounded-full border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.14em] text-cyan-100">
+            Lead Signal
+          </span>
+          <SourceBadge source={article.source} credibility={article.sourceCredibility} compact />
+        </div>
+
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">
+            Why it leads this week
+          </p>
+          <h2 className="mt-3 max-w-3xl font-display text-2xl font-black leading-tight text-white sm:text-4xl">
+            {article.title}
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
+            {article.whyItMatters}
+          </p>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-[auto_auto_1fr_auto] sm:items-center">
+          <LeadSignalStat label="Impact" value={`${article.impactScore}/100`} />
+          <LeadSignalStat label="Trend" value={`+${article.trendScore}%`} />
+          <p className="line-clamp-2 text-sm leading-6 text-slate-400">{article.tldr}</p>
+          <span className="inline-flex items-center gap-2 text-sm font-black text-cyan-100 transition group-hover:text-cyan-50">
+            Read brief
+            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function LeadSignalStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg border border-white/10 bg-black/25 px-3 py-2">
+      <p className="text-[0.62rem] font-black uppercase tracking-[0.12em] text-slate-500">{label}</p>
+      <p className="font-display text-xl font-black text-white">{value}</p>
     </div>
   );
 }
@@ -513,22 +568,24 @@ function MetricCard({
       type="button"
       onClick={onSelect}
       aria-label={`Explain ${metric.label}`}
-      className="glass-panel glass-panel-soft premium-hover group relative overflow-hidden rounded-lg p-3 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
+      className="glass-panel glass-panel-soft premium-hover group relative overflow-hidden rounded-lg p-3 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/22 focus:outline-none focus:ring-2 focus:ring-cyan-300/25"
     >
-      <div className="flex items-center justify-between gap-3">
-        <div className="h-1.5 w-16 overflow-hidden rounded-full bg-white/[0.06]">
-          <div className={`metric-fill h-full rounded-full bg-gradient-to-r ${toneClass}`} />
+      <div className="flex items-center gap-3">
+        <div className="h-9 w-1.5 shrink-0 overflow-hidden rounded-full bg-white/[0.06]">
+          <div className={`metric-fill h-full rounded-full bg-gradient-to-b ${toneClass}`} />
         </div>
-        <span className="grid h-7 w-7 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-400 transition group-hover:border-cyan-300/35 group-hover:text-cyan-100">
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-[0.64rem] font-semibold uppercase tracking-[0.11em] text-slate-500">
+            {metric.label}
+          </p>
+          <div className="mt-1 flex items-end justify-between gap-3">
+            <p className="font-display text-xl font-black text-white">{metric.value}</p>
+            <p className="pb-0.5 text-xs font-semibold text-slate-300">{metric.delta}</p>
+          </div>
+        </div>
+        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-400 transition group-hover:border-cyan-300/35 group-hover:text-cyan-100">
           <Info className="h-4 w-4" />
         </span>
-      </div>
-      <p className="mt-3 text-xs font-semibold uppercase tracking-[0.11em] text-slate-500">
-        {metric.label}
-      </p>
-      <div className="mt-2 flex items-end justify-between gap-4">
-        <p className="font-display text-2xl font-black text-white">{metric.value}</p>
-        <p className="pb-1 text-sm font-semibold text-slate-300">{metric.delta}</p>
       </div>
     </button>
   );
