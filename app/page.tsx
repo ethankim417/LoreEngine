@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { IntelligenceDashboard } from "@/components/IntelligenceDashboard";
+import { AuthAccount } from "@/components/AuthAccount";
 import { articles } from "@/data/articles";
 import { getDashboardMetrics } from "@/lib/metrics";
 import { Info, Mail, Radar, Sparkles } from "lucide-react";
@@ -37,17 +39,20 @@ function Hero() {
       <div className="absolute inset-y-0 left-[-18%] w-1/3 animate-slow-pan bg-gradient-to-r from-transparent via-cyan-200/[0.038] to-transparent blur-sm [animation-duration:18s]" />
       <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-cyan-300/[0.06] blur-3xl" />
       <div className="relative flex flex-col gap-4">
-        <a
-          href="mailto:lore-engine@ethankim.cc"
-          className="group/contact absolute right-0 top-0 hidden items-center gap-2 rounded-full border border-cyan-300/18 bg-slate-950/40 px-3 py-1.5 text-xs font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl transition hover:border-cyan-300/38 hover:bg-cyan-300/[0.08] sm:inline-flex"
-          aria-label="Contact LoreEngine at lore-engine@ethankim.cc"
-        >
-          <Mail className="h-3.5 w-3.5" />
-          Contact
-          <span className="pointer-events-none absolute right-0 top-[calc(100%+0.55rem)] hidden rounded-lg border border-cyan-300/18 bg-slate-950/95 px-3 py-2 text-xs font-semibold text-slate-200 shadow-[0_16px_50px_rgba(0,0,0,0.4)] group-hover/contact:block group-focus/contact:block">
-            lore-engine@ethankim.cc
-          </span>
-        </a>
+        <div className="absolute right-0 top-0 hidden items-start gap-2 sm:flex">
+          <AuthAccount compact />
+          <a
+            href="mailto:lore-engine@ethankim.cc"
+            className="group/contact relative inline-flex items-center gap-2 rounded-full border border-cyan-300/18 bg-slate-950/40 px-3 py-1.5 text-xs font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl transition hover:border-cyan-300/38 hover:bg-cyan-300/[0.08]"
+            aria-label="Contact LoreEngine at lore-engine@ethankim.cc"
+          >
+            <Mail className="h-3.5 w-3.5" />
+            Contact
+            <span className="pointer-events-none absolute right-0 top-[calc(100%+0.55rem)] hidden rounded-lg border border-cyan-300/18 bg-slate-950/95 px-3 py-2 text-xs font-semibold text-slate-200 shadow-[0_16px_50px_rgba(0,0,0,0.4)] group-hover/contact:block group-focus/contact:block">
+              lore-engine@ethankim.cc
+            </span>
+          </a>
+        </div>
 
         <div className="flex items-center gap-4">
           <div className="signal-logo soft-float relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-200/30 bg-slate-950/65 shadow-[0_0_42px_rgba(34,211,238,0.14),inset_0_1px_0_rgba(255,255,255,0.08)] sm:h-16 sm:w-16">
@@ -80,14 +85,17 @@ function Hero() {
           </p>
         </div>
 
-        <a
-          href="mailto:lore-engine@ethankim.cc"
-          className="inline-flex w-fit items-center gap-2 rounded-full border border-cyan-300/18 bg-slate-950/40 px-3 py-1.5 text-xs font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl transition hover:border-cyan-300/38 hover:bg-cyan-300/[0.08] sm:hidden"
-          aria-label="Contact LoreEngine at lore-engine@ethankim.cc"
-        >
-          <Mail className="h-3.5 w-3.5" />
-          Contact
-        </a>
+        <div className="flex flex-wrap items-center gap-2 sm:hidden">
+          <AuthAccount compact />
+          <a
+            href="mailto:lore-engine@ethankim.cc"
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-cyan-300/18 bg-slate-950/40 px-3 py-1.5 text-xs font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl transition hover:border-cyan-300/38 hover:bg-cyan-300/[0.08]"
+            aria-label="Contact LoreEngine at lore-engine@ethankim.cc"
+          >
+            <Mail className="h-3.5 w-3.5" />
+            Contact
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -101,6 +109,12 @@ function DisclosureFooter() {
         <span>
           Informational demo. Market data is weekly/cached, not real-time financial data.
         </span>
+        <Link
+          href="/privacy"
+          className="rounded-full text-cyan-200/80 underline decoration-cyan-300/25 underline-offset-4 outline-none transition hover:text-cyan-100 focus:text-cyan-100"
+        >
+          Privacy
+        </Link>
         <button
           type="button"
           className="rounded-full text-cyan-200/80 underline decoration-cyan-300/25 underline-offset-4 outline-none transition hover:text-cyan-100 focus:text-cyan-100"

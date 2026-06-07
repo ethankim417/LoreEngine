@@ -15,6 +15,7 @@ import {
 import { SourceBadge } from "@/components/SourceBadge";
 import { SectorSignalArt } from "@/components/SectorSignalArt";
 import type { Article } from "@/data/articles";
+import { readLocalBookmarks, syncRemoteBookmarks, writeLocalBookmarks } from "@/lib/bookmarksClient";
 import { categoryTone, formatDate } from "@/lib/format";
 
 export function ArticleCard({ article, featured = false }: { article: Article; featured?: boolean }) {
@@ -24,7 +25,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
 
   useEffect(() => {
     function syncState() {
-      setBookmarked(readStorageList("loreengine-bookmarks").includes(article.id));
+      setBookmarked(readLocalBookmarks().includes(article.id));
       setRead(readStorageList("loreengine-read-briefs").includes(article.id));
     }
 
@@ -41,13 +42,13 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
   }, [article.id]);
 
   function toggleBookmark() {
-    const bookmarks = readStorageList("loreengine-bookmarks");
+    const bookmarks = readLocalBookmarks();
     const next = bookmarks.includes(article.id)
       ? bookmarks.filter((id) => id !== article.id)
       : [...bookmarks, article.id];
 
-    window.localStorage.setItem("loreengine-bookmarks", JSON.stringify(next));
-    window.dispatchEvent(new Event("loreengine-bookmarks-updated"));
+    writeLocalBookmarks(next);
+    void syncRemoteBookmarks(next);
     setBookmarked(next.includes(article.id));
   }
 

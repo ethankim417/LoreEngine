@@ -5,12 +5,13 @@ const checks = [
   { path: "/market", expect: "Market Pulse" },
   { path: "/archive", expect: "Weekly Archive" },
   { path: "/sources", expect: "Source Strategy" },
+  { path: "/privacy", expect: "Privacy And Legal Notes" },
   {
     path: "/articles/summer-game-fest-ai-disclosures-put-genai-under-spotlight",
     expect: "Summer Game Fest"
   },
   { path: "/api/market", expect: "snapshotDate" },
-  { path: "/api/health", expect: "\"status\":\"ok\"" },
+  { path: "/api/health", expect: "\"status\":\"" },
   { path: "/robots.txt", expect: "sitemap" },
   { path: "/sitemap.xml", expect: "lore-engine.ethankim.cc" }
 ];

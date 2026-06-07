@@ -29,6 +29,7 @@ import {
   type SourceCredibility
 } from "@/data/articles";
 import { weeklyBriefCadence } from "@/data/sourceStrategy";
+import { readLocalBookmarks, syncRemoteBookmarks, writeLocalBookmarks } from "@/lib/bookmarksClient";
 import { formatDate } from "@/lib/format";
 import type { DashboardMetric } from "@/lib/metrics";
 
@@ -103,7 +104,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
   useEffect(() => {
     function syncSaved() {
-      setSavedIds(readStoredIds("loreengine-bookmarks"));
+      setSavedIds(readLocalBookmarks());
     }
 
     syncSaved();
@@ -361,8 +362,8 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         onClose={() => setSavedOpen(false)}
         onRemove={(id) => {
           const next = savedIds.filter((savedId) => savedId !== id);
-          window.localStorage.setItem("loreengine-bookmarks", JSON.stringify(next));
-          window.dispatchEvent(new Event("loreengine-bookmarks-updated"));
+          writeLocalBookmarks(next);
+          void syncRemoteBookmarks(next);
           setSavedIds(next);
         }}
       />
@@ -839,15 +840,4 @@ function MetricDetail({ title, body }: { title: string; body: string }) {
       <p className="mt-2 text-sm leading-6 text-slate-300">{body}</p>
     </section>
   );
-}
-
-function readStoredIds(key: string) {
-  try {
-    const stored = window.localStorage.getItem(key);
-    const parsed = stored ? (JSON.parse(stored) as unknown) : [];
-
-    return Array.isArray(parsed) ? parsed.filter((id): id is string => typeof id === "string") : [];
-  } catch {
-    return [];
-  }
 }

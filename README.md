@@ -42,6 +42,8 @@ The second goal was to test Codex as a product-building partner. I used it to mo
 - Scores articles by impact, trend, confidence, and affected sectors.
 - Supports search, category filters, source-type filters, and sorting.
 - Opens article detail pages with TLDRs, why-it-matters context, and trend analysis.
+- Supports optional Google login so saved briefs can sync to an account.
+- Includes an account deletion flow for synced bookmark data.
 - Includes a Market Pulse view for major public companies connected to gaming.
 - Explains source selection and weekly cadence through a dedicated source strategy page.
 - Includes a weekly Vercel Cron refresh for market close-price data.
@@ -59,6 +61,7 @@ This version uses mock and cached data on purpose.
 - The browser does not call an AI API.
 - Stock prices are weekly/cached close-price data, not real-time financial data.
 - Dashboard and Market Pulse disclosures clarify that the project is informational only.
+- Google login is optional. Without auth/storage env vars, bookmarks continue to work locally in the browser.
 
 The intended future version would fetch sources on a schedule, summarize selected articles once on the server, cache the finished brief, and let users read that cached result.
 
@@ -191,11 +194,22 @@ BASE_URL=https://lore-engine.ethankim.cc npm run smoke
 
 Import the repository into Vercel using the default Next.js settings.
 
-No environment variables are required for the current mock-data build. If the future protected weekly ingest endpoint is enabled, add:
+No environment variables are required for the mock-data browsing experience. For protected cron routes and account bookmark sync, add:
 
 ```text
 CRON_SECRET=your-random-secret
+AUTH_SESSION_SECRET=your-random-session-secret
+NEXT_PUBLIC_GOOGLE_CLIENT_ID=your-google-oauth-client-id
+FIREBASE_PROJECT_ID=your-firebase-project-id
+FIREBASE_CLIENT_EMAIL=your-firebase-service-account-email
+FIREBASE_PRIVATE_KEY=your-firebase-service-account-private-key
 ```
+
+Google login verifies the Google ID token server-side, then sets an HTTP-only LoreEngine session cookie. Bookmark sync uses Firebase Firestore through a server-side service account when configured. If Firebase env vars are missing, the app still allows local browser bookmarks but clearly labels cloud storage as pending.
+
+Account deletion is available from the account menu. It deletes the synced Firebase bookmark document when storage is configured, clears the LoreEngine session cookie, clears local saved briefs in the current browser, and signs the user out.
+
+The privacy/legal page is available at `/privacy`.
 
 ### GitHub Pages
 
