@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 type StockLineChartProps = {
   values: number[];
   positive: boolean;
@@ -7,7 +9,7 @@ type StockLineChartProps = {
   endLabel?: string;
 };
 
-export function StockLineChart({
+function StockLineChartBase({
   values,
   positive,
   height = 56,
@@ -108,3 +110,5 @@ export function StockLineChart({
     </svg>
   );
 }
+
+export const StockLineChart = memo(StockLineChartBase);

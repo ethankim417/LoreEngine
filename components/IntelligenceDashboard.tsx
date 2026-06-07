@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import {
   ArrowDownUp,
@@ -19,8 +20,6 @@ import {
 } from "lucide-react";
 import { ArticleCard } from "@/components/ArticleCard";
 import { ExecutiveBrief } from "@/components/ExecutiveBrief";
-import { MarketPulse } from "@/components/MarketPulse";
-import { SignalConstellation } from "@/components/SignalConstellation";
 import {
   briefSnapshotDate,
   categories,
@@ -34,6 +33,17 @@ import { formatDate } from "@/lib/format";
 import type { DashboardMetric } from "@/lib/metrics";
 
 type SortMode = "newest" | "impact" | "trend";
+
+const MarketPulse = dynamic(() => import("@/components/MarketPulse").then((module) => module.MarketPulse), {
+  loading: () => <SectionSkeleton label="Loading market pulse" />
+});
+
+const SignalConstellation = dynamic(
+  () => import("@/components/SignalConstellation").then((module) => module.SignalConstellation),
+  {
+    loading: () => <SectionSkeleton label="Loading signal map" />
+  }
+);
 
 type IntelligenceDashboardProps = {
   articles: Article[];
@@ -384,6 +394,19 @@ function DashboardJumpBar({
         Saved {savedCount ? savedCount : ""}
       </button>
     </nav>
+  );
+}
+
+function SectionSkeleton({ label }: { label: string }) {
+  return (
+    <div className="surface-panel rounded-lg p-4" role="status" aria-label={label}>
+      <div className="market-skeleton h-3 w-36 rounded-full" />
+      <div className="mt-4 grid gap-2 sm:grid-cols-3">
+        <div className="market-skeleton h-16 rounded-lg" />
+        <div className="market-skeleton h-16 rounded-lg" />
+        <div className="market-skeleton h-16 rounded-lg" />
+      </div>
+    </div>
   );
 }
 

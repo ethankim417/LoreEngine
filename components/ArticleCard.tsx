@@ -59,7 +59,12 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
           src={article.visual.image}
           alt=""
           fill
-          sizes="(min-width: 1280px) 33vw, (min-width: 1024px) 50vw, 100vw"
+          sizes={
+            featured
+              ? "(min-width: 1280px) 48vw, (min-width: 1024px) 50vw, 100vw"
+              : "(min-width: 1280px) 28vw, (min-width: 1024px) 46vw, 100vw"
+          }
+          quality={72}
           className="translate-x-[14%] translate-y-[-8%] scale-[0.68] object-contain object-right-top opacity-[0.105] saturate-[0.85] transition duration-500 [mask-image:radial-gradient(ellipse_at_76%_24%,black_0%,black_28%,transparent_66%),linear-gradient(to_bottom,black,transparent_78%)] group-hover:scale-[0.71] group-hover:opacity-[0.15]"
           loading="lazy"
         />

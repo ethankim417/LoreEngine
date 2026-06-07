@@ -277,6 +277,20 @@ select {
     backdrop-filter: blur(8px);
   }
 
+  .ambient-particles,
+  .page-scanline,
+  .source-shimmer::after,
+  .signal-line-flow,
+  .soft-float,
+  .signal-logo::after {
+    animation: none;
+  }
+
+  .ambient-particles,
+  .page-scanline {
+    display: none;
+  }
+
   .premium-hover:hover::before,
   .premium-hover:focus-visible::before,
   .premium-hover:hover::after,

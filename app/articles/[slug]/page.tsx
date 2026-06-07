@@ -64,7 +64,8 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               alt={article.visual.alt}
               fill
               priority
-              sizes="100vw"
+              sizes="(min-width: 1280px) 72rem, 100vw"
+              quality={76}
               className="object-cover object-center opacity-[0.2] saturate-[0.85] [mask-image:linear-gradient(90deg,black,black_54%,transparent_92%)]"
             />
             <SectorSignalArt article={article} opacity="subtle" />
