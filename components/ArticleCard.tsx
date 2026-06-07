@@ -19,19 +19,35 @@ import { categoryTone, formatDate } from "@/lib/format";
 
 export function ArticleCard({ article, featured = false }: { article: Article; featured?: boolean }) {
   const [bookmarked, setBookmarked] = useState(false);
+  const [read, setRead] = useState(false);
   const priority = getPriority(article);
 
   useEffect(() => {
-    setBookmarked(readBookmarks().includes(article.id));
+    function syncState() {
+      setBookmarked(readStorageList("loreengine-bookmarks").includes(article.id));
+      setRead(readStorageList("loreengine-read-briefs").includes(article.id));
+    }
+
+    syncState();
+    window.addEventListener("storage", syncState);
+    window.addEventListener("loreengine-bookmarks-updated", syncState);
+    window.addEventListener("loreengine-read-updated", syncState);
+
+    return () => {
+      window.removeEventListener("storage", syncState);
+      window.removeEventListener("loreengine-bookmarks-updated", syncState);
+      window.removeEventListener("loreengine-read-updated", syncState);
+    };
   }, [article.id]);
 
   function toggleBookmark() {
-    const bookmarks = readBookmarks();
+    const bookmarks = readStorageList("loreengine-bookmarks");
     const next = bookmarks.includes(article.id)
       ? bookmarks.filter((id) => id !== article.id)
       : [...bookmarks, article.id];
 
     window.localStorage.setItem("loreengine-bookmarks", JSON.stringify(next));
+    window.dispatchEvent(new Event("loreengine-bookmarks-updated"));
     setBookmarked(next.includes(article.id));
   }
 
@@ -61,6 +77,16 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
             <span className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
               {article.category}
             </span>
+            <span className={`rounded-full border px-2.5 py-1 text-xs font-black uppercase tracking-[0.08em] ${
+              read ? "border-slate-300/15 bg-slate-300/5 text-slate-400" : "border-cyan-300/25 bg-cyan-300/10 text-cyan-100"
+            }`}>
+              {read ? "Read" : "New this week"}
+            </span>
+            {bookmarked ? (
+              <span className="rounded-full border border-emerald-300/25 bg-emerald-300/10 px-2.5 py-1 text-xs font-black uppercase tracking-[0.08em] text-emerald-100">
+                Saved
+              </span>
+            ) : null}
           </div>
           <button
             type="button"
@@ -84,6 +110,9 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
           {article.title}
         </h2>
         <p className={`mt-2 text-sm leading-6 text-slate-300 ${featured ? "line-clamp-1 sm:line-clamp-2 xl:max-w-2xl xl:line-clamp-3" : "line-clamp-1 sm:line-clamp-2"}`}>{article.tldr}</p>
+        <p className="mt-2 line-clamp-1 text-xs font-semibold leading-5 text-cyan-100/75">
+          Why open: {getWhyOpen(article.whyItMatters)}
+        </p>
 
         {article.impactScore >= 90 ? (
           <div className="mt-3 hidden rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-3 sm:block">
@@ -134,15 +163,21 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
   );
 }
 
-function readBookmarks() {
+function readStorageList(key: string) {
   try {
-    const stored = window.localStorage.getItem("loreengine-bookmarks");
+    const stored = window.localStorage.getItem(key);
     const parsed = stored ? (JSON.parse(stored) as unknown) : [];
 
     return Array.isArray(parsed) ? parsed.filter((id): id is string => typeof id === "string") : [];
   } catch {
     return [];
   }
+}
+
+function getWhyOpen(value: string) {
+  const [firstSentence] = value.split(/(?<=[.!?])\s+/);
+
+  return firstSentence || value;
 }
 
 function getPriority(article: Article) {

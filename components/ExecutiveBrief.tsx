@@ -43,6 +43,23 @@ export function ExecutiveBrief({ articles, compact = false }: { articles: Articl
             3 things to know
           </div>
         </div>
+        <div className="relative z-10 mt-4 flex flex-wrap gap-2">
+          {topStories[0] ? (
+            <Link
+              href={`/articles/${topStories[0].slug}`}
+              className="inline-flex items-center gap-2 rounded-lg bg-cyan-300 px-4 py-2.5 text-sm font-black text-slate-950 transition hover:bg-cyan-200"
+            >
+              Read Top Brief
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          ) : null}
+          <a
+            href="#feed"
+            className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm font-black text-slate-200 transition hover:border-cyan-300/35 hover:text-cyan-100"
+          >
+            View all 15 signals
+          </a>
+        </div>
       </div>
 
       <div className="grid gap-0 lg:grid-cols-[4rem_1fr]">

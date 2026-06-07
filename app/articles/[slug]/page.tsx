@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink, RadioTower } from "lucide-react";
+import { ArticleReadTracker } from "@/components/ArticleReadTracker";
 import { SectorSignalArt } from "@/components/SectorSignalArt";
 import { SourceBadge } from "@/components/SourceBadge";
 import { articles, getArticleBySlug } from "@/data/articles";
@@ -34,6 +35,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <main className="relative min-h-screen overflow-hidden px-4 py-5 sm:px-6 sm:py-6 lg:px-8">
+      <ArticleReadTracker articleId={article.id} />
       <div aria-hidden="true" className="mesh-grid absolute inset-0 opacity-70" />
       <div
         aria-hidden="true"
