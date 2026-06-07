@@ -1,14 +1,13 @@
 # LoreEngine
 
-![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel%20TBD-black?style=for-the-badge&logo=vercel)
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=nextdotjs)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Frontend-blue?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38bdf8?style=for-the-badge&logo=tailwindcss)
-![AI Assisted](https://img.shields.io/badge/AI--assisted-build-purple?style=for-the-badge)
 
-LoreEngine is an AI-assisted gaming industry intelligence dashboard. I built it to test how far Codex can help me turn an idea into a usable product, while also creating a tool that helps me stay current on gaming, AI, market, studio, platform, and hardware signals.
+LoreEngine is a weekly gaming industry intelligence dashboard built to help me track the intersection of games, AI, market signals, platforms, engines, and studios.
 
-**Live Demo:** [Live Demo - Vercel link here]  
+I built it for two reasons: to create a tool I would actually use to stay current, and to test how far I could push Codex as a product-building partner while still making the product, architecture, and tradeoff decisions myself.
+
 **Planned Custom Domain:** `https://lore-engine.ethankim.cc`  
 **Current Public Mirror:** [GitHub Pages](https://ethankim417.github.io/LoreEngine/)  
 **GitHub Repo:** [ethankim417/LoreEngine](https://github.com/ethankim417/LoreEngine)
@@ -21,12 +20,20 @@ The gaming industry moves across too many disconnected sources: AI tools, game e
 
 The second goal was to test Codex as a product-building partner. I used it to move quickly through UI iteration, component structure, documentation, and deployment cleanup, while I directed the product decisions and kept the scope honest.
 
+## What This Project Demonstrates
+
+- Product thinking: weekly brief framing, source strategy, market context, and information hierarchy.
+- Frontend execution: responsive Next.js dashboard, article detail views, filters, saved briefs, and polished dark UI.
+- Data architecture: mock/cached article data, weekly market refresh route, health endpoint, cron scaffold, and fallback behavior.
+- AI judgment: Codex-assisted iteration without browser-side AI calls or page-load summarization.
+- Deployment readiness: Vercel routes, GitHub Pages mirror, sitemap, robots, metadata, and documentation.
+
 ## What I Am Testing
 
-- Can Codex help build a polished product from a rough idea?
-- Can I use AI to iterate faster without losing product judgment?
-- Can a static prototype be structured so it can later support real weekly summaries?
-- Can gaming industry news be framed more like an intelligence brief than a news feed?
+- Whether Codex can help turn a rough product idea into a usable, polished web app.
+- Whether I can use AI to iterate faster without losing product judgment.
+- Whether a static prototype can be structured so it can later support real weekly summaries.
+- Whether gaming industry news can be framed more like an intelligence brief than a news feed.
 
 ## What LoreEngine Does
 

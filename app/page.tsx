@@ -75,8 +75,8 @@ function Hero() {
             The gaming industry, distilled weekly.
           </p>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300 sm:mt-3 sm:text-base">
-            LoreEngine turns gaming, AI, platform, hardware, esports, and market signals
-            into a ranked brief: what changed, why it matters, and who may feel it next.
+            LoreEngine turns gaming, AI, platform, hardware, esports, and market signals into a weekly
+            brief: what changed, why it matters, and who may feel it next.
           </p>
         </div>
 

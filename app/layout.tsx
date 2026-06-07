@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | LoreEngine"
   },
   description:
-    "An AI-assisted gaming industry intelligence dashboard for weekly briefs, market context, and signal tracking.",
+    "LoreEngine is a weekly gaming industry intelligence dashboard tracking games, AI, market signals, platforms, engines, and studios.",
   authors: [{ name: "Ethan Kim", url: "https://ethankim.cc" }],
   icons: {
     icon: "/favicon.svg"
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "LoreEngine | Gaming Industry Intelligence",
     description:
-      "The gaming industry, distilled weekly: gaming, AI, platform, hardware, esports, and market signals in one ranked brief.",
+      "A weekly gaming industry brief tracking games, AI, platforms, engines, studios, and market signals.",
     url: "/",
     siteName: "LoreEngine",
     images: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "LoreEngine | Gaming Industry Intelligence",
     description:
-      "The gaming industry, distilled weekly with AI-assisted briefs and market context.",
+      "A weekly gaming industry brief tracking games, AI, platforms, engines, studios, and market signals.",
     images: ["/loreengine-og.svg"]
   }
 };
