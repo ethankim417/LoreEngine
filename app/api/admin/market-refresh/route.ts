@@ -1,5 +1,6 @@
 import { revalidateTag } from "next/cache";
 import { NextResponse, type NextRequest } from "next/server";
+import { validateCronRequest } from "@/lib/cronAuth";
 import { getMarketSnapshot } from "@/lib/marketData";
 
 export const dynamic = "force-dynamic";
@@ -7,17 +8,10 @@ export const dynamic = "force-dynamic";
 // Vercel Cron calls this route weekly to refresh the server-side market cache.
 // This does not use AI and does not write to the repository at runtime.
 export async function GET(request: NextRequest) {
-  const cronSecret = process.env.CRON_SECRET;
-  const authorization = request.headers.get("authorization");
+  const auth = validateCronRequest(request);
 
-  if (cronSecret && authorization !== `Bearer ${cronSecret}`) {
-    return NextResponse.json(
-      {
-        status: "unauthorized",
-        message: "Missing or invalid cron authorization."
-      },
-      { status: 401 }
-    );
+  if (!auth.ok) {
+    return NextResponse.json(auth.body, { status: auth.status });
   }
 
   revalidateTag("market-snapshot");

@@ -70,7 +70,7 @@ export default async function MarketPage() {
                   game-revenue leaders. Private companies are labeled clearly when no public ticker exists.
                 </p>
                 <p className="mt-4 inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-1 text-xs font-semibold text-cyan-100">
-                  Updated {formatDate(snapshot.snapshotDate)}
+                  {getFreshnessLabel(snapshot)}
                 </p>
               </div>
 
@@ -110,6 +110,7 @@ export default async function MarketPage() {
                 <Insight label="Revenue list" value="10 leaders, excluding Sony and Nintendo" />
                 <Insight label="Snapshot date" value={formatDate(snapshot.snapshotDate)} />
                 <Insight label="Data source" value={formatSource(snapshot)} />
+                <Insight label="Refresh status" value={formatRefreshStatus(snapshot)} />
               </div>
               <MarketDisclosure />
             </aside>
@@ -259,6 +260,20 @@ function formatSource(snapshot: MarketSnapshot) {
   }
 
   return snapshot.dataSourceLabel;
+}
+
+function getFreshnessLabel(snapshot: MarketSnapshot) {
+  const prefix = snapshot.mode === "weekly-close-feed" ? "Prices updated" : "Fallback updated";
+
+  return `${prefix} ${formatDate(snapshot.snapshotDate)}`;
+}
+
+function formatRefreshStatus(snapshot: MarketSnapshot) {
+  if (snapshot.failedTickers.length === 0) {
+    return "All public tickers refreshed";
+  }
+
+  return `${snapshot.failedTickers.length} ticker fallback${snapshot.failedTickers.length === 1 ? "" : "s"}`;
 }
 
 function MetricCell({

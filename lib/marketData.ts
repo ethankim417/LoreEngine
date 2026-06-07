@@ -6,6 +6,8 @@ import {
 } from "@/data/market";
 
 const WEEK_SECONDS = 60 * 60 * 24 * 7;
+const YAHOO_TIMEOUT_MS = 7000;
+const YAHOO_RETRY_DELAY_MS = 450;
 const YAHOO_SYMBOLS: Partial<Record<string, string>> = {
   NVDA: "NVDA",
   AMD: "AMD",
@@ -32,7 +34,7 @@ type QuoteRow = {
 
 export const getMarketSnapshot = unstable_cache(
   async () => refreshMarketSnapshot(),
-    ["loreengine-market-snapshot-v2"],
+  ["loreengine-market-snapshot-v2"],
   {
     revalidate: WEEK_SECONDS,
     tags: ["market-snapshot"]
@@ -49,14 +51,24 @@ export async function refreshMarketSnapshot(): Promise<MarketSnapshot> {
   const failedTickers = settledPlayers
     .filter((result) => result.failed)
     .map((result) => result.player.ticker);
+  const failedTickerReasons = Object.fromEntries(
+    settledPlayers
+      .filter((result) => result.failed)
+      .map((result) => [result.player.ticker, result.failureReason ?? "Unknown refresh failure"])
+  );
   const latestDate =
-    settledPlayers.find((result) => result.latestDate)?.latestDate ?? staticMarketSnapshot.snapshotDate;
+    settledPlayers
+      .map((result) => result.latestDate)
+      .filter((date): date is string => Boolean(date))
+      .sort()
+      .at(-1) ?? staticMarketSnapshot.snapshotDate;
 
   if (updatedTickers.length === 0) {
     return {
       ...staticMarketSnapshot,
       refreshedAt: new Date().toISOString(),
-      failedTickers
+      failedTickers,
+      failedTickerReasons
     };
   }
 
@@ -68,7 +80,8 @@ export async function refreshMarketSnapshot(): Promise<MarketSnapshot> {
     mode: "weekly-close-feed",
     refreshedAt: new Date().toISOString(),
     updatedTickers,
-    failedTickers
+    failedTickers,
+    failedTickerReasons
   };
 }
 
@@ -77,6 +90,7 @@ async function refreshPlayer(player: MarketPlayer): Promise<{
   updated: boolean;
   failed: boolean;
   latestDate?: string;
+  failureReason?: string;
 }> {
   const symbol = YAHOO_SYMBOLS[player.ticker];
 
@@ -88,7 +102,12 @@ async function refreshPlayer(player: MarketPlayer): Promise<{
     const rows = await fetchYahooHistory(symbol);
 
     if (rows.length < 2) {
-      return { player, updated: false, failed: true };
+      return {
+        player,
+        updated: false,
+        failed: true,
+        failureReason: `Only ${rows.length} valid close rows returned`
+      };
     }
 
     const latest = rows[rows.length - 1];
@@ -107,25 +126,57 @@ async function refreshPlayer(player: MarketPlayer): Promise<{
       failed: false,
       latestDate: latest.date
     };
-  } catch {
-    return { player, updated: false, failed: true };
+  } catch (error) {
+    return {
+      player,
+      updated: false,
+      failed: true,
+      failureReason: error instanceof Error ? error.message : "Unknown upstream error"
+    };
   }
 }
 
 async function fetchYahooHistory(symbol: string): Promise<QuoteRow[]> {
+  const payload = await fetchYahooHistoryPayload(symbol);
+
+  return parseYahooChart(payload).slice(-30);
+}
+
+async function fetchYahooHistoryPayload(symbol: string): Promise<unknown> {
   const url = new URL(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}`);
   url.searchParams.set("range", "1mo");
   url.searchParams.set("interval", "1d");
 
-  const response = await fetch(url, {
-    next: { revalidate: WEEK_SECONDS }
-  });
+  let lastError: Error | undefined;
 
-  if (!response.ok) {
-    throw new Error(`Yahoo chart request failed for ${symbol}`);
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      const response = await fetch(url, {
+        next: { revalidate: WEEK_SECONDS },
+        signal: AbortSignal.timeout(YAHOO_TIMEOUT_MS)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Yahoo chart request failed for ${symbol}: ${response.status}`);
+      }
+
+      return response.json();
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error("Unknown Yahoo chart request failure");
+
+      if (attempt < 2) {
+        await delay(YAHOO_RETRY_DELAY_MS);
+      }
+    }
   }
 
-  return parseYahooChart(await response.json()).slice(-30);
+  throw lastError ?? new Error(`Yahoo chart request failed for ${symbol}`);
+}
+
+function delay(ms: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 }
 
 function parseYahooChart(payload: unknown): QuoteRow[] {

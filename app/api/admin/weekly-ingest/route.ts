@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { validateCronRequest } from "@/lib/cronAuth";
 import { runWeeklyIntelligencePipeline } from "@/lib/futurePipeline";
 
 export const dynamic = "force-dynamic";
@@ -8,17 +9,10 @@ export const dynamic = "force-dynamic";
 // Keep future AI/news work on the server: fetch articles, summarize once,
 // score once, save cached results, then let the frontend read saved summaries.
 export async function GET(request: NextRequest) {
-  const cronSecret = process.env.CRON_SECRET;
-  const authorization = request.headers.get("authorization");
+  const auth = validateCronRequest(request);
 
-  if (cronSecret && authorization !== `Bearer ${cronSecret}`) {
-    return NextResponse.json(
-      {
-        status: "unauthorized",
-        message: "Missing or invalid cron authorization."
-      },
-      { status: 401 }
-    );
+  if (!auth.ok) {
+    return NextResponse.json(auth.body, { status: auth.status });
   }
 
   const result = await runWeeklyIntelligencePipeline();

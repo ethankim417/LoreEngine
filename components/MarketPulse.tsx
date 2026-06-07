@@ -72,7 +72,10 @@ export function MarketPulse() {
               Market context for hardware, engines, platforms, and major game revenue leaders.
             </p>
             <div className="mt-1 flex flex-wrap items-center gap-2 text-xs leading-5 text-slate-500" aria-live="polite">
-              <span>Updated {formatDate(snapshot.snapshotDate)}</span>
+              <span>{getFreshnessLabel(snapshot)}</span>
+              {snapshot.failedTickers.length ? (
+                <span>{snapshot.failedTickers.length} ticker fallback{snapshot.failedTickers.length === 1 ? "" : "s"}</span>
+              ) : null}
               {isRefreshing ? (
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-300/15 bg-cyan-300/[0.06] px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-[0.1em] text-cyan-100">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-200" />
@@ -195,6 +198,12 @@ function TickerCell({
 
 function formatPercent(value: number) {
   return `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`;
+}
+
+function getFreshnessLabel(snapshot: MarketSnapshot) {
+  const prefix = snapshot.mode === "weekly-close-feed" ? "Prices updated" : "Fallback updated";
+
+  return `${prefix} ${formatDate(snapshot.snapshotDate)}`;
 }
 
 function getMarketRead(player: MarketPlayer) {

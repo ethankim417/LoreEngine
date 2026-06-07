@@ -35,6 +35,7 @@ export type MarketSnapshot = {
   refreshedAt: string;
   updatedTickers: string[];
   failedTickers: string[];
+  failedTickerReasons?: Record<string, string>;
 };
 
 // Local fallback data. On Vercel, /api/market can refresh public close-price
@@ -348,7 +349,8 @@ export const staticMarketSnapshot: MarketSnapshot = {
   mode: "cached-fallback",
   refreshedAt: `${marketSnapshotDate}T00:00:00.000Z`,
   updatedTickers: [],
-  failedTickers: []
+  failedTickers: [],
+  failedTickerReasons: {}
 };
 
 export function getMarketPlayer(ticker: string) {
