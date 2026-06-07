@@ -129,15 +129,17 @@ export function SignalConstellation({ articles, compact = false }: { articles: A
   const selectedSignal = signals.find((signal) => signal.id === selectedId) ?? signals[0];
 
   return (
-    <section className="glass-panel overflow-hidden rounded-lg" aria-label="Signal constellation map">
-      <div className={`items-center justify-between gap-3 border-b border-white/10 p-4 ${compact ? "flex" : "flex sm:hidden"}`}>
+    <section className={`${compact ? "surface-panel" : "glass-panel"} overflow-hidden rounded-lg`} aria-label="Signal constellation map">
+      <div className={`items-center justify-between gap-3 border-b border-white/[0.07] p-4 ${compact ? "flex" : "flex sm:hidden"}`}>
         <div className="flex min-w-0 items-center gap-3">
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-cyan-300/25 bg-cyan-300/10 text-cyan-100">
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] text-cyan-100">
             <Network className="h-4 w-4" />
           </span>
           <div className="min-w-0">
-            <p className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-cyan-200">Signal Map</p>
-            <p className="truncate font-display text-lg font-black text-white">{selectedSignal.label}</p>
+            <p className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-cyan-200/80">Signal Map</p>
+            <p className="truncate text-sm font-semibold text-slate-300">
+              {signals.length} sectors · {selectedSignal.label} leads
+            </p>
           </div>
         </div>
         <MiniConstellation />
@@ -145,9 +147,9 @@ export function SignalConstellation({ articles, compact = false }: { articles: A
           type="button"
           onClick={() => setMapOpen((open) => !open)}
           aria-expanded={mapOpen}
-          className="shrink-0 rounded-lg border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-2 text-xs font-black text-cyan-50 transition hover:border-cyan-300/45"
+          className="shrink-0 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.055] px-3 py-2 text-xs font-black text-cyan-50 transition hover:border-cyan-300/35"
         >
-          {mapOpen ? "Hide" : "View"}
+          {mapOpen ? "Hide" : "Expand"}
         </button>
       </div>
       <div className={compact ? `${mapOpen ? "grid" : "hidden"} lg:grid-cols-[minmax(0,1fr)_20rem]` : `${mapOpen ? "grid" : "hidden"} sm:grid lg:grid-cols-[minmax(0,1.25fr)_24rem]`}>
@@ -163,7 +165,7 @@ export function SignalConstellation({ articles, compact = false }: { articles: A
                 Signal Map
               </div>
             </div>
-            <div className="hidden rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-right sm:block">
+            <div className="hidden rounded-lg bg-black/15 px-3 py-2 text-right sm:block">
               <p className="text-[0.65rem] font-black uppercase tracking-[0.1em] text-slate-500">Signals</p>
               <p className="font-display text-2xl font-black text-white">{signals.length}</p>
             </div>
@@ -238,9 +240,9 @@ export function SignalConstellation({ articles, compact = false }: { articles: A
           </div>
         </div>
 
-        <aside className="border-t border-white/10 bg-slate-950/45 p-4 sm:p-5 lg:border-l lg:border-t-0">
+        <aside className="border-t border-white/[0.07] bg-slate-950/35 p-4 sm:p-5 lg:border-l lg:border-t-0">
           <div className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-lg border border-cyan-300/25 bg-cyan-300/10 text-cyan-100">
+            <span className="grid h-10 w-10 place-items-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] text-cyan-100">
               <Radar className="h-4 w-4" />
             </span>
             <div>
@@ -260,7 +262,7 @@ export function SignalConstellation({ articles, compact = false }: { articles: A
               <Link
                 key={article.id}
                 href={`/articles/${article.slug}`}
-                className="group block rounded-lg border border-white/10 bg-white/[0.035] p-3 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.07]"
+                className="group block rounded-lg bg-white/[0.025] p-3 transition hover:bg-cyan-300/[0.055]"
               >
                 <div className="flex items-start justify-between gap-3">
                   <p className="text-sm font-semibold leading-5 text-slate-100">{article.title}</p>
@@ -304,7 +306,7 @@ function getLinkPath(from: SignalNode, to: SignalNode) {
 
 function ConstellationStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-white/10 bg-black/20 p-3">
+    <div className="rounded-lg bg-black/15 p-3">
       <p className="text-[0.65rem] font-black uppercase tracking-[0.1em] text-slate-500">{label}</p>
       <p className="mt-1 font-display text-xl font-black text-white">{value}</p>
     </div>

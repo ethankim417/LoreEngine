@@ -56,7 +56,7 @@ export function MarketPulse() {
   return (
     <Link
       href="/market"
-      className="glass-panel premium-hover group relative block overflow-hidden rounded-lg transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
+      className="surface-panel premium-hover group relative block overflow-hidden rounded-lg transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/20 focus:outline-none focus:ring-2 focus:ring-cyan-300/25"
       aria-label="Open full market pulse view"
     >
       <section aria-label="Market pulse preview" className="relative p-3 sm:p-4">
@@ -84,7 +84,7 @@ export function MarketPulse() {
 
           <div className="grid gap-3 xl:grid-cols-[1fr_auto] xl:items-center">
             <div className="grid gap-2 md:grid-cols-[minmax(12rem,18rem)_1fr] md:items-center">
-              <div className="rounded-lg border border-white/10 bg-black/20 p-3">
+              <div className="rounded-lg bg-black/18 p-3">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="text-[0.64rem] font-semibold uppercase tracking-[0.1em] text-slate-500">
@@ -140,7 +140,7 @@ export function MarketPulse() {
                   {marketRead}
                 </p>
               </div>
-              <span className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.06] px-3 py-2 text-sm font-black text-white transition group-hover:border-cyan-300/35 group-hover:text-cyan-100">
+              <span className="inline-flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.045] px-3 py-2 text-sm font-black text-white transition group-hover:border-cyan-300/30 group-hover:text-cyan-100">
                 Full Market
                 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
               </span>
@@ -164,7 +164,7 @@ function TickerCell({
   const positive = player.thirtyDayChange >= 0;
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-white/10 bg-white/[0.035] px-3 py-2">
+    <div className="relative overflow-hidden rounded-lg bg-white/[0.028] px-3 py-2">
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
           <p className="font-display text-sm font-black text-white">{player.ticker}</p>

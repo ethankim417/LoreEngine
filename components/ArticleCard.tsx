@@ -52,7 +52,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
   }
 
   return (
-    <article className={`glass-panel premium-hover group relative flex min-h-[16.75rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-glow sm:min-h-[22.5rem] ${featured ? "xl:col-span-2 xl:min-h-[24rem]" : ""}`}>
+    <article className={`glass-panel premium-hover group relative flex min-h-[16.25rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/22 sm:min-h-[21.25rem] ${featured ? "xl:col-span-2 xl:min-h-[23rem]" : ""}`}>
       <div className={`absolute inset-y-0 left-0 z-20 w-1 ${priority.railClass}`} aria-hidden="true" />
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <Image
@@ -70,20 +70,20 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
 
       <div className="relative z-10 flex flex-1 flex-col p-3.5 sm:p-4">
         <div className="flex items-start justify-between gap-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className={`rounded-full border px-2.5 py-1 text-xs font-black uppercase tracking-[0.08em] ${priority.className}`}>
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className={`rounded-full border px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.08em] ${priority.className}`}>
               {priority.label}
             </span>
-            <span className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
+            <span className={`rounded-full border px-2.5 py-1 text-[0.68rem] font-semibold ${categoryTone(article.category)}`}>
               {article.category}
             </span>
-            <span className={`rounded-full border px-2.5 py-1 text-xs font-black uppercase tracking-[0.08em] ${
+            <span className={`rounded-full border px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-[0.08em] ${
               read ? "border-slate-300/15 bg-slate-300/5 text-slate-400" : "border-cyan-300/25 bg-cyan-300/10 text-cyan-100"
             }`}>
               {read ? "Read" : "New this week"}
             </span>
             {bookmarked ? (
-              <span className="rounded-full border border-emerald-300/25 bg-emerald-300/10 px-2.5 py-1 text-xs font-black uppercase tracking-[0.08em] text-emerald-100">
+              <span className="rounded-full border border-emerald-300/20 bg-emerald-300/[0.075] px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-[0.08em] text-emerald-100">
                 Saved
               </span>
             ) : null}
@@ -110,20 +110,20 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
           {article.title}
         </h2>
         <p className={`mt-2 text-sm leading-6 text-slate-300 ${featured ? "line-clamp-1 sm:line-clamp-2 xl:max-w-2xl xl:line-clamp-3" : "line-clamp-1 sm:line-clamp-2"}`}>{article.tldr}</p>
-        <p className="mt-2 line-clamp-1 text-xs font-semibold leading-5 text-cyan-100/75">
+        <p className="mt-2 line-clamp-1 text-xs font-semibold leading-5 text-slate-400">
           Why open: {getWhyOpen(article.whyItMatters)}
         </p>
 
         {article.impactScore >= 90 ? (
-          <div className="mt-3 hidden rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-3 sm:block">
-            <p className="text-[0.66rem] font-black uppercase tracking-[0.1em] text-cyan-200">
+          <div className="mt-3 hidden rounded-lg bg-white/[0.035] p-3 sm:block">
+            <p className="text-[0.66rem] font-black uppercase tracking-[0.1em] text-slate-500">
               Why it matters
             </p>
             <p className="mt-1 line-clamp-2 text-xs leading-5 text-slate-300">{article.whyItMatters}</p>
           </div>
         ) : null}
 
-        <div className="mt-3 grid grid-cols-2 gap-2">
+        <div className="mt-3 grid grid-cols-2 gap-1.5">
           <MiniMetric
             icon={<Gauge className="h-4 w-4" />}
             label="Industry Impact"
@@ -139,7 +139,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
         </div>
       </div>
 
-      <div className="relative z-10 flex items-center justify-between gap-3 border-t border-white/10 bg-black/10 px-4 py-3">
+      <div className="relative z-10 flex items-center justify-between gap-3 bg-black/10 px-4 py-3">
         <Link
           href={`/articles/${article.slug}`}
           className="inline-flex items-center gap-2 text-sm font-black text-white transition hover:text-cyan-100"
@@ -217,7 +217,7 @@ function MiniMetric({
 }) {
   return (
     <div
-      className="group/metric relative min-h-[3.75rem] rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-2 outline-none transition focus-within:border-cyan-300/35 hover:border-cyan-300/25"
+      className="group/metric relative min-h-[3.25rem] rounded-lg bg-white/[0.035] px-2.5 py-2 outline-none transition focus-within:bg-white/[0.055] hover:bg-white/[0.055]"
       title={description}
       aria-label={`${label}: ${value}. ${description}`}
       tabIndex={0}
@@ -226,7 +226,7 @@ function MiniMetric({
         {icon}
         {label}
       </div>
-      <p className="mt-1 font-display text-lg font-black text-white">{value}</p>
+      <p className="mt-0.5 font-display text-base font-black text-white">{value}</p>
       <span className="pointer-events-none absolute bottom-[calc(100%+0.5rem)] left-0 z-20 hidden w-52 rounded-lg border border-cyan-300/20 bg-slate-950/95 p-3 text-xs leading-5 text-slate-200 shadow-[0_18px_60px_rgba(0,0,0,0.42)] group-hover/metric:block group-focus/metric:block">
         {description}
       </span>

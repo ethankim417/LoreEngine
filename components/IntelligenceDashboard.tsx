@@ -141,7 +141,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         <SignalConstellation articles={articles} compact />
       </div>
 
-      <section id="feed" className="glass-panel glass-panel-soft scroll-mt-24 rounded-lg p-4 sm:p-5">
+      <section id="feed" className="surface-panel scroll-mt-24 rounded-lg p-4 sm:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
           <div className="flex items-start justify-between gap-3">
             <div>
@@ -249,7 +249,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
           className="fixed inset-0 z-50 flex items-end bg-black/65 p-3 backdrop-blur-md md:hidden"
           onClick={() => setFiltersOpen(false)}
         >
-          <div className="glass-panel w-full rounded-lg p-4" onClick={(event) => event.stopPropagation()}>
+          <div className="surface-panel w-full rounded-lg p-4" onClick={(event) => event.stopPropagation()}>
             <div className="mb-4 flex items-center justify-between gap-3">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-200">Filters</p>
@@ -369,7 +369,7 @@ function DashboardJumpBar({
   onOpenSaved: () => void;
 }) {
   return (
-    <nav className="sticky top-2 z-30 -my-2 flex gap-1 overflow-x-auto rounded-lg border border-white/10 bg-slate-950/72 p-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-slate-300 shadow-[0_14px_50px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl sm:top-3 sm:w-fit">
+    <nav className="surface-panel sticky top-2 z-30 -my-2 flex gap-1 overflow-x-auto rounded-lg p-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-slate-300 sm:top-3 sm:w-fit">
       <JumpLink href="#mobile-brief" label="Brief" />
       <JumpLink href="#mobile-market" label="Market" />
       <JumpLink href="#scores" label="Scores" />
@@ -457,7 +457,7 @@ function SavedBriefsDrawer({
       onClick={onClose}
     >
       <aside
-        className="glass-panel flex h-full w-full max-w-md flex-col overflow-hidden rounded-lg"
+        className="surface-panel flex h-full w-full max-w-md flex-col overflow-hidden rounded-lg"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4 border-b border-white/10 p-4">
@@ -576,7 +576,7 @@ function WeeklyBriefStatus({
                 className="source-shimmer group/source inline-flex items-center gap-1.5 rounded-full border border-emerald-300/20 bg-emerald-300/[0.075] px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-emerald-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-emerald-300/45 hover:bg-emerald-300/[0.11] hover:text-emerald-50"
               >
                 <Shield className="h-3 w-3" />
-                {sourceCount} Sources Used
+                {sourceCount} Sources
                 <ArrowRight className="h-3 w-3 text-cyan-100/70 transition group-hover/source:translate-x-0.5 group-hover/source:text-cyan-50" />
               </Link>
             </div>
@@ -678,7 +678,7 @@ function MetricCard({
       type="button"
       onClick={onSelect}
       aria-label={`Explain ${metric.label}`}
-      className="glass-panel glass-panel-soft premium-hover group relative overflow-hidden rounded-lg p-3 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/22 focus:outline-none focus:ring-2 focus:ring-cyan-300/25"
+      className="surface-panel premium-hover group relative overflow-hidden rounded-lg p-3 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/18 focus:outline-none focus:ring-2 focus:ring-cyan-300/20"
     >
       <div className="flex items-center gap-3">
         <div className="h-9 w-1.5 shrink-0 overflow-hidden rounded-full bg-white/[0.06]">
@@ -740,7 +740,7 @@ function MetricExplainerDialog({
       onClick={onClose}
     >
       <div
-        className="glass-panel max-h-[calc(100vh-1.5rem)] w-full max-w-2xl overflow-y-auto rounded-lg"
+        className="surface-panel max-h-[calc(100vh-1.5rem)] w-full max-w-2xl overflow-y-auto rounded-lg"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4 border-b border-white/10 p-5 sm:p-6">
