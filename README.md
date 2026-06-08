@@ -8,9 +8,19 @@ LoreEngine is a weekly gaming industry intelligence dashboard built to help me t
 
 I built it for two reasons: to create a tool I would actually use to stay current, and to test how far I could push Codex as a product-building partner while still making the product, architecture, and tradeoff decisions myself.
 
+LoreEngine is not a commercial product yet; it is a portfolio-scale prototype designed to test product thinking, AI-assisted development, and a cache-first architecture for future weekly intelligence briefs.
+
 **Planned Custom Domain:** `https://lore-engine.ethankim.cc`  
 **Current Public Mirror:** [GitHub Pages](https://ethankim417.github.io/LoreEngine/)  
 **GitHub Repo:** [ethankim417/LoreEngine](https://github.com/ethankim417/LoreEngine)
+
+## Quick Read
+
+- Built a weekly gaming industry dashboard to track games, AI, platforms, engines, studios, and market signals.
+- Used Codex as a build partner while directing product decisions, UX, architecture, and scope.
+- Implemented a polished responsive dashboard with article briefs, filters, saved briefs, market pulse, and detail pages.
+- Added server-side scaffolding for weekly market refreshes, future AI/news ingest, health checks, and cache-first architecture.
+- Current article data is mock/cached by design; the system is structured for future scheduled summaries, not browser-side AI calls.
 
 ## Why I Built This
 
@@ -28,14 +38,14 @@ The second goal was to test Codex as a product-building partner. I used it to mo
 - AI judgment: Codex-assisted iteration without browser-side AI calls or page-load summarization.
 - Deployment readiness: Vercel routes, GitHub Pages mirror, sitemap, robots, metadata, and documentation.
 
-## What I Am Testing
+## Questions This Project Explores
 
 - Whether Codex can help turn a rough product idea into a usable, polished web app.
 - Whether I can use AI to iterate faster without losing product judgment.
 - Whether a static prototype can be structured so it can later support real weekly summaries.
 - Whether gaming industry news can be framed more like an intelligence brief than a news feed.
 
-## What LoreEngine Does
+## Product Features
 
 - Presents a weekly gaming industry brief.
 - Tracks mock gaming, AI, market, studio, platform, esports, and hardware signals.
@@ -43,14 +53,22 @@ The second goal was to test Codex as a product-building partner. I used it to mo
 - Supports search, category filters, source-type filters, and sorting.
 - Opens article detail pages with TLDRs, why-it-matters context, and trend analysis.
 - Supports optional Google login so saved briefs can sync to an account.
-- Includes an account deletion flow for synced bookmark data.
 - Includes a Market Pulse view for major public companies connected to gaming.
 - Explains source selection and weekly cadence through a dedicated source strategy page.
-- Includes a weekly Vercel Cron refresh for market close-price data.
 - Includes compact dashboard and Market Pulse disclaimers for data/financial context.
+
+## Technical Features
+
+- Next.js App Router with TypeScript and Tailwind CSS.
+- Server API routes for market data, health checks, auth, bookmarks, and account deletion.
+- Weekly Vercel Cron refresh for market close-price data.
+- Optional Google login with server-side ID token verification.
+- Firebase-ready bookmark sync with a local browser fallback.
+- Account deletion flow for synced bookmark data.
+- Sitemap, robots, Open Graph metadata, GitHub Pages mirror, and Vercel-ready deployment.
 - Includes a future weekly ingest scaffold for server-side AI/news summarization.
 
-## Current Data Status
+## Data And AI Boundaries
 
 This version uses mock and cached data on purpose.
 
@@ -220,11 +238,11 @@ This repository also includes `.github/workflows/pages.yml` for static portfolio
 Description:
 
 ```text
-AI-assisted gaming industry intelligence dashboard built with Next.js, TypeScript, and Tailwind CSS.
+Weekly gaming industry intelligence dashboard built with Next.js, TypeScript, Tailwind CSS, cached market data, and Codex-assisted iteration.
 ```
 
 Topics:
 
 ```text
-nextjs, typescript, tailwindcss, dashboard, gaming, ai, codex, vercel
+nextjs, typescript, tailwindcss, dashboard, gaming, ai, portfolio, codex, vercel, firebase, google-auth, market-data
 ```
