@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { ArticleCard } from "@/components/ArticleCard";
 import { ExecutiveBrief } from "@/components/ExecutiveBrief";
+import { useLanguage } from "@/components/LanguageProvider";
 import {
   briefSnapshotDate,
   categories,
@@ -52,6 +53,7 @@ type IntelligenceDashboardProps = {
 };
 
 export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboardProps) {
+  const { t } = useLanguage();
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<ArticleCategory | "All">("All");
   const [sourceType, setSourceType] = useState<SourceCredibility | "All">("All");
@@ -132,12 +134,12 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
       <section id="scores" aria-label="Dashboard metrics" className="space-y-3 scroll-mt-24">
         <div className="flex items-center justify-between gap-3 px-1">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">Dashboard Scores</p>
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">{t("dashboardScores")}</p>
           <Link
             href="/methodology"
             className="inline-flex items-center gap-1.5 text-xs font-black text-cyan-200/85 transition hover:text-cyan-100"
           >
-            How scores work
+            {t("howScoresWork")}
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
@@ -158,10 +160,10 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
             <div>
               <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-cyan-200">
                 <Sparkles className="h-4 w-4" />
-                Intelligence Feed
+                {t("intelligenceFeed")}
               </div>
               <p className="mt-2 text-sm text-slate-400">
-                {filteredArticles.length} brief{filteredArticles.length === 1 ? "" : "s"} matched
+                {filteredArticles.length} {filteredArticles.length === 1 ? t("briefMatched") : t("briefsMatched")}
               </p>
             </div>
             <button
@@ -171,7 +173,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               className="inline-flex items-center gap-2 rounded-lg border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-2 text-xs font-black text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-cyan-300/45 md:hidden"
             >
               <SlidersHorizontal className="h-4 w-4" />
-              Filters{activeFilterCount ? ` (${activeFilterCount})` : ""}
+              {t("filters")}{activeFilterCount ? ` (${activeFilterCount})` : ""}
             </button>
           </div>
 
@@ -182,7 +184,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search title or TLDR"
+                placeholder={t("searchPlaceholder")}
                 className="h-11 w-full rounded-lg border border-white/10 bg-black/20 pl-10 pr-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/15"
               />
             </label>
@@ -195,7 +197,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                 onChange={(event) => setCategory(event.target.value as ArticleCategory | "All")}
                 className="h-11 w-full min-w-40 appearance-none rounded-lg border border-cyan-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.08] focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20 [&>option]:bg-slate-950 [&>option]:text-cyan-50"
               >
-                <option value="All">All Categories</option>
+                <option value="All">{t("allCategories")}</option>
                 {categories.map((item) => (
                   <option key={item} value={item}>
                     {item}
@@ -213,7 +215,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                 onChange={(event) => setSourceType(event.target.value as SourceCredibility | "All")}
                 className="h-11 w-full min-w-40 appearance-none rounded-lg border border-emerald-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-emerald-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-emerald-300/35 hover:bg-emerald-300/[0.08] focus:border-emerald-300/60 focus:ring-2 focus:ring-emerald-300/20 [&>option]:bg-slate-950 [&>option]:text-emerald-50"
               >
-                <option value="All">All Sources</option>
+                <option value="All">{t("allSources")}</option>
                 {sourceCredibilityTypes.map((item) => (
                   <option key={item} value={item}>
                     {item}
@@ -231,9 +233,9 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                 onChange={(event) => setSortMode(event.target.value as SortMode)}
                 className="h-11 w-full min-w-40 appearance-none rounded-lg border border-violet-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-violet-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-violet-300/35 hover:bg-violet-300/[0.08] focus:border-violet-300/60 focus:ring-2 focus:ring-violet-300/20 [&>option]:bg-slate-950 [&>option]:text-violet-50"
               >
-                <option value="newest">Newest</option>
-                <option value="impact">Industry Impact</option>
-                <option value="trend">Momentum</option>
+                <option value="newest">{t("newest")}</option>
+                <option value="impact">{t("industryImpact")}</option>
+                <option value="trend">{t("momentum")}</option>
               </select>
               <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-violet-200/70" />
             </label>
@@ -263,8 +265,10 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
           <div className="surface-panel w-full rounded-lg p-4" onClick={(event) => event.stopPropagation()}>
             <div className="mb-4 flex items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-200">Filters</p>
-                <p className="mt-1 text-sm text-slate-400">{filteredArticles.length} briefs matched</p>
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-200">{t("filters")}</p>
+                <p className="mt-1 text-sm text-slate-400">
+                  {filteredArticles.length} {filteredArticles.length === 1 ? t("briefMatched") : t("briefsMatched")}
+                </p>
               </div>
               <button
                 type="button"
@@ -284,7 +288,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                   onChange={(event) => setCategory(event.target.value as ArticleCategory | "All")}
                   className="h-11 w-full appearance-none rounded-lg border border-cyan-300/15 bg-slate-950/55 px-10 pr-9 text-sm font-semibold text-cyan-50 outline-none"
                 >
-                  <option value="All">All Categories</option>
+                  <option value="All">{t("allCategories")}</option>
                   {categories.map((item) => (
                     <option key={item} value={item}>
                       {item}
@@ -301,7 +305,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                   onChange={(event) => setSourceType(event.target.value as SourceCredibility | "All")}
                   className="h-11 w-full appearance-none rounded-lg border border-emerald-300/15 bg-slate-950/55 px-10 pr-9 text-sm font-semibold text-emerald-50 outline-none"
                 >
-                  <option value="All">All Sources</option>
+                  <option value="All">{t("allSources")}</option>
                   {sourceCredibilityTypes.map((item) => (
                     <option key={item} value={item}>
                       {item}
@@ -318,9 +322,9 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                   onChange={(event) => setSortMode(event.target.value as SortMode)}
                   className="h-11 w-full appearance-none rounded-lg border border-violet-300/15 bg-slate-950/55 px-10 pr-9 text-sm font-semibold text-violet-50 outline-none"
                 >
-                  <option value="newest">Newest</option>
-                  <option value="impact">Industry Impact</option>
-                  <option value="trend">Momentum</option>
+                  <option value="newest">{t("newest")}</option>
+                  <option value="impact">{t("industryImpact")}</option>
+                  <option value="trend">{t("momentum")}</option>
                 </select>
                 <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-violet-200/70" />
               </label>
@@ -331,14 +335,14 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                 onClick={resetFilters}
                 className="rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-black text-slate-200"
               >
-                Reset
+                {t("reset")}
               </button>
               <button
                 type="button"
                 onClick={() => setFiltersOpen(false)}
                 className="rounded-lg bg-cyan-300 px-4 py-3 text-sm font-black text-slate-950"
               >
-                Apply
+                {t("apply")}
               </button>
             </div>
           </div>
@@ -379,20 +383,22 @@ function DashboardJumpBar({
   savedCount: number;
   onOpenSaved: () => void;
 }) {
+  const { t } = useLanguage();
+
   return (
     <nav className="surface-panel sticky top-2 z-30 -my-2 flex gap-1 overflow-x-auto rounded-lg p-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-slate-300 sm:top-3 sm:w-fit">
-      <JumpLink href="#mobile-brief" label="Brief" />
-      <JumpLink href="#mobile-market" label="Market" />
-      <JumpLink href="#scores" label="Scores" />
-      <JumpLink href="#signals" label="Signals" />
-      <JumpLink href="#feed" label="Feed" />
+      <JumpLink href="#mobile-brief" label={t("brief")} />
+      <JumpLink href="#mobile-market" label={t("market")} />
+      <JumpLink href="#scores" label={t("scores")} />
+      <JumpLink href="#signals" label={t("signals")} />
+      <JumpLink href="#feed" label={t("feed")} />
       <button
         type="button"
         onClick={onOpenSaved}
         className="inline-flex shrink-0 items-center gap-1.5 rounded-md px-2.5 py-2 text-emerald-100 transition hover:bg-emerald-300/10 hover:text-emerald-50"
       >
         <Bookmark className="h-3.5 w-3.5" />
-        Saved {savedCount ? savedCount : ""}
+        {t("saved")} {savedCount ? savedCount : ""}
       </button>
     </nav>
   );
@@ -429,12 +435,14 @@ function MobileActionBar({
   onOpenFilters: () => void;
   activeFilterCount: number;
 }) {
+  const { t } = useLanguage();
+
   return (
     <nav className="fixed inset-x-3 bottom-3 z-40 grid grid-cols-4 overflow-hidden rounded-lg border border-white/10 bg-slate-950/82 text-[0.68rem] font-black text-slate-300 shadow-[0_20px_80px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl md:hidden">
-      <a href="#mobile-brief" className="px-2 py-3 text-center text-cyan-100">Brief</a>
-      <a href="#mobile-market" className="px-2 py-3 text-center">Market</a>
+      <a href="#mobile-brief" className="px-2 py-3 text-center text-cyan-100">{t("brief")}</a>
+      <a href="#mobile-market" className="px-2 py-3 text-center">{t("market")}</a>
       <button type="button" onClick={onOpenFilters} className="px-2 py-3 text-center">
-        Filters{activeFilterCount ? ` ${activeFilterCount}` : ""}
+        {t("filters")}{activeFilterCount ? ` ${activeFilterCount}` : ""}
       </button>
       <a href="#top" className="px-2 py-3 text-center">Top</a>
     </nav>
@@ -452,6 +460,8 @@ function SavedBriefsDrawer({
   onClose: () => void;
   onRemove: (id: string) => void;
 }) {
+  const { t } = useLanguage();
+
   useEffect(() => {
     if (!open) {
       return;
@@ -487,10 +497,10 @@ function SavedBriefsDrawer({
         <div className="flex items-start justify-between gap-4 border-b border-white/10 p-4">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.16em] text-emerald-200">
-              Saved Briefs
+              {t("savedBriefs")}
             </p>
             <h2 className="mt-1 font-display text-2xl font-black text-white">
-              {articles.length ? `${articles.length} saved` : "Nothing saved yet"}
+              {articles.length ? `${articles.length} ${t("saved")}` : t("nothingSaved")}
             </h2>
           </div>
           <button
@@ -537,9 +547,9 @@ function SavedBriefsDrawer({
             <div className="grid h-full place-items-center rounded-lg border border-dashed border-white/12 bg-white/[0.025] p-8 text-center">
               <div>
                 <Bookmark className="mx-auto h-7 w-7 text-cyan-200/70" />
-                <p className="mt-3 font-display text-lg font-black text-white">Saved briefs will appear here.</p>
+                <p className="mt-3 font-display text-lg font-black text-white">{t("savedAppear")}</p>
                 <p className="mt-2 text-sm leading-6 text-slate-400">
-                  Use the bookmark button on any article card to build a personal read list.
+                  {t("savedHelp")}
                 </p>
               </div>
             </div>
@@ -551,21 +561,23 @@ function SavedBriefsDrawer({
 }
 
 function EmptyFilterState({ onClearAll }: { onClearAll: () => void }) {
+  const { t } = useLanguage();
+
   return (
     <div className="glass-panel rounded-lg p-6 text-center sm:p-8">
       <div className="mx-auto grid h-11 w-11 place-items-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 text-cyan-100">
         <Search className="h-5 w-5" />
       </div>
-      <h2 className="mt-4 font-display text-xl font-black text-white">No briefs match these filters</h2>
+      <h2 className="mt-4 font-display text-xl font-black text-white">{t("noBriefs")}</h2>
       <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-400">
-        Try clearing the source type, category, or search query to bring the weekly brief back into view.
+        {t("noBriefsHelp")}
       </p>
       <button
         type="button"
         onClick={onClearAll}
         className="mt-5 inline-flex items-center justify-center rounded-lg bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-cyan-200"
       >
-        Clear filters
+        {t("clearFilters")}
       </button>
     </div>
   );

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { IntelligenceDashboard } from "@/components/IntelligenceDashboard";
 import { AuthAccount } from "@/components/AuthAccount";
+import { LocalizedText } from "@/components/LocalizedText";
 import { articles } from "@/data/articles";
 import { getDashboardMetrics } from "@/lib/metrics";
 import { Info, Mail, Radar, Sparkles } from "lucide-react";
@@ -47,7 +48,7 @@ function Hero() {
             aria-label="Contact LoreEngine at lore-engine@ethankim.cc"
           >
             <Mail className="h-3.5 w-3.5" />
-            Contact
+            <LocalizedText k="contact" />
             <span className="pointer-events-none absolute right-0 top-[calc(100%+0.55rem)] hidden rounded-lg border border-cyan-300/18 bg-slate-950/95 px-3 py-2 text-xs font-semibold text-slate-200 shadow-[0_16px_50px_rgba(0,0,0,0.4)] group-hover/contact:block group-focus/contact:block">
               lore-engine@ethankim.cc
             </span>
@@ -67,7 +68,7 @@ function Hero() {
           </div>
           <div>
             <p className="inline-flex rounded-full border border-cyan-300/15 bg-cyan-300/[0.06] px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-cyan-200/80">
-              Weekly Brief
+              <LocalizedText k="weeklyBrief" />
             </p>
             <h1 className="mt-2 font-display text-4xl font-black tracking-normal text-white sm:text-6xl">
               LoreEngine
@@ -77,11 +78,10 @@ function Hero() {
 
         <div className="max-w-4xl">
           <p className="text-balance text-xl font-medium text-cyan-50 sm:text-2xl">
-            The gaming industry, distilled weekly.
+            <LocalizedText k="heroTitle" />
           </p>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300 sm:mt-3 sm:text-base">
-            LoreEngine turns gaming, AI, platform, hardware, esports, and market signals into a weekly
-            brief on what changed, why it matters, and who may feel it next.
+            <LocalizedText k="heroBody" />
           </p>
         </div>
 
@@ -93,7 +93,7 @@ function Hero() {
             aria-label="Contact LoreEngine at lore-engine@ethankim.cc"
           >
             <Mail className="h-3.5 w-3.5" />
-            Contact
+            <LocalizedText k="contact" />
           </a>
         </div>
       </div>
@@ -107,20 +107,20 @@ function DisclosureFooter() {
       <div className="group/disclosure relative inline-flex max-w-full flex-wrap items-center gap-2 rounded-lg border border-white/10 bg-slate-950/45 px-3 py-2 text-xs text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl sm:rounded-full">
         <Info className="h-3.5 w-3.5 shrink-0 text-cyan-200/80" />
         <span>
-          Informational demo. Market data is weekly/cached, not real-time financial data.
+          <LocalizedText k="informationalDemo" />
         </span>
         <Link
           href="/privacy"
           className="rounded-full text-cyan-200/80 underline decoration-cyan-300/25 underline-offset-4 outline-none transition hover:text-cyan-100 focus:text-cyan-100"
         >
-          Privacy
+          <LocalizedText k="privacy" />
         </Link>
         <button
           type="button"
           className="rounded-full text-cyan-200/80 underline decoration-cyan-300/25 underline-offset-4 outline-none transition hover:text-cyan-100 focus:text-cyan-100"
           aria-label="Show LoreEngine disclaimer"
         >
-          Disclaimer
+          <LocalizedText k="disclaimer" />
         </button>
         <div className="pointer-events-none absolute bottom-[calc(100%+0.75rem)] left-0 z-30 hidden w-[min(34rem,calc(100vw-2rem))] rounded-lg border border-cyan-300/18 bg-slate-950/95 p-4 text-left text-xs leading-5 text-slate-300 shadow-[0_24px_80px_rgba(0,0,0,0.48)] backdrop-blur-xl group-hover/disclosure:block group-focus-within/disclosure:block">
           <p className="font-black uppercase tracking-[0.14em] text-cyan-200">LoreEngine Disclaimer</p>

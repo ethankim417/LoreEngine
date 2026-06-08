@@ -53,6 +53,7 @@ The second goal was to test Codex as a product-building partner. I used it to mo
 - Supports search, category filters, source-type filters, and sorting.
 - Opens article detail pages with TLDRs, why-it-matters context, and trend analysis.
 - Supports optional Google login so saved briefs can sync to an account.
+- Supports English/Korean UI language switching with account-based preference sync.
 - Includes a Market Pulse view for major public companies connected to gaming.
 - Explains source selection and weekly cadence through a dedicated source strategy page.
 - Includes compact dashboard and Market Pulse disclaimers for data/financial context.
@@ -64,6 +65,7 @@ The second goal was to test Codex as a product-building partner. I used it to mo
 - Weekly Vercel Cron refresh for market close-price data.
 - Optional Google login with server-side ID token verification.
 - Firebase-ready bookmark sync with a local browser fallback.
+- Account-based language preference sync for English/Korean UI.
 - Account deletion flow for synced bookmark data.
 - Sitemap, robots, Open Graph metadata, GitHub Pages mirror, and Vercel-ready deployment.
 - Includes a future weekly ingest scaffold for server-side AI/news summarization.

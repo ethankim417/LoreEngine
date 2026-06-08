@@ -12,6 +12,7 @@ import {
   Gauge,
   TrendingUp
 } from "lucide-react";
+import { useLanguage } from "@/components/LanguageProvider";
 import { SourceBadge } from "@/components/SourceBadge";
 import { SectorSignalArt } from "@/components/SectorSignalArt";
 import type { Article } from "@/data/articles";
@@ -19,9 +20,10 @@ import { readLocalBookmarks, syncRemoteBookmarks, writeLocalBookmarks } from "@/
 import { categoryTone, formatDate } from "@/lib/format";
 
 export function ArticleCard({ article, featured = false }: { article: Article; featured?: boolean }) {
+  const { t } = useLanguage();
   const [bookmarked, setBookmarked] = useState(false);
   const [read, setRead] = useState(false);
-  const priority = getPriority(article);
+  const priority = getPriority(article, t);
 
   useEffect(() => {
     function syncState() {
@@ -86,7 +88,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
             <span className={`rounded-full border px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-[0.08em] ${
               read ? "border-slate-300/15 bg-slate-300/5 text-slate-400" : "border-cyan-300/25 bg-cyan-300/10 text-cyan-100"
             }`}>
-              {read ? "Read" : "New this week"}
+              {read ? t("read") : t("newThisWeek")}
             </span>
             {bookmarked ? (
               <span className="rounded-full border border-emerald-300/20 bg-emerald-300/[0.075] px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-[0.08em] text-emerald-100">
@@ -97,8 +99,8 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
           <button
             type="button"
             onClick={toggleBookmark}
-            aria-label={bookmarked ? "Remove bookmark" : "Bookmark article"}
-            title={bookmarked ? "Remove bookmark" : "Bookmark article"}
+            aria-label={bookmarked ? t("removeBookmark") : t("bookmarkArticle")}
+            title={bookmarked ? t("removeBookmark") : t("bookmarkArticle")}
             className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-300 transition hover:border-cyan-300/40 hover:text-cyan-100"
           >
             {bookmarked ? <BookmarkCheck className="h-4 w-4" /> : <Bookmark className="h-4 w-4" />}
@@ -117,13 +119,13 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
         </h2>
         <p className={`mt-2 text-sm leading-6 text-slate-300 ${featured ? "line-clamp-1 sm:line-clamp-2 xl:max-w-2xl xl:line-clamp-3" : "line-clamp-1 sm:line-clamp-2"}`}>{article.tldr}</p>
         <p className="mt-2 line-clamp-1 text-xs font-semibold leading-5 text-slate-400">
-          Why open: {getWhyOpen(article.whyItMatters)}
+          {t("whyOpen")}: {getWhyOpen(article.whyItMatters)}
         </p>
 
         {article.impactScore >= 90 ? (
           <div className="mt-3 hidden rounded-lg bg-white/[0.035] p-3 sm:block">
             <p className="text-[0.66rem] font-black uppercase tracking-[0.1em] text-slate-500">
-              Why it matters
+              {t("whyItMatters")}
             </p>
             <p className="mt-1 line-clamp-2 text-xs leading-5 text-slate-300">{article.whyItMatters}</p>
           </div>
@@ -132,15 +134,15 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
         <div className="mt-3 grid grid-cols-2 gap-1.5">
           <MiniMetric
             icon={<Gauge className="h-4 w-4" />}
-            label="Industry Impact"
+            label={t("industryImpact")}
             value={`${article.impactScore}`}
-            description="Estimated business or production importance on a 0 to 100 scale."
+            description={t("impactMetricHelp")}
           />
           <MiniMetric
             icon={<TrendingUp className="h-4 w-4" />}
-            label="Momentum"
+            label={t("momentum")}
             value={`+${article.trendScore}%`}
-            description="Estimated growth in attention around this topic."
+            description={t("momentumMetricHelp")}
           />
         </div>
       </div>
@@ -150,7 +152,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
           href={`/articles/${article.slug}`}
           className="inline-flex items-center gap-2 text-sm font-black text-white transition hover:text-cyan-100"
         >
-          Read brief
+          {t("readBrief")}
           <ChevronRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
         </Link>
         <a
@@ -186,10 +188,10 @@ function getWhyOpen(value: string) {
   return firstSentence || value;
 }
 
-function getPriority(article: Article) {
+function getPriority(article: Article, t: (key: "readFirst" | "monitor" | "background") => string) {
   if (article.impactScore >= 86 || article.trendScore >= 36) {
     return {
-      label: "Read first",
+      label: t("readFirst"),
       className: "border-emerald-300/25 bg-emerald-300/10 text-emerald-100",
       railClass: "bg-gradient-to-b from-emerald-200 via-cyan-300 to-transparent"
     };
@@ -197,14 +199,14 @@ function getPriority(article: Article) {
 
   if (article.impactScore >= 78 || article.trendScore >= 25) {
     return {
-      label: "Monitor",
+      label: t("monitor"),
       className: "border-cyan-300/25 bg-cyan-300/10 text-cyan-100",
       railClass: "bg-gradient-to-b from-cyan-200 via-violet-300 to-transparent"
     };
   }
 
   return {
-    label: "Background",
+    label: t("background"),
     className: "border-slate-300/15 bg-slate-300/5 text-slate-300",
     railClass: "bg-gradient-to-b from-slate-300/55 via-slate-500/25 to-transparent"
   };

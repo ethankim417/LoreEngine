@@ -1,11 +1,17 @@
 import { createHash, createSign } from "node:crypto";
 import type { AuthUser } from "@/lib/authSession";
+import type { Language } from "@/lib/i18n";
 
 const FIRESTORE_SCOPE = "https://www.googleapis.com/auth/datastore";
 const TOKEN_URL = "https://oauth2.googleapis.com/token";
 
 type StoredBookmarks = {
   bookmarkIds: string[];
+  storageMode: "firebase" | "unconfigured";
+};
+
+type StoredPreferences = {
+  language: Language | null;
   storageMode: "firebase" | "unconfigured";
 };
 
@@ -77,6 +83,55 @@ export async function writeUserBookmarks(user: AuthUser, bookmarkIds: string[]):
   return { bookmarkIds: nextIds, storageMode: "firebase" };
 }
 
+export async function readUserPreferences(user: AuthUser): Promise<StoredPreferences> {
+  if (!hasFirebaseConfig()) {
+    return { language: null, storageMode: "unconfigured" };
+  }
+
+  const response = await firestoreFetch(user, "", { method: "GET" });
+
+  if (response.status === 404) {
+    return { language: null, storageMode: "firebase" };
+  }
+
+  if (!response.ok) {
+    throw new Error(`Firestore preference read failed: ${response.status}`);
+  }
+
+  const document = (await response.json()) as FirestoreDocument;
+  const language = parseLanguage(document.fields?.language?.stringValue);
+
+  return { language, storageMode: "firebase" };
+}
+
+export async function writeUserPreferences(user: AuthUser, language: Language): Promise<StoredPreferences> {
+  if (!hasFirebaseConfig()) {
+    return { language, storageMode: "unconfigured" };
+  }
+
+  const body: FirestoreDocument = {
+    fields: {
+      language: {
+        stringValue: language
+      },
+      updatedAt: {
+        timestampValue: new Date().toISOString()
+      }
+    }
+  };
+
+  const response = await firestoreFetch(user, "?updateMask.fieldPaths=language&updateMask.fieldPaths=updatedAt", {
+    method: "PATCH",
+    body: JSON.stringify(body)
+  });
+
+  if (!response.ok) {
+    throw new Error(`Firestore preference write failed: ${response.status}`);
+  }
+
+  return { language, storageMode: "firebase" };
+}
+
 export async function deleteUserData(user: AuthUser) {
   if (!hasFirebaseConfig()) {
     return { storageMode: "unconfigured" as const, deleted: false };
@@ -93,6 +148,10 @@ export async function deleteUserData(user: AuthUser) {
 
 function normalizeBookmarkIds(bookmarkIds: string[]) {
   return [...new Set(bookmarkIds.filter((id) => /^[a-z0-9-]+$/i.test(id)))].slice(0, 250);
+}
+
+function parseLanguage(value: string | undefined): Language | null {
+  return value === "en" || value === "ko" ? value : null;
 }
 
 function hasFirebaseConfig() {

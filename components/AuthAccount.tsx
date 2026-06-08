@@ -3,12 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { LogOut, ShieldCheck, Trash2, UserRound } from "lucide-react";
+import { useLanguage } from "@/components/LanguageProvider";
 import {
   mergeBookmarksFromAccount,
   readLocalBookmarks,
   syncRemoteBookmarks,
   writeLocalBookmarks
 } from "@/lib/bookmarksClient";
+import { languageLabels, type Language } from "@/lib/i18n";
 
 type AuthUser = {
   id: string;
@@ -55,8 +57,8 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
   const googleButtonRef = useRef<HTMLDivElement>(null);
   const [user, setUser] = useState<AuthUser | null>(null);
   const [open, setOpen] = useState(false);
-  const [status, setStatus] = useState("Save bookmarks across devices.");
   const [storageMode, setStorageMode] = useState<"firebase" | "unconfigured" | "local">("local");
+  const { language, setLanguage, t } = useLanguage();
   const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 
   useEffect(() => {
@@ -67,11 +69,10 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
           setUser(session.user);
           const merged = await mergeBookmarksFromAccount();
           setStorageMode(merged.storageMode);
-          setStatus(getStorageStatus(merged.storageMode));
         }
       })
       .catch(() => {
-        setStatus("Account status unavailable.");
+        setStorageMode("local");
       });
   }, []);
 
@@ -120,11 +121,9 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
 
   async function handleGoogleCredential(response: GoogleCredentialResponse) {
     if (!response.credential) {
-      setStatus("Google did not return a credential.");
       return;
     }
 
-    setStatus("Signing in...");
     const login = await fetch("/api/auth/google", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -132,7 +131,6 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
     });
 
     if (!login.ok) {
-      setStatus("Google sign-in failed.");
       return;
     }
 
@@ -140,7 +138,6 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
     setUser(payload.user);
     const merged = await mergeBookmarksFromAccount();
     setStorageMode(merged.storageMode);
-    setStatus(getStorageStatus(merged.storageMode));
     setOpen(true);
   }
 
@@ -149,7 +146,6 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
     const nextMode = result?.storageMode ?? "local";
 
     setStorageMode(nextMode);
-    setStatus(getStorageStatus(nextMode));
   }
 
   async function signOut() {
@@ -157,7 +153,6 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
     setUser(null);
     setOpen(false);
     setStorageMode("local");
-    setStatus("Signed out. Saved briefs remain on this device.");
   }
 
   async function deleteAccount() {
@@ -174,7 +169,12 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
     setUser(null);
     setOpen(false);
     setStorageMode("local");
-    setStatus("Account data deleted.");
+  }
+
+  function handleLanguageChange(value: string) {
+    if (value === "en" || value === "ko") {
+      setLanguage(value);
+    }
   }
 
   if (user) {
@@ -187,17 +187,33 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
           aria-expanded={open}
         >
           <UserRound className="h-3.5 w-3.5" />
-          Account
+          {t("account")}
         </button>
         {open ? (
           <div className="absolute right-0 top-[calc(100%+0.55rem)] z-40 w-72 rounded-lg border border-cyan-300/18 bg-slate-950/96 p-3 text-xs text-slate-300 shadow-[0_22px_70px_rgba(0,0,0,0.48)] backdrop-blur-xl">
-            <p className="font-black uppercase tracking-[0.14em] text-cyan-200">Signed In</p>
+            <p className="font-black uppercase tracking-[0.14em] text-cyan-200">{t("signedIn")}</p>
             <p className="mt-2 truncate font-semibold text-white">{user.name}</p>
             <p className="truncate text-slate-500">{user.email}</p>
+            <label className="mt-3 block">
+              <span className="text-[0.65rem] font-black uppercase tracking-[0.14em] text-slate-500">
+                {t("language")}
+              </span>
+              <select
+                value={language}
+                onChange={(event) => handleLanguageChange(event.target.value)}
+                className="mt-1 h-9 w-full rounded-lg border border-white/10 bg-slate-950/70 px-3 text-xs font-semibold text-white outline-none"
+              >
+                {(Object.keys(languageLabels) as Language[]).map((item) => (
+                  <option key={item} value={item}>
+                    {languageLabels[item]}
+                  </option>
+                ))}
+              </select>
+            </label>
             <div className="mt-3 rounded-lg bg-white/[0.035] p-3">
               <div className="flex items-center gap-2 text-emerald-100">
                 <ShieldCheck className="h-3.5 w-3.5" />
-                {getStorageStatus(storageMode)}
+                {getStorageStatus(storageMode, t)}
               </div>
               <p className="mt-1 leading-5 text-slate-500">
                 Cloud sync uses Firebase when configured; otherwise bookmarks remain local to this browser.
@@ -205,19 +221,19 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
             </div>
             <div className="mt-3 grid gap-2">
               <button type="button" onClick={syncNow} className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 font-bold text-slate-100 transition hover:border-cyan-300/35">
-                Sync saved briefs
+                {t("syncSavedBriefs")}
               </button>
               <button type="button" onClick={signOut} className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 font-bold text-slate-100 transition hover:border-cyan-300/35">
                 <LogOut className="h-3.5 w-3.5" />
-                Sign out
+                {t("signOut")}
               </button>
               <button type="button" onClick={deleteAccount} className="inline-flex items-center justify-center gap-2 rounded-lg border border-rose-300/20 bg-rose-300/[0.07] px-3 py-2 font-bold text-rose-100 transition hover:border-rose-300/40">
                 <Trash2 className="h-3.5 w-3.5" />
-                Delete account data
+                {t("deleteAccountData")}
               </button>
             </div>
             <Link href="/privacy" className="mt-3 inline-flex text-cyan-200/80 underline decoration-cyan-300/20 underline-offset-4 hover:text-cyan-100">
-              Privacy and data rights
+              {t("privacyRights")}
             </Link>
           </div>
         ) : null}
@@ -236,22 +252,22 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
           className="rounded-full border border-white/10 bg-slate-950/35 px-3 py-1.5 text-xs font-semibold text-slate-500"
           title="Set NEXT_PUBLIC_GOOGLE_CLIENT_ID to enable Google sign-in."
         >
-          Google login pending
+          {t("googleLoginPending")}
         </button>
       )}
-      {!compact ? <p className="text-[0.65rem] text-slate-500">{status}</p> : null}
+      {!compact ? <p className="text-[0.65rem] text-slate-500">{t("saveBookmarks")}</p> : null}
     </div>
   );
 }
 
-function getStorageStatus(mode: "firebase" | "unconfigured" | "local") {
+function getStorageStatus(mode: "firebase" | "unconfigured" | "local", t: (key: "bookmarksSynced" | "cloudPending" | "localBookmarkMode") => string) {
   if (mode === "firebase") {
-    return "Bookmarks synced";
+    return t("bookmarksSynced");
   }
 
   if (mode === "unconfigured") {
-    return "Signed in; cloud storage pending";
+    return t("cloudPending");
   }
 
-  return "Local bookmark mode";
+  return t("localBookmarkMode");
 }
