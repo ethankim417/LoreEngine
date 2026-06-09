@@ -48,11 +48,11 @@ export default function PrivacyPage() {
               />
               <LegalBlock
                 title="What Data May Be Stored"
-                body="If cloud sync is configured, LoreEngine stores a hashed Google account identifier, saved article IDs, and update timestamps in Firebase Firestore. The app may display your Google name and email in the account menu, but the bookmark database does not need to store them."
+                body="With Firebase sync enabled, LoreEngine stores a Firebase user document containing saved article IDs, language preference, and update timestamps. Firebase Auth may provide the display name and email shown in the account menu, but LoreEngine does not request access to Gmail, Drive, Calendar, or other Google services."
               />
               <LegalBlock
                 title="Account Deletion"
-                body="The account menu includes a Delete account data action. It deletes the synced bookmark document when Firebase storage is configured, clears the session cookie, clears local saved briefs in the current browser, and signs the user out."
+                body="The account menu includes a Delete account data action. It deletes the synced Firebase user document, clears local saved briefs in the current browser, and signs the user out."
               />
               <LegalBlock
                 title="Korea And US Privacy Context"

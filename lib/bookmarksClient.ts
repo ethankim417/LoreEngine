@@ -1,3 +1,7 @@
+import { type User } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { auth, db } from "./firebase";
+
 export const BOOKMARK_STORAGE_KEY = "loreengine-bookmarks";
 
 export function readLocalBookmarks() {
@@ -16,52 +20,59 @@ export function writeLocalBookmarks(bookmarkIds: string[]) {
   window.dispatchEvent(new Event("loreengine-bookmarks-updated"));
 }
 
-export async function loadRemoteBookmarks() {
-  const response = await fetch("/api/bookmarks");
-
-  if (!response.ok) {
-    return null;
-  }
-
-  return (await response.json()) as {
-    status: "ok";
-    bookmarkIds: string[];
-    storageMode: "firebase" | "unconfigured";
-  };
-}
-
 export async function syncRemoteBookmarks(bookmarkIds: string[]) {
-  const response = await fetch("/api/bookmarks", {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ bookmarkIds })
-  });
+  const user = auth.currentUser;
 
-  if (!response.ok) {
-    return null;
+  if (!user) return;
+
+  try {
+    await setDoc(
+      doc(db, "users", user.uid),
+      {
+        bookmarkIds: [...new Set(bookmarkIds)].slice(0, 250),
+        updatedAt: new Date().toISOString()
+      },
+      { merge: true }
+    );
+  } catch (error) {
+    console.error("Firebase Bookmark Sync Error:", error);
   }
-
-  return (await response.json()) as {
-    status: "ok";
-    bookmarkIds: string[];
-    storageMode: "firebase" | "unconfigured";
-  };
 }
 
-export async function mergeBookmarksFromAccount() {
+export async function mergeBookmarksFromAccount(user: User) {
   const local = readLocalBookmarks();
-  const remote = await loadRemoteBookmarks();
 
-  if (!remote) {
-    return { bookmarkIds: local, storageMode: "local" as const };
+  try {
+    const dbDoc = doc(db, "users", user.uid);
+    const snap = await getDoc(dbDoc);
+
+    if (!snap.exists()) {
+      await setDoc(
+        dbDoc,
+        { bookmarkIds: local, updatedAt: new Date().toISOString() },
+        { merge: true }
+      );
+      return { bookmarkIds: local, storageMode: "firebase" as const };
+    }
+
+    const remoteData = snap.data();
+    const remote = Array.isArray(remoteData.bookmarkIds) ? remoteData.bookmarkIds : [];
+
+    const merged = [...new Set([...remote, ...local])].slice(0, 250);
+    writeLocalBookmarks(merged);
+
+    await setDoc(
+      dbDoc,
+      { bookmarkIds: merged, updatedAt: new Date().toISOString() },
+      { merge: true }
+    );
+
+    return {
+      bookmarkIds: merged,
+      storageMode: "firebase" as const
+    };
+  } catch (error) {
+    console.error("Firebase Bookmark Sync Error:", error);
+    return { bookmarkIds: local, storageMode: "unconfigured" as const };
   }
-
-  const merged = [...new Set([...remote.bookmarkIds, ...local])];
-  writeLocalBookmarks(merged);
-  const synced = await syncRemoteBookmarks(merged);
-
-  return {
-    bookmarkIds: synced?.bookmarkIds ?? merged,
-    storageMode: synced?.storageMode ?? remote.storageMode
-  };
 }

@@ -61,10 +61,10 @@ The second goal was to test Codex as a product-building partner. I used it to mo
 ## Technical Features
 
 - Next.js App Router with TypeScript and Tailwind CSS.
-- Server API routes for market data, health checks, auth, bookmarks, and account deletion.
+- Server API routes for market data, health checks, and protected admin refresh jobs.
 - Weekly Vercel Cron refresh for market close-price data.
-- Optional Google login with server-side ID token verification.
-- Firebase-ready bookmark sync with a local browser fallback.
+- Firebase Auth Google login for saved brief sync.
+- Firestore bookmark sync with a local browser fallback.
 - Account-based language preference sync for English/Korean UI.
 - Account deletion flow for synced bookmark data.
 - Sitemap, robots, Open Graph metadata, GitHub Pages mirror, and Vercel-ready deployment.
@@ -81,7 +81,7 @@ This version uses mock and cached data on purpose.
 - The browser does not call an AI API.
 - Stock prices are weekly/cached close-price data, not real-time financial data.
 - Dashboard and Market Pulse disclosures clarify that the project is informational only.
-- Google login is optional. Without auth/storage env vars, bookmarks continue to work locally in the browser.
+- Google login is optional. If Firebase is unavailable, bookmarks continue to work locally in the browser.
 
 The intended future version would fetch sources on a schedule, summarize selected articles once on the server, cache the finished brief, and let users read that cached result.
 
@@ -214,20 +214,17 @@ BASE_URL=https://lore-engine.ethankim.cc npm run smoke
 
 Import the repository into Vercel using the default Next.js settings.
 
-No environment variables are required for the mock-data browsing experience. For protected cron routes and account bookmark sync, add:
+No environment variables are required for the mock-data browsing experience. For protected cron routes, add:
 
 ```text
 CRON_SECRET=your-random-secret
-AUTH_SESSION_SECRET=your-random-session-secret
-NEXT_PUBLIC_GOOGLE_CLIENT_ID=your-google-oauth-client-id
-FIREBASE_PROJECT_ID=your-firebase-project-id
-FIREBASE_CLIENT_EMAIL=your-firebase-service-account-email
-FIREBASE_PRIVATE_KEY=your-firebase-service-account-private-key
 ```
 
-Google login verifies the Google ID token server-side, then sets an HTTP-only LoreEngine session cookie. Bookmark sync uses Firebase Firestore through a server-side service account when configured. If Firebase env vars are missing, the app still allows local browser bookmarks but clearly labels cloud storage as pending.
+Google login and bookmark sync use Firebase Auth and Firestore client SDK configuration from [firebase-applet-config.json](./firebase-applet-config.json). In Firebase Console, enable the Google sign-in provider and add the deployed domains, including Vercel preview/production domains and `lore-engine.ethankim.cc`, to the authorized domains list.
 
-Account deletion is available from the account menu. It deletes the synced Firebase bookmark document when storage is configured, clears the LoreEngine session cookie, clears local saved briefs in the current browser, and signs the user out.
+Account deletion is available from the account menu. It deletes the synced Firebase user document, clears local saved briefs in the current browser, and signs the user out.
+
+Firestore rules are included in [firestore.rules](./firestore.rules). Deploy them from Firebase tooling so users can read and write only their own `users/{uid}` document.
 
 The privacy/legal page is available at `/privacy`.
 

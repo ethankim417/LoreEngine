@@ -22,28 +22,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (stored) {
       setLanguageState(stored);
     }
-
-    fetch("/api/preferences")
-      .then((response) => (response.ok ? response.json() : null))
-      .then((payload: { language?: Language } | null) => {
-        if (payload?.language) {
-          window.localStorage.setItem(LANGUAGE_KEY, payload.language);
-          setLanguageState(payload.language);
-        }
-      })
-      .catch(() => {
-        // Local language preference remains active when account preferences are unavailable.
-      });
   }, []);
 
   function setLanguage(nextLanguage: Language) {
     setLanguageState(nextLanguage);
     window.localStorage.setItem(LANGUAGE_KEY, nextLanguage);
-    void fetch("/api/preferences", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ language: nextLanguage })
-    }).catch(() => undefined);
   }
 
   const value = useMemo(
