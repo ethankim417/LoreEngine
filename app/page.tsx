@@ -4,7 +4,7 @@ import { AuthAccount } from "@/components/AuthAccount";
 import { LocalizedText } from "@/components/LocalizedText";
 import { articles } from "@/data/articles";
 import { getDashboardMetrics } from "@/lib/metrics";
-import { Info, Mail, Radar, Sparkles } from "lucide-react";
+import { Download, Info, Mail, Radar, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
@@ -42,6 +42,15 @@ function Hero() {
       <div className="relative flex flex-col gap-4">
         <div className="absolute right-0 top-0 hidden items-start gap-2 sm:flex">
           <AuthAccount compact />
+          <a
+            href="/api/export"
+            download="lore-engine-source.zip"
+            className="inline-flex items-center gap-2 rounded-full border border-emerald-300/18 bg-emerald-950/40 px-3 py-1.5 text-xs font-semibold text-emerald-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl transition hover:border-emerald-300/38 hover:bg-emerald-300/[0.08]"
+            title="Download source code"
+          >
+            <Download className="h-3.5 w-3.5" />
+            Source ZIP
+          </a>
           <a
             href="mailto:lore-engine@ethankim.cc"
             className="group/contact relative inline-flex items-center gap-2 rounded-full border border-cyan-300/18 bg-slate-950/40 px-3 py-1.5 text-xs font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl transition hover:border-cyan-300/38 hover:bg-cyan-300/[0.08]"
@@ -87,6 +96,14 @@ function Hero() {
 
         <div className="flex flex-wrap items-center gap-2 sm:hidden">
           <AuthAccount compact />
+          <a
+            href="/api/export"
+            download="lore-engine-source.zip"
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-300/18 bg-emerald-950/40 px-3 py-1.5 text-xs font-semibold text-emerald-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl transition hover:border-emerald-300/38 hover:bg-emerald-300/[0.08]"
+          >
+            <Download className="h-3.5 w-3.5" />
+            Source ZIP
+          </a>
           <a
             href="mailto:lore-engine@ethankim.cc"
             className="inline-flex w-fit items-center gap-2 rounded-full border border-cyan-300/18 bg-slate-950/40 px-3 py-1.5 text-xs font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl transition hover:border-cyan-300/38 hover:bg-cyan-300/[0.08]"

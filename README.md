@@ -54,6 +54,7 @@ The second goal was to test Codex as a product-building partner. I used it to mo
 - Opens article detail pages with TLDRs, why-it-matters context, and trend analysis.
 - Supports optional Google login so saved briefs can sync to an account.
 - Supports English/Korean UI language switching with account-based preference sync.
+- Includes a source ZIP export button for quick portfolio/code review.
 - Includes a Market Pulse view for major public companies connected to gaming.
 - Explains source selection and weekly cadence through a dedicated source strategy page.
 - Includes compact dashboard and Market Pulse disclaimers for data/financial context.
