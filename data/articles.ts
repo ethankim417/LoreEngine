@@ -55,7 +55,7 @@ export const categories: ArticleCategory[] = [
   "Studio"
 ];
 
-export const briefSnapshotDate = "2026-06-05";
+export const briefSnapshotDate = "2026-06-09";
 
 export const articles: Article[] = [
   {
@@ -80,7 +80,7 @@ export const articles: Article[] = [
     confidence: 84,
     sectors: ["Game AI", "Marketing", "Steam", "Indie Devs"],
     companies: ["Summer Game Fest", "Steam", "Valve", "Independent Studios"],
-    publishedAt: "2026-06-04",
+    publishedAt: "2026-06-03",
     sourceUrl:
       "https://www.pcgamer.com/software/ai/summer-game-fest-is-here-so-get-ready-for-a-lot-of-ugh-that-game-with-the-cool-trailer-used-ai/",
     visual: {
@@ -90,28 +90,29 @@ export const articles: Article[] = [
   },
   {
     id: "le-002",
-    slug: "nvidia-ace-keeps-ai-companions-in-pc-gaming-conversation",
-    title: "NVIDIA ACE keeps AI companions in the PC gaming conversation",
+    slug: "rtx-spark-pushes-ai-native-pc-gaming-back-into-hardware-strategy",
+    title: "RTX Spark pushes AI-native PCs back into gaming hardware strategy",
     source: "NVIDIA Newsroom",
     sourceCredibility: "Official source",
     category: "Hardware",
     tldr:
-      "NVIDIA continues to position RTX PCs as local AI infrastructure for companions, NPC behavior, and creator-side tooling.",
+      "NVIDIA and Microsoft are reframing premium Windows gaming PCs as local AI, creator, and gaming devices at the same time.",
     fullTldr:
-      "NVIDIA's gaming AI message is increasingly about local inference, not only graphics. AI companions, speech, animation, and creator automation are being bundled into the broader RTX upgrade story as the company tries to make gaming PCs feel like AI deployment targets.",
+      "NVIDIA's RTX Spark announcement extends the gaming AI story beyond DLSS and companions into full-stack personal computing. By tying Windows agents, creator apps, and game performance into one hardware narrative, NVIDIA is trying to make the next PC upgrade cycle feel strategic for both players and developers.",
     whyItMatters:
-      "If AI features become part of the premium PC gaming pitch, hardware vendors can influence middleware decisions and game design priorities.",
+      "When hardware vendors position gaming PCs as local AI endpoints, they influence tool choices, performance targets, and which features studios prototype first.",
     possibleImpact:
-      "Studios may prototype PC-first AI features, then decide whether to compress, stream, or cut them for console and handheld builds.",
+      "Studios may keep building PC-first AI-assisted features, then decide which ones can scale down to console, cloud, or handheld targets later.",
     trendAnalysis:
-      "The highest-signal area is hybrid graphics plus AI, where DLSS-style performance, assistants, and content tools reinforce the same hardware cycle.",
-    impactScore: 88,
-    trendScore: 31,
-    confidence: 82,
+      "The strongest pattern is convergence: graphics, local inference, creator tooling, and agent workflows are being sold as one premium stack instead of separate upgrades.",
+    impactScore: 89,
+    trendScore: 34,
+    confidence: 86,
     sectors: ["Hardware", "Game AI", "PC Gaming", "Creator Tools"],
-    companies: ["NVIDIA", "Microsoft", "Lenovo", "Inworld"],
-    publishedAt: "2026-06-03",
-    sourceUrl: "https://nvidianews.nvidia.com/_gallery/download_pdf/64741877ed6ae51e55fe851a/",
+    companies: ["NVIDIA", "Microsoft", "Xbox", "Adobe"],
+    publishedAt: "2026-05-31",
+    sourceUrl:
+      "https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark",
     visual: {
       image: "/images/intelligence/hardware-ai.webp",
       alt: "Glowing GPU-like silicon die and dark circuit intelligence visual"
@@ -119,29 +120,29 @@ export const articles: Article[] = [
   },
   {
     id: "le-003",
-    slug: "xbox-showcase-cross-platform-language-becomes-default",
-    title: "Xbox showcase language makes cross-platform releases feel like the default",
-    source: "Windows Central",
-    sourceCredibility: "Trade press",
+    slug: "xbox-showcase-puts-exclusives-and-multiplatform-publishing-on-the-same-board",
+    title: "Xbox showcase puts exclusives and multiplatform publishing on the same board",
+    source: "Xbox Wire",
+    sourceCredibility: "Official source",
     category: "Platform",
     tldr:
-      "Microsoft is expected to keep labeling where first-party games are headed, including PlayStation and other platforms.",
+      "Microsoft used its June showcase to signal that Xbox can still push exclusives while continuing broader publishing across platforms.",
     fullTldr:
-      "Xbox's showcase strategy is shifting from exclusivity ambiguity toward clearer multi-platform messaging. The practical read is that Microsoft is operating more like a scaled publisher with hardware, PC, cloud, and subscription assets rather than a console-only platform holder.",
+      "The Xbox Games Showcase recap leaned into two ideas at once: celebratory hardware and a broader software footprint. Microsoft confirmed that some titles stay exclusive while games already announced as multiplatform remain on that path, reinforcing Xbox's identity as both a platform and a scaled publisher.",
     whyItMatters:
-      "The distribution question is now central to Xbox economics. Franchise reach, recurring revenue, and release cadence are becoming more important than traditional exclusivity optics.",
+      "Xbox strategy now depends on a mixed model. Hardware prestige, subscription retention, and software reach all matter more than a simple exclusive versus non-exclusive split.",
     possibleImpact:
-      "Studios under Microsoft may plan launches around more platforms earlier, while competitors use Xbox's openness to pressure their own release strategies.",
+      "Studios under Microsoft may segment franchises more deliberately, keeping some titles platform-defining while using others to maximize reach and monetization.",
     trendAnalysis:
-      "Momentum favors high-reach IP, especially franchises that can benefit from PC, PlayStation, cloud, and Game Pass discovery at different points in the lifecycle.",
-    impactScore: 87,
-    trendScore: 28,
-    confidence: 85,
+      "The durable trend is portfolio management over platform purity. Xbox looks increasingly willing to use each franchise differently depending on audience and economics.",
+    impactScore: 88,
+    trendScore: 33,
+    confidence: 88,
     sectors: ["Console", "Subscription Gaming", "AAA Studios", "Cloud Gaming"],
-    companies: ["Microsoft", "Xbox", "Activision Blizzard", "Bethesda"],
-    publishedAt: "2026-05-29",
+    companies: ["Microsoft", "Xbox", "Bethesda", "Activision"],
+    publishedAt: "2026-06-07",
     sourceUrl:
-      "https://www.windowscentral.com/gaming/xbox/xbox-games-chief-confirms-microsoft-will-show-when-its-titles-are-coming-to-ps5-and-other-platforms-at-the-xbox-games-showcase",
+      "https://news.xbox.com/en-us/2026/06/07/xbox-games-showcase-2026-recap-everything-announced/",
     visual: {
       image: "/images/intelligence/platform-strategy.webp",
       alt: "Abstract cross-platform gaming network with cloud and device nodes"
@@ -149,29 +150,29 @@ export const articles: Article[] = [
   },
   {
     id: "le-004",
-    slug: "playstation-state-of-play-keeps-premium-pipeline-visible",
-    title: "PlayStation State of Play keeps premium pipeline visibility in focus",
-    source: "GamesRadar+",
-    sourceCredibility: "Trade press",
+    slug: "playstation-state-of-play-keeps-premium-pipeline-visibility-high",
+    title: "PlayStation State of Play keeps premium pipeline visibility high",
+    source: "PlayStation.Blog",
+    sourceCredibility: "Official source",
     category: "Platform",
     tldr:
-      "Sony's June showcase cadence keeps first-party, partner, and PC-adjacent expectations concentrated in short event windows.",
+      "Sony used a 60-minute State of Play to bunch together first-party confidence, partner reveals, and 2026 to 2027 pipeline management.",
     fullTldr:
-      "PlayStation's June State of Play coverage reinforces how much platform perception now depends on tightly packaged showcase moments. For Sony, the signal is not only what ships soon, but how convincingly the company can communicate premium releases, partner titles, and lifecycle plans.",
+      "The June 2026 State of Play bundled major franchise beats, release-date certainty, and sequel reveals into one dense media event. For Sony, the important signal is less any single title and more the continued use of showcase packaging to keep premium pipeline confidence high ahead of release season.",
     whyItMatters:
-      "Showcase confidence affects platform narrative, creator coverage, and investor expectations before the actual release calendar lands.",
+      "Premium console momentum is increasingly narrative-driven between launches. A strong showcase shapes creator coverage, partner confidence, and consumer attention before games actually ship.",
     possibleImpact:
-      "Studios may treat showcase readiness as a production milestone, with trailers, demos, PC messaging, and wishlist paths coordinated earlier.",
+      "Studios may keep treating showcase readiness as a milestone equal to internal alpha or beta beats, with trailers, demos, and store messaging aligned earlier.",
     trendAnalysis:
-      "The strongest signal is in event-driven publishing, where platform holders concentrate attention into fewer, higher-pressure media beats.",
-    impactScore: 79,
-    trendScore: 23,
-    confidence: 82,
+      "The strongest pattern remains event-driven publishing, where a few tentpole showcases now carry more attention than months of fragmented updates.",
+    impactScore: 84,
+    trendScore: 31,
+    confidence: 89,
     sectors: ["Console", "PC Gaming", "AAA Studios", "Publishing"],
-    companies: ["Sony", "PlayStation Studios", "Bungie", "Nixxes"],
+    companies: ["Sony", "PlayStation Studios", "Insomniac Games", "Santa Monica Studio"],
     publishedAt: "2026-06-02",
     sourceUrl:
-      "https://www.gamesradar.com/games/events-conferences/playstation-state-of-play-stream-june-2026-how-to-watch/",
+      "https://blog.playstation.com/2026/06/02/state-of-play-june-2026-all-announcements-trailers/",
     visual: {
       image: "/images/intelligence/platform-strategy.webp",
       alt: "Abstract cross-platform gaming network with cloud and device nodes"
@@ -179,27 +180,86 @@ export const articles: Article[] = [
   },
   {
     id: "le-005",
-    slug: "steam-next-fest-turns-demos-into-indie-discovery-battleground",
-    title: "Steam Next Fest turns demos into the indie discovery battleground",
+    slug: "nintendo-direct-keeps-switch-2-momentum-in-the-middle-of-showcase-week",
+    title: "Nintendo Direct keeps Switch 2 momentum alive in the middle of showcase week",
+    source: "Nintendo",
+    sourceCredibility: "Official source",
+    category: "Hardware",
+    tldr:
+      "Nintendo inserted a June Direct and Treehouse follow-up into showcase week to keep Switch 2 attention from drifting to rivals.",
+    fullTldr:
+      "With a Nintendo Direct scheduled for June 9 alongside Treehouse coverage, Nintendo is using a familiar digital-event playbook to sustain the Switch 2 conversation while Sony, Xbox, and Summer Game Fest dominate the same week. The strategic point is cadence control as much as software news.",
+    whyItMatters:
+      "Nintendo's release calendar and hardware cycle work best when the company owns its own attention windows instead of reacting to third-party events.",
+    possibleImpact:
+      "Expect more stacked Nintendo-led messaging around hardware bundles, exclusive software, and creator-friendly follow-up content through Treehouse.",
+    trendAnalysis:
+      "The broader trend is that every platform holder now treats livestream cadence as part of hardware and software lifecycle management.",
+    impactScore: 80,
+    trendScore: 29,
+    confidence: 87,
+    sectors: ["Hardware", "Console", "First-Party IP", "Publishing"],
+    companies: ["Nintendo", "Nintendo Switch 2", "Treehouse", "First-Party Studios"],
+    publishedAt: "2026-06-09",
+    sourceUrl: "https://www.nintendo.com/en-ca/nintendo-direct/6-9-2026/",
+    visual: {
+      image: "/images/intelligence/platform-strategy.webp",
+      alt: "Abstract cross-platform gaming network with cloud and device nodes"
+    }
+  },
+  {
+    id: "le-006",
+    slug: "summer-game-fest-record-viewership-confirms-showcase-week-as-a-media-event",
+    title: "Summer Game Fest record viewership confirms showcase week as a media event",
+    source: "Streams Charts",
+    sourceCredibility: "Market analysis",
+    category: "Esports",
+    tldr:
+      "Summer Game Fest drew a record 3.8 million peak viewers, reinforcing showcase week as one of gaming's biggest live audience moments.",
+    fullTldr:
+      "Streams Charts reported that Summer Game Fest 2026 reached a record 3.8 million peak viewers with more than 6,200 channels covering the event. That scale matters because it shows reveal season now behaves like a creator-amplified media property, not just a press-calendar convention.",
+    whyItMatters:
+      "Live audience concentration changes launch economics. A reveal that lands during these windows can compress awareness building, creator pickup, and store intent into a single weekend.",
+    possibleImpact:
+      "Publishers may keep funneling bigger announcements into a few large livestream windows while smaller teams optimize for co-stream and creator handoff.",
+    trendAnalysis:
+      "The strongest trend is attention centralization around multiplatform live events that combine publisher reveals with creator redistribution.",
+    impactScore: 86,
+    trendScore: 39,
+    confidence: 84,
+    sectors: ["Streaming", "Marketing", "Creator Economy", "Publishing"],
+    companies: ["Summer Game Fest", "The Game Awards", "YouTube", "Twitch"],
+    publishedAt: "2026-06-08",
+    sourceUrl:
+      "https://streamscharts.com/news/summer-game-fest-2026-draws-record-breaking-38m-peak-viewers",
+    visual: {
+      image: "/images/intelligence/esports-arena.webp",
+      alt: "Futuristic esports arena with viewership heatmap and stage lighting"
+    }
+  },
+  {
+    id: "le-007",
+    slug: "steam-next-fest-keeps-demo-first-discovery-central-to-indie-go-to-market",
+    title: "Steam Next Fest keeps demo-first discovery central to indie go-to-market",
     source: "Steam",
     sourceCredibility: "Official source",
     category: "Business",
     tldr:
-      "The June demo cycle gives indie teams another high-leverage window for wishlist quality, creator coverage, and launch conversion.",
+      "Valve's June Next Fest window remains one of the clearest signals that demos are now core launch infrastructure for indies.",
     fullTldr:
-      "Steam Next Fest remains one of the few discovery windows where small teams can generate measurable demand without a full paid marketing push. The key signal is shifting from raw wishlist volume to demo quality, creator pickup, and whether attention survives after the event.",
+      "Steam Next Fest's June 15 to June 22 event page reinforces how much PC discovery now depends on a public playable beat, not only trailers and wishlists. Demos have become a storefront test, a creator asset, and an early conversion funnel all at once.",
     whyItMatters:
-      "For indie publishers, demos are no longer optional polish. They are the storefront's strongest live test of product-market fit.",
+      "For smaller teams, a successful demo week can do the work that paid media used to do, especially when streamers and short-form creators can show the game directly.",
     possibleImpact:
-      "Expect more teams to budget for public demo milestones, festival analytics, and post-demo community follow-up before launch dates are locked.",
+      "Expect more studios to build schedules around public demo readiness, post-festival retention plans, and creator-safe previews before launch dates lock.",
     trendAnalysis:
-      "Momentum favors games with quick hooks, replayable demos, and streamable moments that can travel beyond Steam's event surface.",
+      "Momentum favors concise hooks, strong opening loops, and demos that produce repeatable streaming moments without heavy onboarding friction.",
     impactScore: 83,
-    trendScore: 35,
-    confidence: 88,
+    trendScore: 36,
+    confidence: 85,
     sectors: ["Steam", "Indie Devs", "Publishing", "Marketing"],
-    companies: ["Valve", "Independent Studios", "Hooded Horse", "Devolver Digital"],
-    publishedAt: "2026-06-05",
+    companies: ["Valve", "Steam", "Independent Studios", "PC Publishers"],
+    publishedAt: "2026-06-15",
     sourceUrl: "https://store.steampowered.com/sale/nextfest",
     visual: {
       image: "/images/intelligence/business-market.webp",
@@ -207,207 +267,148 @@ export const articles: Article[] = [
     }
   },
   {
-    id: "le-006",
-    slug: "unity-2026-report-points-to-ai-and-mobile-monetization-pressure",
-    title: "Unity 2026 report points to AI workflows and mobile monetization pressure",
-    source: "Unity",
+    id: "le-008",
+    slug: "apple-puts-agentic-porting-tools-into-its-2026-games-pitch",
+    title: "Apple puts agentic porting tools into its 2026 games pitch",
+    source: "Apple Developer",
     sourceCredibility: "Official source",
     category: "Studio",
     tldr:
-      "Unity's latest gaming report frames AI, mobile production, and monetization efficiency as core developer concerns.",
+      "Apple's WWDC26 games guide pairs Game Porting Toolkit 4 with agentic coding workflows to make Apple platform support cheaper to attempt.",
     fullTldr:
-      "Unity's 2026 gaming report positions practical AI usage, mobile performance, and production efficiency as central industry themes. The report matters because Unity is still heavily exposed to mobile, indie, and cross-platform teams that need predictable tooling more than hype.",
+      "The WWDC26 games guide frames Apple gaming support around practical workflow reduction. Game Porting Toolkit 4 and companion agentic resources are being positioned as tools that cut porting cost and iteration time, which matters more to studios than broad platform rhetoric alone.",
     whyItMatters:
-      "Unity's developer trust and mobile relevance remain important market reads, especially for studios balancing engine choice with ad-tech and live-ops requirements.",
+      "Mac, iPhone, and iPad become more relevant to games only if porting cost keeps dropping. Apple's latest message is explicitly about reducing that friction.",
     possibleImpact:
-      "Mobile and indie teams may continue demanding clearer pricing, stronger runtime performance, and AI tools that fit existing pipelines.",
+      "Mid-size studios may test Apple platform ports earlier, especially for catalog titles and cross-platform releases where incremental revenue can justify the effort.",
     trendAnalysis:
-      "The trend favors pragmatic production support: fewer flashy demos, more workflow, monetization, and retention tooling.",
-    impactScore: 76,
-    trendScore: 22,
-    confidence: 80,
-    sectors: ["Mobile Gaming", "Game Engines", "Indie Devs", "Ad Monetization"],
-    companies: ["Unity", "AppLovin", "ironSource", "Niantic"],
-    publishedAt: "2026-06-03",
-    sourceUrl: "https://unity.com/resources/gaming-report",
-    visual: {
-      image: "/images/intelligence/studio-engine.webp",
-      alt: "Holographic game engine viewport with asset pipeline geometry"
-    }
-  },
-  {
-    id: "le-007",
-    slug: "unreal-and-uefn-convergence-strengthens-engine-platform-thesis",
-    title: "Unreal and UEFN convergence strengthens the engine-as-platform thesis",
-    source: "GameBusiness.jp",
-    sourceCredibility: "Trade press",
-    category: "Studio",
-    tldr:
-      "Epic's engine direction keeps blending game development, creator economies, and Fortnite-adjacent publishing.",
-    fullTldr:
-      "Coverage around Epic's long-term Unreal and UEFN direction keeps reinforcing a larger shift: engine choice is also becoming a distribution, creator, and monetization decision. Unreal is not just rendering tech; it is increasingly tied to how content can become playable, social, and commercial.",
-    whyItMatters:
-      "Studios with UGC or transmedia ambitions may choose engines based on ecosystem leverage, not just graphics capability.",
-    possibleImpact:
-      "Expect Unreal talent, UEFN familiarity, creator payouts, and branded-world production to become more strategically linked.",
-    trendAnalysis:
-      "The strongest signal is where Fortnite creation, enterprise real-time workflows, and game studio pipelines overlap.",
-    impactScore: 81,
-    trendScore: 29,
-    confidence: 78,
-    sectors: ["Game Engines", "UGC", "Virtual Production", "Creator Economy"],
-    companies: ["Epic Games", "Unreal Engine", "Fortnite", "Disney"],
-    publishedAt: "2026-05-25",
-    sourceUrl: "https://www.gamebusiness.jp/article/2026/05/25/27035.html",
-    visual: {
-      image: "/images/intelligence/studio-engine.webp",
-      alt: "Holographic game engine viewport with asset pipeline geometry"
-    }
-  },
-  {
-    id: "le-008",
-    slug: "ai-voice-debate-centers-on-studio-responsibility",
-    title: "AI voice debate centers on studio responsibility and consent",
-    source: "PC Gamer",
-    sourceCredibility: "Trade press",
-    category: "AI",
-    tldr:
-      "Voice performers are pushing the industry to treat AI use as a studio governance issue, not only a vendor capability.",
-    fullTldr:
-      "Recent AI voice coverage highlights a sharper accountability argument: studios choose how voice data, synthetic replicas, and vendor tools are used. The production value is real for scratch tracks and localization, but the reputational risk is concentrated around consent and compensation.",
-    whyItMatters:
-      "Voice is one of the highest-risk AI categories because players recognize performers and talent communities can organize quickly.",
-    possibleImpact:
-      "Expect more contract language, consent logs, audit trails, and procurement review before AI voice vendors are approved for shipped work.",
-    trendAnalysis:
-      "Adoption is likely to grow first in prototyping, accessibility, and low-stakes barks while high-profile roles remain tightly controlled.",
-    impactScore: 89,
-    trendScore: 36,
+      "The trend favors tooling-led platform expansion: fewer bespoke ports, more reusable workflows supported by translation layers and AI-assisted engineering.",
+    impactScore: 78,
+    trendScore: 33,
     confidence: 86,
-    sectors: ["Game AI", "Localization", "Voice Acting", "Legal"],
-    companies: ["SAG-AFTRA", "Replica Studios", "ElevenLabs", "Keywords Studios"],
-    publishedAt: "2026-06-01",
-    sourceUrl:
-      "https://www.pcgamer.com/gaming-industry/mass-effect-and-metal-gear-actor-jennifer-hale-calls-on-studios-to-take-responsibility-for-their-ai-use-aint-nobody-making-you-do-it/",
+    sectors: ["Game Engines", "Platform Tools", "PC Ports", "Mobile Gaming"],
+    companies: ["Apple", "Metal", "Xcode", "Third-Party Studios"],
+    publishedAt: "2026-06-09",
+    sourceUrl: "https://developer.apple.com/wwdc26/guides/games/",
     visual: {
-      image: "/images/intelligence/ai-npcs.webp",
-      alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
+      image: "/images/intelligence/studio-engine.webp",
+      alt: "Holographic game engine viewport with asset pipeline geometry"
     }
   },
   {
     id: "le-009",
-    slug: "ai-linked-layoffs-make-game-hiring-more-specialized",
-    title: "AI-linked layoffs make game hiring more specialized",
-    source: "TechSpot",
-    sourceCredibility: "Trade press",
-    category: "Business",
+    slug: "unity-june-release-keeps-engine-signal-focused-on-stability-and-iteration",
+    title: "Unity's June release keeps the engine signal focused on stability and iteration",
+    source: "Unity",
+    sourceCredibility: "Official source",
+    category: "Studio",
     tldr:
-      "Broader tech layoffs are increasing pressure on studios to hire around pipeline leverage, data, backend, and AI-adjacent production roles.",
+      "Unity's June 3 editor release is a practical reminder that engine trust is still being rebuilt through predictable fixes, not splashy promises.",
     fullTldr:
-      "The 2026 layoff tracker conversation is bigger than games, but the read for game teams is direct: companies are cutting broad headcount while protecting roles tied to automation, infrastructure, analytics, and revenue systems. Hiring is not disappearing; it is becoming more targeted.",
+      "Unity 6000.4.10f1 is a classic maintenance-heavy release, but that is precisely the point. After a long period where developer trust mattered as much as feature breadth, each stable release functions as evidence that Unity understands the market's demand for dependable iteration speed and fewer production surprises.",
     whyItMatters:
-      "The hiring mix reveals where executives expect leverage: production efficiency, durable live services, and monetization systems.",
+      "Engine decisions for mobile, indie, and mid-market teams are often about risk control. Stability improvements can be strategically important even when they are not flashy.",
     possibleImpact:
-      "Developers may need to frame portfolios around shipped systems, tooling impact, and cross-functional production value instead of general craft alone.",
+      "Studios already on Unity may delay switching costs and instead watch whether regular update quality continues to improve through the rest of 2026.",
     trendAnalysis:
-      "Recovery is likely role-specific before it becomes broad-based, with technical production, backend, economy, and AI workflow experience outperforming generalist demand.",
-    impactScore: 86,
-    trendScore: 25,
-    confidence: 83,
-    sectors: ["Studios", "Hiring", "Live Ops", "Game AI"],
-    companies: ["Electronic Arts", "Riot Games", "Embracer Group", "Take-Two"],
-    publishedAt: "2026-06-02",
-    sourceUrl:
-      "https://www.techspot.com/news/112493-tech-layoffs-pass-100000-2026-tracker-points-ai.html",
+      "The strongest pattern is a return to operational credibility: fix velocity, platform support, and production safety are carrying more weight than headline demos.",
+    impactScore: 74,
+    trendScore: 26,
+    confidence: 88,
+    sectors: ["Game Engines", "Indie Devs", "Mobile Gaming", "Production"],
+    companies: ["Unity", "Mobile Studios", "Indie Studios", "Live Ops Teams"],
+    publishedAt: "2026-06-03",
+    sourceUrl: "https://unity.com/releases/editor/whats-new/6000.4.10f1",
     visual: {
-      image: "/images/intelligence/business-market.webp",
-      alt: "Dark gaming market intelligence terminal with holographic charts"
+      image: "/images/intelligence/studio-engine.webp",
+      alt: "Holographic game engine viewport with asset pipeline geometry"
     }
   },
   {
     id: "le-010",
-    slug: "cloud-gaming-on-tvs-revives-no-console-distribution-thesis",
-    title: "Cloud gaming on TVs revives the no-console distribution thesis",
-    source: "TechRadar",
-    sourceCredibility: "Trade press",
-    category: "Platform",
+    slug: "roblox-keeps-pushing-older-audience-and-novel-game-strategy",
+    title: "Roblox keeps pushing an older-audience and novel-games strategy",
+    source: "Roblox IR",
+    sourceCredibility: "Official source",
+    category: "Studio",
     tldr:
-      "Cloud gaming is finding a more practical role through TVs, trials, and access layers rather than full hardware replacement.",
+      "Roblox is explicitly funding more ambitious games as it tries to age up its audience and increase creator-side commercial quality.",
     fullTldr:
-      "The latest cloud gaming discussion is less about replacing every console and more about reducing friction. TV apps, instant access, and game trials can make cloud useful as a discovery and subscription layer even when dedicated hardware remains the premium experience.",
+      "Roblox's Incubator and Jumpstart programs show the platform is no longer satisfied with lightweight engagement loops alone. The company wants more polished role-playing, strategy, and shooter experiences that can attract older users and raise monetization quality across the ecosystem.",
     whyItMatters:
-      "Cloud's near-term commercial value may be conversion and access, not full-time play. That makes it relevant to platform strategy and marketing funnels.",
+      "Creator-led games are maturing from youth-heavy UGC into a broader commercial category. Roblox is one of the clearest public indicators of that shift.",
     possibleImpact:
-      "Expect more one-click trials, TV partnerships, cloud-first demos, and subscription discovery paths tied to major storefronts.",
+      "Expect more venture, publisher, and branded-world attention on teams that can build higher-fidelity experiences inside creator-led ecosystems.",
     trendAnalysis:
-      "Momentum is strongest for back catalog discovery, family games, sports, racing, and demo use cases where latency tolerance is higher.",
-    impactScore: 73,
-    trendScore: 27,
-    confidence: 77,
-    sectors: ["Cloud Gaming", "Subscriptions", "Storefronts", "Marketing"],
-    companies: ["Xbox Cloud Gaming", "NVIDIA GeForce Now", "Amazon Luna", "Samsung"],
-    publishedAt: "2026-06-04",
+      "The broader trend is platform maturation: creator ecosystems increasingly want breakout games that look closer to standalone products than quick social prototypes.",
+    impactScore: 81,
+    trendScore: 30,
+    confidence: 84,
+    sectors: ["UGC", "Creator Economy", "Live Ops", "Youth-to-Adult Platforms"],
+    companies: ["Roblox", "Roblox Developers", "UGC Studios", "Brand Partners"],
+    publishedAt: "2026-03-09",
     sourceUrl:
-      "https://www.techradar.com/televisions/cloud-gaming-on-tvs-suddenly-looks-like-the-future-2026-is-the-year-the-no-console-world-becomes-realistic-thanks-developments-and-hardware-shortages",
+      "https://ir.roblox.com/news/news-details/2026/Roblox-Unveils-New-Programs-to-Power-the-Next-Generation-of-Games/default.aspx",
     visual: {
-      image: "/images/intelligence/platform-strategy.webp",
-      alt: "Abstract cross-platform gaming network with cloud and device nodes"
+      image: "/images/intelligence/studio-engine.webp",
+      alt: "Holographic game engine viewport with asset pipeline geometry"
     }
   },
   {
     id: "le-011",
-    slug: "playstation-state-of-play-viewership-shows-showcase-economics",
-    title: "State of Play viewership shows the economics of showcase attention",
-    source: "Streams Charts",
-    sourceCredibility: "Market analysis",
-    category: "Esports",
+    slug: "uefn-bootcamp-shows-epic-is-building-a-more-formal-creator-talent-pipeline",
+    title: "UEFN bootcamp shows Epic is building a more formal creator talent pipeline",
+    source: "Unreal Engine",
+    sourceCredibility: "Official source",
+    category: "Studio",
     tldr:
-      "Record live viewership for a platform showcase shows how concentrated event attention can shape creator and publisher strategy.",
+      "Epic is treating UEFN skills as a formal pipeline problem, not just a community hobby, by opening a structured student bootcamp.",
     fullTldr:
-      "Streams Charts reporting on State of Play viewership shows that showcase events can now behave like competitive attention markets. Even when the event is not esports, it uses the same creator, co-stream, and live audience mechanics that shape gaming media economics.",
+      "The UEFN Student Bootcamp announcement frames creator education around shipping a live Fortnite island with mentorship and practical iteration time. That matters because Epic is trying to turn creator-led development into a repeatable skills pipeline with clearer on-ramps to commercial work.",
     whyItMatters:
-      "Platform events are becoming media products. Live viewership, co-streaming, and creator reaction cycles can materially affect game awareness.",
+      "Tool adoption scales faster when the learning path is explicit. Epic is investing in workforce formation, not only product features.",
     possibleImpact:
-      "Publishers may coordinate trailers, demos, creator access, and wishlist pushes more tightly around showcase windows.",
+      "Expect more creator programs, curriculum tie-ins, and talent scouting around UEFN as Fortnite creation becomes a more legible career path.",
     trendAnalysis:
-      "Momentum favors fewer, higher-impact live events with creator amplification rather than a constant drip of isolated announcements.",
-    impactScore: 78,
-    trendScore: 32,
-    confidence: 81,
-    sectors: ["Streaming", "Creator Economy", "Marketing", "Platform"],
-    companies: ["Sony", "YouTube", "Twitch", "Streams Charts"],
-    publishedAt: "2026-06-03",
-    sourceUrl: "https://streamscharts.com/news/state-play-hits-record-breaking-3-million-live-viewers",
+      "The key trend is professionalization: creator ecosystems are moving from informal experimentation toward training, measurement, and portfolio-based hiring signals.",
+    impactScore: 76,
+    trendScore: 35,
+    confidence: 83,
+    sectors: ["UGC", "Education", "Creator Economy", "Game Engines"],
+    companies: ["Epic Games", "Unreal Engine", "Fortnite", "UEFN Creators"],
+    publishedAt: "2026-06-08",
+    sourceUrl:
+      "https://www.unrealengine.com/learning/uefn-student-bootcamp-application-is-open-now",
     visual: {
-      image: "/images/intelligence/esports-arena.webp",
-      alt: "Futuristic esports arena with viewership heatmap and stage lighting"
+      image: "/images/intelligence/studio-engine.webp",
+      alt: "Holographic game engine viewport with asset pipeline geometry"
     }
   },
   {
     id: "le-012",
-    slug: "gdc-2026-mobile-trends-emphasize-d2c-and-co-development",
-    title: "GDC mobile trends emphasize D2C, co-development, and live-ops efficiency",
+    slug: "mobile-publishers-keep-pushing-d2c-as-a-margin-and-control-play",
+    title: "Mobile publishers keep pushing D2C as a margin and control play",
     source: "PocketGamer.biz",
     sourceCredibility: "Trade press",
     category: "Gaming",
     tldr:
-      "Mobile teams are balancing direct-to-consumer ambitions, co-development, and tighter live-ops economics.",
+      "New Q1 figures show direct-to-consumer revenue is becoming a strategic layer for large mobile publishers, not a side experiment.",
     fullTldr:
-      "GDC trend coverage points to a mobile market that is still active but more operationally demanding. D2C monetization, co-development, and production discipline are becoming important as teams look for growth beyond classic user acquisition loops.",
+      "PocketGamer.biz's latest D2C roundup shows several major mobile companies continuing to move meaningful revenue off third-party stores and into owned payment flows. That is both a margin decision and a relationship decision, since D2C gives publishers more direct customer contact and operational control.",
     whyItMatters:
-      "Mobile gaming is still one of the industry's biggest revenue centers, but growth now requires sharper retention, monetization, and publishing execution.",
+      "Mobile remains one of the industry's largest revenue pools. When major publishers push D2C harder, it affects monetization design, live-ops cadence, and regional publishing strategy.",
     possibleImpact:
-      "Studios may invest more in first-party communities, regional publishing, cross-platform support, and live-ops tooling that reduces UA dependence.",
+      "Studios may invest more in web shops, CRM tooling, first-party community layers, and event design that nudges users into owned purchase funnels.",
     trendAnalysis:
-      "The strongest signal is in teams that combine casual accessibility with deeper retention systems and better owned customer relationships.",
-    impactScore: 80,
-    trendScore: 30,
-    confidence: 82,
-    sectors: ["Mobile Gaming", "Live Ops", "Ad Monetization", "Publishing"],
-    companies: ["Tencent", "NetEase", "Scopely", "AppLovin"],
-    publishedAt: "2026-05-31",
+      "The strongest trend is monetization diversification: store dependence is being reduced where scale, brand familiarity, and retention are strong enough to support it.",
+    impactScore: 82,
+    trendScore: 37,
+    confidence: 84,
+    sectors: ["Mobile Gaming", "D2C", "Live Ops", "Publishing"],
+    companies: ["Playtika", "Stillfront Group", "MTG", "Huuuge Games"],
+    publishedAt: "2026-06-08",
     sourceUrl:
-      "https://www.pocketgamer.biz/d2c-co-development-and-volume-over-viability-gdc-2026-trends-revealed/",
+      "https://www.pocketgamer.biz/revealed-mobile-publishers-share-their-record-d2c-sales/",
     visual: {
       image: "/images/intelligence/mobile-gaming.webp",
       alt: "Mobile gaming live operations network with floating phones and data arcs"
@@ -444,60 +445,61 @@ export const articles: Article[] = [
   },
   {
     id: "le-014",
-    slug: "ai-qa-agents-remain-high-leverage-production-tooling-signal",
-    title: "AI QA agents remain a high-leverage production tooling signal",
-    source: "modl.ai",
-    sourceCredibility: "Vendor report",
-    category: "AI",
+    slug: "ea-results-show-live-services-and-franchise-scale-still-anchor-public-game-publisher-reads",
+    title: "EA results show live services and franchise scale still anchor public publisher reads",
+    source: "EA IR",
+    sourceCredibility: "Official source",
+    category: "Business",
     tldr:
-      "AI-driven QA remains one of the clearest practical use cases for studios because it targets repetitive regression risk.",
+      "EA's FY26 results reinforce that blockbuster launches and durable live services still define how public markets read major publishers.",
     fullTldr:
-      "AI QA systems are becoming useful for repetitive traversal, smoke tests, crash reproduction, and anomaly detection. Human QA remains essential for feel, exploits, and subjective quality, but agents can widen baseline coverage and reduce late-cycle uncertainty.",
+      "Electronic Arts reported record net bookings for FY26, led by Battlefield 6 and a still-important live services mix. The bigger signal is not just EA's performance, but how heavily public market narratives still depend on a few large franchises landing cleanly while recurring service revenue keeps margins resilient.",
     whyItMatters:
-      "Testing cost is a major constraint for large games. Better automated coverage can shorten release risk cycles without reducing quality ambition.",
+      "Large public publishers remain one of the clearest windows into how AAA risk is being priced: launch execution matters, but portfolio durability still comes from recurring engagement.",
     possibleImpact:
-      "Technical QA, telemetry design, and build pipeline integration should become more strategic as AI agents move into nightly testing.",
+      "Expect continued emphasis on annualized or deeply retained franchises, with premium launches still used to reset investor confidence when they hit at scale.",
     trendAnalysis:
-      "Adoption is strongest for open-world traversal, multiplayer smoke tests, certification prep, and build verification where repeatability matters.",
-    impactScore: 91,
-    trendScore: 38,
-    confidence: 83,
-    sectors: ["QA", "AAA Studios", "Game AI", "DevOps"],
-    companies: ["Keywords Studios", "modl.ai", "Sony", "Electronic Arts"],
-    publishedAt: "2026-06-01",
-    sourceUrl: "https://modl.ai/state-of-games-qa-report",
+      "The trend remains concentration around fewer giant franchises and stronger service backbones, even as showcase season creates the illusion of endless slate breadth.",
+    impactScore: 84,
+    trendScore: 28,
+    confidence: 89,
+    sectors: ["AAA Studios", "Live Services", "Sports Games", "Publishing"],
+    companies: ["Electronic Arts", "Battlefield", "EA SPORTS FC", "Apex Legends"],
+    publishedAt: "2026-05-05",
+    sourceUrl:
+      "https://ir.ea.com/press-releases/press-release-details/2026/Electronic-Arts-Reports-Q4-and-FY26-Results/default.aspx",
     visual: {
-      image: "/images/intelligence/ai-npcs.webp",
-      alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
+      image: "/images/intelligence/business-market.webp",
+      alt: "Dark gaming market intelligence terminal with holographic charts"
     }
   },
   {
     id: "le-015",
-    slug: "future-games-show-and-showcase-week-concentrate-discovery",
-    title: "Future Games Show and showcase week concentrate discovery pressure",
-    source: "GamesRadar+",
-    sourceCredibility: "Trade press",
-    category: "Business",
+    slug: "state-of-play-viewership-proves-platform-showcases-now-run-on-creator-scale-attention",
+    title: "State of Play viewership proves platform showcases now run on creator-scale attention",
+    source: "Streams Charts",
+    sourceCredibility: "Market analysis",
+    category: "Esports",
     tldr:
-      "June showcase week is concentrating game discovery into a few crowded attention windows across PC, console, and creator channels.",
+      "Sony's June showcase passed 3 million peak viewers, highlighting how platform messaging now depends on creator-amplified live distribution.",
     fullTldr:
-      "Future Games Show and adjacent June events create one of the year's densest discovery weeks. For studios, the opportunity is high, but the competition for attention is brutal: trailers, demos, wishlist calls, creator coverage, and platform messaging all collide.",
+      "Streams Charts reported that the June 2026 State of Play became the most-watched showcase in State of Play history, with YouTube leading watch time and creator co-streaming reaching a new high. Even platform-holder communication now behaves like a competitive live media event.",
     whyItMatters:
-      "Discovery is increasingly event-shaped. A strong showing can compress months of awareness building into one week, while a weak one can disappear instantly.",
+      "Platform events are no longer just press briefings. They are audience products whose reach can directly influence game awareness and the market narrative around a platform.",
     possibleImpact:
-      "Studios may put more production effort into trailer clarity, demo readiness, creator kits, and post-event conversion flows.",
+      "Expect more publishers to optimize around co-streamability, immediate trailer recaps, and post-show follow-through rather than just the livestream itself.",
     trendAnalysis:
-      "Momentum favors teams that pair a clear hook with immediate action: demo, wishlist, playtest, creator access, or release date.",
-    impactScore: 82,
-    trendScore: 37,
-    confidence: 80,
-    sectors: ["Publishing", "Marketing", "Indie Devs", "Creator Economy"],
-    companies: ["GamesRadar+", "Future Games Show", "Steam", "YouTube"],
-    publishedAt: "2026-06-05",
-    sourceUrl: "https://www.gamesradar.com/future-games-show/",
+      "The durable trend is showcase economics: live event performance is becoming a measurable proxy for cultural momentum during reveal season.",
+    impactScore: 79,
+    trendScore: 34,
+    confidence: 86,
+    sectors: ["Streaming", "Platform", "Creator Economy", "Marketing"],
+    companies: ["Sony", "PlayStation", "YouTube", "Twitch"],
+    publishedAt: "2026-06-03",
+    sourceUrl: "https://streamscharts.com/news/state-play-hits-record-breaking-3-million-live-viewers",
     visual: {
-      image: "/images/intelligence/business-market.webp",
-      alt: "Dark gaming market intelligence terminal with holographic charts"
+      image: "/images/intelligence/esports-arena.webp",
+      alt: "Futuristic esports arena with viewership heatmap and stage lighting"
     }
   }
 ];
