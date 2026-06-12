@@ -22,10 +22,24 @@ import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 export function AuthAccount({ compact = false }: { compact?: boolean }) {
   const [user, setUser] = useState<FirebaseUser | null>(null);
   const [open, setOpen] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
   const [storageMode, setStorageMode] = useState<"firebase" | "unconfigured" | "local">("local");
   const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
+    async function loadLanguagePreference(currentUser: FirebaseUser) {
+      try {
+        const snap = await getDoc(doc(db, "users", currentUser.uid));
+        const value = snap.exists() ? snap.data().language : null;
+
+        if (value === "en" || value === "ko") {
+          setLanguage(value);
+        }
+      } catch (error) {
+        console.error("Firebase Language Preference Error", error);
+      }
+    }
+
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
@@ -37,26 +51,15 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
       }
     });
     return () => unsubscribe();
-  }, []);
+  }, [setLanguage]);
 
   async function handleGoogleLogin() {
     try {
+      setLoginError(null);
       await signInWithPopup(auth, googleProvider);
     } catch (error) {
       console.error("Firebase Login Error", error);
-    }
-  }
-
-  async function loadLanguagePreference(currentUser: FirebaseUser) {
-    try {
-      const snap = await getDoc(doc(db, "users", currentUser.uid));
-      const value = snap.exists() ? snap.data().language : null;
-
-      if (value === "en" || value === "ko") {
-        setLanguage(value);
-      }
-    } catch (error) {
-      console.error("Firebase Language Preference Error", error);
+      setLoginError(getFirebaseLoginMessage(error));
     }
   }
 
@@ -189,9 +192,32 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
       >
         Continue with Google
       </button>
+      {loginError ? (
+        <p className="max-w-56 rounded-lg border border-amber-300/15 bg-amber-300/[0.055] px-2 py-1 text-[0.65rem] leading-4 text-amber-100/90">
+          {loginError}
+        </p>
+      ) : null}
       {!compact ? <p className="text-[0.65rem] text-slate-500">{t("saveBookmarks")}</p> : null}
     </div>
   );
+}
+
+function getFirebaseLoginMessage(error: unknown) {
+  const code = typeof error === "object" && error && "code" in error ? String(error.code) : "";
+
+  if (code.includes("unauthorized-domain")) {
+    return "Google login needs this domain added in Firebase Auth authorized domains.";
+  }
+
+  if (code.includes("popup-closed-by-user")) {
+    return "Google login was closed before finishing.";
+  }
+
+  if (code.includes("operation-not-allowed") || code.includes("configuration-not-found")) {
+    return "Google login is not enabled for this Firebase project yet.";
+  }
+
+  return "Google login could not start. Check Firebase Auth settings.";
 }
 
 function getStorageStatus(

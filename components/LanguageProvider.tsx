@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { type Language, type TranslationKey, translations } from "@/lib/i18n";
 
 const LANGUAGE_KEY = "loreengine-language";
@@ -24,10 +24,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  function setLanguage(nextLanguage: Language) {
+  const setLanguage = useCallback((nextLanguage: Language) => {
     setLanguageState(nextLanguage);
     window.localStorage.setItem(LANGUAGE_KEY, nextLanguage);
-  }
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -35,7 +35,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       setLanguage,
       t: (key: TranslationKey) => translations[language][key] ?? translations.en[key]
     }),
-    [language]
+    [language, setLanguage]
   );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
