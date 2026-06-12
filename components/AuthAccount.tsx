@@ -12,8 +12,9 @@ import {
 import { languageLabels, type Language } from "@/lib/i18n";
 import { auth, db, googleProvider } from "@/lib/firebase";
 import {
+  getRedirectResult,
   onAuthStateChanged,
-  signInWithPopup,
+  signInWithRedirect,
   signOut as firebaseSignOut,
   type User as FirebaseUser
 } from "firebase/auth";
@@ -23,6 +24,7 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
   const [user, setUser] = useState<FirebaseUser | null>(null);
   const [open, setOpen] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
+  const [isSigningIn, setIsSigningIn] = useState(false);
   const [storageMode, setStorageMode] = useState<"firebase" | "unconfigured" | "local">("local");
   const { language, setLanguage, t } = useLanguage();
 
@@ -42,6 +44,7 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
 
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
+      setIsSigningIn(false);
       if (currentUser) {
         const merged = await mergeBookmarksFromAccount(currentUser);
         setStorageMode(merged.storageMode);
@@ -50,15 +53,24 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
         setStorageMode("local");
       }
     });
+
+    getRedirectResult(auth).catch((error) => {
+      console.error("Firebase Redirect Login Error", error);
+      setIsSigningIn(false);
+      setLoginError(getFirebaseLoginMessage(error));
+    });
+
     return () => unsubscribe();
   }, [setLanguage]);
 
   async function handleGoogleLogin() {
     try {
       setLoginError(null);
-      await signInWithPopup(auth, googleProvider);
+      setIsSigningIn(true);
+      await signInWithRedirect(auth, googleProvider);
     } catch (error) {
       console.error("Firebase Login Error", error);
+      setIsSigningIn(false);
       setLoginError(getFirebaseLoginMessage(error));
     }
   }
@@ -188,9 +200,10 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
       <button
         type="button"
         onClick={handleGoogleLogin}
+        disabled={isSigningIn}
         className="rounded-full border border-white/10 bg-slate-950/35 px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-slate-900 transition"
       >
-        Continue with Google
+        {isSigningIn ? "Opening Google..." : "Continue with Google"}
       </button>
       {loginError ? (
         <p className="max-w-56 rounded-lg border border-amber-300/15 bg-amber-300/[0.055] px-2 py-1 text-[0.65rem] leading-4 text-amber-100/90">
