@@ -14,6 +14,7 @@ import { auth, db, googleProvider } from "@/lib/firebase";
 import {
   getRedirectResult,
   onAuthStateChanged,
+  signInWithPopup,
   signInWithRedirect,
   signOut as firebaseSignOut,
   type User as FirebaseUser
@@ -29,6 +30,8 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
   const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
+    let active = true;
+
     async function loadLanguagePreference(currentUser: FirebaseUser) {
       try {
         const snap = await getDoc(doc(db, "users", currentUser.uid));
@@ -43,6 +46,7 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
     }
 
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (!active) return;
       setUser(currentUser);
       setIsSigningIn(false);
       if (currentUser) {
@@ -55,23 +59,53 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
     });
 
     getRedirectResult(auth).catch((error) => {
+      if (!active) return;
       console.error("Firebase Redirect Login Error", error);
       setIsSigningIn(false);
       setLoginError(getFirebaseLoginMessage(error));
     });
 
-    return () => unsubscribe();
+    return () => {
+      active = false;
+      unsubscribe();
+    };
   }, [setLanguage]);
 
   async function handleGoogleLogin() {
     try {
       setLoginError(null);
       setIsSigningIn(true);
-      await signInWithRedirect(auth, googleProvider);
+      await signInWithPopup(auth, googleProvider);
     } catch (error) {
       console.error("Firebase Login Error", error);
+
+      if (shouldTryRedirect(error)) {
+        try {
+          await startRedirectLogin();
+          return;
+        } catch (redirectError) {
+          console.error("Firebase Redirect Start Error", redirectError);
+          setLoginError(getFirebaseLoginMessage(redirectError));
+        }
+      } else {
+        setLoginError(getFirebaseLoginMessage(error));
+      }
+
       setIsSigningIn(false);
-      setLoginError(getFirebaseLoginMessage(error));
+    }
+  }
+
+  async function startRedirectLogin() {
+    const timeout = window.setTimeout(() => {
+      setIsSigningIn(false);
+      setLoginError("Google did not open. Try again in a normal browser tab.");
+    }, 7000);
+
+    try {
+      await signInWithRedirect(auth, googleProvider);
+    } catch (error) {
+      window.clearTimeout(timeout);
+      throw error;
     }
   }
 
@@ -231,6 +265,16 @@ function getFirebaseLoginMessage(error: unknown) {
   }
 
   return "Google login could not start. Check Firebase Auth settings.";
+}
+
+function shouldTryRedirect(error: unknown) {
+  const code = typeof error === "object" && error && "code" in error ? String(error.code) : "";
+
+  return (
+    code.includes("popup-blocked") ||
+    code.includes("popup-closed-by-user") ||
+    code.includes("cancelled-popup-request")
+  );
 }
 
 function getStorageStatus(
