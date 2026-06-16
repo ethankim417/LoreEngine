@@ -55,7 +55,7 @@ export const categories: ArticleCategory[] = [
   "Studio"
 ];
 
-export const briefSnapshotDate = "2026-06-09";
+export const briefSnapshotDate = "2026-06-16";
 
 export const articles: Article[] = [
   {
@@ -181,23 +181,23 @@ export const articles: Article[] = [
   {
     id: "le-005",
     slug: "nintendo-direct-keeps-switch-2-momentum-in-the-middle-of-showcase-week",
-    title: "Nintendo Direct keeps Switch 2 momentum alive in the middle of showcase week",
+    title: "Nintendo Direct turns Switch 2 cadence into a showcase-week counterprogramming tool",
     source: "Nintendo",
     sourceCredibility: "Official source",
     category: "Hardware",
     tldr:
-      "Nintendo inserted a June Direct and Treehouse follow-up into showcase week to keep Switch 2 attention from drifting to rivals.",
+      "Nintendo used its June Direct and Treehouse follow-through to keep Switch 2 software momentum inside the industry's noisiest reveal window.",
     fullTldr:
-      "With a Nintendo Direct scheduled for June 9 alongside Treehouse coverage, Nintendo is using a familiar digital-event playbook to sustain the Switch 2 conversation while Sony, Xbox, and Summer Game Fest dominate the same week. The strategic point is cadence control as much as software news.",
+      "Nintendo's June 9 Direct and Treehouse programming extended the Switch 2 conversation beyond launch hardware and into software cadence management. By filling the week with first-party reveals, upgraded catalog messaging, and live follow-up coverage, Nintendo kept attention on its own ecosystem while rival showcases competed for the same audience.",
     whyItMatters:
-      "Nintendo's release calendar and hardware cycle work best when the company owns its own attention windows instead of reacting to third-party events.",
+      "Nintendo still wins when it controls its own attention windows. In a crowded showcase week, disciplined event cadence can protect hardware momentum just as much as any single exclusive announcement.",
     possibleImpact:
-      "Expect more stacked Nintendo-led messaging around hardware bundles, exclusive software, and creator-friendly follow-up content through Treehouse.",
+      "Expect Nintendo to keep bundling Direct reveals with creator-friendly follow-up beats, software refreshes, and Switch 2 upgrade messaging whenever competitor event calendars get crowded.",
     trendAnalysis:
-      "The broader trend is that every platform holder now treats livestream cadence as part of hardware and software lifecycle management.",
-    impactScore: 80,
-    trendScore: 29,
-    confidence: 87,
+      "The broader trend is that platform holders now manage livestream cadence as part of lifecycle strategy, using reveals, demos, and post-show coverage to extend hardware relevance across multiple days.",
+    impactScore: 82,
+    trendScore: 31,
+    confidence: 88,
     sectors: ["Hardware", "Console", "First-Party IP", "Publishing"],
     companies: ["Nintendo", "Nintendo Switch 2", "Treehouse", "First-Party Studios"],
     publishedAt: "2026-06-09",
