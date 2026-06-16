@@ -4,7 +4,7 @@ import { AuthAccount } from "@/components/AuthAccount";
 import { LocalizedText } from "@/components/LocalizedText";
 import { articles } from "@/data/articles";
 import { getDashboardMetrics } from "@/lib/metrics";
-import { Download, Info, Mail, Radar, Sparkles } from "lucide-react";
+import { Github, Info, Mail, Radar, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
@@ -43,13 +43,14 @@ function Hero() {
         <div className="absolute right-0 top-0 hidden items-start gap-2 sm:flex">
           <AuthAccount compact />
           <a
-            href="/api/export"
-            download="lore-engine-source.zip"
+            href="https://github.com/ethankim417/LoreEngine"
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-emerald-300/18 bg-emerald-950/40 px-3 py-1.5 text-xs font-semibold text-emerald-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl transition hover:border-emerald-300/38 hover:bg-emerald-300/[0.08]"
-            title="Download source code"
+            title="View source on GitHub"
           >
-            <Download className="h-3.5 w-3.5" />
-            Source ZIP
+            <Github className="h-3.5 w-3.5" />
+            GitHub
           </a>
           <a
             href="mailto:lore-engine@ethankim.cc"
@@ -97,12 +98,13 @@ function Hero() {
         <div className="flex flex-wrap items-center gap-2 sm:hidden">
           <AuthAccount compact />
           <a
-            href="/api/export"
-            download="lore-engine-source.zip"
+            href="https://github.com/ethankim417/LoreEngine"
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-300/18 bg-emerald-950/40 px-3 py-1.5 text-xs font-semibold text-emerald-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl transition hover:border-emerald-300/38 hover:bg-emerald-300/[0.08]"
           >
-            <Download className="h-3.5 w-3.5" />
-            Source ZIP
+            <Github className="h-3.5 w-3.5" />
+            GitHub
           </a>
           <a
             href="mailto:lore-engine@ethankim.cc"
