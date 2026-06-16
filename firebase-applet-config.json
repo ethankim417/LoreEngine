@@ -1,10 +1,8 @@
 {
-  "projectId": "booming-blade-97854",
-  "appId": "1:807550824237:web:fb2075dd9da02e06a52da4",
-  "apiKey": "AIzaSyDVyfU4UPBuk9X3cnUNWGe_TpnNWPHFF0A",
-  "authDomain": "booming-blade-97854.firebaseapp.com",
-  "firestoreDatabaseId": "ai-studio-c3c08639-2116-454d-8476-78836e625a6a",
-  "storageBucket": "booming-blade-97854.firebasestorage.app",
-  "messagingSenderId": "807550824237",
-  "measurementId": ""
+  "apiKey": "AIzaSyCjqEgK7w8yg_WaySAiH1o8RSjLVBX0v2M",
+  "authDomain": "lore-engine-806b8.firebaseapp.com",
+  "projectId": "lore-engine-806b8",
+  "storageBucket": "lore-engine-806b8.firebasestorage.app",
+  "messagingSenderId": "939096091594",
+  "appId": "1:939096091594:web:c2b3868d11d8a120ffbd33"
 }
