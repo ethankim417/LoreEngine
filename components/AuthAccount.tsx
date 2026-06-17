@@ -178,7 +178,7 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
           {t("account")}
         </button>
         {open ? (
-          <div className="absolute right-0 top-[calc(100%+0.55rem)] z-40 w-72 rounded-lg border border-cyan-300/18 bg-slate-950/96 p-3 text-xs text-slate-300 shadow-[0_22px_70px_rgba(0,0,0,0.48)] backdrop-blur-xl">
+          <div className="fixed right-3 top-16 z-[80] max-h-[calc(100vh-5rem)] w-[min(18rem,calc(100vw-1.5rem))] overflow-y-auto rounded-lg border border-cyan-300/18 bg-slate-950/96 p-3 text-xs text-slate-300 shadow-[0_22px_70px_rgba(0,0,0,0.48)] backdrop-blur-xl sm:right-6 sm:top-20">
             <p className="font-black uppercase tracking-[0.14em] text-cyan-200">{t("signedIn")}</p>
             <p className="mt-2 truncate font-semibold text-white">{user.displayName || "User"}</p>
             <p className="truncate text-slate-500">{user.email}</p>
