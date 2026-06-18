@@ -6,6 +6,7 @@
 - Maintain mock article data and cached market snapshots.
 - Run the weekly Vercel market refresh where backend routes are available.
 - Keep README and docs clear for first-time readers.
+- Keep Firebase Auth/Firestore configuration aligned with the live custom domain and Vercel preview domains.
 - Add real screenshots or GIFs after deployment.
 - Add the final Vercel live demo URL.
 
@@ -31,6 +32,5 @@
 
 - Real-time financial data.
 - Paid subscriptions.
-- User accounts.
 - Automated publishing without review.
 - Browser-side AI calls.

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { LogOut, ShieldCheck, Trash2, UserRound } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -26,8 +27,13 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
   const [open, setOpen] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
   const [isSigningIn, setIsSigningIn] = useState(false);
+  const [portalReady, setPortalReady] = useState(false);
   const [storageMode, setStorageMode] = useState<"firebase" | "unconfigured" | "local">("local");
   const { language, setLanguage, t } = useLanguage();
+
+  useEffect(() => {
+    setPortalReady(true);
+  }, []);
 
   useEffect(() => {
     let active = true;
@@ -177,53 +183,18 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
           <UserRound className="h-3.5 w-3.5" />
           {t("account")}
         </button>
-        {open ? (
-          <div className="fixed right-3 top-16 z-[80] max-h-[calc(100vh-5rem)] w-[min(18rem,calc(100vw-1.5rem))] overflow-y-auto rounded-lg border border-cyan-300/18 bg-slate-950/96 p-3 text-xs text-slate-300 shadow-[0_22px_70px_rgba(0,0,0,0.48)] backdrop-blur-xl sm:right-6 sm:top-20">
-            <p className="font-black uppercase tracking-[0.14em] text-cyan-200">{t("signedIn")}</p>
-            <p className="mt-2 truncate font-semibold text-white">{user.displayName || "User"}</p>
-            <p className="truncate text-slate-500">{user.email}</p>
-            <label className="mt-3 block">
-              <span className="text-[0.65rem] font-black uppercase tracking-[0.14em] text-slate-500">
-                {t("language")}
-              </span>
-              <select
-                value={language}
-                onChange={(event) => handleLanguageChange(event.target.value)}
-                className="mt-1 h-9 w-full rounded-lg border border-white/10 bg-slate-950/70 px-3 text-xs font-semibold text-white outline-none"
-              >
-                {(Object.keys(languageLabels) as Language[]).map((item) => (
-                  <option key={item} value={item}>
-                    {languageLabels[item]}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <div className="mt-3 rounded-lg bg-white/[0.035] p-3">
-              <div className="flex items-center gap-2 text-emerald-100">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                {getStorageStatus(storageMode, t)}
-              </div>
-              <p className="mt-1 leading-5 text-slate-500">
-                Cloud sync uses Firebase when configured; otherwise bookmarks remain local to this browser.
-              </p>
-            </div>
-            <div className="mt-3 grid gap-2">
-              <button type="button" onClick={syncNow} className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 font-bold text-slate-100 transition hover:border-cyan-300/35">
-                {t("syncSavedBriefs")}
-              </button>
-              <button type="button" onClick={signOut} className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 font-bold text-slate-100 transition hover:border-cyan-300/35">
-                <LogOut className="h-3.5 w-3.5" />
-                {t("signOut")}
-              </button>
-              <button type="button" onClick={deleteAccount} className="inline-flex items-center justify-center gap-2 rounded-lg border border-rose-300/20 bg-rose-300/[0.07] px-3 py-2 font-bold text-rose-100 transition hover:border-rose-300/40">
-                <Trash2 className="h-3.5 w-3.5" />
-                {t("deleteAccountData")}
-              </button>
-            </div>
-            <Link href="/privacy" className="mt-3 inline-flex text-cyan-200/80 underline decoration-cyan-300/20 underline-offset-4 hover:text-cyan-100">
-              {t("privacyRights")}
-            </Link>
-          </div>
+        {open && portalReady ? createPortal(
+          <AccountMenu
+            deleteAccount={deleteAccount}
+            handleLanguageChange={handleLanguageChange}
+            language={language}
+            signOut={signOut}
+            storageMode={storageMode}
+            syncNow={syncNow}
+            t={t}
+            user={user}
+          />,
+          document.body
         ) : null}
       </div>
     );
@@ -245,6 +216,77 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
         </p>
       ) : null}
       {!compact ? <p className="text-[0.65rem] text-slate-500">{t("saveBookmarks")}</p> : null}
+    </div>
+  );
+}
+
+function AccountMenu({
+  deleteAccount,
+  handleLanguageChange,
+  language,
+  signOut,
+  storageMode,
+  syncNow,
+  t,
+  user
+}: {
+  deleteAccount: () => void;
+  handleLanguageChange: (value: string) => void;
+  language: Language;
+  signOut: () => void;
+  storageMode: "firebase" | "unconfigured" | "local";
+  syncNow: () => void;
+  t: ReturnType<typeof useLanguage>["t"];
+  user: FirebaseUser;
+}) {
+  return (
+    <div className="pointer-events-none fixed inset-0 z-[9999]">
+      <div className="pointer-events-auto fixed right-3 top-16 max-h-[calc(100vh-5rem)] w-[min(18rem,calc(100vw-1.5rem))] overflow-y-auto rounded-lg border border-cyan-300/18 bg-slate-950/96 p-3 text-xs text-slate-300 shadow-[0_22px_70px_rgba(0,0,0,0.48)] backdrop-blur-xl sm:right-6 sm:top-20">
+        <p className="font-black uppercase tracking-[0.14em] text-cyan-200">{t("signedIn")}</p>
+        <p className="mt-2 truncate font-semibold text-white">{user.displayName || "User"}</p>
+        <p className="truncate text-slate-500">{user.email}</p>
+        <label className="mt-3 block">
+          <span className="text-[0.65rem] font-black uppercase tracking-[0.14em] text-slate-500">
+            {t("language")}
+          </span>
+          <select
+            value={language}
+            onChange={(event) => handleLanguageChange(event.target.value)}
+            className="mt-1 h-9 w-full rounded-lg border border-white/10 bg-slate-950/70 px-3 text-xs font-semibold text-white outline-none"
+          >
+            {(Object.keys(languageLabels) as Language[]).map((item) => (
+              <option key={item} value={item}>
+                {languageLabels[item]}
+              </option>
+            ))}
+          </select>
+        </label>
+        <div className="mt-3 rounded-lg bg-white/[0.035] p-3">
+          <div className="flex items-center gap-2 text-emerald-100">
+            <ShieldCheck className="h-3.5 w-3.5" />
+            {getStorageStatus(storageMode, t)}
+          </div>
+          <p className="mt-1 leading-5 text-slate-500">
+            Cloud sync uses Firebase when configured; otherwise bookmarks remain local to this browser.
+          </p>
+        </div>
+        <div className="mt-3 grid gap-2">
+          <button type="button" onClick={syncNow} className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 font-bold text-slate-100 transition hover:border-cyan-300/35">
+            {t("syncSavedBriefs")}
+          </button>
+          <button type="button" onClick={signOut} className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 font-bold text-slate-100 transition hover:border-cyan-300/35">
+            <LogOut className="h-3.5 w-3.5" />
+            {t("signOut")}
+          </button>
+          <button type="button" onClick={deleteAccount} className="inline-flex items-center justify-center gap-2 rounded-lg border border-rose-300/20 bg-rose-300/[0.07] px-3 py-2 font-bold text-rose-100 transition hover:border-rose-300/40">
+            <Trash2 className="h-3.5 w-3.5" />
+            {t("deleteAccountData")}
+          </button>
+        </div>
+        <Link href="/privacy" className="mt-3 inline-flex text-cyan-200/80 underline decoration-cyan-300/20 underline-offset-4 hover:text-cyan-100">
+          {t("privacyRights")}
+        </Link>
+      </div>
     </div>
   );
 }

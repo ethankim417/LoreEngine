@@ -34,6 +34,7 @@ Create a polished weekly intelligence dashboard that helps me keep up with gamin
 - Article search, filtering, and sorting.
 - Article detail pages with impact reasoning.
 - Market Pulse page with weekly/cached public-company context.
+- Optional Firebase Google login for saved briefs, language preference, and account data deletion.
 - Vercel Cron route for refreshing public close-price market data.
 - Documentation for future AI summarization and deployment.
 
@@ -50,7 +51,7 @@ The MVP prioritizes:
 Lower priority for the MVP:
 
 - Real news ingestion.
-- User accounts.
+- Social profiles or paid account features.
 - Payments.
 - Alerts.
 - Advanced analytics.

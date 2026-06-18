@@ -19,6 +19,7 @@ app/
   page.tsx
 components/
   ArticleCard.tsx
+  AuthAccount.tsx
   ExecutiveBrief.tsx
   IntelligenceDashboard.tsx
   MarketPulse.tsx
@@ -27,6 +28,8 @@ data/
   articles.ts
   market.ts
 lib/
+  bookmarksClient.ts
+  firebase.ts
   format.ts
   futurePipeline.ts
   marketData.ts
@@ -37,6 +40,7 @@ lib/
 
 - `IntelligenceDashboard`: home dashboard composition, filtering, sorting, and top-level state.
 - `ArticleCard`: compact story card with impact, trend, sectors, and actions.
+- `AuthAccount`: Firebase Google login, account menu, language preference, bookmark sync, and account data deletion.
 - `ExecutiveBrief`: higher-level summary of the most important signals.
 - `MarketPulse`: compact market snapshot and link into the larger market view.
 - `SignalConstellation`: visual relationship layer for sector/category signals.
@@ -51,6 +55,9 @@ flowchart LR
   E["data/market.ts"] --> F["Market Pulse"]
   E --> G["Market page"]
   H["data/sourceStrategy.ts"] --> I["Source strategy page"]
+  J["Firebase Auth"] --> K["AuthAccount"]
+  K --> L["Firestore users/{uid}"]
+  K --> M["Local browser bookmark fallback"]
 ```
 
 The current portfolio build is static/cached:
@@ -58,6 +65,8 @@ The current portfolio build is static/cached:
 - Article intelligence is stored locally.
 - Market quote snapshots are stored locally.
 - Filtering and sorting happen in the client experience.
+- Firebase Auth/Firestore stores optional saved brief IDs and UI language preference per signed-in user.
+- Local browser storage remains the fallback for saved briefs.
 - No browser route calls a paid AI API.
 - No page load triggers summarization.
 - `/api/health` exposes a lightweight operational status payload for deployment checks.
@@ -91,20 +100,22 @@ Current version:
 - No live news API.
 - Vercel can refresh weekly market close-price data through `/api/market`.
 - `/sources` explains source selection rules, cadence, and source tiers without crowding the dashboard.
+- Firebase Auth powers optional Google login.
+- Firestore stores saved brief IDs and language preference under each user's own `users/{uid}` document.
 - No AI API.
-- No database.
 
 Future version:
 
 - RSS/news sources for article collection.
 - AI provider for once-per-week summarization.
-- Database, object storage, or JSON cache for generated briefs.
+- Database, object storage, or JSON cache for generated article briefs.
 - Optional paid/licensed quote provider if the market module needs production-grade coverage.
 
 ## Tradeoffs
 
 - Local mock data makes the demo fast and reliable but limits real-world freshness.
 - Static deployment is simple for sharing, while Vercel unlocks scheduled server functionality later.
+- Firebase adds real account sync without requiring a custom auth server, but the allowed domains and Firestore rules must stay in sync with deployment domains.
 - Weekly close-price refresh is useful for context but is not real-time financial data.
 - Scores are useful for product storytelling but need calibration with real editorial review.
 - Keeping AI out of the browser improves cost control, privacy, and security.

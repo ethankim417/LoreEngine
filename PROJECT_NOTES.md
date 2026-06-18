@@ -38,6 +38,8 @@ The current version is not live intelligence yet.
 - Market prices can refresh weekly on Vercel from public close-price data, with cached/manual fallback data.
 - AI summaries are not generated at runtime.
 - No AI API is called from the browser.
+- Google login uses Firebase Auth.
+- Saved briefs and language preference sync through Firestore, with local browser storage as the fallback.
 
 That constraint is part of the experiment. The goal is to build the shell, workflow, and product logic first, then connect real weekly ingestion later.
 
@@ -50,6 +52,7 @@ A real version would add:
 - server-only AI summarization,
 - impact and momentum scoring,
 - cached weekly results,
+- account-aware saved briefs and language preferences,
 - and optional editorial review before publishing.
 
 The core rule: users should only read cached summaries. Summarization should happen once per scheduled run, not on every page visit.

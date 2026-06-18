@@ -10,7 +10,7 @@ I built it for two reasons: to create a tool I would actually use to stay curren
 
 LoreEngine is not a commercial product yet; it is a portfolio-scale prototype designed to test product thinking, AI-assisted development, and a cache-first architecture for future weekly intelligence briefs.
 
-**Planned Custom Domain:** `https://lore-engine.ethankim.cc`  
+**Custom Domain:** `https://lore-engine.ethankim.cc`  
 **Current Public Mirror:** [GitHub Pages](https://ethankim417.github.io/LoreEngine/)  
 **GitHub Repo:** [ethankim417/LoreEngine](https://github.com/ethankim417/LoreEngine)
 
@@ -36,7 +36,7 @@ The second goal was to test Codex as a product-building partner. I used it to mo
 - Frontend execution: responsive Next.js dashboard, article detail views, filters, saved briefs, and polished dark UI.
 - Data architecture: mock/cached article data, weekly market refresh route, health endpoint, cron scaffold, and fallback behavior.
 - AI judgment: Codex-assisted iteration without browser-side AI calls or page-load summarization.
-- Deployment readiness: Vercel routes, GitHub Pages mirror, sitemap, robots, metadata, and documentation.
+- Deployment readiness: Vercel routes, Firebase Auth/Firestore, GitHub Pages mirror, sitemap, robots, metadata, and documentation.
 
 ## Questions This Project Explores
 
@@ -110,6 +110,7 @@ The app also includes a branded favicon and Open Graph preview asset:
 - **Data:** Local TypeScript mock/cached datasets
 - **Deployment:** Vercel-ready, GitHub Pages static export workflow
 - **Runtime data:** Vercel API route for weekly/cached market close-price refresh
+- **Auth/storage:** Firebase Auth and Firestore for saved briefs and language preference
 - **Future backend:** Scheduled weekly ingest route and cache-first AI/news pipeline scaffold
 
 ## Architecture Overview
@@ -129,6 +130,7 @@ app/
   page.tsx
 components/
   ArticleCard.tsx
+  AuthAccount.tsx
   ExecutiveBrief.tsx
   IntelligenceDashboard.tsx
   MarketPulse.tsx
@@ -138,6 +140,8 @@ data/
   market.ts
   sourceStrategy.ts
 lib/
+  bookmarksClient.ts
+  firebase.ts
   format.ts
   futurePipeline.ts
   marketData.ts
