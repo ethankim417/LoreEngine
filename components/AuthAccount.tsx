@@ -68,14 +68,14 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
       if (!active) return;
       console.error("Firebase Redirect Login Error", error);
       setIsSigningIn(false);
-      setLoginError(getFirebaseLoginMessage(error));
+      setLoginError(getFirebaseLoginMessage(error, t));
     });
 
     return () => {
       active = false;
       unsubscribe();
     };
-  }, [setLanguage]);
+  }, [setLanguage, t]);
 
   async function handleGoogleLogin() {
     try {
@@ -91,10 +91,10 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
           return;
         } catch (redirectError) {
           console.error("Firebase Redirect Start Error", redirectError);
-          setLoginError(getFirebaseLoginMessage(redirectError));
+          setLoginError(getFirebaseLoginMessage(redirectError, t));
         }
       } else {
-        setLoginError(getFirebaseLoginMessage(error));
+        setLoginError(getFirebaseLoginMessage(error, t));
       }
 
       setIsSigningIn(false);
@@ -104,7 +104,7 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
   async function startRedirectLogin() {
     const timeout = window.setTimeout(() => {
       setIsSigningIn(false);
-      setLoginError("Google did not open. Try again in a normal browser tab.");
+      setLoginError(t("googleLoginNoOpen"));
     }, 7000);
 
     try {
@@ -145,7 +145,7 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
 
   async function deleteAccount() {
     const confirmed = window.confirm(
-      "Delete your account data?"
+      t("deleteConfirm")
     );
     if (!confirmed || !user) return;
 
@@ -208,7 +208,7 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
         disabled={isSigningIn}
         className="rounded-full border border-white/10 bg-slate-950/35 px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-slate-900 transition"
       >
-        {isSigningIn ? "Opening Google..." : "Continue with Google"}
+        {isSigningIn ? t("openingGoogle") : t("continueWithGoogle")}
       </button>
       {loginError ? (
         <p className="max-w-56 rounded-lg border border-amber-300/15 bg-amber-300/[0.055] px-2 py-1 text-[0.65rem] leading-4 text-amber-100/90">
@@ -267,7 +267,7 @@ function AccountMenu({
             {getStorageStatus(storageMode, t)}
           </div>
           <p className="mt-1 leading-5 text-slate-500">
-            Cloud sync uses Firebase when configured; otherwise bookmarks remain local to this browser.
+            {t("cloudSyncNote")}
           </p>
         </div>
         <div className="mt-3 grid gap-2">
@@ -291,22 +291,22 @@ function AccountMenu({
   );
 }
 
-function getFirebaseLoginMessage(error: unknown) {
+function getFirebaseLoginMessage(error: unknown, t: ReturnType<typeof useLanguage>["t"]) {
   const code = typeof error === "object" && error && "code" in error ? String(error.code) : "";
 
   if (code.includes("unauthorized-domain")) {
-    return "Google login needs this domain added in Firebase Auth authorized domains.";
+    return t("googleLoginUnauthorizedDomain");
   }
 
   if (code.includes("popup-closed-by-user")) {
-    return "Google login was closed before finishing.";
+    return t("googleLoginClosed");
   }
 
   if (code.includes("operation-not-allowed") || code.includes("configuration-not-found")) {
-    return "Google login is not enabled for this Firebase project yet.";
+    return t("googleLoginNotEnabled");
   }
 
-  return "Google login could not start. Check Firebase Auth settings.";
+  return t("googleLoginGeneric");
 }
 
 function shouldTryRedirect(error: unknown) {

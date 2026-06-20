@@ -1,7 +1,9 @@
-export function formatDate(value: string) {
+import type { Language } from "@/lib/i18n";
+
+export function formatDate(value: string, language: Language = "en") {
   const [year, month, day] = value.split("-").map(Number);
 
-  return new Intl.DateTimeFormat("en", {
+  return new Intl.DateTimeFormat(language === "ko" ? "ko-KR" : "en", {
     month: "short",
     day: "numeric",
     year: "numeric"

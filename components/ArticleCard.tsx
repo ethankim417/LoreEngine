@@ -18,12 +18,17 @@ import { SectorSignalArt } from "@/components/SectorSignalArt";
 import type { Article } from "@/data/articles";
 import { readLocalBookmarks, syncRemoteBookmarks, writeLocalBookmarks } from "@/lib/bookmarksClient";
 import { categoryTone, formatDate } from "@/lib/format";
+import { getArticleText, getCategoryLabel } from "@/lib/localizedContent";
 
 export function ArticleCard({ article, featured = false }: { article: Article; featured?: boolean }) {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const [bookmarked, setBookmarked] = useState(false);
   const [read, setRead] = useState(false);
   const priority = getPriority(article, t);
+  const articleText = getArticleText(article, language);
+  const categoryLabel = getCategoryLabel(article.category, language);
+  const sourceLinkLabel =
+    language === "ko" ? `${article.source} 원문 열기` : `Open source article from ${article.source}`;
 
   useEffect(() => {
     function syncState() {
@@ -83,7 +88,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
               {priority.label}
             </span>
             <span className={`rounded-full border px-2.5 py-1 text-[0.68rem] font-semibold ${categoryTone(article.category)}`}>
-              {article.category}
+              {categoryLabel}
             </span>
             <span className={`rounded-full border px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-[0.08em] ${
               read ? "border-slate-300/15 bg-slate-300/5 text-slate-400" : "border-cyan-300/25 bg-cyan-300/10 text-cyan-100"
@@ -92,7 +97,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
             </span>
             {bookmarked ? (
               <span className="rounded-full border border-emerald-300/20 bg-emerald-300/[0.075] px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-[0.08em] text-emerald-100">
-                Saved
+                {t("savedLabel")}
               </span>
             ) : null}
           </div>
@@ -108,18 +113,18 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
         </div>
 
         <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-500 sm:mt-4">
-          <span className="font-medium">{formatDate(article.publishedAt)}</span>
+          <span className="font-medium">{formatDate(article.publishedAt, language)}</span>
           <span className="hidden sm:inline-flex">
             <SourceBadge source={article.source} credibility={article.sourceCredibility} compact />
           </span>
         </div>
 
         <h2 className={`mt-2 line-clamp-3 font-display font-black leading-snug tracking-normal text-white sm:mt-3 ${featured ? "text-base sm:text-xl xl:max-w-2xl xl:text-3xl" : "text-base sm:text-xl"}`}>
-          {article.title}
+          {articleText.title}
         </h2>
-        <p className={`mt-2 text-sm leading-6 text-slate-300 ${featured ? "line-clamp-1 sm:line-clamp-2 xl:max-w-2xl xl:line-clamp-3" : "line-clamp-1 sm:line-clamp-2"}`}>{article.tldr}</p>
+        <p className={`mt-2 text-sm leading-6 text-slate-300 ${featured ? "line-clamp-1 sm:line-clamp-2 xl:max-w-2xl xl:line-clamp-3" : "line-clamp-1 sm:line-clamp-2"}`}>{articleText.tldr}</p>
         <p className="mt-2 line-clamp-1 text-xs font-semibold leading-5 text-slate-400">
-          {t("whyOpen")}: {getWhyOpen(article.whyItMatters)}
+          {t("whyOpen")}: {getWhyOpen(articleText.whyItMatters)}
         </p>
 
         {article.impactScore >= 90 ? (
@@ -127,7 +132,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
             <p className="text-[0.66rem] font-black uppercase tracking-[0.1em] text-slate-500">
               {t("whyItMatters")}
             </p>
-            <p className="mt-1 line-clamp-2 text-xs leading-5 text-slate-300">{article.whyItMatters}</p>
+            <p className="mt-1 line-clamp-2 text-xs leading-5 text-slate-300">{articleText.whyItMatters}</p>
           </div>
         ) : null}
 
@@ -159,8 +164,8 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
           href={article.sourceUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Open source article from ${article.source}`}
-          title={`Open source article from ${article.source}`}
+          aria-label={sourceLinkLabel}
+          title={sourceLinkLabel}
           data-testid={`source-link-${article.slug}`}
           className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.035] text-slate-300 transition hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-cyan-100"
         >

@@ -1,5 +1,9 @@
+"use client";
+
 import { Newspaper } from "lucide-react";
 import type { SourceCredibility } from "@/data/articles";
+import { useLanguage } from "@/components/LanguageProvider";
+import { getSourceCredibilityLabel } from "@/lib/localizedContent";
 
 type SourceBadgeProps = {
   source: string;
@@ -14,14 +18,9 @@ const credibilityTone: Record<SourceCredibility, string> = {
   "Vendor report": "border-amber-300/25 bg-amber-300/10 text-amber-100"
 };
 
-const compactLabel: Record<SourceCredibility, string> = {
-  "Official source": "Official",
-  "Trade press": "Press",
-  "Market analysis": "Market",
-  "Vendor report": "Vendor"
-};
-
 export function SourceBadge({ source, credibility, compact = false }: SourceBadgeProps) {
+  const { language } = useLanguage();
+
   return (
     <span className="inline-flex min-w-0 max-w-full items-center gap-2 rounded-lg border border-white/15 bg-slate-950/45 px-2.5 py-1.5 text-xs font-bold text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_28px_rgba(0,0,0,0.24)] backdrop-blur-xl">
       <span className="grid h-6 w-6 shrink-0 place-items-center rounded-md border border-cyan-300/20 bg-cyan-300/10 text-[0.62rem] font-black text-cyan-100">
@@ -34,7 +33,7 @@ export function SourceBadge({ source, credibility, compact = false }: SourceBadg
         <span
           className={`shrink-0 rounded-full border px-2 py-0.5 text-[0.62rem] font-black uppercase tracking-[0.12em] ${credibilityTone[credibility]}`}
         >
-          {compact ? compactLabel[credibility] : credibility}
+          {getSourceCredibilityLabel(credibility, language, compact)}
         </span>
       ) : null}
     </span>

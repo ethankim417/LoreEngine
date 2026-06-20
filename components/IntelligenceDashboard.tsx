@@ -32,18 +32,19 @@ import {
 import { weeklyBriefCadence } from "@/data/sourceStrategy";
 import { readLocalBookmarks, syncRemoteBookmarks, writeLocalBookmarks } from "@/lib/bookmarksClient";
 import { formatDate } from "@/lib/format";
+import { getArticleText, getCategoryLabel, getMetricText, getSourceCredibilityLabel } from "@/lib/localizedContent";
 import type { DashboardMetric } from "@/lib/metrics";
 
 type SortMode = "newest" | "impact" | "trend";
 
 const MarketPulse = dynamic(() => import("@/components/MarketPulse").then((module) => module.MarketPulse), {
-  loading: () => <SectionSkeleton label="Loading market pulse" />
+  loading: () => <SectionSkeleton label="Market pulse" />
 });
 
 const SignalConstellation = dynamic(
   () => import("@/components/SignalConstellation").then((module) => module.SignalConstellation),
   {
-    loading: () => <SectionSkeleton label="Loading signal map" />
+    loading: () => <SectionSkeleton label="Signal map" />
   }
 );
 
@@ -53,7 +54,7 @@ type IntelligenceDashboardProps = {
 };
 
 export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboardProps) {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<ArticleCategory | "All">("All");
   const [sourceType, setSourceType] = useState<SourceCredibility | "All">("All");
@@ -83,7 +84,10 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
           normalizedQuery.length === 0 ||
           article.title.toLowerCase().includes(normalizedQuery) ||
           article.tldr.toLowerCase().includes(normalizedQuery) ||
-          article.fullTldr.toLowerCase().includes(normalizedQuery);
+          article.fullTldr.toLowerCase().includes(normalizedQuery) ||
+          getArticleText(article, language).title.toLowerCase().includes(normalizedQuery) ||
+          getArticleText(article, language).tldr.toLowerCase().includes(normalizedQuery) ||
+          getArticleText(article, language).fullTldr.toLowerCase().includes(normalizedQuery);
 
         return matchesCategory && matchesSourceType && matchesQuery;
       })
@@ -98,7 +102,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
         return b.impactScore - a.impactScore;
       });
-  }, [articles, category, query, sortMode, sourceType]);
+  }, [articles, category, language, query, sortMode, sourceType]);
   const savedArticles = useMemo(
     () => savedIds.map((id) => articles.find((article) => article.id === id)).filter((article): article is Article => Boolean(article)),
     [articles, savedIds]
@@ -132,7 +136,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         <MarketPulse />
       </div>
 
-      <section id="scores" aria-label="Dashboard metrics" className="space-y-3 scroll-mt-24">
+      <section id="scores" aria-label={t("dashboardScores")} className="space-y-3 scroll-mt-24">
         <div className="flex items-center justify-between gap-3 px-1">
           <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">{t("dashboardScores")}</p>
           <Link
@@ -145,7 +149,11 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         </div>
         <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-4">
           {metrics.map((metric) => (
-            <MetricCard key={metric.label} metric={metric} onSelect={() => setSelectedMetric(metric)} />
+            <MetricCard
+              key={metric.label}
+              metric={getMetricText(metric, language)}
+              onSelect={() => setSelectedMetric(getMetricText(metric, language))}
+            />
           ))}
         </div>
       </section>
@@ -179,7 +187,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
 
           <div className="grid gap-2.5 sm:gap-3 md:grid-cols-[minmax(14rem,1fr)_auto_auto_auto] xl:w-[58rem]">
             <label className="relative block">
-              <span className="sr-only">Search articles</span>
+              <span className="sr-only">{t("searchArticles")}</span>
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <input
                 value={query}
@@ -190,7 +198,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
             </label>
 
             <label className="relative hidden md:block">
-              <span className="sr-only">Filter category</span>
+              <span className="sr-only">{t("filterCategory")}</span>
               <SlidersHorizontal className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <select
                 value={category}
@@ -200,7 +208,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                 <option value="All">{t("allCategories")}</option>
                 {categories.map((item) => (
                   <option key={item} value={item}>
-                    {item}
+                    {getCategoryLabel(item, language)}
                   </option>
                 ))}
               </select>
@@ -208,7 +216,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
             </label>
 
             <label className="relative hidden md:block">
-              <span className="sr-only">Filter source type</span>
+              <span className="sr-only">{t("filterSourceType")}</span>
               <ShieldCheck className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <select
                 value={sourceType}
@@ -218,7 +226,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                 <option value="All">{t("allSources")}</option>
                 {sourceCredibilityTypes.map((item) => (
                   <option key={item} value={item}>
-                    {item}
+                    {getSourceCredibilityLabel(item, language)}
                   </option>
                 ))}
               </select>
@@ -226,7 +234,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
             </label>
 
             <label className="relative hidden md:block">
-              <span className="sr-only">Sort articles</span>
+              <span className="sr-only">{t("sortArticles")}</span>
               <ArrowDownUp className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <select
                 value={sortMode}
@@ -251,6 +259,8 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
           onClearSourceType={() => setSourceType("All")}
           onResetSort={() => setSortMode("impact")}
           onClearAll={resetFilters}
+          t={t}
+          language={language}
         />
       </section>
 
@@ -258,7 +268,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Article filters"
+          aria-label={t("filters")}
           className="fixed inset-0 z-50 flex items-end bg-black/65 p-3 backdrop-blur-md md:hidden"
           onClick={() => setFiltersOpen(false)}
         >
@@ -274,14 +284,14 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                 type="button"
                 onClick={() => setFiltersOpen(false)}
                 className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-300"
-                aria-label="Close filters"
+                aria-label={t("clearFilters")}
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
             <div className="grid gap-3">
               <label className="relative block">
-                <span className="sr-only">Filter category</span>
+                <span className="sr-only">{t("filterCategory")}</span>
                 <SlidersHorizontal className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
                 <select
                   value={category}
@@ -291,14 +301,14 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                   <option value="All">{t("allCategories")}</option>
                   {categories.map((item) => (
                     <option key={item} value={item}>
-                      {item}
+                      {getCategoryLabel(item, language)}
                     </option>
                   ))}
                 </select>
                 <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-cyan-200/70" />
               </label>
               <label className="relative block">
-                <span className="sr-only">Filter source type</span>
+                <span className="sr-only">{t("filterSourceType")}</span>
                 <ShieldCheck className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
                 <select
                   value={sourceType}
@@ -308,14 +318,14 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                   <option value="All">{t("allSources")}</option>
                   {sourceCredibilityTypes.map((item) => (
                     <option key={item} value={item}>
-                      {item}
+                      {getSourceCredibilityLabel(item, language)}
                     </option>
                   ))}
                 </select>
                 <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-emerald-200/70" />
               </label>
               <label className="relative block">
-                <span className="sr-only">Sort articles</span>
+                <span className="sr-only">{t("sortArticles")}</span>
                 <ArrowDownUp className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
                 <select
                   value={sortMode}
@@ -444,7 +454,7 @@ function MobileActionBar({
       <button type="button" onClick={onOpenFilters} className="px-2 py-3 text-center">
         {t("filters")}{activeFilterCount ? ` ${activeFilterCount}` : ""}
       </button>
-      <a href="#top" className="px-2 py-3 text-center">Top</a>
+      <a href="#top" className="px-2 py-3 text-center">{t("top")}</a>
     </nav>
   );
 }
@@ -460,7 +470,7 @@ function SavedBriefsDrawer({
   onClose: () => void;
   onRemove: (id: string) => void;
 }) {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   useEffect(() => {
     if (!open) {
@@ -486,7 +496,7 @@ function SavedBriefsDrawer({
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Saved briefs"
+      aria-label={t("savedBriefs")}
       className="fixed inset-0 z-50 flex justify-end bg-black/65 p-3 backdrop-blur-md sm:p-5"
       onClick={onClose}
     >
@@ -506,7 +516,7 @@ function SavedBriefsDrawer({
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close saved briefs"
+            aria-label={t("savedBriefs")}
             className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-300 transition hover:border-cyan-300/35 hover:text-white"
           >
             <X className="h-4 w-4" />
@@ -516,7 +526,10 @@ function SavedBriefsDrawer({
         <div className="flex-1 overflow-y-auto p-4">
           {articles.length ? (
             <div className="space-y-3">
-              {articles.map((article) => (
+              {articles.map((article) => {
+                const articleText = getArticleText(article, language);
+
+                return (
                 <div key={article.id} className="rounded-lg border border-white/10 bg-white/[0.035] p-3">
                   <div className="flex items-start justify-between gap-3">
                     <Link
@@ -525,23 +538,24 @@ function SavedBriefsDrawer({
                       className="group min-w-0"
                     >
                       <p className="text-xs font-black uppercase tracking-[0.12em] text-slate-500">
-                        {article.category} · {article.source}
+                        {getCategoryLabel(article.category, language)} · {article.source}
                       </p>
                       <h3 className="mt-1 line-clamp-2 font-display text-base font-black text-white group-hover:text-cyan-100">
-                        {article.title}
+                        {articleText.title}
                       </h3>
                     </Link>
                     <button
                       type="button"
                       onClick={() => onRemove(article.id)}
-                      aria-label={`Remove saved brief: ${article.title}`}
+                      aria-label={`${t("removeBookmark")}: ${articleText.title}`}
                       className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-400 transition hover:border-rose-300/30 hover:text-rose-100"
                     >
                       <BookmarkX className="h-4 w-4" />
                     </button>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <div className="grid h-full place-items-center rounded-lg border border-dashed border-white/12 bg-white/[0.025] p-8 text-center">
@@ -589,9 +603,11 @@ function WeeklyBriefStatus({
   articles: Article[];
 }) {
   const sourceCount = new Set(articles.map((article) => article.source)).size;
+  const { language, t } = useLanguage();
+  const cadenceLabel = language === "ko" ? "화요일 23:00 KST" : weeklyBriefCadence.schedule;
 
   return (
-    <section className="glass-panel glass-panel-soft rounded-lg p-4" aria-label="Weekly brief status">
+    <section className="glass-panel glass-panel-soft rounded-lg p-4" aria-label={t("weeklyBrief")}>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-start gap-3">
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-[0_0_28px_rgba(34,211,238,0.12)]">
@@ -599,25 +615,25 @@ function WeeklyBriefStatus({
           </span>
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <p className="font-display text-lg font-black text-white">Weekly Brief</p>
+              <p className="font-display text-lg font-black text-white">{t("weeklyBrief")}</p>
               <Link
                 href="/archive"
                 className="rounded-full border border-cyan-300/15 bg-cyan-300/[0.06] px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-cyan-100 transition hover:border-cyan-300/35"
               >
-                Archive
+                {t("archive")}
               </Link>
               <Link
                 href="/sources"
-                aria-label={`View source strategy for ${sourceCount} sources used`}
+                aria-label={language === "ko" ? `사용한 ${sourceCount}개 출처 보기` : `View source strategy for ${sourceCount} sources used`}
                 className="source-shimmer group/source inline-flex items-center gap-1.5 rounded-full border border-emerald-300/20 bg-emerald-300/[0.075] px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-emerald-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-emerald-300/45 hover:bg-emerald-300/[0.11] hover:text-emerald-50"
               >
                 <Shield className="h-3 w-3" />
-                {sourceCount} Sources
+                {sourceCount} {t("sources")}
                 <ArrowRight className="h-3 w-3 text-cyan-100/70 transition group-hover/source:translate-x-0.5 group-hover/source:text-cyan-50" />
               </Link>
             </div>
             <p className="mt-0.5 text-sm leading-5 text-slate-400">
-              Updated {formatDate(briefSnapshotDate)} · Scheduled {weeklyBriefCadence.schedule}
+              {t("updated")} {formatDate(briefSnapshotDate, language)} · {t("scheduled")} {cadenceLabel}
             </p>
           </div>
         </div>
@@ -635,7 +651,9 @@ function ActiveFilterChips({
   onClearCategory,
   onClearSourceType,
   onResetSort,
-  onClearAll
+  onClearAll,
+  t,
+  language
 }: {
   query: string;
   category: ArticleCategory | "All";
@@ -646,6 +664,8 @@ function ActiveFilterChips({
   onClearSourceType: () => void;
   onResetSort: () => void;
   onClearAll: () => void;
+  t: ReturnType<typeof useLanguage>["t"];
+  language: ReturnType<typeof useLanguage>["language"];
 }) {
   const normalizedQuery = query.trim();
   const hasFilters =
@@ -658,36 +678,50 @@ function ActiveFilterChips({
   return (
     <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-white/10 pt-4">
       <span className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
-        Active filters
+        {t("activeFilters")}
       </span>
       {normalizedQuery.length > 0 ? (
-        <FilterChip label={`Search: ${normalizedQuery}`} onClear={onClearQuery} />
+        <FilterChip label={`${t("searchFilter")}: ${normalizedQuery}`} onClear={onClearQuery} removeLabel={t("removeFilter")} />
       ) : null}
-      {category !== "All" ? <FilterChip label={`Category: ${category}`} onClear={onClearCategory} /> : null}
+      {category !== "All" ? (
+        <FilterChip
+          label={`${t("categoryFilter")}: ${getCategoryLabel(category, language)}`}
+          onClear={onClearCategory}
+          removeLabel={t("removeFilter")}
+        />
+      ) : null}
       {sourceType !== "All" ? (
-        <FilterChip label={`Source: ${sourceType}`} onClear={onClearSourceType} />
+        <FilterChip
+          label={`${t("sourceFilter")}: ${getSourceCredibilityLabel(sourceType, language)}`}
+          onClear={onClearSourceType}
+          removeLabel={t("removeFilter")}
+        />
       ) : null}
       {sortMode !== "impact" ? (
-        <FilterChip label={`Sorted by ${sortMode === "newest" ? "Newest" : "Momentum"}`} onClear={onResetSort} />
+        <FilterChip
+          label={`${t("sortedBy")} ${sortMode === "newest" ? t("newest") : t("momentum")}`}
+          onClear={onResetSort}
+          removeLabel={t("removeFilter")}
+        />
       ) : null}
       <button
         type="button"
         onClick={onClearAll}
         className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-semibold text-slate-300 transition hover:border-rose-300/30 hover:text-rose-100"
       >
-        Clear all
+        {t("clearAll")}
       </button>
     </div>
   );
 }
 
-function FilterChip({ label, onClear }: { label: string; onClear: () => void }) {
+function FilterChip({ label, onClear, removeLabel }: { label: string; onClear: () => void; removeLabel: string }) {
   return (
     <button
       type="button"
       onClick={onClear}
       className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-2.5 py-1 text-xs font-semibold text-cyan-50 transition hover:border-cyan-300/50"
-      title={`Remove ${label}`}
+      title={`${removeLabel} ${label}`}
     >
       <span className="truncate">{label}</span>
       <X className="h-3.5 w-3.5 shrink-0" />
@@ -702,6 +736,7 @@ function MetricCard({
   metric: DashboardMetric;
   onSelect: () => void;
 }) {
+  const { language } = useLanguage();
   const toneClass = {
     cyan: "from-cyan-300/20 to-cyan-300/5 text-cyan-100",
     violet: "from-violet-300/20 to-violet-300/5 text-violet-100",
@@ -713,7 +748,7 @@ function MetricCard({
     <button
       type="button"
       onClick={onSelect}
-      aria-label={`Explain ${metric.label}`}
+      aria-label={language === "ko" ? `${metric.label} 설명` : `Explain ${metric.label}`}
       className="surface-panel premium-hover group relative overflow-hidden rounded-lg p-3 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/18 focus:outline-none focus:ring-2 focus:ring-cyan-300/20"
     >
       <div className="flex items-center gap-3">
@@ -747,6 +782,8 @@ function MetricExplainerDialog({
   metric: DashboardMetric | null;
   onClose: () => void;
 }) {
+  const { t } = useLanguage();
+
   useEffect(() => {
     if (!metric) {
       return;
@@ -782,7 +819,7 @@ function MetricExplainerDialog({
         <div className="flex items-start justify-between gap-4 border-b border-white/10 p-5 sm:p-6">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-200">
-              Metric Methodology
+              {t("metricMethodology")}
             </p>
             <h2 id="metric-dialog-title" className="mt-2 font-display text-3xl font-black text-white">
               {metric.label}
@@ -792,7 +829,7 @@ function MetricExplainerDialog({
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close metric explanation"
+            aria-label={t("closeMetricExplanation")}
             className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-300 transition hover:border-cyan-300/40 hover:text-white"
           >
             <X className="h-4 w-4" />
@@ -801,20 +838,20 @@ function MetricExplainerDialog({
 
         <div className="grid gap-4 p-5 sm:grid-cols-[1fr_12rem] sm:p-6">
           <div className="space-y-5">
-            <MetricDetail title="Definition" body={metric.definition} />
-            <MetricDetail title="Calculation" body={metric.calculation} />
-            <MetricDetail title="How To Read It" body={metric.interpretation} />
+            <MetricDetail title={t("definition")} body={metric.definition} />
+            <MetricDetail title={t("calculation")} body={metric.calculation} />
+            <MetricDetail title={t("howToReadIt")} body={metric.interpretation} />
           </div>
 
           <aside className="rounded-lg border border-white/10 bg-black/20 p-4">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
-              Current Read
+              {t("currentRead")}
             </p>
             <p className="mt-2 font-display text-4xl font-black text-white">{metric.value}</p>
             <p className="mt-1 text-sm font-semibold text-cyan-100">{metric.delta}</p>
             <div className="mt-5">
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
-                Inputs
+                {t("inputs")}
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {metric.inputs.map((input) => (
@@ -836,7 +873,7 @@ function MetricExplainerDialog({
             className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-cyan-200 sm:w-auto"
             onClick={onClose}
           >
-            Full Methodology
+            {t("fullMethodology")}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

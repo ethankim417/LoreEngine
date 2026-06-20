@@ -3,7 +3,9 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Network, Radar } from "lucide-react";
+import { useLanguage } from "@/components/LanguageProvider";
 import type { Article } from "@/data/articles";
+import { getArticleText } from "@/lib/localizedContent";
 
 type SignalNode = {
   id: string;
@@ -100,7 +102,18 @@ const nodeStyles = [
   "border-amber-200/40 bg-amber-300/[0.12] text-amber-50 shadow-[0_0_34px_rgba(251,191,36,0.14)]"
 ];
 
+const signalCopy: Record<string, { en: { label: string; short: string }; ko: { label: string; short: string } }> = {
+  "game-ai": { en: { label: "Game AI", short: "AI" }, ko: { label: "게임 AI", short: "AI" } },
+  platforms: { en: { label: "Platforms", short: "Platform" }, ko: { label: "플랫폼", short: "플랫폼" } },
+  hardware: { en: { label: "Hardware", short: "HW" }, ko: { label: "하드웨어", short: "HW" } },
+  engines: { en: { label: "Engines", short: "Engines" }, ko: { label: "엔진", short: "엔진" } },
+  studios: { en: { label: "Studios", short: "Studios" }, ko: { label: "스튜디오", short: "스튜디오" } },
+  market: { en: { label: "Market", short: "Market" }, ko: { label: "시장", short: "시장" } },
+  creators: { en: { label: "Creators", short: "Creators" }, ko: { label: "크리에이터", short: "크리에이터" } }
+};
+
 export function SignalConstellation({ articles, compact = false }: { articles: Article[]; compact?: boolean }) {
+  const { language, t } = useLanguage();
   const signals = useMemo(
     () =>
       signalNodes.map((node) => {
@@ -129,16 +142,16 @@ export function SignalConstellation({ articles, compact = false }: { articles: A
   const selectedSignal = signals.find((signal) => signal.id === selectedId) ?? signals[0];
 
   return (
-    <section className={`${compact ? "surface-panel" : "glass-panel"} overflow-hidden rounded-lg`} aria-label="Signal constellation map">
+    <section className={`${compact ? "surface-panel" : "glass-panel"} overflow-hidden rounded-lg`} aria-label={t("signalMap")}>
       <div className={`items-center justify-between gap-3 border-b border-white/[0.07] p-4 ${compact ? "flex" : "flex sm:hidden"}`}>
         <div className="flex min-w-0 items-center gap-3">
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] text-cyan-100">
             <Network className="h-4 w-4" />
           </span>
           <div className="min-w-0">
-            <p className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-cyan-200/80">Signal Map</p>
+            <p className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-cyan-200/80">{t("signalMap")}</p>
             <p className="truncate text-sm font-semibold text-slate-300">
-              {signals.length} sectors · {selectedSignal.label} leads
+              {signals.length} {t("sectors")} · {getSignalLabel(selectedSignal.id, language)} {t("leads")}
             </p>
           </div>
         </div>
@@ -149,7 +162,7 @@ export function SignalConstellation({ articles, compact = false }: { articles: A
           aria-expanded={mapOpen}
           className="shrink-0 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.055] px-3 py-2 text-xs font-black text-cyan-50 transition hover:border-cyan-300/35"
         >
-          {mapOpen ? "Hide" : "Expand"}
+          {mapOpen ? t("hide") : t("expand")}
         </button>
       </div>
       <div className={compact ? `${mapOpen ? "grid" : "hidden"} lg:grid-cols-[minmax(0,1fr)_20rem]` : `${mapOpen ? "grid" : "hidden"} sm:grid lg:grid-cols-[minmax(0,1.25fr)_24rem]`}>
@@ -162,11 +175,11 @@ export function SignalConstellation({ articles, compact = false }: { articles: A
             <div>
               <div className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.12em] text-cyan-200">
                 <Network className="h-4 w-4" />
-                Signal Map
+                {t("signalMap")}
               </div>
             </div>
             <div className="hidden rounded-lg bg-black/15 px-3 py-2 text-right sm:block">
-              <p className="text-[0.65rem] font-black uppercase tracking-[0.1em] text-slate-500">Signals</p>
+              <p className="text-[0.65rem] font-black uppercase tracking-[0.1em] text-slate-500">{t("signals")}</p>
               <p className="font-display text-2xl font-black text-white">{signals.length}</p>
             </div>
           </div>
@@ -228,7 +241,7 @@ export function SignalConstellation({ articles, compact = false }: { articles: A
                   ) : null}
                   <span className="relative flex h-full flex-col items-center justify-center px-2 text-center">
                     <span className="text-[0.65rem] font-black uppercase tracking-[0.08em] text-current/70">
-                      {signal.shortLabel}
+                      {getSignalLabel(signal.id, language, true)}
                     </span>
                     <span className={`font-display font-black text-white ${compact ? "text-base sm:text-lg" : "text-lg sm:text-xl"}`}>
                       {signal.intensity}
@@ -246,15 +259,15 @@ export function SignalConstellation({ articles, compact = false }: { articles: A
               <Radar className="h-4 w-4" />
             </span>
             <div>
-              <p className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-slate-500">Selected Signal</p>
-              <h2 className="font-display text-2xl font-black text-white">{selectedSignal.label}</h2>
+              <p className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-slate-500">{t("selectedSignal")}</p>
+              <h2 className="font-display text-2xl font-black text-white">{getSignalLabel(selectedSignal.id, language)}</h2>
             </div>
           </div>
 
           <div className="mt-5 grid grid-cols-3 gap-2">
-            <ConstellationStat label="Impact" value={selectedSignal.averageImpact.toString()} />
-            <ConstellationStat label="Trend" value={`+${selectedSignal.averageTrend}%`} />
-            <ConstellationStat label="Briefs" value={selectedSignal.related.length.toString()} />
+            <ConstellationStat label={t("impact")} value={selectedSignal.averageImpact.toString()} />
+            <ConstellationStat label={t("trend")} value={`+${selectedSignal.averageTrend}%`} />
+            <ConstellationStat label={t("briefs")} value={selectedSignal.related.length.toString()} />
           </div>
 
           <div className="mt-5 space-y-3">
@@ -265,11 +278,11 @@ export function SignalConstellation({ articles, compact = false }: { articles: A
                 className="group block rounded-lg bg-white/[0.025] p-3 transition hover:bg-cyan-300/[0.055]"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <p className="text-sm font-semibold leading-5 text-slate-100">{article.title}</p>
+                  <p className="text-sm font-semibold leading-5 text-slate-100">{getArticleText(article, language).title}</p>
                   <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-slate-500 transition group-hover:translate-x-0.5 group-hover:text-cyan-200" />
                 </div>
                 <p className="mt-2 text-xs leading-5 text-slate-500">
-                  Impact {article.impactScore}/100 · Trend +{article.trendScore}%
+                  {t("impact")} {article.impactScore}/100 · {t("trend")} +{article.trendScore}%
                 </p>
               </Link>
             ))}
@@ -291,6 +304,13 @@ function MiniConstellation() {
       <circle cx="46" cy="26" r="2.7" fill="#fcd34d" opacity="0.8" />
     </svg>
   );
+}
+
+function getSignalLabel(id: string, language: "en" | "ko", short = false) {
+  const copy = signalCopy[id]?.[language];
+
+  if (!copy) return id;
+  return short ? copy.short : copy.label;
 }
 
 function getLinkPath(from: SignalNode, to: SignalNode) {
