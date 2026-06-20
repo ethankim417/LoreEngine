@@ -177,7 +177,7 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
-          className="inline-flex items-center gap-2 rounded-full border border-emerald-300/18 bg-slate-950/42 px-3 py-1.5 text-xs font-semibold text-emerald-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl transition hover:border-emerald-300/38 hover:bg-emerald-300/[0.08]"
+          className="inline-flex h-9 items-center gap-2 rounded-full px-3 text-xs font-black text-emerald-50 transition hover:bg-emerald-300/[0.09] hover:text-emerald-100 focus:outline-none focus:ring-2 focus:ring-emerald-300/25"
           aria-expanded={open}
         >
           <UserRound className="h-3.5 w-3.5" />
@@ -207,7 +207,7 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
         type="button"
         onClick={handleGoogleLogin}
         disabled={isSigningIn}
-        className="rounded-full border border-white/10 bg-slate-950/35 px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-slate-900 transition"
+        className="inline-flex h-9 items-center rounded-full px-3 text-xs font-black text-slate-100 transition hover:bg-white/[0.07] hover:text-cyan-50 focus:outline-none focus:ring-2 focus:ring-cyan-300/25 disabled:cursor-wait disabled:opacity-70"
       >
         {isSigningIn ? t("openingGoogle") : t("continueWithGoogle")}
       </button>
