@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -48,8 +49,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var t=localStorage.getItem('loreengine-theme');document.documentElement.dataset.theme=t==='light'?'light':'dark'}catch(e){document.documentElement.dataset.theme='dark'}"
+          }}
+        />
+      </head>
       <body>
-        <LanguageProvider>{children}</LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

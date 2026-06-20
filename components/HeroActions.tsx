@@ -3,6 +3,7 @@
 import { Github, Mail } from "lucide-react";
 import { AuthAccount } from "@/components/AuthAccount";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export function HeroActions({ className = "" }: { className?: string }) {
@@ -37,6 +38,7 @@ export function HeroActions({ className = "" }: { className?: string }) {
           </span>
         </a>
       </div>
+      <ThemeToggle />
       <LanguageToggle />
     </div>
   );

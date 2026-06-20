@@ -7,6 +7,11 @@
   background: #06070d;
 }
 
+:root[data-theme="light"] {
+  color-scheme: light;
+  background: #f6f9ff;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -25,6 +30,15 @@ body {
     #06070d;
   color: #e7ecff;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:root[data-theme="light"] body {
+  background:
+    radial-gradient(circle at 16% 10%, rgba(14, 165, 233, 0.18), transparent 26rem),
+    radial-gradient(circle at 82% 8%, rgba(99, 102, 241, 0.12), transparent 28rem),
+    radial-gradient(circle at 58% 86%, rgba(16, 185, 129, 0.12), transparent 26rem),
+    linear-gradient(180deg, #f8fbff 0%, #edf5ff 48%, #f7fbff 100%);
+  color: #0f172a;
 }
 
 button,
@@ -240,6 +254,133 @@ select {
     rgba(6, 7, 13, 0.48);
   background-size: 180% 100%;
   animation: skeleton-sheen 1.4s ease-in-out infinite;
+}
+
+:root[data-theme="light"] .mesh-grid {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.055) 1px, transparent 1px);
+}
+
+:root[data-theme="light"] .theme-hero {
+  border-color: rgba(14, 116, 144, 0.14) !important;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(237, 247, 255, 0.7)),
+    radial-gradient(ellipse at 82% 18%, rgba(14, 165, 233, 0.18), transparent 42%),
+    radial-gradient(ellipse at 18% 92%, rgba(124, 58, 237, 0.1), transparent 38%) !important;
+  box-shadow:
+    0 24px 80px rgba(15, 23, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
+}
+
+:root[data-theme="light"] .glass-panel {
+  border-color: rgba(15, 23, 42, 0.1);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(242, 248, 255, 0.72)),
+    radial-gradient(circle at 78% 0%, rgba(14, 165, 233, 0.09), transparent 30rem);
+  box-shadow:
+    0 20px 70px rgba(15, 23, 42, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+:root[data-theme="light"] .glass-panel-soft,
+:root[data-theme="light"] .surface-panel {
+  border-color: rgba(15, 23, 42, 0.095);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.76), rgba(242, 247, 255, 0.68)),
+    radial-gradient(circle at 78% 0%, rgba(14, 165, 233, 0.055), transparent 28rem);
+  box-shadow:
+    0 14px 48px rgba(15, 23, 42, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+:root[data-theme="light"] .premium-hover::before {
+  border-color: rgba(14, 165, 233, 0.22);
+  box-shadow:
+    inset 0 0 0 1px rgba(79, 70, 229, 0.05),
+    0 0 18px rgba(14, 165, 233, 0.08),
+    0 0 34px rgba(79, 70, 229, 0.04);
+}
+
+:root[data-theme="light"] .market-skeleton {
+  background:
+    linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.18), transparent),
+    rgba(226, 239, 255, 0.9);
+}
+
+:root[data-theme="light"] .text-white,
+:root[data-theme="light"] .text-slate-50,
+:root[data-theme="light"] .text-slate-100 {
+  color: #0f172a !important;
+}
+
+:root[data-theme="light"] .text-slate-200,
+:root[data-theme="light"] .text-slate-300 {
+  color: #334155 !important;
+}
+
+:root[data-theme="light"] .text-slate-400,
+:root[data-theme="light"] .text-slate-500 {
+  color: #64748b !important;
+}
+
+:root[data-theme="light"] [class*="text-cyan-"] {
+  color: #0369a1 !important;
+}
+
+:root[data-theme="light"] [class*="text-emerald-"] {
+  color: #047857 !important;
+}
+
+:root[data-theme="light"] [class*="text-violet-"] {
+  color: #6d28d9 !important;
+}
+
+:root[data-theme="light"] [class*="text-rose-"] {
+  color: #be123c !important;
+}
+
+:root[data-theme="light"] [class*="text-amber-"] {
+  color: #92400e !important;
+}
+
+:root[data-theme="light"] .bg-cyan-300,
+:root[data-theme="light"] .hover\:bg-cyan-200:hover {
+  background-color: #0ea5e9 !important;
+  color: #ffffff !important;
+}
+
+:root[data-theme="light"] [class*="bg-slate-950"],
+:root[data-theme="light"] [class*="bg-black"] {
+  background-color: rgba(255, 255, 255, 0.72) !important;
+}
+
+:root[data-theme="light"] [class*="bg-white/"],
+:root[data-theme="light"] [class*="bg-white\\["] {
+  background-color: rgba(255, 255, 255, 0.58) !important;
+}
+
+:root[data-theme="light"] [class*="border-white"],
+:root[data-theme="light"] [class*="border-slate"] {
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+:root[data-theme="light"] input,
+:root[data-theme="light"] select {
+  color: #0f172a !important;
+  background-color: rgba(255, 255, 255, 0.74) !important;
+}
+
+:root[data-theme="light"] input::placeholder {
+  color: #64748b !important;
+}
+
+:root[data-theme="light"] .signal-logo {
+  background: rgba(255, 255, 255, 0.76) !important;
+  border-color: rgba(14, 165, 233, 0.24) !important;
+  box-shadow:
+    0 0 42px rgba(14, 165, 233, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88) !important;
 }
 
 @media (max-width: 640px) {

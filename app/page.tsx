@@ -34,7 +34,7 @@ function AmbientBackground() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(135deg,rgba(9,13,26,0.82),rgba(8,10,20,0.62))] px-4 py-5 shadow-glow backdrop-blur-2xl sm:px-6 sm:py-7">
+    <section className="theme-hero relative overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(135deg,rgba(9,13,26,0.82),rgba(8,10,20,0.62))] px-4 py-5 shadow-glow backdrop-blur-2xl sm:px-6 sm:py-7">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_82%_18%,rgba(50,217,255,0.18),transparent_42%),radial-gradient(ellipse_at_18%_92%,rgba(138,92,255,0.14),transparent_38%),linear-gradient(90deg,rgba(255,255,255,0.045),transparent_34%,rgba(84,240,169,0.045))]" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/40 to-transparent" />
       <div className="absolute inset-y-0 left-[-18%] w-1/3 animate-slow-pan bg-gradient-to-r from-transparent via-cyan-200/[0.038] to-transparent blur-sm [animation-duration:18s]" />
