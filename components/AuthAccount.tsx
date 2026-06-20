@@ -191,6 +191,7 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
             signOut={signOut}
             storageMode={storageMode}
             syncNow={syncNow}
+            onClose={() => setOpen(false)}
             t={t}
             user={user}
           />,
@@ -227,6 +228,7 @@ function AccountMenu({
   signOut,
   storageMode,
   syncNow,
+  onClose,
   t,
   user
 }: {
@@ -236,12 +238,28 @@ function AccountMenu({
   signOut: () => void;
   storageMode: "firebase" | "unconfigured" | "local";
   syncNow: () => void;
+  onClose: () => void;
   t: ReturnType<typeof useLanguage>["t"];
   user: FirebaseUser;
 }) {
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
-    <div className="pointer-events-none fixed inset-0 z-[9999]">
-      <div className="pointer-events-auto fixed right-3 top-16 max-h-[calc(100vh-5rem)] w-[min(18rem,calc(100vw-1.5rem))] overflow-y-auto rounded-lg border border-cyan-300/18 bg-slate-950/96 p-3 text-xs text-slate-300 shadow-[0_22px_70px_rgba(0,0,0,0.48)] backdrop-blur-xl sm:right-6 sm:top-20">
+    <div className="fixed inset-0 z-[9999]" onMouseDown={onClose}>
+      <div
+        className="fixed right-3 top-16 max-h-[calc(100vh-5rem)] w-[min(18rem,calc(100vw-1.5rem))] overflow-y-auto rounded-lg border border-cyan-300/18 bg-slate-950/96 p-3 text-xs text-slate-300 shadow-[0_22px_70px_rgba(0,0,0,0.48)] backdrop-blur-xl sm:right-6 sm:top-20"
+        onMouseDown={(event) => event.stopPropagation()}
+      >
         <p className="font-black uppercase tracking-[0.14em] text-cyan-200">{t("signedIn")}</p>
         <p className="mt-2 truncate font-semibold text-white">{user.displayName || "User"}</p>
         <p className="truncate text-slate-500">{user.email}</p>
