@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
-import { LogOut, ShieldCheck, Trash2, UserRound } from "lucide-react";
+import { Bookmark, LogOut, ShieldCheck, Trash2, UserRound } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
 import {
   mergeBookmarksFromAccount,
@@ -266,11 +266,12 @@ function AccountMenu({
             <ShieldCheck className="h-3.5 w-3.5" />
             {getStorageStatus(storageMode, t)}
           </div>
-          <p className="mt-1 leading-5 text-slate-500">
-            {t("cloudSyncNote")}
-          </p>
         </div>
         <div className="mt-3 grid gap-2">
+          <Link href="/?saved=1" className="inline-flex items-center justify-center gap-2 rounded-lg border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-2 font-bold text-cyan-50 transition hover:border-cyan-300/40">
+            <Bookmark className="h-3.5 w-3.5" />
+            {t("viewBookmarks")}
+          </Link>
           <button type="button" onClick={syncNow} className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 font-bold text-slate-100 transition hover:border-cyan-300/35">
             {t("syncSavedBriefs")}
           </button>

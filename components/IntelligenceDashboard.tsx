@@ -124,6 +124,14 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
     };
   }, []);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("saved") === "1") {
+      setSavedOpen(true);
+    }
+  }, []);
+
   return (
     <div className="flex flex-col gap-5 pb-20 sm:gap-7 sm:pb-0 lg:gap-8">
       <WeeklyBriefStatus articles={articles} />
