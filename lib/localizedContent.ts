@@ -265,6 +265,19 @@ export function getArticleText(article: Article, language: Language): ArticleTex
   return language === "ko" ? articleTranslations[article.id] ?? article : article;
 }
 
+export function getArticleLocalizationStatus(source: Article[]) {
+  const missingKoreanArticleIds = source
+    .filter((article) => !articleTranslations[article.id])
+    .map((article) => article.id);
+
+  return {
+    englishCount: source.length,
+    koreanCount: source.length - missingKoreanArticleIds.length,
+    complete: missingKoreanArticleIds.length === 0,
+    missingKoreanArticleIds
+  };
+}
+
 export function getMetricText(metric: DashboardMetric, language: Language): DashboardMetric {
   if (language === "en") {
     return metric;

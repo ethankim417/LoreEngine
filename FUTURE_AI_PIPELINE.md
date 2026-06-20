@@ -8,6 +8,7 @@ LoreEngine is currently a mock-data showcase app. The planned production version
 - Summarize selected articles once.
 - Score industry impact, momentum, confidence, and affected sectors.
 - Save the processed result to a database or JSON cache.
+- Save English and Korean article fields in the same weekly run.
 - Let the frontend read only cached summaries.
 - Avoid AI API calls from the browser.
 - Avoid summarizing content on every page load.
@@ -72,8 +73,12 @@ The job should:
 3. Filter for gaming industry relevance.
 4. Send selected article excerpts to an AI API from the server only.
 5. Produce a structured summary.
-6. Score industry impact and trend momentum.
-7. Save the result.
+6. Produce the Korean version from the same selected article set.
+7. Score industry impact and trend momentum.
+8. Validate that every selected brief has both English and Korean fields.
+9. Save the result.
+
+The weekly job should treat localization as part of the data contract, not as a separate manual pass. If 15 brief articles are selected, the cache should contain 15 English records and 15 matching Korean records, keyed by the same article IDs/slugs. If Korean text is missing for any selected article, the job should fail or mark the run as degraded instead of publishing a half-localized feed.
 
 ## Cache Strategy
 
@@ -90,13 +95,19 @@ articles
 - id
 - slug
 - title
+- title_ko
 - source
 - category
 - tldr
+- tldr_ko
 - full_tldr
+- full_tldr_ko
 - why_it_matters
+- why_it_matters_ko
 - possible_impact
+- possible_impact_ko
 - trend_analysis
+- trend_analysis_ko
 - impact_score
 - trend_score
 - confidence
@@ -184,6 +195,8 @@ async function weeklyLoreEngineJob() {
 
     cachedResults.push(scored);
   }
+
+  assertEveryBriefHasEnglishAndKorean(cachedResults);
 
   await saveCachedWeeklyResults(cachedResults);
 

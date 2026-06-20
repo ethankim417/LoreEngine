@@ -34,6 +34,7 @@ import { readLocalBookmarks, syncRemoteBookmarks, writeLocalBookmarks } from "@/
 import { formatDate } from "@/lib/format";
 import { getArticleText, getCategoryLabel, getMetricText, getSourceCredibilityLabel } from "@/lib/localizedContent";
 import type { DashboardMetric } from "@/lib/metrics";
+import { getUniqueSourceCount } from "@/lib/sourceStats";
 
 type SortMode = "newest" | "impact" | "trend";
 
@@ -602,7 +603,7 @@ function WeeklyBriefStatus({
 }: {
   articles: Article[];
 }) {
-  const sourceCount = new Set(articles.map((article) => article.source)).size;
+  const sourceCount = getUniqueSourceCount(articles);
   const { language, t } = useLanguage();
   const cadenceLabel = language === "ko" ? "화요일 23:00 KST" : weeklyBriefCadence.schedule;
 

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { articles, briefSnapshotDate } from "@/data/articles";
 import { getMarketSnapshot } from "@/lib/marketData";
+import { getUniqueSourceCount } from "@/lib/sourceStats";
 
 export const dynamic = "force-dynamic";
 
@@ -27,7 +28,7 @@ export async function GET() {
     marketRefreshedAt: marketSnapshot.refreshedAt,
     marketDataAgeHours,
     articleCount: articles.length,
-    sourceCount: new Set(articles.map((article) => article.source)).size,
+    sourceCount: getUniqueSourceCount(articles),
     marketTickerCount: marketSnapshot.players.length,
     marketUpdatedTickerCount: marketSnapshot.updatedTickers.length,
     marketFailedTickers: marketSnapshot.failedTickers,

@@ -8,6 +8,7 @@ import { articles, sourceCredibilityTypes, type ArticleCategory, type SourceCred
 import { sourcePipeline, sourcePrinciples, sourceTiers, weeklyBriefCadence } from "@/data/sourceStrategy";
 import { formatDate } from "@/lib/format";
 import { getCategoryLabel, getSourceCredibilityLabel } from "@/lib/localizedContent";
+import { getUniqueSourceCount } from "@/lib/sourceStats";
 
 const sourcesCopy = {
   en: {
@@ -17,17 +18,17 @@ const sourcesCopy = {
     intro:
       "LoreEngine is designed to rank signals, not scrape everything. The brief starts with sources that are verifiable, timestamped, and useful for understanding how gaming, AI, platforms, hardware, esports, and public companies are moving.",
     currentBrief: "Current brief",
-    sourcesCited: "Sources cited",
+    sourcesCited: "Unique outlets cited",
     cadence: "Cadence",
     candidatesReviewed: "Candidates reviewed",
-    signalsSelected: "Signals selected",
+    signalsSelected: "Selected brief articles",
     publishingWindow: "Publishing Window",
     weeklyTriage: "Weekly Triage",
     candidates: "Candidates",
     shortlist: "Shortlist",
     sourceMix: "Source Mix",
     sourceMixBody:
-      "The live product should collect a wider candidate pool, dedupe it, then promote only the strongest signals into the weekly brief. The dashboard shows the final brief, while this page explains the source logic behind that selection.",
+      "The live product should collect a wider candidate pool, dedupe overlapping coverage, then promote only the strongest brief articles into the weekly brief. Source counts mean unique outlets; selected brief counts mean the number of articles in the public feed.",
     currentBriefSources: "Current Brief Sources",
     outletsUsed: (count: number) => `${count} outlets used this week`,
     updated: "Updated",
@@ -49,17 +50,17 @@ const sourcesCopy = {
     intro:
       "LoreEngine은 모든 것을 긁어모으는 도구가 아니라 중요한 신호를 선별하는 브리프입니다. 검증 가능하고, 시점이 명확하며, 게임·AI·플랫폼·하드웨어·e스포츠·상장사의 움직임을 이해하는 데 도움이 되는 출처를 우선합니다.",
     currentBrief: "현재 브리프",
-    sourcesCited: "인용 출처",
+    sourcesCited: "고유 인용 매체",
     cadence: "발행 주기",
     candidatesReviewed: "검토 후보",
-    signalsSelected: "선정 신호",
+    signalsSelected: "선정 브리프 기사",
     publishingWindow: "발행 시간대",
     weeklyTriage: "주간 선별",
     candidates: "후보",
     shortlist: "최종 선정",
     sourceMix: "출처 구성",
     sourceMixBody:
-      "실서비스에서는 더 넓은 후보 풀을 수집하고 중복 보도를 정리한 뒤, 가장 강한 신호만 주간 브리프로 올립니다. 대시보드는 최종 브리프를 보여주고, 이 페이지는 그 선별 기준을 설명합니다.",
+      "실서비스에서는 더 넓은 후보 풀을 수집하고 중복 보도를 정리한 뒤, 가장 강한 브리프 기사만 주간 브리프로 올립니다. 출처 수는 고유 매체 수를 뜻하고, 선정 브리프 수는 공개 피드에 들어간 기사 수를 뜻합니다.",
     currentBriefSources: "현재 브리프 출처",
     outletsUsed: (count: number) => `이번 주 ${count}개 출처 사용`,
     updated: "업데이트",
@@ -71,7 +72,7 @@ const sourcesCopy = {
     cadenceReason:
       "화요일은 월요일 장 마감, 주초 기업 업데이트, 주말 이벤트 이후 첫 보도 흐름이 어느 정도 정리된 시점이라 주간 브리프에 적합합니다.",
     pipelineDescription:
-      "각 주간 실행은 약 40개의 후보 출처를 검토하고, 중복 보도를 정리한 뒤, 가장 강한 15개 신호를 공개 브리프로 승격하도록 설계되어 있습니다.",
+      "각 주간 실행은 약 40개의 후보 출처를 검토하고, 중복 보도를 정리한 뒤, 가장 강한 15개 브리프 기사를 공개 피드로 승격하도록 설계되어 있습니다.",
     tiers: [
       {
         tier: "공식 출처",
@@ -118,7 +119,7 @@ const sourcesCopy = {
 export default function SourcesPage() {
   const { language } = useLanguage();
   const copy = sourcesCopy[language];
-  const sourceCount = new Set(articles.map((article) => article.source)).size;
+  const sourceCount = getUniqueSourceCount(articles);
   const activeSourceTypes = sourceCredibilityTypes.filter((type) =>
     articles.some((article) => article.sourceCredibility === type)
   );

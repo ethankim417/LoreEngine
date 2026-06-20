@@ -20,6 +20,6 @@ export async function GET(request: NextRequest) {
   return NextResponse.json({
     ...result,
     message:
-      "Weekly ingest scaffold only. This mock build does not fetch live news or call AI APIs yet."
+      "Weekly ingest scaffold only. This mock build does not fetch live news or call AI APIs yet. Source outlet counts and English/Korean content completeness are reported together."
   });
 }

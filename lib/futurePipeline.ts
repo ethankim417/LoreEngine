@@ -1,4 +1,6 @@
 import { articles, type Article } from "@/data/articles";
+import { getArticleLocalizationStatus } from "@/lib/localizedContent";
+import { getUniqueSourceCount } from "@/lib/sourceStats";
 
 export type RawNewsItem = {
   title: string;
@@ -14,6 +16,9 @@ export type WeeklyPipelineResult = {
   cadence: "weekly";
   fetchedItems: number;
   processedItems: number;
+  selectedBriefArticles: number;
+  uniqueSourceOutlets: number;
+  localization: ReturnType<typeof getArticleLocalizationStatus>;
   savedToCache: boolean;
   generatedAt: string;
   nextSteps: string[];
@@ -28,17 +33,24 @@ export type CachedSummary = Article;
 // Frontend users should only read cached results so page views do not create
 // repeated AI API calls or uncontrolled cost growth.
 export async function runWeeklyIntelligencePipeline(): Promise<WeeklyPipelineResult> {
+  const localization = getArticleLocalizationStatus(articles);
+
   return {
     status: "scaffold",
     mode: "mock",
     cadence: "weekly",
     fetchedItems: 0,
     processedItems: articles.length,
+    selectedBriefArticles: articles.length,
+    uniqueSourceOutlets: getUniqueSourceCount(articles),
+    localization,
     savedToCache: false,
     generatedAt: new Date().toISOString(),
     nextSteps: [
       "Add RSS feed URLs",
       "Add durable storage for cached weekly briefs",
+      "Generate and save English/Korean summaries in the same server job",
+      "Fail or flag the weekly run if either language is missing",
       "Add server-only AI summarization behind an API key",
       "Replace mock article import with cached weekly results"
     ]

@@ -13,7 +13,7 @@ export const sourcePipeline = {
   candidateTarget: 40,
   shortlistTarget: 15,
   description:
-    "Each weekly run is designed to review about 40 candidate sources, dedupe overlapping coverage, then promote the strongest 15 signals into the public brief."
+    "Each weekly run is designed to review about 40 candidate items, dedupe overlapping coverage, then promote the strongest 15 brief articles into the public feed. Source counts refer only to unique outlets cited."
 };
 
 export const sourcePrinciples = [
