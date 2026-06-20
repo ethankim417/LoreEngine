@@ -10,7 +10,6 @@ import {
   readLocalBookmarks,
   writeLocalBookmarks
 } from "@/lib/bookmarksClient";
-import { languageLabels, type Language } from "@/lib/i18n";
 import { auth, db, googleProvider } from "@/lib/firebase";
 import {
   getRedirectResult,
@@ -158,19 +157,6 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
     }
   }
 
-  function handleLanguageChange(value: string) {
-    if (value === "en" || value === "ko") {
-      setLanguage(value);
-      if (user) {
-        setDoc(
-          doc(db, "users", user.uid),
-          { language: value, updatedAt: new Date().toISOString() },
-          { merge: true }
-        ).catch(console.error);
-      }
-    }
-  }
-
   if (user) {
     return (
       <div className="relative">
@@ -186,8 +172,6 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
         {open && portalReady ? createPortal(
           <AccountMenu
             deleteAccount={deleteAccount}
-            handleLanguageChange={handleLanguageChange}
-            language={language}
             signOut={signOut}
             storageMode={storageMode}
             syncNow={syncNow}
@@ -223,8 +207,6 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
 
 function AccountMenu({
   deleteAccount,
-  handleLanguageChange,
-  language,
   signOut,
   storageMode,
   syncNow,
@@ -233,8 +215,6 @@ function AccountMenu({
   user
 }: {
   deleteAccount: () => void;
-  handleLanguageChange: (value: string) => void;
-  language: Language;
   signOut: () => void;
   storageMode: "firebase" | "unconfigured" | "local";
   syncNow: () => void;
@@ -263,22 +243,6 @@ function AccountMenu({
         <p className="font-black uppercase tracking-[0.14em] text-cyan-200">{t("signedIn")}</p>
         <p className="mt-2 truncate font-semibold text-white">{user.displayName || "User"}</p>
         <p className="truncate text-slate-500">{user.email}</p>
-        <label className="mt-3 block">
-          <span className="text-[0.65rem] font-black uppercase tracking-[0.14em] text-slate-500">
-            {t("language")}
-          </span>
-          <select
-            value={language}
-            onChange={(event) => handleLanguageChange(event.target.value)}
-            className="mt-1 h-9 w-full rounded-lg border border-white/10 bg-slate-950/70 px-3 text-xs font-semibold text-white outline-none"
-          >
-            {(Object.keys(languageLabels) as Language[]).map((item) => (
-              <option key={item} value={item}>
-                {languageLabels[item]}
-              </option>
-            ))}
-          </select>
-        </label>
         <div className="mt-3 rounded-lg bg-white/[0.035] p-3">
           <div className="flex items-center gap-2 text-emerald-100">
             <ShieldCheck className="h-3.5 w-3.5" />
