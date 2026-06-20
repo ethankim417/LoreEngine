@@ -21,6 +21,24 @@ export const translations = {
     sources: "Sources",
     sourcesUsed: "sources used",
     informationalDemo: "Informational demo. Market data is weekly/cached, not real-time financial data.",
+    loreEngineDisclaimer: "LoreEngine Disclaimer",
+    showLoreEngineDisclaimer: "Show LoreEngine disclaimer",
+    disclaimerBodyOne:
+      "LoreEngine is an experimental industry intelligence dashboard for informational and educational purposes only. It is not financial, investment, legal, or professional advice.",
+    disclaimerBodyTwo:
+      "Market data may be delayed, incomplete, or inaccurate and should not be used for trading or investment decisions. Company names, tickers, and trademarks belong to their respective owners.",
+    disclaimerBodyThree:
+      "Article intelligence uses mock/cached data unless stated otherwise. Future AI-generated summaries may contain errors and should be checked against original sources.",
+    marketPulseDisclaimer: "Market Pulse Disclaimer",
+    marketDisclosureShort: "Weekly/cached market context, not investment advice.",
+    details: "Details",
+    showMarketDisclaimer: "Show Market Pulse disclaimer",
+    marketDisclaimerBodyOne:
+      "Market Pulse is for informational and educational context only. It is not financial, investment, legal, or professional advice.",
+    marketDisclaimerBodyTwo:
+      "Prices refresh server-side on Vercel from a public chart data source where available and fall back to the local snapshot when needed. Data may be delayed, incomplete, or inaccurate.",
+    marketDisclaimerBodyThree:
+      "Do not use this page for trading or investment decisions. Company names, tickers, and trademarks belong to their respective owners.",
     account: "Account",
     signedIn: "Signed In",
     continueWithGoogle: "Continue with Google",
@@ -151,6 +169,24 @@ export const translations = {
     sources: "출처",
     sourcesUsed: "개 출처 사용",
     informationalDemo: "정보 제공용 데모입니다. 시장 데이터는 주간/캐시 기준이며 실시간 금융 데이터가 아닙니다.",
+    loreEngineDisclaimer: "LoreEngine 고지",
+    showLoreEngineDisclaimer: "LoreEngine 고지 보기",
+    disclaimerBodyOne:
+      "LoreEngine은 정보 제공과 학습 목적의 실험적 산업 인텔리전스 대시보드입니다. 금융, 투자, 법률 또는 전문 자문이 아닙니다.",
+    disclaimerBodyTwo:
+      "시장 데이터는 지연되거나 불완전하거나 부정확할 수 있으며, 거래나 투자 판단에 사용해서는 안 됩니다. 회사명, 티커, 상표는 각 소유자에게 귀속됩니다.",
+    disclaimerBodyThree:
+      "기사 인텔리전스는 별도 표시가 없는 한 목업/캐시 데이터를 사용합니다. 향후 AI 생성 요약은 오류가 있을 수 있으므로 원문 출처로 확인해야 합니다.",
+    marketPulseDisclaimer: "Market Pulse 고지",
+    marketDisclosureShort: "주간/캐시 시장 참고 정보이며 투자 조언이 아닙니다.",
+    details: "자세히",
+    showMarketDisclaimer: "Market Pulse 고지 보기",
+    marketDisclaimerBodyOne:
+      "Market Pulse는 정보 제공과 학습 목적의 참고 자료입니다. 금융, 투자, 법률 또는 전문 자문이 아닙니다.",
+    marketDisclaimerBodyTwo:
+      "가격은 가능한 경우 Vercel 서버에서 공개 차트 데이터로 갱신되며, 필요 시 로컬 스냅샷으로 대체됩니다. 데이터는 지연되거나 불완전하거나 부정확할 수 있습니다.",
+    marketDisclaimerBodyThree:
+      "이 페이지를 거래나 투자 판단에 사용하지 마세요. 회사명, 티커, 상표는 각 소유자에게 귀속됩니다.",
     account: "계정",
     signedIn: "로그인됨",
     continueWithGoogle: "Google로 계속",

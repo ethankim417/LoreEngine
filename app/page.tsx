@@ -142,18 +142,17 @@ function DisclosureFooter() {
           <LocalizedText k="disclaimer" />
         </button>
         <div className="pointer-events-none absolute bottom-[calc(100%+0.75rem)] left-0 z-30 hidden w-[min(34rem,calc(100vw-2rem))] rounded-lg border border-cyan-300/18 bg-slate-950/95 p-4 text-left text-xs leading-5 text-slate-300 shadow-[0_24px_80px_rgba(0,0,0,0.48)] backdrop-blur-xl group-hover/disclosure:block group-focus-within/disclosure:block">
-          <p className="font-black uppercase tracking-[0.14em] text-cyan-200">LoreEngine Disclaimer</p>
-          <p className="mt-2">
-            LoreEngine is an experimental industry intelligence dashboard for informational and educational
-            purposes only. It is not financial, investment, legal, or professional advice.
+          <p className="font-black uppercase tracking-[0.14em] text-cyan-200">
+            <LocalizedText k="loreEngineDisclaimer" />
           </p>
           <p className="mt-2">
-            Market data may be delayed, incomplete, or inaccurate and should not be used for trading or
-            investment decisions. Company names, tickers, and trademarks belong to their respective owners.
+            <LocalizedText k="disclaimerBodyOne" />
           </p>
           <p className="mt-2">
-            Article intelligence uses mock/cached data unless stated otherwise. Future AI-generated summaries
-            may contain errors and should be checked against original sources.
+            <LocalizedText k="disclaimerBodyTwo" />
+          </p>
+          <p className="mt-2">
+            <LocalizedText k="disclaimerBodyThree" />
           </p>
         </div>
       </div>
