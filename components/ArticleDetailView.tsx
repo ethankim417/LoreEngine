@@ -21,7 +21,7 @@ export function ArticleDetailView({ article }: { article: Article }) {
       <div aria-hidden="true" className="mesh-grid absolute inset-0 opacity-70" />
       <div
         aria-hidden="true"
-        className="absolute right-[-12rem] top-[-12rem] h-[32rem] w-[32rem] rounded-full bg-violet-500/15 blur-3xl"
+        className="detail-ambient absolute right-[-12rem] top-[-12rem] h-[32rem] w-[32rem] rounded-full bg-violet-500/15 blur-3xl"
       />
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-4 sm:gap-6">
         <Link
@@ -40,7 +40,7 @@ export function ArticleDetailView({ article }: { article: Article }) {
         </Link>
 
         <article className="glass-panel overflow-hidden rounded-lg">
-          <div className="relative overflow-hidden border-b border-white/10 p-4 sm:min-h-[30rem] sm:p-7">
+          <div className="detail-hero relative overflow-hidden border-b border-white/10 p-4 sm:min-h-[30rem] sm:p-7">
             <Image
               src={article.visual.image}
               alt={article.visual.alt}
@@ -48,16 +48,16 @@ export function ArticleDetailView({ article }: { article: Article }) {
               priority
               sizes="(min-width: 1280px) 72rem, 100vw"
               quality={76}
-              className="object-cover object-center opacity-[0.2] saturate-[0.85] [mask-image:linear-gradient(90deg,black,black_54%,transparent_92%)]"
+              className="detail-hero-image object-cover object-center opacity-[0.2] saturate-[0.85] [mask-image:linear-gradient(90deg,black,black_54%,transparent_92%)]"
             />
             <SectorSignalArt article={article} opacity="subtle" />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,7,13,0.99),rgba(6,7,13,0.92)_48%,rgba(6,7,13,0.58)_78%),linear-gradient(to_bottom,rgba(6,7,13,0.32),rgba(6,7,13,0.9))]" />
-            <div className="absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_50%_35%,rgba(50,217,255,0.085),transparent_48%)]" />
-            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#06070d] to-transparent" />
+            <div className="detail-hero-overlay absolute inset-0 bg-[linear-gradient(90deg,rgba(6,7,13,0.99),rgba(6,7,13,0.92)_48%,rgba(6,7,13,0.58)_78%),linear-gradient(to_bottom,rgba(6,7,13,0.32),rgba(6,7,13,0.9))]" />
+            <div className="detail-hero-glow absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_50%_35%,rgba(50,217,255,0.085),transparent_48%)]" />
+            <div className="detail-hero-fade absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#06070d] to-transparent" />
 
             <div className="relative z-10 grid gap-5 sm:min-h-[26rem] lg:grid-cols-[1fr_18rem] lg:items-end">
               <div className="max-w-3xl">
-                <div className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-lg border border-white/10 bg-slate-950/50 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:gap-3">
+                <div className="detail-meta inline-flex max-w-full flex-wrap items-center gap-2 rounded-lg border border-white/10 bg-slate-950/50 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:gap-3">
                   <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryTone(article.category)}`}>
                     {getCategoryLabel(article.category, language)}
                   </span>
@@ -82,7 +82,7 @@ export function ArticleDetailView({ article }: { article: Article }) {
                 </div>
               </div>
 
-              <details className="mt-4 rounded-lg border border-white/10 bg-slate-950/70 p-3 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:hidden">
+              <details className="detail-score-panel mt-4 rounded-lg border border-white/10 bg-slate-950/70 p-3 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:hidden">
                 <summary className="cursor-pointer text-xs font-black uppercase tracking-[0.14em] text-cyan-200">
                   {t("scores")}
                 </summary>
@@ -93,7 +93,7 @@ export function ArticleDetailView({ article }: { article: Article }) {
                 </div>
               </details>
 
-              <div className="hidden gap-2 rounded-lg border border-white/10 bg-slate-950/70 p-2.5 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:grid sm:p-3">
+              <div className="detail-score-panel hidden gap-2 rounded-lg border border-white/10 bg-slate-950/70 p-2.5 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:grid sm:p-3">
                 <HeaderGauge label={t("impact")} value={article.impactScore} suffix="/100" />
                 <HeaderGauge label={t("momentum")} value={article.trendScore} prefix="+" suffix="%" />
                 <HeaderGauge label={t("confidence")} value={article.confidence} suffix="%" />
@@ -121,7 +121,7 @@ export function ArticleDetailView({ article }: { article: Article }) {
               </div>
             </div>
 
-            <aside className="border-t border-white/10 bg-black/20 p-5 sm:p-7 lg:border-l lg:border-t-0">
+            <aside className="detail-aside border-t border-white/10 bg-black/20 p-5 sm:p-7 lg:border-l lg:border-t-0">
               <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-cyan-200">
                 <RadioTower className="h-4 w-4" />
                 {t("intelReadout")}

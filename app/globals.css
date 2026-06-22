@@ -761,3 +761,62 @@ body.theme-light .article-visual-image,
   filter: saturate(0.8) contrast(0.92);
 }
 
+html.theme-light .detail-ambient,
+html[data-theme="light"] .detail-ambient,
+body.theme-light .detail-ambient,
+.theme-scope.theme-light .detail-ambient,
+html.theme-light .detail-hero-glow,
+html[data-theme="light"] .detail-hero-glow,
+body.theme-light .detail-hero-glow,
+.theme-scope.theme-light .detail-hero-glow,
+html.theme-light .detail-hero-fade,
+html[data-theme="light"] .detail-hero-fade,
+body.theme-light .detail-hero-fade,
+.theme-scope.theme-light .detail-hero-fade {
+  display: none !important;
+}
+
+html.theme-light .detail-hero,
+html[data-theme="light"] .detail-hero,
+body.theme-light .detail-hero,
+.theme-scope.theme-light .detail-hero {
+  background: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+
+html.theme-light .detail-hero-overlay,
+html[data-theme="light"] .detail-hero-overlay,
+body.theme-light .detail-hero-overlay,
+.theme-scope.theme-light .detail-hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92) 54%, rgba(255, 255, 255, 0.78) 100%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.88), #ffffff) !important;
+}
+
+html.theme-light .detail-hero-image,
+html[data-theme="light"] .detail-hero-image,
+body.theme-light .detail-hero-image,
+.theme-scope.theme-light .detail-hero-image {
+  opacity: 0.11 !important;
+  filter: saturate(0.82) contrast(0.9);
+}
+
+html.theme-light .detail-meta,
+html[data-theme="light"] .detail-meta,
+body.theme-light .detail-meta,
+.theme-scope.theme-light .detail-meta,
+html.theme-light .detail-score-panel,
+html[data-theme="light"] .detail-score-panel,
+body.theme-light .detail-score-panel,
+.theme-scope.theme-light .detail-score-panel,
+html.theme-light .detail-aside,
+html[data-theme="light"] .detail-aside,
+body.theme-light .detail-aside,
+.theme-scope.theme-light .detail-aside {
+  background: #ffffff !important;
+  border-color: #e5e7eb !important;
+  color: #111827 !important;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.055) !important;
+  backdrop-filter: none !important;
+}
+
