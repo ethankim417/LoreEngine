@@ -20,16 +20,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const stored = readStoredTheme();
     if (stored) {
       setThemeState(stored);
-      document.documentElement.dataset.theme = stored;
+      applyTheme(stored);
       return;
     }
 
-    document.documentElement.dataset.theme = "dark";
+    applyTheme("dark");
   }, []);
 
   const setTheme = useCallback((nextTheme: InterfaceTheme) => {
     setThemeState(nextTheme);
-    document.documentElement.dataset.theme = nextTheme;
+    applyTheme(nextTheme);
     window.localStorage.setItem(THEME_KEY, nextTheme);
   }, []);
 
@@ -56,4 +56,11 @@ function readStoredTheme(): InterfaceTheme | null {
   } catch {
     return null;
   }
+}
+
+function applyTheme(theme: InterfaceTheme) {
+  const root = document.documentElement;
+  root.dataset.theme = theme;
+  root.classList.remove("theme-dark", "theme-light");
+  root.classList.add(`theme-${theme}`);
 }

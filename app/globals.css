@@ -7,7 +7,7 @@
   background: #06070d;
 }
 
-:root[data-theme="light"] {
+html.theme-light {
   color-scheme: light;
   background: #f6f9ff;
 }
@@ -32,7 +32,7 @@ body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-:root[data-theme="light"] body {
+html.theme-light body {
   background:
     radial-gradient(circle at 16% 10%, rgba(14, 165, 233, 0.18), transparent 26rem),
     radial-gradient(circle at 82% 8%, rgba(99, 102, 241, 0.12), transparent 28rem),
@@ -256,13 +256,13 @@ select {
   animation: skeleton-sheen 1.4s ease-in-out infinite;
 }
 
-:root[data-theme="light"] .mesh-grid {
+html.theme-light .mesh-grid {
   background-image:
     linear-gradient(rgba(15, 23, 42, 0.055) 1px, transparent 1px),
     linear-gradient(90deg, rgba(15, 23, 42, 0.055) 1px, transparent 1px);
 }
 
-:root[data-theme="light"] .theme-hero {
+html.theme-light .theme-hero {
   border-color: rgba(14, 116, 144, 0.14) !important;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(237, 247, 255, 0.7)),
@@ -273,7 +273,7 @@ select {
     inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
 }
 
-:root[data-theme="light"] .glass-panel {
+html.theme-light .glass-panel {
   border-color: rgba(14, 116, 144, 0.16);
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(244, 249, 255, 0.88)),
@@ -284,8 +284,8 @@ select {
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
-:root[data-theme="light"] .glass-panel-soft,
-:root[data-theme="light"] .surface-panel {
+html.theme-light .glass-panel-soft,
+html.theme-light .surface-panel {
   border-color: rgba(14, 116, 144, 0.13);
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(246, 250, 255, 0.82)),
@@ -295,7 +295,7 @@ select {
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-:root[data-theme="light"] .premium-hover::before {
+html.theme-light .premium-hover::before {
   border-color: rgba(14, 165, 233, 0.22);
   box-shadow:
     inset 0 0 0 1px rgba(79, 70, 229, 0.05),
@@ -303,80 +303,80 @@ select {
     0 0 34px rgba(79, 70, 229, 0.04);
 }
 
-:root[data-theme="light"] .market-skeleton {
+html.theme-light .market-skeleton {
   background:
     linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.18), transparent),
     rgba(226, 239, 255, 0.9);
 }
 
-:root[data-theme="light"] .text-white,
-:root[data-theme="light"] .text-slate-50,
-:root[data-theme="light"] .text-slate-100 {
+html.theme-light .text-white,
+html.theme-light .text-slate-50,
+html.theme-light .text-slate-100 {
   color: #0b1220 !important;
 }
 
-:root[data-theme="light"] .text-slate-200,
-:root[data-theme="light"] .text-slate-300 {
+html.theme-light .text-slate-200,
+html.theme-light .text-slate-300 {
   color: #243449 !important;
 }
 
-:root[data-theme="light"] .text-slate-400,
-:root[data-theme="light"] .text-slate-500 {
+html.theme-light .text-slate-400,
+html.theme-light .text-slate-500 {
   color: #52637a !important;
 }
 
-:root[data-theme="light"] [class*="text-cyan-"] {
+html.theme-light [class*="text-cyan-"] {
   color: #0369a1 !important;
 }
 
-:root[data-theme="light"] [class*="text-emerald-"] {
+html.theme-light [class*="text-emerald-"] {
   color: #047857 !important;
 }
 
-:root[data-theme="light"] [class*="text-violet-"] {
+html.theme-light [class*="text-violet-"] {
   color: #6d28d9 !important;
 }
 
-:root[data-theme="light"] [class*="text-rose-"] {
+html.theme-light [class*="text-rose-"] {
   color: #be123c !important;
 }
 
-:root[data-theme="light"] [class*="text-amber-"] {
+html.theme-light [class*="text-amber-"] {
   color: #92400e !important;
 }
 
-:root[data-theme="light"] .bg-cyan-300,
-:root[data-theme="light"] .hover\:bg-cyan-200:hover {
+html.theme-light .bg-cyan-300,
+html.theme-light .hover\:bg-cyan-200:hover {
   background-color: #0ea5e9 !important;
   color: #ffffff !important;
 }
 
-:root[data-theme="light"] [class*="bg-slate-950"],
-:root[data-theme="light"] [class*="bg-black"] {
+html.theme-light [class*="bg-slate-950"],
+html.theme-light [class*="bg-black"] {
   background-color: rgba(255, 255, 255, 0.82) !important;
 }
 
-:root[data-theme="light"] [class*="bg-white/"],
-:root[data-theme="light"] [class*="bg-white\\["] {
+html.theme-light [class*="bg-white/"],
+html.theme-light [class*="bg-white\\["] {
   background-color: rgba(255, 255, 255, 0.7) !important;
 }
 
-:root[data-theme="light"] [class*="border-white"],
-:root[data-theme="light"] [class*="border-slate"] {
+html.theme-light [class*="border-white"],
+html.theme-light [class*="border-slate"] {
   border-color: rgba(15, 23, 42, 0.1) !important;
 }
 
-:root[data-theme="light"] input,
-:root[data-theme="light"] select {
+html.theme-light input,
+html.theme-light select {
   color: #0f172a !important;
   background-color: rgba(255, 255, 255, 0.74) !important;
 }
 
-:root[data-theme="light"] input::placeholder {
+html.theme-light input::placeholder {
   color: #64748b !important;
 }
 
-:root[data-theme="light"] .signal-logo {
+html.theme-light .signal-logo {
   background: rgba(255, 255, 255, 0.76) !important;
   border-color: rgba(14, 165, 233, 0.24) !important;
   box-shadow:
@@ -440,14 +440,14 @@ select {
     opacity: 0.45;
   }
 
-  :root[data-theme="light"] body {
+  html.theme-light body {
     background:
       radial-gradient(circle at 18% 10%, rgba(14, 165, 233, 0.16), transparent 22rem),
       radial-gradient(circle at 78% 8%, rgba(124, 58, 237, 0.1), transparent 22rem),
       linear-gradient(180deg, #f8fbff 0%, #eef6ff 54%, #fbfdff 100%);
   }
 
-  :root[data-theme="light"] .glass-panel {
+  html.theme-light .glass-panel {
     border-color: rgba(14, 116, 144, 0.16);
     background:
       linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(244, 249, 255, 0.9)),
@@ -458,8 +458,8 @@ select {
     backdrop-filter: blur(12px);
   }
 
-  :root[data-theme="light"] .glass-panel-soft,
-  :root[data-theme="light"] .surface-panel {
+  html.theme-light .glass-panel-soft,
+  html.theme-light .surface-panel {
     border-color: rgba(14, 116, 144, 0.12);
     background:
       linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(247, 251, 255, 0.84)),
@@ -613,3 +613,4 @@ select {
     scroll-behavior: auto !important;
   }
 }
+

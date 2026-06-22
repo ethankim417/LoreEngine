@@ -48,12 +48,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{var t=localStorage.getItem('loreengine-theme');document.documentElement.dataset.theme=t==='light'?'light':'dark'}catch(e){document.documentElement.dataset.theme='dark'}"
+              "try{var t=localStorage.getItem('loreengine-theme')==='light'?'light':'dark';var e=document.documentElement;e.dataset.theme=t;e.classList.remove('theme-light','theme-dark');e.classList.add('theme-'+t)}catch(e){document.documentElement.dataset.theme='dark';document.documentElement.classList.add('theme-dark')}"
           }}
         />
       </head>
