@@ -60,7 +60,14 @@ function readStoredTheme(): InterfaceTheme | null {
 
 function applyTheme(theme: InterfaceTheme) {
   const root = document.documentElement;
+  const body = document.body;
   root.dataset.theme = theme;
   root.classList.remove("theme-dark", "theme-light");
   root.classList.add(`theme-${theme}`);
+
+  if (body) {
+    body.dataset.theme = theme;
+    body.classList.remove("theme-dark", "theme-light");
+    body.classList.add(`theme-${theme}`);
+  }
 }
