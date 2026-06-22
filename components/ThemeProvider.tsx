@@ -35,7 +35,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme]);
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={value}>
+      <div className={`theme-scope theme-${theme}`} data-theme={theme}>
+        {children}
+      </div>
+    </ThemeContext.Provider>
+  );
 }
 
 export function useTheme() {

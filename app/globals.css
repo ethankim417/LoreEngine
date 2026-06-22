@@ -610,50 +610,61 @@ html.theme-light .animate-slow-pan {
 html.theme-light,
 html[data-theme="light"],
 body.theme-light,
-body[data-theme="light"] {
+body[data-theme="light"],
+.theme-scope.theme-light {
   background: #ffffff !important;
   color: #111827 !important;
 }
 
 html.theme-light body,
 html[data-theme="light"] body,
-body.theme-light {
+body.theme-light,
+.theme-scope.theme-light {
   background: #ffffff !important;
   color: #111827 !important;
 }
 
 html.theme-light main,
 html[data-theme="light"] main,
-body.theme-light main {
+body.theme-light main,
+.theme-scope.theme-light main {
   background: #ffffff !important;
 }
 
 html.theme-light .mesh-grid,
 html[data-theme="light"] .mesh-grid,
 body.theme-light .mesh-grid,
+.theme-scope.theme-light .mesh-grid,
 html.theme-light .ambient-particles,
 html[data-theme="light"] .ambient-particles,
 body.theme-light .ambient-particles,
+.theme-scope.theme-light .ambient-particles,
 html.theme-light .page-scanline,
 html[data-theme="light"] .page-scanline,
 body.theme-light .page-scanline,
+.theme-scope.theme-light .page-scanline,
 html.theme-light .animate-slow-pan,
 html[data-theme="light"] .animate-slow-pan,
-body.theme-light .animate-slow-pan {
+body.theme-light .animate-slow-pan,
+.theme-scope.theme-light .animate-slow-pan {
   display: none !important;
 }
 
 html.theme-light .theme-hero,
 html[data-theme="light"] .theme-hero,
 body.theme-light .theme-hero,
+.theme-scope.theme-light .theme-hero,
 html.theme-light .glass-panel,
 html[data-theme="light"] .glass-panel,
 body.theme-light .glass-panel,
+.theme-scope.theme-light .glass-panel,
 html.theme-light .glass-panel-soft,
 html[data-theme="light"] .glass-panel-soft,
 body.theme-light .glass-panel-soft,
+.theme-scope.theme-light .glass-panel-soft,
 html.theme-light .surface-panel,
 html[data-theme="light"] .surface-panel,
+.theme-scope.theme-light .surface-panel,
 body.theme-light .surface-panel {
   background: #ffffff !important;
   border-color: #e5e7eb !important;
@@ -666,55 +677,67 @@ body.theme-light .surface-panel {
 
 html.theme-light .theme-hero > .absolute,
 html[data-theme="light"] .theme-hero > .absolute,
-body.theme-light .theme-hero > .absolute {
+body.theme-light .theme-hero > .absolute,
+.theme-scope.theme-light .theme-hero > .absolute {
   display: none !important;
 }
 
 html.theme-light [class*="bg-slate-950"],
 html[data-theme="light"] [class*="bg-slate-950"],
 body.theme-light [class*="bg-slate-950"],
+.theme-scope.theme-light [class*="bg-slate-950"],
 html.theme-light [class*="bg-black"],
 html[data-theme="light"] [class*="bg-black"],
-body.theme-light [class*="bg-black"] {
+body.theme-light [class*="bg-black"],
+.theme-scope.theme-light [class*="bg-black"] {
   background-color: #ffffff !important;
 }
 
 html.theme-light .text-white,
 html[data-theme="light"] .text-white,
 body.theme-light .text-white,
+.theme-scope.theme-light .text-white,
 html.theme-light .text-slate-50,
 html[data-theme="light"] .text-slate-50,
 body.theme-light .text-slate-50,
+.theme-scope.theme-light .text-slate-50,
 html.theme-light .text-slate-100,
 html[data-theme="light"] .text-slate-100,
-body.theme-light .text-slate-100 {
+body.theme-light .text-slate-100,
+.theme-scope.theme-light .text-slate-100 {
   color: #111827 !important;
 }
 
 html.theme-light .text-slate-200,
 html[data-theme="light"] .text-slate-200,
 body.theme-light .text-slate-200,
+.theme-scope.theme-light .text-slate-200,
 html.theme-light .text-slate-300,
 html[data-theme="light"] .text-slate-300,
-body.theme-light .text-slate-300 {
+body.theme-light .text-slate-300,
+.theme-scope.theme-light .text-slate-300 {
   color: #334155 !important;
 }
 
 html.theme-light .text-slate-400,
 html[data-theme="light"] .text-slate-400,
 body.theme-light .text-slate-400,
+.theme-scope.theme-light .text-slate-400,
 html.theme-light .text-slate-500,
 html[data-theme="light"] .text-slate-500,
-body.theme-light .text-slate-500 {
+body.theme-light .text-slate-500,
+.theme-scope.theme-light .text-slate-500 {
   color: #64748b !important;
 }
 
 html.theme-light input,
 html[data-theme="light"] input,
 body.theme-light input,
+.theme-scope.theme-light input,
 html.theme-light select,
 html[data-theme="light"] select,
-body.theme-light select {
+body.theme-light select,
+.theme-scope.theme-light select {
   background-color: #ffffff !important;
   border-color: #d1d5db !important;
   color: #111827 !important;
@@ -723,7 +746,8 @@ body.theme-light select {
 
 html.theme-light .article-visual-overlay,
 html[data-theme="light"] .article-visual-overlay,
-body.theme-light .article-visual-overlay {
+body.theme-light .article-visual-overlay,
+.theme-scope.theme-light .article-visual-overlay {
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.98) 58%),
     radial-gradient(circle at 82% 18%, rgba(0, 122, 255, 0.055), transparent 24%) !important;
@@ -731,7 +755,8 @@ body.theme-light .article-visual-overlay {
 
 html.theme-light .article-visual-image,
 html[data-theme="light"] .article-visual-image,
-body.theme-light .article-visual-image {
+body.theme-light .article-visual-image,
+.theme-scope.theme-light .article-visual-image {
   opacity: 0.075 !important;
   filter: saturate(0.8) contrast(0.92);
 }
