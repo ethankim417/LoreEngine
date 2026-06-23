@@ -26,6 +26,8 @@ export function ExecutiveBrief({ articles, compact = false }: { articles: Articl
     ) ?? topStories[0];
   const watchItem = topStories[1] ?? topStories[0];
   const topCategory = topStories[0] ? getCategoryLabel(topStories[0].category, language) : t("industryImpact");
+  const headline = formatToneHeadline(topCategory, t("isSettingTone"), language);
+  const strategicRead = topStories[0] ? getStrategicRead(topStories[0], language) : t("noLeadStory");
 
   return (
     <section className="surface-panel premium-hover relative overflow-hidden rounded-lg" aria-label={t("thisWeeksRead")}>
@@ -38,7 +40,7 @@ export function ExecutiveBrief({ articles, compact = false }: { articles: Articl
               {t("thisWeeksRead")}
             </div>
             <h2 className="mt-2 font-display text-2xl font-black text-white">
-              {topCategory}{t("isSettingTone")}
+              {headline}
             </h2>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
               {t("executiveBriefIntro")}
@@ -77,7 +79,7 @@ export function ExecutiveBrief({ articles, compact = false }: { articles: Articl
 
         <div>
           <div className="grid gap-2 border-b border-white/[0.07] p-4 md:grid-cols-4">
-            <NarrativeCell label={t("biggestShift")} body={topStories[0] ? getArticleText(topStories[0], language).tldr : t("noLeadStory")} />
+            <NarrativeCell label={t("strategicRead")} body={strategicRead} />
             <NarrativeCell label={t("aiSignal")} body={topAiStory ? getArticleText(topAiStory, language).tldr : t("noAiSignal")} />
             <NarrativeCell label={t("marketSignal")} body={marketStory ? getArticleText(marketStory, language).tldr : t("noMarketSignal")} />
             <NarrativeCell label={t("watchNext")} body={watchItem ? getArticleText(watchItem, language).trendAnalysis : t("noWatchItem")} />
@@ -121,6 +123,29 @@ export function ExecutiveBrief({ articles, compact = false }: { articles: Articl
       </div>
     </section>
   );
+}
+
+function formatToneHeadline(category: string, suffix: string, language: "en" | "ko") {
+  return language === "ko" ? `${category}${suffix}` : `${category} ${suffix}`;
+}
+
+function getStrategicRead(article: Article, language: "en" | "ko") {
+  const articleText = getArticleText(article, language);
+  const candidates = [
+    articleText.whyItMatters,
+    articleText.possibleImpact,
+    articleText.trendAnalysis,
+    articleText.fullTldr
+  ];
+  const tldr = normalizeBriefText(articleText.tldr);
+  const distinctCandidate = candidates.find((candidate) => normalizeBriefText(candidate) !== tldr);
+  const firstSentence = (distinctCandidate ?? articleText.whyItMatters).split(/(?<=[.!?])\s+/)[0];
+
+  return firstSentence || articleText.whyItMatters;
+}
+
+function normalizeBriefText(value: string) {
+  return value.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
 function NarrativeCell({ label, body }: { label: string; body: string }) {
