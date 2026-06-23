@@ -55,181 +55,179 @@ export const categories: ArticleCategory[] = [
   "Studio"
 ];
 
-export const briefSnapshotDate = "2026-06-16";
+export const briefSnapshotDate = "2026-06-23";
 
 export const articles: Article[] = [
   {
     id: "le-001",
-    slug: "roblox-discovery-update-reframes-how-creator-games-reach-scale",
-    title: "Roblox discovery update reframes how creator games reach scale",
-    source: "Roblox",
-    sourceCredibility: "Official source",
-    category: "Studio",
+    slug: "valve-prices-steam-machine-above-console-market",
+    title: "Valve prices Steam Machine above the console market",
+    source: "The Verge",
+    sourceCredibility: "Trade press",
+    category: "Hardware",
     tldr:
-      "Roblox is spelling out how recommendation, search, and quality signals help strong creator games find large audiences.",
+      "Valve set Steam Machine pricing at $1,049 and up, turning its living-room PC into a premium hardware test rather than a subsidized console play.",
     fullTldr:
-      "Roblox's June discovery post makes platform distribution mechanics more explicit for creators. The signal is that breakout success on UGC platforms increasingly depends on measurable retention, quality, and discovery fit, not only community hustle or paid promotion.",
+      "Valve's June 22 pricing reveal puts the 512GB Steam Machine at $1,049 and the 2TB model at $1,349 before controller bundles. The signal is not only that Valve is returning to living-room hardware, but that open PC economics are colliding with console price expectations.",
     whyItMatters:
-      "Creator-led games are becoming a professional market. Clearer discovery rules change how teams prototype, soft launch, and optimize Roblox experiences before trying to scale them.",
+      "Steam Machine now tests how much value players assign to Steam library access, Linux flexibility, and PC openness when the box costs far more than a PS5 or Xbox Series X.",
     possibleImpact:
-      "Expect more Roblox studios to treat discovery readiness as a production milestone, with analytics, onboarding, and session design tuned before public pushes.",
+      "Expect publishers and hardware partners to watch reservation demand closely before treating SteamOS living-room PCs as a serious console-adjacent channel.",
     trendAnalysis:
-      "The broader trend is platform maturation: UGC ecosystems are exposing more of their growth logic so creators can build like live-service operators.",
-    impactScore: 88,
-    trendScore: 42,
+      "The broader trend is hardware inflation: memory, storage, and GPU economics are making subsidized console pricing harder to compare against PC-style devices.",
+    impactScore: 91,
+    trendScore: 45,
     confidence: 90,
-    sectors: ["UGC", "Creator Economy", "Discovery", "Live Ops"],
-    companies: ["Roblox", "Roblox Creators", "UGC Studios"],
-    publishedAt: "2026-06-15",
-    sourceUrl:
-      "https://about.roblox.com/newsroom/2026/06/optimizing-discovery-great-games-reach-millions-players-roblox",
-    visual: {
-      image: "/images/intelligence/studio-engine.webp",
-      alt: "Holographic game engine viewport with asset pipeline geometry"
-    }
-  },
-  {
-    id: "le-002",
-    slug: "steam-next-fest-keeps-demo-first-discovery-central-to-indie-go-to-market",
-    title: "Steam Next Fest keeps demo-first discovery central to indie go-to-market",
-    source: "Steam",
-    sourceCredibility: "Official source",
-    category: "Business",
-    tldr:
-      "Valve's June Next Fest window remains one of the clearest signals that demos are now core launch infrastructure for indies.",
-    fullTldr:
-      "Steam Next Fest's June 15 to June 22 event page reinforces how much PC discovery now depends on a public playable beat, not only trailers and wishlists. Demos have become a storefront test, a creator asset, and an early conversion funnel all at once.",
-    whyItMatters:
-      "For smaller teams, a successful demo week can do the work that paid media used to do, especially when streamers and short-form creators can show the game directly.",
-    possibleImpact:
-      "Expect more studios to build schedules around public demo readiness, post-festival retention plans, and creator-safe previews before launch dates lock.",
-    trendAnalysis:
-      "Momentum favors concise hooks, strong opening loops, and demos that produce repeatable streaming moments without heavy onboarding friction.",
-    impactScore: 84,
-    trendScore: 40,
-    confidence: 88,
-    sectors: ["Steam", "Indie Devs", "Publishing", "Marketing"],
-    companies: ["Valve", "Steam", "Independent Studios", "PC Publishers"],
-    publishedAt: "2026-06-15",
-    sourceUrl: "https://store.steampowered.com/sale/nextfest",
-    visual: {
-      image: "/images/intelligence/business-market.webp",
-      alt: "Dark gaming market intelligence terminal with holographic charts"
-    }
-  },
-  {
-    id: "le-003",
-    slug: "nvidia-blackwell-agent-benchmark-pushes-local-ai-performance-into-the-games-stack",
-    title: "NVIDIA Blackwell benchmark pushes agentic AI performance into the games stack",
-    source: "NVIDIA Blog",
-    sourceCredibility: "Official source",
-    category: "AI",
-    tldr:
-      "NVIDIA is using agentic AI benchmarks to keep GPU performance framed around local and workstation AI workloads.",
-    fullTldr:
-      "NVIDIA's June benchmark post is not game-specific, but it matters for game production because agent workflows are moving into art, QA, tools, and creator pipelines. The stronger the local benchmark story gets, the easier it is for studios to justify GPU-heavy AI-assisted production setups.",
-    whyItMatters:
-      "Game AI investment depends on hardware economics. If agentic workloads become a mainstream GPU buying argument, studios can assume more local AI capability in developer and creator environments.",
-    possibleImpact:
-      "Expect more tool vendors to market local inference, automated testing, and asset iteration features around workstation GPU capability.",
-    trendAnalysis:
-      "The trend is a shift from cloud-only AI assumptions toward hybrid pipelines where local accelerators handle private, iterative, latency-sensitive game work.",
-    impactScore: 86,
-    trendScore: 39,
-    confidence: 86,
-    sectors: ["Game AI", "Hardware", "Developer Tools", "Creator Tools"],
-    companies: ["NVIDIA", "GPU Vendors", "Tool Vendors", "Game Studios"],
-    publishedAt: "2026-06-12",
-    sourceUrl:
-      "https://blogs.nvidia.com/blog/nvidia-blackwell-agentperf-artificial-analysis/",
-    visual: {
-      image: "/images/intelligence/ai-npcs.webp",
-      alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
-    }
-  },
-  {
-    id: "le-004",
-    slug: "geforce-now-summer-sale-keeps-cloud-gaming-competing-on-access-and-price",
-    title: "GeForce NOW summer sale keeps cloud gaming competing on access and price",
-    source: "NVIDIA Blog",
-    sourceCredibility: "Official source",
-    category: "Platform",
-    tldr:
-      "NVIDIA is using membership discounts to keep GeForce NOW visible as cloud gaming shifts from novelty to retention economics.",
-    fullTldr:
-      "The GeForce NOW summer sale is a pricing signal more than a content reveal. It shows cloud gaming platforms still need aggressive access moments to bring users into paid tiers and remind players that high-end PC gaming can be rented as a service.",
-    whyItMatters:
-      "Cloud gaming strategy is increasingly about attach, retention, and catalog utility. Discounts are one way to keep the value proposition alive between major technical upgrades.",
-    possibleImpact:
-      "Publishers may watch cloud promotions as a supplemental discovery channel, especially for PC-heavy games with hardware barriers.",
-    trendAnalysis:
-      "The strongest pattern is cloud gaming settling into a services playbook: price events, catalog cadence, and device reach matter as much as raw streaming technology.",
-    impactScore: 76,
-    trendScore: 32,
-    confidence: 84,
-    sectors: ["Cloud Gaming", "PC Gaming", "Subscription Gaming", "Platform"],
-    companies: ["NVIDIA", "GeForce NOW", "PC Publishers"],
-    publishedAt: "2026-06-11",
-    sourceUrl: "https://blogs.nvidia.com/blog/geforce-now-thursday-summer-sale-2026/",
+    sectors: ["PC Gaming", "Hardware", "Steam", "Console"],
+    companies: ["Valve", "Steam", "AMD", "Sony", "Microsoft"],
+    publishedAt: "2026-06-22",
+    sourceUrl: "https://www.theverge.com/news/837022/valve-steam-machine-price-release-date",
     visual: {
       image: "/images/intelligence/platform-strategy.webp",
       alt: "Abstract cross-platform gaming network with cloud and device nodes"
     }
   },
   {
-    id: "le-005",
-    slug: "roblox-games-for-change-pushes-social-impact-into-creator-led-games",
-    title: "Roblox Games for Change pushes social impact into creator-led games",
-    source: "Roblox",
-    sourceCredibility: "Official source",
-    category: "Gaming",
+    id: "le-002",
+    slug: "steamos-desktop-expansion-turns-pc-builders-into-valve-platform-partners",
+    title: "SteamOS desktop expansion turns PC builders into Valve platform partners",
+    source: "The Verge",
+    sourceCredibility: "Trade press",
+    category: "Platform",
     tldr:
-      "Roblox and Games for Change are using creator competitions to position UGC games as more than engagement loops.",
+      "Valve says SteamOS 3.8 lets users build their own Steam Machines, expanding the strategy beyond a single first-party device.",
     fullTldr:
-      "Roblox's Games for Change challenge spotlights student and creator projects built around positive connection through play. The business signal is that creator-led platforms want higher-quality, brand-safe, culturally legible experiences that can appeal to schools, families, and partners.",
+      "Valve's desktop SteamOS push makes the Steam Machine launch less dependent on one hardware SKU. If users and OEMs can install SteamOS on more living-room PCs, Valve can grow its platform footprint without carrying every hardware risk directly.",
     whyItMatters:
-      "UGC platforms need credibility with parents, educators, and brands. Social-impact programs help broaden the category beyond youth entertainment and monetized hangouts.",
+      "A broader SteamOS install base could give developers another reason to treat Linux compatibility, controller UX, and TV-first PC play as mainstream work.",
     possibleImpact:
-      "Expect more platform-sponsored challenges that double as talent scouting, safety messaging, and public proof that creator ecosystems can support diverse genres.",
+      "Expect more small-form-factor PC vendors, modders, and Linux gaming communities to position SteamOS-ready builds as a console alternative.",
     trendAnalysis:
-      "The trend is professionalization of creator-led games through contests, curriculum, and partner-backed themes that create clearer pathways from hobby work to portfolio work.",
-    impactScore: 74,
-    trendScore: 35,
-    confidence: 86,
-    sectors: ["UGC", "Creator Economy", "Education", "Social Impact"],
-    companies: ["Roblox", "Games for Change", "Student Creators"],
-    publishedAt: "2026-06-10",
-    sourceUrl:
-      "https://about.roblox.com/newsroom/2026/06/roblox-games-for-change-challenge-winners-positive-connection-through-play",
+      "The trend is platform unbundling: storefront, OS, controller, and hardware can be promoted together without being locked to one box.",
+    impactScore: 86,
+    trendScore: 41,
+    confidence: 88,
+    sectors: ["SteamOS", "PC Gaming", "Platform", "Hardware"],
+    companies: ["Valve", "NVIDIA", "AMD", "Intel", "PC OEMs"],
+    publishedAt: "2026-06-22",
+    sourceUrl: "https://www.theverge.com/games/953411/valve-steamos-desktop-nvidia",
     visual: {
-      image: "/images/intelligence/studio-engine.webp",
-      alt: "Holographic game engine viewport with asset pipeline geometry"
+      image: "/images/intelligence/platform-strategy.webp",
+      alt: "Abstract cross-platform gaming network with cloud and device nodes"
+    }
+  },
+  {
+    id: "le-003",
+    slug: "amd-fsr-41-widens-upscaling-support-for-older-radeon-gpus",
+    title: "AMD FSR 4.1 widens upscaling support for older Radeon GPUs",
+    source: "The Verge",
+    sourceCredibility: "Trade press",
+    category: "Hardware",
+    tldr:
+      "AMD is bringing FSR 4.1 to RX 7000-series GPUs, making image-quality gains available beyond only the newest hardware.",
+    fullTldr:
+      "AMD's June 22 FSR 4.1 update matters because upscaling is now part of baseline game performance strategy. Wider support across RDNA 3 GPUs can improve the playable life of existing PCs while giving developers a larger target base for modern reconstruction features.",
+    whyItMatters:
+      "Upscaling quality is becoming a platform feature. The more broadly it works, the easier it is for studios to target higher visual settings without excluding older hardware.",
+    possibleImpact:
+      "Expect PC performance messaging to keep shifting from raw raster benchmarks toward upscaling quality, frame generation, and supported-game counts.",
+    trendAnalysis:
+      "The trend favors software-defined hardware value: GPU vendors are extending device life through model updates and smarter rendering pipelines.",
+    impactScore: 82,
+    trendScore: 39,
+    confidence: 86,
+    sectors: ["GPUs", "PC Gaming", "Rendering", "Developer Tools"],
+    companies: ["AMD", "Valve", "NVIDIA", "PC Developers"],
+    publishedAt: "2026-06-22",
+    sourceUrl: "https://www.theverge.com/news/953664/amd-fsr-4-1-upscaling-rx-7000-series-gpus-rdna-3",
+    visual: {
+      image: "/images/intelligence/hardware-ai.webp",
+      alt: "Close-up of a futuristic GPU board with glowing compute traces"
+    }
+  },
+  {
+    id: "le-004",
+    slug: "valve-and-amd-aim-fsr-4-at-steam-machine-image-quality-gap",
+    title: "Valve and AMD aim FSR 4 at Steam Machine's image-quality gap",
+    source: "The Verge",
+    sourceCredibility: "Trade press",
+    category: "Hardware",
+    tldr:
+      "Valve is working with AMD to bring FSR 4 to Steam Machine, addressing one of the clearest technical comparisons with PS5-class consoles.",
+    fullTldr:
+      "The Steam Machine's premium price makes visual quality a business issue, not just an engineering issue. Valve's work with AMD on FSR 4 suggests the device's long-term competitiveness will depend on software updates as much as its fixed silicon.",
+    whyItMatters:
+      "If Steam Machine can improve through upscaling updates, Valve can argue that a PC-like box ages differently than a traditional console generation.",
+    possibleImpact:
+      "Developers may be pushed to test FSR paths more carefully on SteamOS hardware if Valve promotes the device as a serious TV gaming target.",
+    trendAnalysis:
+      "The trend is post-launch performance competition, where platform holders keep improving image quality through upscalers, drivers, and compatibility layers.",
+    impactScore: 80,
+    trendScore: 38,
+    confidence: 86,
+    sectors: ["Steam Machine", "Rendering", "Hardware", "PC Gaming"],
+    companies: ["Valve", "AMD", "Steam", "Sony"],
+    publishedAt: "2026-06-22",
+    sourceUrl: "https://www.theverge.com/games/952210/valve-steam-machine-fsr4-amd-upscaler",
+    visual: {
+      image: "/images/intelligence/hardware-ai.webp",
+      alt: "Close-up of a futuristic GPU board with glowing compute traces"
+    }
+  },
+  {
+    id: "le-005",
+    slug: "steam-next-fest-closes-as-demo-first-discovery-keeps-growing",
+    title: "Steam Next Fest closes as demo-first discovery keeps growing",
+    source: "GamesRadar+",
+    sourceCredibility: "Trade press",
+    category: "Business",
+    tldr:
+      "The June Steam Next Fest closed on June 22, reinforcing demos as a core launch-readiness and wishlist-building channel.",
+    fullTldr:
+      "GamesRadar's June 22 guide confirms the second 2026 Steam Next Fest ran June 15-22, with free demos, livestreams, and the Summer Sale following on June 25. For PC teams, the event has become an operational milestone that tests hooks before paid launch windows.",
+    whyItMatters:
+      "Demos are now part of the publishing stack. They give players proof, creators footage, and developers early signal before full launch spend begins.",
+    possibleImpact:
+      "Expect more studios to build production calendars around demo polish, post-festival retargeting, and fast store-page iteration.",
+    trendAnalysis:
+      "The trend is storefront-led validation: public playable slices are replacing some traditional trailer-only marketing beats.",
+    impactScore: 84,
+    trendScore: 40,
+    confidence: 88,
+    sectors: ["Steam", "Indie Devs", "Publishing", "Marketing"],
+    companies: ["Valve", "Steam", "Independent Studios", "PC Publishers"],
+    publishedAt: "2026-06-22",
+    sourceUrl: "https://www.gamesradar.com/games/steam-next-fest-guide/",
+    visual: {
+      image: "/images/intelligence/business-market.webp",
+      alt: "Dark gaming market intelligence terminal with holographic charts"
     }
   },
   {
     id: "le-006",
-    slug: "diffusiongemma-on-rtx-keeps-local-generative-ai-in-the-creator-tool-conversation",
-    title: "DiffusionGemma on RTX keeps local generative AI in the creator-tool conversation",
-    source: "NVIDIA Blog",
-    sourceCredibility: "Official source",
+    slug: "steam-next-fest-ai-disclosures-show-discovery-and-trust-problem",
+    title: "Steam Next Fest AI disclosures show a discovery and trust problem",
+    source: "GamesRadar+",
+    sourceCredibility: "Trade press",
     category: "AI",
     tldr:
-      "NVIDIA's local DiffusionGemma acceleration keeps the AI creator-tools story tied to consumer and workstation GPUs.",
+      "Nearly 1,700 June Next Fest demos reportedly disclosed AI use, raising the pressure on Steam discovery, filtering, and player trust.",
     fullTldr:
-      "NVIDIA's post on accelerating Google's DiffusionGemma for local AI matters for games because image and asset ideation tools are increasingly part of preproduction. The signal is that vendors want creators to run more generative workflows locally, where latency, privacy, and iteration speed are easier to control.",
+      "GamesRadar reported that almost 1,700 of more than 8,600 Next Fest demos disclosed AI-generated content. The signal is not simply that AI use is rising; it is that storefront-scale discovery now has to separate useful tooling from perceived low-effort content.",
     whyItMatters:
-      "Small teams and creators are sensitive to cloud cost and asset privacy. Better local models could shift more concepting, marketing mockups, and prototype art back onto the developer machine.",
+      "AI disclosure is becoming a player-facing quality signal. Storefronts may need better filters and developers may need clearer explanations of how AI was used.",
     possibleImpact:
-      "Expect AI art and tooling vendors to keep packaging local model support as a production advantage for teams that do not want every iteration routed through a hosted service.",
+      "Expect more pressure on Valve and rival stores to expose AI-related metadata in ways that help players navigate large demo pools.",
     trendAnalysis:
-      "The trend is practical AI deployment: models are being judged less by demos alone and more by whether they can fit into fast, private, repeatable creative workflows.",
-    impactScore: 82,
-    trendScore: 38,
-    confidence: 86,
-    sectors: ["Game AI", "Creator Tools", "Hardware", "Art Pipelines"],
-    companies: ["NVIDIA", "Google DeepMind", "RTX Developers", "Indie Studios"],
-    publishedAt: "2026-06-10",
-    sourceUrl: "https://blogs.nvidia.com/blog/rtx-ai-garage-local-gemma-diffusion/",
+      "The trend is AI moving from production pipeline detail to storefront taxonomy and consumer trust issue.",
+    impactScore: 90,
+    trendScore: 44,
+    confidence: 84,
+    sectors: ["Game AI", "Steam", "Discovery", "Indie Devs"],
+    companies: ["Valve", "Steam", "AI Tool Vendors", "Independent Studios"],
+    publishedAt: "2026-06-17",
+    sourceUrl:
+      "https://www.gamesradar.com/platforms/pc-gaming/even-more-games-on-steam-are-using-ai-there-are-over-8-600-demos-in-this-weeks-next-fest-event-and-nearly-1-700-use-ai/",
     visual: {
       image: "/images/intelligence/ai-npcs.webp",
       alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
@@ -237,86 +235,87 @@ export const articles: Article[] = [
   },
   {
     id: "le-007",
-    slug: "nintendo-direct-turns-switch-2-cadence-into-showcase-week-counterprogramming",
-    title: "Nintendo Direct turns Switch 2 cadence into showcase-week counterprogramming",
-    source: "Nintendo",
-    sourceCredibility: "Official source",
-    category: "Hardware",
+    slug: "steam-ai-stigma-data-turns-disclosure-into-commercial-risk",
+    title: "Steam AI stigma data turns disclosure into commercial risk",
+    source: "PC Gamer",
+    sourceCredibility: "Trade press",
+    category: "AI",
     tldr:
-      "Nintendo used its June Direct and Treehouse follow-through to keep Switch 2 software momentum inside the industry's noisiest reveal window.",
+      "A new Steam analysis says games disclosing AI use received far fewer reviews and slightly weaker sentiment, making AI transparency a launch-risk topic.",
     fullTldr:
-      "Nintendo's June 9 Direct and Treehouse programming extended the Switch 2 conversation beyond launch hardware and into software cadence management. By filling the week with first-party reveals, upgraded catalog messaging, and live follow-up coverage, Nintendo kept attention on its own ecosystem while rival showcases competed for the same audience.",
+      "PC Gamer covered Game Oracle analysis of nearly 9,879 Steam releases from January through October 2025. The reported finding was stark: AI-disclosing games saw around 53% fewer reviews, suggesting the disclosure label can affect visibility and reception even before deeper quality judgments.",
     whyItMatters:
-      "Nintendo still wins when it controls its own attention windows. In a crowded showcase week, disciplined event cadence can protect hardware momentum just as much as any single exclusive announcement.",
+      "Studios cannot treat AI use as only an internal cost-saving decision. Player perception can affect reviews, conversion, and creator coverage.",
     possibleImpact:
-      "Expect Nintendo to keep bundling Direct reveals with creator-friendly follow-up beats, software refreshes, and Switch 2 upgrade messaging whenever competitor event calendars get crowded.",
+      "Expect publishers to audit store-page language, trailer assets, localization, and press kits for defensible AI-use explanations before launch.",
     trendAnalysis:
-      "The broader trend is that platform holders now manage livestream cadence as part of lifecycle strategy, using reveals, demos, and post-show coverage to extend hardware relevance across multiple days.",
-    impactScore: 82,
-    trendScore: 31,
-    confidence: 88,
-    sectors: ["Hardware", "Console", "First-Party IP", "Publishing"],
-    companies: ["Nintendo", "Nintendo Switch 2", "Treehouse", "First-Party Studios"],
-    publishedAt: "2026-06-09",
-    sourceUrl: "https://www.nintendo.com/en-ca/nintendo-direct/6-9-2026/",
+      "The trend is reputation-aware AI adoption: teams need governance, provenance, and messaging alongside production workflows.",
+    impactScore: 88,
+    trendScore: 43,
+    confidence: 82,
+    sectors: ["Game AI", "Steam", "Marketing", "Publishing"],
+    companies: ["Valve", "Steam Developers", "Game Oracle", "PC Publishers"],
+    publishedAt: "2026-06-22",
+    sourceUrl:
+      "https://www.pcgamer.com/software/ai/data-analyst-finds-ai-stigma-on-steam-can-reduce-the-number-of-reviews-a-game-gets-by-around-53-percent-and-the-reviews-it-does-get-are-more-negative/",
+    visual: {
+      image: "/images/intelligence/ai-npcs.webp",
+      alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
+    }
+  },
+  {
+    id: "le-008",
+    slug: "xbox-at-25-blends-platform-strategy-with-hollywood-franchise-reach",
+    title: "Xbox at 25 blends platform strategy with Hollywood franchise reach",
+    source: "Entertainment Weekly",
+    sourceCredibility: "Trade press",
+    category: "Platform",
+    tldr:
+      "Xbox's 25th anniversary coverage frames Microsoft gaming as a platform, publisher, and entertainment-IP business at once.",
+    fullTldr:
+      "Entertainment Weekly's June 23 Xbox feature highlights a broader reset around hardware, exclusives, Game Pass, and screen adaptations. The strategic signal is that Xbox is competing for franchise reach across consoles, subscriptions, cloud, and Hollywood.",
+    whyItMatters:
+      "Microsoft's gaming economics increasingly depend on more than console share. Adaptations, multiplatform releases, and subscription retention all support the same IP flywheel.",
+    possibleImpact:
+      "Expect Xbox franchises to be managed more like transmedia assets, with release windows coordinated around games, series, films, and Game Pass beats.",
+    trendAnalysis:
+      "The trend is portfolio strategy over platform purity: the same company can use some IP for hardware prestige and other IP for broad reach.",
+    impactScore: 86,
+    trendScore: 39,
+    confidence: 80,
+    sectors: ["Console", "Streaming", "Subscription Gaming", "Transmedia"],
+    companies: ["Microsoft", "Xbox", "Bethesda", "Activision", "Amazon"],
+    publishedAt: "2026-06-23",
+    sourceUrl: "https://ew.com/xbox-25th-anniversary-hollywood-adaptations-cover-story-exclusive-12003252",
     visual: {
       image: "/images/intelligence/platform-strategy.webp",
       alt: "Abstract cross-platform gaming network with cloud and device nodes"
     }
   },
   {
-    id: "le-008",
-    slug: "apple-agentic-porting-session-makes-games-strategy-about-workflow-cost",
-    title: "Apple's agentic porting session makes games strategy about workflow cost",
-    source: "Apple Developer",
-    sourceCredibility: "Official source",
-    category: "Studio",
-    tldr:
-      "Apple's WWDC26 game-porting session puts agentic coding directly into the platform expansion pitch.",
-    fullTldr:
-      "Apple's 'Speedrun your game port with agentic coding' session frames Apple platform support around reducing engineering friction. For studios, the point is not abstract AI enthusiasm; it is whether porting to Mac, iPad, and iPhone becomes cheap enough to test earlier.",
-    whyItMatters:
-      "Platform strategy increasingly depends on tooling cost. If AI-assisted porting lowers the first-pass burden, Apple can get more studios to evaluate support before the business case is fully proven.",
-    possibleImpact:
-      "Mid-size teams may use agentic porting workflows for feasibility tests, then decide later whether full optimization and certification are worth funding.",
-    trendAnalysis:
-      "The trend favors tooling-led platform expansion: fewer bespoke ports, more reusable workflows, and more automation around repetitive engineering tasks.",
-    impactScore: 80,
-    trendScore: 37,
-    confidence: 88,
-    sectors: ["Platform Tools", "Game Engines", "PC Ports", "Mobile Gaming"],
-    companies: ["Apple", "Xcode", "Mac Developers", "Third-Party Studios"],
-    publishedAt: "2026-06-08",
-    sourceUrl: "https://developer.apple.com/videos/play/wwdc2026/357/",
-    visual: {
-      image: "/images/intelligence/studio-engine.webp",
-      alt: "Holographic game engine viewport with asset pipeline geometry"
-    }
-  },
-  {
     id: "le-009",
-    slug: "apple-metal-performance-session-puts-port-quality-next-to-port-quantity",
-    title: "Apple Metal performance session puts port quality next to port quantity",
-    source: "Apple Developer",
-    sourceCredibility: "Official source",
+    slug: "xbox-studio-reset-keeps-creative-risk-in-the-spotlight",
+    title: "Xbox studio reset keeps creative risk in the spotlight",
+    source: "The Guardian",
+    sourceCredibility: "Trade press",
     category: "Studio",
     tldr:
-      "Apple is pairing easier game porting with performance diagnostics so Mac and iPad versions do not feel like afterthoughts.",
+      "Reports of Xbox studio closures and selloff pressure show the tension between showcase ambition and cost discipline.",
     fullTldr:
-      "The WWDC26 Metal games session focuses on finding and fixing performance issues. That matters because Apple gaming has often struggled less with headline capability than with whether ports run well enough to satisfy premium players.",
+      "The Guardian's June 17 report describes renewed fears around Xbox developers as Microsoft weighs closures, sales, and leadership changes. The industry signal is that even high-profile first-party studios can face pressure when portfolios are reorganized around fewer major bets.",
     whyItMatters:
-      "Porting volume is only useful if quality follows. Better profiling and Metal guidance make Apple support more credible for studios that care about reviews, retention, and parity.",
+      "Studio instability affects talent retention, project continuity, and the diversity of games inside major platform portfolios.",
     possibleImpact:
-      "Expect Apple to keep emphasizing diagnostics, shader work, and frame pacing alongside porting automation when speaking to game teams.",
+      "Expect more teams to seek independence, external funding, or acquisition alternatives if platform holders narrow their internal development focus.",
     trendAnalysis:
-      "The trend is practical platform courtship: developer tools now need to show that they can lower both porting effort and quality risk.",
-    impactScore: 77,
-    trendScore: 32,
-    confidence: 88,
-    sectors: ["Game Engines", "Platform Tools", "Performance", "PC Ports"],
-    companies: ["Apple", "Metal", "Game Studios", "Engine Teams"],
-    publishedAt: "2026-06-08",
-    sourceUrl: "https://developer.apple.com/videos/play/wwdc2026/388/",
+      "The trend is consolidation after over-expansion: large publishers are trying to protect margins while still needing creative pipelines.",
+    impactScore: 87,
+    trendScore: 42,
+    confidence: 78,
+    sectors: ["AAA Studios", "Platform Strategy", "Labor", "Publishing"],
+    companies: ["Microsoft", "Xbox", "Ninja Theory", "Double Fine", "Compulsion Games"],
+    publishedAt: "2026-06-17",
+    sourceUrl: "https://www.theguardian.com/games/2026/jun/17/xbox-games-studios-developers-firing-line",
     visual: {
       image: "/images/intelligence/studio-engine.webp",
       alt: "Holographic game engine viewport with asset pipeline geometry"
@@ -324,181 +323,178 @@ export const articles: Article[] = [
   },
   {
     id: "le-010",
-    slug: "apple-storekit-and-background-assets-session-targets-live-content-operations",
-    title: "Apple StoreKit and Background Assets session targets live content operations",
-    source: "Apple Developer",
-    sourceCredibility: "Official source",
-    category: "Platform",
+    slug: "newzoo-puts-games-market-above-200-billion-amid-layoff-contrast",
+    title: "Newzoo puts games market above $200B amid layoff contrast",
+    source: "GamesRadar+",
+    sourceCredibility: "Market analysis",
+    category: "Business",
     tldr:
-      "Apple's WWDC26 games guidance extends into commerce and content delivery, not just graphics or porting.",
+      "Newzoo's reported $201.6B 2025 games-market estimate sharpens the contrast between sector growth and ongoing studio cuts.",
     fullTldr:
-      "The StoreKit and Background Assets session is a reminder that modern game platform support includes storefront mechanics, downloadable content, and background delivery. Apple's games pitch is increasingly about operational completeness across devices.",
+      "GamesRadar covered Newzoo's estimate that global games revenue passed $200 billion for the first time in 2025, with mobile still the largest segment and PC growing fastest. The signal is that aggregate market growth is not translating evenly into studio stability.",
     whyItMatters:
-      "Live content and monetization plumbing often decide whether a port is viable. Better native tooling can reduce the gap between a technically running build and a commercially operated game.",
+      "Investors and operators need to separate category growth from company-level execution. Revenue expansion can coexist with layoffs when costs, debt, and portfolio quality are misaligned.",
     possibleImpact:
-      "Studios evaluating Apple support may pay more attention to asset delivery, IAP flows, and update cadence instead of treating the port as a one-time executable.",
+      "Expect sharper scrutiny of where growth is captured: platform fees, mobile live ops, PC hits, and evergreen franchises may benefit more than mid-budget production.",
     trendAnalysis:
-      "The trend is operational platform tooling: game distribution is being optimized around payments, updates, and asset pipelines as much as rendering.",
-    impactScore: 75,
-    trendScore: 31,
-    confidence: 87,
-    sectors: ["Mobile Gaming", "Monetization", "Live Ops", "Platform Tools"],
-    companies: ["Apple", "StoreKit", "Mobile Studios", "Cross-Platform Teams"],
-    publishedAt: "2026-06-08",
-    sourceUrl: "https://developer.apple.com/videos/play/wwdc2026/378/",
+      "The trend is unequal recovery: the market is expanding, but capital is flowing toward scaled platforms, proven IP, and monetization-heavy models.",
+    impactScore: 89,
+    trendScore: 41,
+    confidence: 82,
+    sectors: ["Market Data", "Mobile Gaming", "PC Gaming", "Publishing"],
+    companies: ["Newzoo", "Mobile Publishers", "PC Publishers", "Console Publishers"],
+    publishedAt: "2026-06-19",
+    sourceUrl:
+      "https://www.gamesradar.com/games/amid-all-the-closures-and-layoffs-the-global-games-market-has-apparently-passed-usd200-billion-in-yearly-revenue-for-the-first-time-ever-says-analytics-firm/",
     visual: {
-      image: "/images/intelligence/mobile-gaming.webp",
-      alt: "Mobile gaming live operations network with floating phones and data arcs"
+      image: "/images/intelligence/business-market.webp",
+      alt: "Dark gaming market intelligence terminal with holographic charts"
     }
   },
   {
     id: "le-011",
-    slug: "xbox-showcase-puts-exclusives-and-multiplatform-publishing-on-the-same-board",
-    title: "Xbox showcase puts exclusives and multiplatform publishing on the same board",
-    source: "Xbox Wire",
-    sourceCredibility: "Official source",
-    category: "Platform",
-    tldr:
-      "Microsoft used its June showcase to signal that Xbox can still push exclusives while continuing broader publishing across platforms.",
-    fullTldr:
-      "The Xbox Games Showcase recap leaned into two ideas at once: celebratory hardware and a broader software footprint. Microsoft confirmed that some titles stay exclusive while games already announced as multiplatform remain on that path, reinforcing Xbox's identity as both a platform and a scaled publisher.",
-    whyItMatters:
-      "Xbox strategy now depends on a mixed model. Hardware prestige, subscription retention, and software reach all matter more than a simple exclusive versus non-exclusive split.",
-    possibleImpact:
-      "Studios under Microsoft may segment franchises more deliberately, keeping some titles platform-defining while using others to maximize reach and monetization.",
-    trendAnalysis:
-      "The durable trend is portfolio management over platform purity. Xbox looks increasingly willing to use each franchise differently depending on audience and economics.",
-    impactScore: 88,
-    trendScore: 33,
-    confidence: 88,
-    sectors: ["Console", "Subscription Gaming", "AAA Studios", "Cloud Gaming"],
-    companies: ["Microsoft", "Xbox", "Bethesda", "Activision"],
-    publishedAt: "2026-06-07",
-    sourceUrl:
-      "https://news.xbox.com/en-us/2026/06/07/xbox-games-showcase-2026-recap-everything-announced/",
-    visual: {
-      image: "/images/intelligence/platform-strategy.webp",
-      alt: "Abstract cross-platform gaming network with cloud and device nodes"
-    }
-  },
-  {
-    id: "le-012",
-    slug: "summer-game-fest-record-viewership-confirms-showcase-week-as-a-media-event",
-    title: "Summer Game Fest record viewership confirms showcase week as a media event",
-    source: "Streams Charts",
-    sourceCredibility: "Market analysis",
+    slug: "fifa-streaming-deals-show-influencer-led-sports-distribution-at-scale",
+    title: "FIFA streaming deals show influencer-led sports distribution at scale",
+    source: "Associated Press",
+    sourceCredibility: "Trade press",
     category: "Esports",
     tldr:
-      "Summer Game Fest drew a record 3.8 million peak viewers, reinforcing showcase week as one of gaming's biggest live audience moments.",
+      "FIFA's 2026 World Cup streaming strategy leans into influencer-led platforms, YouTube, and TikTok to reach younger audiences.",
     fullTldr:
-      "Streams Charts reported that Summer Game Fest 2026 reached a record 3.8 million peak viewers with more than 6,200 channels covering the event. That scale matters because it shows reveal season now behaves like a creator-amplified media property, not just a press-calendar convention.",
+      "AP reported that Brazil's CazeTV will stream all 104 World Cup matches and that FIFA is expanding digital distribution through social platforms. While not a game tournament, it matters to esports because it validates creator-led live-event formats at global scale.",
     whyItMatters:
-      "Live audience concentration changes launch economics. A reveal that lands during these windows can compress awareness building, creator pickup, and store intent into a single weekend.",
+      "Gaming and esports publishers compete for the same live attention habits. If mainstream sports normalize creator-first broadcasts, game events will face higher expectations for co-streaming and interactivity.",
     possibleImpact:
-      "Publishers may keep funneling bigger announcements into a few large livestream windows while smaller teams optimize for co-stream and creator handoff.",
+      "Expect esports leagues and showcase events to keep blending official broadcasts, influencer hosts, short-form clips, and regional streaming rights.",
     trendAnalysis:
-      "The strongest trend is attention centralization around multiplatform live events that combine publisher reveals with creator redistribution.",
-    impactScore: 86,
-    trendScore: 39,
+      "The trend is live media fragmentation: audience growth increasingly depends on meeting viewers inside creator ecosystems rather than only owned channels.",
+    impactScore: 78,
+    trendScore: 37,
     confidence: 84,
-    sectors: ["Streaming", "Marketing", "Creator Economy", "Publishing"],
-    companies: ["Summer Game Fest", "The Game Awards", "YouTube", "Twitch"],
-    publishedAt: "2026-06-08",
-    sourceUrl:
-      "https://streamscharts.com/news/summer-game-fest-2026-draws-record-breaking-38m-peak-viewers",
+    sectors: ["Streaming", "Esports", "Creator Economy", "Sports Media"],
+    companies: ["FIFA", "CazeTV", "LiveMode", "YouTube", "TikTok"],
+    publishedAt: "2026-06-16",
+    sourceUrl: "https://apnews.com/article/08feed47be7b423bafcfe9ae941bed1b",
     visual: {
       image: "/images/intelligence/esports-arena.webp",
       alt: "Futuristic esports arena with viewership heatmap and stage lighting"
     }
   },
   {
-    id: "le-013",
-    slug: "mobile-publishers-keep-pushing-d2c-as-a-margin-and-control-play",
-    title: "Mobile publishers keep pushing D2C as a margin and control play",
-    source: "PocketGamer.biz",
-    sourceCredibility: "Trade press",
-    category: "Business",
+    id: "le-012",
+    slug: "amd-mext-deal-puts-memory-optimization-next-to-ai-and-game-hardware",
+    title: "AMD MEXT deal puts memory optimization next to AI and game hardware",
+    source: "MarketWatch",
+    sourceCredibility: "Market analysis",
+    category: "Hardware",
     tldr:
-      "New Q1 figures show direct-to-consumer revenue is becoming a strategic layer for large mobile publishers, not a side experiment.",
+      "AMD's acquisition of MEXT highlights memory efficiency as a strategic battleground across AI infrastructure and high-end gaming hardware.",
     fullTldr:
-      "PocketGamer.biz's latest D2C roundup shows several major mobile companies continuing to move meaningful revenue off third-party stores and into owned payment flows. That is both a margin decision and a relationship decision, since D2C gives publishers more direct customer contact and operational control.",
+      "MarketWatch reported that AMD acquired MEXT, a memory-optimization company, as memory bottlenecks shape AI infrastructure economics. For games, the same pressure matters because component scarcity and memory pricing are affecting consoles, PCs, handhelds, and GPU roadmaps.",
     whyItMatters:
-      "Mobile remains one of the industry's largest revenue pools. When major publishers push D2C harder, it affects monetization design, live-ops cadence, and regional publishing strategy.",
+      "Memory is now a strategic constraint, not a background component. Hardware vendors that improve efficiency can protect margins and performance when DRAM supply is tight.",
     possibleImpact:
-      "Studios may invest more in web shops, CRM tooling, first-party community layers, and event design that nudges users into owned purchase funnels.",
+      "Expect more gaming hardware messaging around memory architecture, upscaling, compression, and workload efficiency rather than only shader counts.",
     trendAnalysis:
-      "The strongest trend is monetization diversification: store dependence is being reduced where scale, brand familiarity, and retention are strong enough to support it.",
-    impactScore: 82,
-    trendScore: 37,
+      "The trend is AI infrastructure pulling hardware supply chains in ways that spill into gaming device pricing and availability.",
+    impactScore: 84,
+    trendScore: 40,
     confidence: 84,
-    sectors: ["Mobile Gaming", "D2C", "Live Ops", "Publishing"],
-    companies: ["Playtika", "Stillfront Group", "MTG", "Huuuge Games"],
-    publishedAt: "2026-06-08",
-    sourceUrl:
-      "https://www.pocketgamer.biz/revealed-mobile-publishers-share-their-record-d2c-sales/",
+    sectors: ["Semiconductors", "AI Infrastructure", "Gaming Hardware", "Supply Chain"],
+    companies: ["AMD", "MEXT", "NVIDIA", "Console Makers"],
+    publishedAt: "2026-06-15",
+    sourceUrl: "https://www.marketwatch.com/story/amd-flirts-with-a-900-billion-valuation-after-beefing-up-its-memory-technology-2a366bdc",
     visual: {
-      image: "/images/intelligence/mobile-gaming.webp",
-      alt: "Mobile gaming live operations network with floating phones and data arcs"
+      image: "/images/intelligence/hardware-ai.webp",
+      alt: "Close-up of a futuristic GPU board with glowing compute traces"
+    }
+  },
+  {
+    id: "le-013",
+    slug: "rackspace-amd-partnership-links-ai-cloud-buildout-to-chip-demand",
+    title: "Rackspace-AMD partnership links AI cloud buildout to chip demand",
+    source: "Barron's",
+    sourceCredibility: "Market analysis",
+    category: "AI",
+    tldr:
+      "Rackspace's AMD-powered AI cloud plan shows how chip demand is spreading through managed cloud infrastructure.",
+    fullTldr:
+      "Barron's reported that Rackspace finalized a deal to use AMD Instinct GPUs and EPYC CPUs in a 30-megawatt AI cloud rollout. The gaming relevance is indirect but important: AI cloud demand competes for the same silicon, memory, and investor attention that shape gaming hardware economics.",
+    whyItMatters:
+      "Game companies using AI tools, cloud rendering, or backend services are exposed to infrastructure pricing. Chip allocation decisions can affect both cost and availability.",
+    possibleImpact:
+      "Expect more cloud vendors to market AMD-based AI capacity as an alternative to NVIDIA-heavy stacks, with downstream effects on tool vendors and studios.",
+    trendAnalysis:
+      "The trend is diversification of AI infrastructure suppliers as customers look for capacity, cost control, and reduced dependence on one GPU ecosystem.",
+    impactScore: 78,
+    trendScore: 36,
+    confidence: 82,
+    sectors: ["Game AI", "Cloud", "Semiconductors", "Developer Tools"],
+    companies: ["Rackspace", "AMD", "Palantir", "Cloud Customers"],
+    publishedAt: "2026-06-16",
+    sourceUrl: "https://www.barrons.com/articles/rackspace-stock-price-amd-data-center-deal-aebdbae1",
+    visual: {
+      image: "/images/intelligence/ai-npcs.webp",
+      alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
     }
   },
   {
     id: "le-014",
-    slug: "roblox-ai-founders-join-to-accelerate-reality-vision",
-    title: "Roblox AI founders join to accelerate its reality vision",
-    source: "Roblox",
-    sourceCredibility: "Official source",
-    category: "AI",
+    slug: "intel-market-cap-surge-shows-chip-stocks-reshaping-gaming-watchlist",
+    title: "Intel market-cap surge shows chip stocks reshaping the gaming watchlist",
+    source: "MarketWatch",
+    sourceCredibility: "Market analysis",
+    category: "Hardware",
     tldr:
-      "Roblox is adding AI founder talent as it tries to make creation, discovery, and 3D generation more native to the platform.",
+      "Intel's reported move toward a $700B market value keeps PC silicon and AI optimism central to the gaming hardware read.",
     fullTldr:
-      "Roblox's June AI founder announcement shows how central machine learning has become to the company's platform roadmap. The strategic signal is that UGC growth now depends on making creation easier, safer, and more scalable through AI-assisted tooling.",
+      "MarketWatch reported on June 22 that Intel was on pace to close above $700 billion in market capitalization for the first time. For gaming, the important signal is that AI-linked semiconductor expectations are changing how investors value companies still central to PCs and handhelds.",
     whyItMatters:
-      "Creator platforms compete on how quickly users can turn ideas into playable worlds. AI talent can become a product moat if it lowers creation friction without weakening trust and safety.",
+      "Intel remains important to game PCs, laptops, handhelds, and developer machines. A stronger equity signal can affect investment capacity, partnerships, and foundry confidence.",
     possibleImpact:
-      "Expect Roblox to keep integrating AI into creation tools, moderation, translation, and discovery as it tries to raise output quality across a massive creator base.",
+      "Expect more scrutiny of Intel's GPU drivers, handheld wins, and AI PC roadmap as investors look for gaming-adjacent proof points.",
     trendAnalysis:
-      "The trend is AI moving from experimental feature to platform infrastructure, especially inside ecosystems where creation volume is the core supply constraint.",
-    impactScore: 83,
-    trendScore: 40,
-    confidence: 86,
-    sectors: ["Game AI", "UGC", "Creator Tools", "Platform Safety"],
-    companies: ["Roblox", "AI Startups", "UGC Studios"],
-    publishedAt: "2026-06-03",
+      "The trend is semiconductors becoming the market lens for game hardware, even when the immediate catalyst is AI infrastructure.",
+    impactScore: 79,
+    trendScore: 36,
+    confidence: 82,
+    sectors: ["Semiconductors", "PC Gaming", "AI PCs", "Handhelds"],
+    companies: ["Intel", "AMD", "NVIDIA", "PC OEMs"],
+    publishedAt: "2026-06-22",
     sourceUrl:
-      "https://about.roblox.com/newsroom/2026/06/pioneering-ai-founders-join-to-accelerate-roblox-reality-vision",
+      "https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-investors-us-iran-peace-talks-brent-crude-declines/card/intel-heads-for-first-close-above-700-billion-in-market-value-3fP0OEvc9Np5dYwBRgXW",
     visual: {
-      image: "/images/intelligence/ai-npcs.webp",
-      alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
+      image: "/images/intelligence/hardware-ai.webp",
+      alt: "Close-up of a futuristic GPU board with glowing compute traces"
     }
   },
   {
     id: "le-015",
-    slug: "summer-game-fest-ai-disclosures-put-genai-under-spotlight",
-    title: "Summer Game Fest AI disclosures put generative tools under the spotlight",
-    source: "PC Gamer",
+    slug: "steam-machine-ram-pressure-connects-hardware-pricing-to-supply-chain-risk",
+    title: "Steam Machine RAM pressure connects hardware pricing to supply-chain risk",
+    source: "The Verge",
     sourceCredibility: "Trade press",
-    category: "AI",
+    category: "Business",
     tldr:
-      "Showcase season is making AI disclosure a visible player-facing issue instead of a quiet production note.",
+      "Valve's RAM sourcing comments show why gaming hardware prices are being pulled into the same component crunch as AI systems.",
     fullTldr:
-      "Summer Game Fest coverage is already framing generative AI disclosures as part of how players judge new games. The issue is less whether AI appears in a pipeline and more whether studios can explain where it was used, why it was used, and how much human art direction remains.",
+      "The Verge's June 22 coverage of Valve's RAM negotiations gives useful context for the Steam Machine's high price. Memory suppliers are setting aggressive terms, and gaming hardware teams have less room to absorb shocks when they do not subsidize boxes.",
     whyItMatters:
-      "AI transparency is becoming part of marketing trust. Studios that cannot explain their AI usage may face backlash even when the underlying work is legally or technically acceptable.",
+      "Supply-chain pressure affects launch prices, inventory, model configurations, and margins. It can also decide whether new gaming devices reach mainstream volume.",
     possibleImpact:
-      "Expect more AI disclosure language in trailers, Steam pages, press kits, and publisher QA before major showcases.",
+      "Expect more gaming hardware launches to use reservations, limited batches, flexible specs, and clearer explanations of component-driven pricing.",
     trendAnalysis:
-      "Momentum is strongest around trailers, store-page art, localization, and small-team production workflows where audiences are actively looking for disclosure gaps.",
-    impactScore: 90,
-    trendScore: 41,
+      "The trend is the AI memory boom spilling into consumer gaming, making DRAM and storage availability a strategic constraint for device makers.",
+    impactScore: 83,
+    trendScore: 40,
     confidence: 84,
-    sectors: ["Game AI", "Marketing", "Steam", "Indie Devs"],
-    companies: ["Summer Game Fest", "Steam", "Valve", "Independent Studios"],
-    publishedAt: "2026-06-03",
-    sourceUrl:
-      "https://www.pcgamer.com/software/ai/summer-game-fest-is-here-so-get-ready-for-a-lot-of-ugh-that-game-with-the-cool-trailer-used-ai/",
+    sectors: ["Hardware", "Supply Chain", "PC Gaming", "Console"],
+    companies: ["Valve", "Samsung", "Micron", "SK Hynix", "AMD"],
+    publishedAt: "2026-06-22",
+    sourceUrl: "https://www.theverge.com/games/953945/valve-steam-machine-memory-component-crisis",
     visual: {
-      image: "/images/intelligence/ai-npcs.webp",
-      alt: "Holographic AI NPC intelligence system inside a dark gaming command center"
+      image: "/images/intelligence/business-market.webp",
+      alt: "Dark gaming market intelligence terminal with holographic charts"
     }
   }
 ];

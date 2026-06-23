@@ -40,7 +40,7 @@ export type MarketSnapshot = {
 
 // Local fallback data. On Vercel, /api/market can refresh public close-price
 // fields from a scheduled server job. The static mirror keeps reading this file.
-export const marketSnapshotDate = "2026-06-15";
+export const marketSnapshotDate = "2026-06-22";
 
 export const marketPlayers: MarketPlayer[] = [
   {
@@ -48,8 +48,8 @@ export const marketPlayers: MarketPlayer[] = [
     company: "NVIDIA",
     segment: "Gaming AI / GPUs",
     exchange: "NASDAQ",
-    price: 205.19,
-    dayChange: 0.2,
+    price: 210.07,
+    dayChange: -0.3,
     thirtyDayChange: -7.7,
     ytdChange: 8.7,
     marketCap: "$3.1T",
@@ -64,11 +64,11 @@ export const marketPlayers: MarketPlayer[] = [
     company: "AMD",
     segment: "Gaming CPUs / GPUs",
     exchange: "NASDAQ",
-    price: 511.57,
-    dayChange: 4.7,
+    price: 551.63,
+    dayChange: 2.65,
     thirtyDayChange: 21.5,
     ytdChange: 128.9,
-    marketCap: "$272B",
+    marketCap: "$900B",
     sentiment: "Bullish",
     summary:
       "AMD remains a key gaming hardware read through console silicon, PC CPUs, Radeon GPUs, and AI accelerator adjacency.",
@@ -80,11 +80,11 @@ export const marketPlayers: MarketPlayer[] = [
     company: "Intel",
     segment: "PC Gaming / Chips",
     exchange: "NASDAQ",
-    price: 124.57,
-    dayChange: 6.5,
+    price: 139.28,
+    dayChange: 2.7,
     thirtyDayChange: 15.2,
     ytdChange: 216.3,
-    marketCap: "$134B",
+    marketCap: "$706B",
     sentiment: "Watch",
     summary:
       "Intel is still relevant to PC gaming and handheld hardware, but execution and foundry transition risk keep the stock signal mixed.",
@@ -96,8 +96,8 @@ export const marketPlayers: MarketPlayer[] = [
     company: "Microsoft",
     segment: "Xbox / Cloud / AI",
     exchange: "NASDAQ",
-    price: 390.74,
-    dayChange: 0.1,
+    price: 367.34,
+    dayChange: -3.18,
     thirtyDayChange: -7.7,
     ytdChange: -17.4,
     marketCap: "$3.2T",
@@ -112,8 +112,8 @@ export const marketPlayers: MarketPlayer[] = [
     company: "Sony Group",
     segment: "PlayStation / Hardware",
     exchange: "NYSE ADR",
-    price: 20.53,
-    dayChange: -2.9,
+    price: 19.51,
+    dayChange: -4.03,
     thirtyDayChange: -9.6,
     ytdChange: -20.7,
     marketCap: "$115B",
@@ -128,8 +128,8 @@ export const marketPlayers: MarketPlayer[] = [
     company: "Nintendo",
     segment: "Console / IP",
     exchange: "OTC ADR",
-    price: 11.18,
-    dayChange: -0.4,
+    price: 10.73,
+    dayChange: -2.54,
     thirtyDayChange: -2.3,
     ytdChange: -33.6,
     marketCap: "$76B",
@@ -224,8 +224,8 @@ export const marketPlayers: MarketPlayer[] = [
     company: "Take-Two",
     segment: "AAA Publishing",
     exchange: "NASDAQ",
-    price: 211.75,
-    dayChange: -0.2,
+    price: 239.57,
+    dayChange: 0.12,
     thirtyDayChange: -12.6,
     ytdChange: -15.8,
     marketCap: "$28B",
@@ -355,19 +355,20 @@ export const staticMarketSnapshot: MarketSnapshot = {
     "MSFT",
     "SONY",
     "NTDOY",
-    "U",
-    "TCEHY",
-    "NTES",
-    "EA",
-    "TTWO",
-    "RBLX",
-    "CCOEY",
-    "KONMY",
-    "NCBDY",
-    "SQNXF"
+    "TTWO"
   ],
-  failedTickers: [],
-  failedTickerReasons: {}
+  failedTickers: ["U", "TCEHY", "NTES", "EA", "RBLX", "CCOEY", "KONMY", "NCBDY", "SQNXF"],
+  failedTickerReasons: {
+    U: "Latest public close was not available from the free sources checked during this fallback refresh.",
+    TCEHY: "Latest public OTC ADR close was not available from the free sources checked during this fallback refresh.",
+    NTES: "Latest public ADR close was not available from the free sources checked during this fallback refresh.",
+    EA: "Latest public close was not available from the free sources checked during this fallback refresh.",
+    RBLX: "Latest public close was not available from the free sources checked during this fallback refresh.",
+    CCOEY: "Latest public OTC ADR close was not available from the free sources checked during this fallback refresh.",
+    KONMY: "Latest public OTC ADR close was not available from the free sources checked during this fallback refresh.",
+    NCBDY: "Latest public OTC ADR close was not available from the free sources checked during this fallback refresh.",
+    SQNXF: "Latest public OTC close was not available from the free sources checked during this fallback refresh."
+  }
 };
 
 export function getMarketPlayer(ticker: string) {

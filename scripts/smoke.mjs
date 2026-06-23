@@ -7,8 +7,8 @@ const checks = [
   { path: "/sources", expect: "Source Strategy" },
   { path: "/privacy", expect: "Privacy And Legal Notes" },
   {
-    path: "/articles/summer-game-fest-ai-disclosures-put-genai-under-spotlight",
-    expect: "Summer Game Fest"
+    path: "/articles/valve-prices-steam-machine-above-console-market",
+    expect: "Valve prices Steam Machine"
   },
   { path: "/api/market", expect: "snapshotDate" },
   { path: "/api/health", expect: "\"status\":\"" },
