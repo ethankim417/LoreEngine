@@ -923,3 +923,171 @@ body.theme-light .detail-aside,
   color: #111827 !important;
 }
 
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 5.25rem;
+  }
+
+  body {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-dashboard {
+    gap: 1rem;
+    padding-bottom: calc(5.75rem + env(safe-area-inset-bottom));
+  }
+
+  .dashboard-jump-bar {
+    top: 0.5rem;
+    margin-inline: -0.25rem;
+    max-width: calc(100vw - 1.5rem);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dashboard-jump-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dashboard-jump-bar a,
+  .dashboard-jump-bar button {
+    min-height: 2.35rem;
+  }
+
+  .feed-panel {
+    padding: 0.875rem !important;
+  }
+
+  .article-card {
+    min-height: auto !important;
+    border-radius: 0.85rem;
+  }
+
+  .article-card-body {
+    padding: 0.875rem !important;
+  }
+
+  .article-card-title {
+    font-size: 1.05rem !important;
+    line-height: 1.32 !important;
+  }
+
+  .article-card-summary {
+    line-height: 1.55 !important;
+  }
+
+  .article-visual-image {
+    transform: translate(24%, -14%) scale(0.56) !important;
+    opacity: 0.085 !important;
+  }
+
+  .article-card-footer {
+    padding: 0.72rem 0.875rem !important;
+  }
+
+  .article-card-footer a,
+  .article-card button,
+  .article-card [role="button"] {
+    min-height: 2.75rem;
+  }
+
+  .article-mini-metric {
+    min-height: 2.85rem !important;
+    padding: 0.5rem 0.625rem !important;
+  }
+
+  .source-badge {
+    max-width: 100%;
+  }
+
+  .mobile-filter-backdrop,
+  .saved-briefs-backdrop {
+    padding-bottom: calc(0.85rem + env(safe-area-inset-bottom)) !important;
+  }
+
+  .mobile-filter-sheet {
+    max-height: min(82vh, 36rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom)) !important;
+  }
+
+  .mobile-filter-sheet select,
+  .mobile-filter-sheet button {
+    min-height: 2.9rem;
+  }
+
+  .saved-briefs-drawer {
+    max-height: calc(100vh - 1.5rem - env(safe-area-inset-bottom));
+  }
+
+  .mobile-action-bar {
+    bottom: calc(0.75rem + env(safe-area-inset-bottom));
+    border-radius: 1rem;
+    min-height: 3.35rem;
+  }
+
+  .mobile-action-bar a,
+  .mobile-action-bar button {
+    display: grid;
+    min-height: 3.35rem;
+    place-items: center;
+    padding: 0.5rem 0.35rem !important;
+  }
+
+  .market-pulse-card section {
+    padding: 0.875rem !important;
+  }
+
+  .market-lead-card {
+    padding: 0.75rem !important;
+  }
+
+  .market-ticker-cell {
+    padding: 0.625rem 0.75rem !important;
+  }
+
+  .market-page {
+    padding: 1rem 0.75rem 1.75rem !important;
+  }
+
+  .market-board > div:first-child {
+    padding: 1rem !important;
+  }
+
+  .market-group-section > div:first-child,
+  .market-row {
+    padding-inline: 0.875rem !important;
+  }
+
+  .market-row {
+    gap: 0.75rem !important;
+  }
+
+  .theme-scope.theme-light .article-visual-image {
+    opacity: 0.065 !important;
+    filter: saturate(0.75) contrast(0.9) brightness(1.1);
+  }
+
+  .theme-scope.theme-light .mobile-action-bar {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-color: rgba(209, 213, 219, 0.95) !important;
+    color: #334155 !important;
+    box-shadow:
+      0 16px 40px rgba(15, 23, 42, 0.14),
+      inset 0 1px 0 #ffffff !important;
+  }
+
+  .theme-scope.theme-light .mobile-filter-backdrop,
+  .theme-scope.theme-light .saved-briefs-backdrop {
+    background: rgba(15, 23, 42, 0.28) !important;
+  }
+
+  .theme-scope.theme-light .article-mini-metric,
+  .theme-scope.theme-light .article-card-footer,
+  .theme-scope.theme-light .market-lead-card,
+  .theme-scope.theme-light .market-ticker-cell {
+    background: #f8fafc !important;
+  }
+}
+

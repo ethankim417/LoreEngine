@@ -118,7 +118,7 @@ export function MarketPageView({ snapshot }: { snapshot: MarketSnapshot }) {
   const pressureCount = focusPlayers.filter((player) => player.sentiment === "Pressure").length;
 
   return (
-    <main className="relative min-h-screen overflow-hidden px-4 py-6 sm:px-6 lg:px-8">
+    <main className="market-page relative min-h-screen overflow-hidden px-4 py-6 sm:px-6 lg:px-8">
       <div aria-hidden="true" className="mesh-grid absolute inset-0 opacity-70" />
       <div aria-hidden="true" className="absolute right-[-12rem] top-[-12rem] h-[32rem] w-[32rem] rounded-full bg-cyan-500/15 blur-3xl" />
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-6">
@@ -130,7 +130,7 @@ export function MarketPageView({ snapshot }: { snapshot: MarketSnapshot }) {
           {copy.dashboard}
         </Link>
 
-        <section className="glass-panel overflow-hidden rounded-lg">
+        <section className="market-board glass-panel overflow-hidden rounded-lg">
           <div className="relative border-b border-white/10 p-5 sm:p-7">
             <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_82%_10%,rgba(50,217,255,0.18),transparent_28%),radial-gradient(circle_at_20%_0%,rgba(138,92,255,0.16),transparent_26%)]" />
             <div className="relative z-10 grid gap-5 lg:grid-cols-[1fr_28rem] lg:items-end">
@@ -230,7 +230,7 @@ function MarketGroupSection({
   language: "en" | "ko";
 }) {
   return (
-    <section className="rounded-lg border border-white/10 bg-white/[0.02]">
+    <section className="market-group-section rounded-lg border border-white/10 bg-white/[0.02]">
       <div className="flex flex-col gap-2 border-b border-white/10 bg-white/[0.035] px-4 py-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">{group.eyebrow}</p>
@@ -259,7 +259,7 @@ function MarketRow({ player, copy, language }: { player: MarketPlayer; copy: typ
   const positive = player.thirtyDayChange >= 0;
 
   return (
-    <article className="grid gap-3 bg-white/[0.015] px-4 py-4 transition hover:bg-white/[0.04] lg:grid-cols-[7rem_1fr_8rem_8rem_8rem_12rem] lg:items-center">
+    <article className="market-row grid gap-3 bg-white/[0.015] px-4 py-4 transition hover:bg-white/[0.04] lg:grid-cols-[7rem_1fr_8rem_8rem_8rem_12rem] lg:items-center">
       <div className="flex items-center justify-between gap-3 lg:block">
         <div>
           <p className="font-display text-lg font-black text-white">{player.ticker}</p>

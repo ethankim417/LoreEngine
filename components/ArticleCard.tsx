@@ -81,7 +81,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/40 to-transparent opacity-0 transition group-hover:opacity-100" />
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col p-3.5 sm:p-4">
+      <div className="article-card-body relative z-10 flex flex-1 flex-col p-3.5 sm:p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="flex flex-wrap items-center gap-1.5">
             <span className={`rounded-full border px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-[0.08em] ${priority.className}`}>
@@ -119,10 +119,10 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
           </span>
         </div>
 
-        <h2 className={`mt-2 line-clamp-3 font-display font-black leading-snug tracking-normal text-white sm:mt-3 ${featured ? "text-base sm:text-xl xl:max-w-2xl xl:text-3xl" : "text-base sm:text-xl"}`}>
+        <h2 className={`article-card-title mt-2 line-clamp-3 font-display font-black leading-snug tracking-normal text-white sm:mt-3 ${featured ? "text-base sm:text-xl xl:max-w-2xl xl:text-3xl" : "text-base sm:text-xl"}`}>
           {articleText.title}
         </h2>
-        <p className={`mt-2 text-sm leading-6 text-slate-300 ${featured ? "line-clamp-1 sm:line-clamp-2 xl:max-w-2xl xl:line-clamp-3" : "line-clamp-1 sm:line-clamp-2"}`}>{articleText.tldr}</p>
+        <p className={`article-card-summary mt-2 text-sm leading-6 text-slate-300 ${featured ? "line-clamp-1 sm:line-clamp-2 xl:max-w-2xl xl:line-clamp-3" : "line-clamp-1 sm:line-clamp-2"}`}>{articleText.tldr}</p>
         <p className="mt-2 line-clamp-1 text-xs font-semibold leading-5 text-slate-400">
           {t("whyOpen")}: {getWhyOpen(articleText.whyItMatters)}
         </p>

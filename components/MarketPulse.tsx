@@ -59,7 +59,7 @@ export function MarketPulse() {
   return (
     <Link
       href="/market"
-      className="surface-panel premium-hover group relative block overflow-hidden rounded-lg transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/20 focus:outline-none focus:ring-2 focus:ring-cyan-300/25"
+      className="market-pulse-card surface-panel premium-hover group relative block overflow-hidden rounded-lg transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/20 focus:outline-none focus:ring-2 focus:ring-cyan-300/25"
       aria-label={copy.openFull}
     >
       <section aria-label={copy.preview} className="relative p-3 sm:p-4">
@@ -90,7 +90,7 @@ export function MarketPulse() {
 
           <div className="grid gap-3 xl:grid-cols-[1fr_auto] xl:items-center">
             <div className="grid gap-2 md:grid-cols-[minmax(12rem,18rem)_1fr] md:items-center">
-              <div className="rounded-lg bg-black/18 p-3">
+              <div className="market-lead-card rounded-lg bg-black/18 p-3">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="text-[0.64rem] font-semibold uppercase tracking-[0.1em] text-slate-500">
@@ -172,7 +172,7 @@ function TickerCell({
   const positive = player.thirtyDayChange >= 0;
 
   return (
-    <div className="relative overflow-hidden rounded-lg bg-white/[0.028] px-3 py-2">
+    <div className="market-ticker-cell relative overflow-hidden rounded-lg bg-white/[0.028] px-3 py-2">
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
           <p className="font-display text-sm font-black text-white">{player.ticker}</p>

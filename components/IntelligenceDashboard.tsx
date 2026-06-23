@@ -133,7 +133,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 pb-20 sm:gap-7 sm:pb-0 lg:gap-8">
+    <div className="mobile-dashboard flex flex-col gap-5 pb-20 sm:gap-7 sm:pb-0 lg:gap-8">
       <WeeklyBriefStatus articles={articles} />
       <DashboardJumpBar savedCount={savedArticles.length} onOpenSaved={() => setSavedOpen(true)} />
 
@@ -171,7 +171,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
         <SignalConstellation articles={articles} compact />
       </div>
 
-      <section id="feed" className="surface-panel scroll-mt-24 rounded-lg p-4 sm:p-5">
+      <section id="feed" className="feed-panel surface-panel scroll-mt-24 rounded-lg p-4 sm:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
           <div className="flex items-start justify-between gap-3">
             <div>
@@ -278,10 +278,10 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
           role="dialog"
           aria-modal="true"
           aria-label={t("filters")}
-          className="fixed inset-0 z-50 flex items-end bg-black/65 p-3 backdrop-blur-md md:hidden"
+          className="mobile-filter-backdrop fixed inset-0 z-50 flex items-end bg-black/65 p-3 backdrop-blur-md md:hidden"
           onClick={() => setFiltersOpen(false)}
         >
-          <div className="surface-panel w-full rounded-lg p-4" onClick={(event) => event.stopPropagation()}>
+          <div className="mobile-filter-sheet surface-panel w-full rounded-lg p-4" onClick={(event) => event.stopPropagation()}>
             <div className="mb-4 flex items-center justify-between gap-3">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-200">{t("filters")}</p>
@@ -305,7 +305,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                 <select
                   value={category}
                   onChange={(event) => setCategory(event.target.value as ArticleCategory | "All")}
-                  className="h-11 w-full appearance-none rounded-lg border border-cyan-300/15 bg-slate-950/55 px-10 pr-9 text-sm font-semibold text-cyan-50 outline-none"
+                  className="light-filter-control h-11 w-full appearance-none rounded-lg border border-cyan-300/15 bg-slate-950/55 px-10 pr-9 text-sm font-semibold text-cyan-50 outline-none"
                 >
                   <option value="All">{t("allCategories")}</option>
                   {categories.map((item) => (
@@ -322,7 +322,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                 <select
                   value={sourceType}
                   onChange={(event) => setSourceType(event.target.value as SourceCredibility | "All")}
-                  className="h-11 w-full appearance-none rounded-lg border border-emerald-300/15 bg-slate-950/55 px-10 pr-9 text-sm font-semibold text-emerald-50 outline-none"
+                  className="light-filter-control h-11 w-full appearance-none rounded-lg border border-emerald-300/15 bg-slate-950/55 px-10 pr-9 text-sm font-semibold text-emerald-50 outline-none"
                 >
                   <option value="All">{t("allSources")}</option>
                   {sourceCredibilityTypes.map((item) => (
@@ -339,7 +339,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                 <select
                   value={sortMode}
                   onChange={(event) => setSortMode(event.target.value as SortMode)}
-                  className="h-11 w-full appearance-none rounded-lg border border-violet-300/15 bg-slate-950/55 px-10 pr-9 text-sm font-semibold text-violet-50 outline-none"
+                  className="light-filter-control h-11 w-full appearance-none rounded-lg border border-violet-300/15 bg-slate-950/55 px-10 pr-9 text-sm font-semibold text-violet-50 outline-none"
                 >
                   <option value="newest">{t("newest")}</option>
                   <option value="impact">{t("industryImpact")}</option>
@@ -405,7 +405,7 @@ function DashboardJumpBar({
   const { t } = useLanguage();
 
   return (
-    <nav className="surface-panel sticky top-2 z-30 -my-2 flex gap-1 overflow-x-auto rounded-lg p-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-slate-300 sm:top-3 sm:w-fit">
+    <nav className="dashboard-jump-bar surface-panel sticky top-2 z-30 -my-2 flex gap-1 overflow-x-auto rounded-lg p-1 text-[0.68rem] font-black uppercase tracking-[0.1em] text-slate-300 sm:top-3 sm:w-fit">
       <JumpLink href="#mobile-brief" label={t("brief")} />
       <JumpLink href="#mobile-market" label={t("market")} />
       <JumpLink href="#scores" label={t("scores")} />
@@ -457,7 +457,7 @@ function MobileActionBar({
   const { t } = useLanguage();
 
   return (
-    <nav className="fixed inset-x-3 bottom-3 z-40 grid grid-cols-4 overflow-hidden rounded-lg border border-white/10 bg-slate-950/82 text-[0.68rem] font-black text-slate-300 shadow-[0_20px_80px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl md:hidden">
+    <nav className="mobile-action-bar fixed inset-x-3 bottom-3 z-40 grid grid-cols-4 overflow-hidden rounded-lg border border-white/10 bg-slate-950/82 text-[0.68rem] font-black text-slate-300 shadow-[0_20px_80px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl md:hidden">
       <a href="#mobile-brief" className="px-2 py-3 text-center text-cyan-100">{t("brief")}</a>
       <a href="#mobile-market" className="px-2 py-3 text-center">{t("market")}</a>
       <button type="button" onClick={onOpenFilters} className="px-2 py-3 text-center">
@@ -506,11 +506,11 @@ function SavedBriefsDrawer({
       role="dialog"
       aria-modal="true"
       aria-label={t("savedBriefs")}
-      className="fixed inset-0 z-50 flex justify-end bg-black/65 p-3 backdrop-blur-md sm:p-5"
+      className="saved-briefs-backdrop fixed inset-0 z-50 flex justify-end bg-black/65 p-3 backdrop-blur-md sm:p-5"
       onClick={onClose}
     >
       <aside
-        className="surface-panel flex h-full w-full max-w-md flex-col overflow-hidden rounded-lg"
+        className="saved-briefs-drawer surface-panel flex h-full w-full max-w-md flex-col overflow-hidden rounded-lg"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4 border-b border-white/10 p-4">
