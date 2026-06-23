@@ -60,7 +60,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
   }
 
   return (
-    <article className={`glass-panel premium-hover group relative flex min-h-[16.25rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/22 sm:min-h-[21.25rem] ${featured ? "xl:col-span-2 xl:min-h-[23rem]" : ""}`}>
+    <article className={`article-card glass-panel premium-hover group relative flex min-h-[16.25rem] flex-col overflow-hidden rounded-lg transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/22 sm:min-h-[21.25rem] ${featured ? "xl:col-span-2 xl:min-h-[23rem]" : ""}`}>
       <div className={`absolute inset-y-0 left-0 z-20 w-1 ${priority.railClass}`} aria-hidden="true" />
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <Image
@@ -128,7 +128,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
         </p>
 
         {article.impactScore >= 90 ? (
-          <div className="mt-3 hidden rounded-lg bg-white/[0.035] p-3 sm:block">
+          <div className="article-note mt-3 hidden rounded-lg bg-white/[0.035] p-3 sm:block">
             <p className="text-[0.66rem] font-black uppercase tracking-[0.1em] text-slate-500">
               {t("whyItMatters")}
             </p>
@@ -152,7 +152,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
         </div>
       </div>
 
-      <div className="relative z-10 flex items-center justify-between gap-3 bg-black/10 px-4 py-3">
+      <div className="article-card-footer relative z-10 flex items-center justify-between gap-3 bg-black/10 px-4 py-3">
         <Link
           href={`/articles/${article.slug}`}
           className="inline-flex items-center gap-2 text-sm font-black text-white transition hover:text-cyan-100"
@@ -230,7 +230,7 @@ function MiniMetric({
 }) {
   return (
     <div
-      className="group/metric relative min-h-[3.25rem] rounded-lg bg-white/[0.035] px-2.5 py-2 outline-none transition focus-within:bg-white/[0.055] hover:bg-white/[0.055]"
+      className="article-mini-metric group/metric relative min-h-[3.25rem] rounded-lg bg-white/[0.035] px-2.5 py-2 outline-none transition focus-within:bg-white/[0.055] hover:bg-white/[0.055]"
       title={description}
       aria-label={`${label}: ${value}. ${description}`}
       tabIndex={0}

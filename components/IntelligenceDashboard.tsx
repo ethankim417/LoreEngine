@@ -202,7 +202,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder={t("searchPlaceholder")}
-                className="h-11 w-full rounded-lg border border-white/10 bg-black/20 pl-10 pr-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/15"
+                className="light-filter-control h-11 w-full rounded-lg border border-white/10 bg-black/20 pl-10 pr-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/15"
               />
             </label>
 
@@ -212,7 +212,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               <select
                 value={category}
                 onChange={(event) => setCategory(event.target.value as ArticleCategory | "All")}
-                className="h-11 w-full min-w-40 appearance-none rounded-lg border border-cyan-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.08] focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20 [&>option]:bg-slate-950 [&>option]:text-cyan-50"
+                className="light-filter-control h-11 w-full min-w-40 appearance-none rounded-lg border border-cyan-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-cyan-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.08] focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20 [&>option]:bg-slate-950 [&>option]:text-cyan-50"
               >
                 <option value="All">{t("allCategories")}</option>
                 {categories.map((item) => (
@@ -230,7 +230,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               <select
                 value={sourceType}
                 onChange={(event) => setSourceType(event.target.value as SourceCredibility | "All")}
-                className="h-11 w-full min-w-40 appearance-none rounded-lg border border-emerald-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-emerald-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-emerald-300/35 hover:bg-emerald-300/[0.08] focus:border-emerald-300/60 focus:ring-2 focus:ring-emerald-300/20 [&>option]:bg-slate-950 [&>option]:text-emerald-50"
+                className="light-filter-control h-11 w-full min-w-40 appearance-none rounded-lg border border-emerald-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-emerald-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-emerald-300/35 hover:bg-emerald-300/[0.08] focus:border-emerald-300/60 focus:ring-2 focus:ring-emerald-300/20 [&>option]:bg-slate-950 [&>option]:text-emerald-50"
               >
                 <option value="All">{t("allSources")}</option>
                 {sourceCredibilityTypes.map((item) => (
@@ -248,7 +248,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
               <select
                 value={sortMode}
                 onChange={(event) => setSortMode(event.target.value as SortMode)}
-                className="h-11 w-full min-w-40 appearance-none rounded-lg border border-violet-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-violet-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-violet-300/35 hover:bg-violet-300/[0.08] focus:border-violet-300/60 focus:ring-2 focus:ring-violet-300/20 [&>option]:bg-slate-950 [&>option]:text-violet-50"
+                className="light-filter-control h-11 w-full min-w-40 appearance-none rounded-lg border border-violet-300/15 bg-slate-950/35 px-10 pr-9 text-sm font-semibold text-violet-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_34px_rgba(0,0,0,0.22)] outline-none backdrop-blur-xl transition hover:border-violet-300/35 hover:bg-violet-300/[0.08] focus:border-violet-300/60 focus:ring-2 focus:ring-violet-300/20 [&>option]:bg-slate-950 [&>option]:text-violet-50"
               >
                 <option value="newest">{t("newest")}</option>
                 <option value="impact">{t("industryImpact")}</option>
