@@ -7,7 +7,6 @@ import { Bookmark, LogOut, ShieldCheck, Trash2, UserRound } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
 import {
   mergeBookmarksFromAccount,
-  readLocalBookmarks,
   writeLocalBookmarks
 } from "@/lib/bookmarksClient";
 import { auth, db, googleProvider } from "@/lib/firebase";
@@ -19,7 +18,7 @@ import {
   signOut as firebaseSignOut,
   type User as FirebaseUser
 } from "firebase/auth";
-import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
+import { deleteDoc, doc, getDoc } from "firebase/firestore";
 
 export function AuthAccount({ compact = false }: { compact?: boolean }) {
   const [user, setUser] = useState<FirebaseUser | null>(null);
@@ -28,7 +27,7 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [portalReady, setPortalReady] = useState(false);
   const [storageMode, setStorageMode] = useState<"firebase" | "unconfigured" | "local">("local");
-  const { language, setLanguage, t } = useLanguage();
+  const { setLanguage, t } = useLanguage();
 
   useEffect(() => {
     setPortalReady(true);
@@ -114,27 +113,6 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
     }
   }
 
-  async function syncNow() {
-    if (!user) return;
-    try {
-      const dbDoc = doc(db, "users", user.uid);
-      const bookmarks = readLocalBookmarks();
-      await setDoc(
-        dbDoc,
-        {
-          bookmarkIds: bookmarks,
-          language,
-          updatedAt: new Date().toISOString()
-        },
-        { merge: true }
-      );
-      setStorageMode("firebase");
-    } catch (e) {
-      console.error(e);
-      setStorageMode("local");
-    }
-  }
-
   async function signOut() {
     await firebaseSignOut(auth);
     setUser(null);
@@ -174,7 +152,6 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
             deleteAccount={deleteAccount}
             signOut={signOut}
             storageMode={storageMode}
-            syncNow={syncNow}
             onClose={() => setOpen(false)}
             t={t}
             user={user}
@@ -209,7 +186,6 @@ function AccountMenu({
   deleteAccount,
   signOut,
   storageMode,
-  syncNow,
   onClose,
   t,
   user
@@ -217,7 +193,6 @@ function AccountMenu({
   deleteAccount: () => void;
   signOut: () => void;
   storageMode: "firebase" | "unconfigured" | "local";
-  syncNow: () => void;
   onClose: () => void;
   t: ReturnType<typeof useLanguage>["t"];
   user: FirebaseUser;
@@ -254,9 +229,6 @@ function AccountMenu({
             <Bookmark className="h-3.5 w-3.5" />
             {t("viewBookmarks")}
           </Link>
-          <button type="button" onClick={syncNow} className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 font-bold text-slate-100 transition hover:border-cyan-300/35">
-            {t("syncSavedBriefs")}
-          </button>
           <button type="button" onClick={signOut} className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 font-bold text-slate-100 transition hover:border-cyan-300/35">
             <LogOut className="h-3.5 w-3.5" />
             {t("signOut")}
