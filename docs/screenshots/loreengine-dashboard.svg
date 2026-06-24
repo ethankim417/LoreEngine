@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">LoreEngine dashboard preview</title>
+  <desc id="desc">Portfolio preview of the LoreEngine weekly gaming industry intelligence dashboard.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#061923"/>
+      <stop offset="0.5" stop-color="#070914"/>
+      <stop offset="1" stop-color="#160d2f"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" x2="1">
+      <stop offset="0" stop-color="#67e8f9"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1440" height="900" fill="url(#bg)"/>
+  <g opacity="0.2">
+    <path d="M0 160H1440M0 320H1440M0 480H1440M0 640H1440M0 800H1440" stroke="#7dd3fc"/>
+    <path d="M160 0V900M320 0V900M480 0V900M640 0V900M800 0V900M960 0V900M1120 0V900M1280 0V900" stroke="#7dd3fc"/>
+  </g>
+  <circle cx="1130" cy="40" r="260" fill="#7c3aed" opacity="0.18" filter="url(#glow)"/>
+  <circle cx="150" cy="120" r="260" fill="#06b6d4" opacity="0.18" filter="url(#glow)"/>
+
+  <g transform="translate(72 64)">
+    <text x="0" y="28" fill="#9cf6ff" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="5">LOREENGINE</text>
+    <text x="0" y="92" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="900">Weekly gaming intelligence</text>
+    <text x="0" y="140" fill="#b6c2d4" font-family="Inter, Arial, sans-serif" font-size="24">A cached brief for game AI, platforms, studios, hardware, esports, and market signals.</text>
+    <rect x="0" y="180" width="216" height="52" rx="18" fill="#67e8f9"/>
+    <text x="28" y="214" fill="#07111f" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900">15 briefs tracked</text>
+    <rect x="236" y="180" width="184" height="52" rx="18" fill="#101827" stroke="#2dd4bf" opacity="0.95"/>
+    <text x="264" y="214" fill="#ccfbf1" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">9 sources used</text>
+  </g>
+
+  <g transform="translate(72 340)">
+    <g>
+      <rect width="294" height="150" rx="22" fill="#0b1324" stroke="#26364f"/>
+      <rect x="28" y="30" width="84" height="8" rx="4" fill="#22d3ee" opacity="0.35"/>
+      <text x="28" y="76" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="900" letter-spacing="4">INDUSTRY HEAT</text>
+      <text x="28" y="124" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="900">82/100</text>
+    </g>
+    <g transform="translate(326 0)">
+      <rect width="294" height="150" rx="22" fill="#0b1324" stroke="#26364f"/>
+      <rect x="28" y="30" width="84" height="8" rx="4" fill="#a78bfa" opacity="0.35"/>
+      <text x="28" y="76" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="900" letter-spacing="4">AI DISRUPTION</text>
+      <text x="28" y="124" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="900">85/100</text>
+    </g>
+    <g transform="translate(652 0)">
+      <rect width="294" height="150" rx="22" fill="#0b1324" stroke="#26364f"/>
+      <rect x="28" y="30" width="84" height="8" rx="4" fill="#34d399" opacity="0.35"/>
+      <text x="28" y="76" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="900" letter-spacing="4">TRENDING BRIEFS</text>
+      <text x="28" y="124" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="900">15</text>
+    </g>
+    <g transform="translate(978 0)">
+      <rect width="294" height="150" rx="22" fill="#0b1324" stroke="#26364f"/>
+      <rect x="28" y="30" width="84" height="8" rx="4" fill="#fbbf24" opacity="0.35"/>
+      <text x="28" y="76" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="900" letter-spacing="4">MARKET MOMENTUM</text>
+      <text x="28" y="124" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="900">+36%</text>
+    </g>
+  </g>
+
+  <g transform="translate(72 552)">
+    <rect width="820" height="250" rx="26" fill="#070b14" stroke="#243650"/>
+    <text x="28" y="46" fill="#86efac" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="3">READ FIRST</text>
+    <text x="28" y="98" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="900">Valve prices Steam Machine above the console market</text>
+    <text x="28" y="142" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="21">Steam Machine now tests how much value players assign to Steam library access,</text>
+    <text x="28" y="174" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="21">Linux flexibility, and PC openness at a premium price point.</text>
+    <rect x="28" y="202" width="170" height="34" rx="12" fill="#0f1c2d" stroke="#164e63"/>
+    <text x="48" y="225" fill="#bae6fd" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800">Impact 91</text>
+    <rect x="214" y="202" width="170" height="34" rx="12" fill="#0f1c2d" stroke="#164e63"/>
+    <text x="234" y="225" fill="#bae6fd" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800">Momentum +45%</text>
+  </g>
+  <g transform="translate(930 552)">
+    <rect width="360" height="250" rx="26" fill="#080d18" stroke="#243650"/>
+    <text x="28" y="46" fill="#9cf6ff" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="3">MARKET PULSE</text>
+    <text x="28" y="94" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="900">INTC +31.9%</text>
+    <path d="M28 172 C84 118 128 200 184 144 C230 96 270 160 332 110" fill="none" stroke="url(#cyan)" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="332" cy="110" r="9" fill="#67e8f9"/>
+    <text x="28" y="224" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="16">Weekly cached market context</text>
+  </g>
+</svg>

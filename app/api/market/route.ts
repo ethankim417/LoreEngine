@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getMarketSnapshot } from "@/lib/marketData";
 
-export const dynamic = "force-dynamic";
+export const dynamic = process.env.GITHUB_PAGES === "true" ? "force-static" : "force-dynamic";
 
 export async function GET() {
   const snapshot = await getMarketSnapshot();

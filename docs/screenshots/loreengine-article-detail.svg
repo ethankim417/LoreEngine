@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">LoreEngine article detail preview</title>
+  <desc id="desc">Article detail page preview showing a full brief, impact scores, and source context.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#081926"/>
+      <stop offset="0.55" stop-color="#070914"/>
+      <stop offset="1" stop-color="#180f31"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" x2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="900" fill="url(#bg)"/>
+  <g opacity="0.16">
+    <path d="M0 180H1440M0 360H1440M0 540H1440M0 720H1440" stroke="#67e8f9"/>
+    <path d="M180 0V900M360 0V900M540 0V900M720 0V900M900 0V900M1080 0V900M1260 0V900" stroke="#67e8f9"/>
+  </g>
+  <g transform="translate(80 58)">
+    <text x="0" y="26" fill="#9cf6ff" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="4">FULL BRIEF</text>
+    <text x="0" y="92" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="900">Valve prices Steam Machine above the console market</text>
+    <text x="0" y="138" fill="#b8c4d6" font-family="Inter, Arial, sans-serif" font-size="24">Premium hardware pricing turns Valve's living-room PC into a strategy signal.</text>
+    <rect x="0" y="176" width="135" height="38" rx="14" fill="#123044" stroke="#155e75"/>
+    <text x="20" y="202" fill="#bae6fd" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="900">Hardware</text>
+    <rect x="151" y="176" width="160" height="38" rx="14" fill="#111827" stroke="#334155"/>
+    <text x="171" y="202" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="900">The Verge</text>
+  </g>
+  <g transform="translate(80 310)">
+    <rect width="760" height="438" rx="28" fill="#090e19" stroke="#243650"/>
+    <text x="34" y="54" fill="#9cf6ff" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="4">WHY IT MATTERS</text>
+    <text x="34" y="104" fill="#e5edf8" font-family="Inter, Arial, sans-serif" font-size="24">Steam Machine now tests how much value players assign to Steam</text>
+    <text x="34" y="140" fill="#e5edf8" font-family="Inter, Arial, sans-serif" font-size="24">library access, Linux flexibility, and PC openness when the box</text>
+    <text x="34" y="176" fill="#e5edf8" font-family="Inter, Arial, sans-serif" font-size="24">costs far more than a PS5 or Xbox Series X.</text>
+    <path d="M34 222H704" stroke="url(#line)" stroke-width="2" opacity="0.5"/>
+    <text x="34" y="274" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="900" letter-spacing="3">POSSIBLE IMPACT</text>
+    <text x="34" y="318" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="21">Publishers and hardware partners will watch reservation demand before</text>
+    <text x="34" y="350" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="21">treating SteamOS living-room PCs as a serious console-adjacent channel.</text>
+    <rect x="34" y="382" width="164" height="36" rx="13" fill="#0f1c2d" stroke="#164e63"/>
+    <text x="54" y="406" fill="#bae6fd" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800">Impact 91</text>
+    <rect x="214" y="382" width="190" height="36" rx="13" fill="#0f1c2d" stroke="#164e63"/>
+    <text x="234" y="406" fill="#bae6fd" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800">Trend +45%</text>
+  </g>
+  <g transform="translate(878 310)">
+    <rect width="482" height="438" rx="28" fill="#080d18" stroke="#243650"/>
+    <text x="34" y="54" fill="#c4b5fd" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="4">AFFECTED SECTORS</text>
+    <g font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">
+      <rect x="34" y="86" width="160" height="42" rx="16" fill="#10243a" stroke="#155e75"/>
+      <text x="54" y="114" fill="#cffafe">PC Gaming</text>
+      <rect x="210" y="86" width="142" height="42" rx="16" fill="#10243a" stroke="#155e75"/>
+      <text x="230" y="114" fill="#cffafe">Hardware</text>
+      <rect x="34" y="146" width="118" height="42" rx="16" fill="#10243a" stroke="#155e75"/>
+      <text x="54" y="174" fill="#cffafe">Steam</text>
+      <rect x="168" y="146" width="126" height="42" rx="16" fill="#10243a" stroke="#155e75"/>
+      <text x="188" y="174" fill="#cffafe">Console</text>
+    </g>
+    <text x="34" y="250" fill="#9cf6ff" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="4">TREND READ</text>
+    <text x="34" y="300" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="21">Hardware inflation and AI-era component pressure are making</text>
+    <text x="34" y="332" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="21">console comparisons harder for PC-style living-room devices.</text>
+    <rect x="34" y="374" width="220" height="42" rx="16" fill="#67e8f9"/>
+    <text x="58" y="402" fill="#07111f" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="900">Open source article</text>
+  </g>
+</svg>

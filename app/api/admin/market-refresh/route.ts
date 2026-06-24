@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { validateCronRequest } from "@/lib/cronAuth";
 import { getMarketSnapshot } from "@/lib/marketData";
 
-export const dynamic = "force-dynamic";
+export const dynamic = process.env.GITHUB_PAGES === "true" ? "force-static" : "force-dynamic";
 
 // Vercel Cron calls this route weekly to refresh the server-side market cache.
 // This does not use AI and does not write to the repository at runtime.

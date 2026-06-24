@@ -3,7 +3,7 @@ import { articles, briefSnapshotDate } from "@/data/articles";
 import { getMarketSnapshot } from "@/lib/marketData";
 import { getUniqueSourceCount } from "@/lib/sourceStats";
 
-export const dynamic = "force-dynamic";
+export const dynamic = process.env.GITHUB_PAGES === "true" ? "force-static" : "force-dynamic";
 
 const STALE_MARKET_HOURS = 24 * 8;
 

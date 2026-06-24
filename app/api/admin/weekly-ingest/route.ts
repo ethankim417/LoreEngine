@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { validateCronRequest } from "@/lib/cronAuth";
 import { runWeeklyIntelligencePipeline } from "@/lib/futurePipeline";
 
-export const dynamic = "force-dynamic";
+export const dynamic = process.env.GITHUB_PAGES === "true" ? "force-static" : "force-dynamic";
 
 // Future news/AI route. The active Vercel Cron currently calls
 // /api/admin/market-refresh, while this endpoint remains a safe scaffold.

@@ -88,13 +88,19 @@ The intended future version would fetch sources on a schedule, summarize selecte
 
 ## Screenshot / GIF
 
-Real screenshots should be added after the final Vercel deployment:
+GitHub preview assets:
 
-- `docs/screenshots/loreengine-dashboard.png`
-- `docs/screenshots/loreengine-article-detail.png`
-- `docs/screenshots/loreengine-market-pulse.png`
+![LoreEngine dashboard preview](./docs/screenshots/loreengine-dashboard.svg)
 
-See [docs/screenshots/README.md](./docs/screenshots/README.md).
+| Article detail | Market Pulse |
+| --- | --- |
+| ![LoreEngine article detail preview](./docs/screenshots/loreengine-article-detail.svg) | ![LoreEngine market pulse preview](./docs/screenshots/loreengine-market-pulse.svg) |
+
+Mobile preview:
+
+![LoreEngine mobile preview](./docs/screenshots/loreengine-mobile.svg)
+
+See [docs/screenshots/README.md](./docs/screenshots/README.md) for capture and asset notes.
 
 The app also includes a branded favicon and Open Graph preview asset:
 
@@ -183,7 +189,7 @@ Future improvements:
 - Add a database or object cache for generated briefs.
 - Add source freshness and editorial review status.
 - Add tests around filtering, sorting, scoring, and article routing.
-- Add real screenshots and the final Vercel URL.
+- Replace SVG preview panels with fresh browser captures when the local screenshot backend is available.
 
 ## Run Locally
 
