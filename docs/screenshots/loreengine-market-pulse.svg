@@ -44,21 +44,22 @@
   <g transform="translate(72 430)">
     <rect width="1296" height="94" rx="22" fill="#0a101c" stroke="#26364f"/>
     <text x="28" y="38" fill="#9cf6ff" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="900" letter-spacing="4">HARDWARE</text>
-    <text x="28" y="68" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="900">NVIDIA, AMD, Intel, Qualcomm, Corsair Gaming</text>
+    <text x="28" y="68" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="900">NVIDIA, AMD, Intel, Qualcomm, Corsair</text>
     <path d="M820 64 C880 28 930 78 990 42 C1042 10 1104 72 1174 34" fill="none" stroke="url(#pos)" stroke-width="6" stroke-linecap="round"/>
     <text x="1200" y="58" fill="#34d399" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="900">+31.9%</text>
   </g>
   <g transform="translate(72 550)">
     <rect width="1296" height="94" rx="22" fill="#0a101c" stroke="#26364f"/>
     <text x="28" y="38" fill="#c4b5fd" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="900" letter-spacing="4">GAME ENGINES</text>
-    <text x="28" y="68" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="900">Unity plus Epic as a private Unreal proxy</text>
+    <text x="28" y="68" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="900">Unity plus Epic as Unreal proxy</text>
     <path d="M820 40 C880 72 930 28 990 54 C1056 82 1112 44 1174 62" fill="none" stroke="url(#neg)" stroke-width="6" stroke-linecap="round"/>
     <text x="1200" y="58" fill="#fb7185" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="900">-4.8%</text>
   </g>
   <g transform="translate(72 670)">
     <rect width="1296" height="94" rx="22" fill="#0a101c" stroke="#26364f"/>
     <text x="28" y="38" fill="#86efac" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="900" letter-spacing="4">GAME REVENUE</text>
-    <text x="28" y="68" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="900">Tencent, NetEase, Roblox, Take-Two, EA, Krafton, Ubisoft, CD Projekt, Konami, Capcom</text>
+    <text x="28" y="62" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="900">Tencent, NetEase, Roblox, Take-Two, EA, Krafton, Ubisoft</text>
+    <text x="28" y="88" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">plus CD Projekt, Konami, and Capcom</text>
     <path d="M820 66 C876 40 936 72 998 30 C1058 8 1118 58 1174 36" fill="none" stroke="url(#pos)" stroke-width="6" stroke-linecap="round"/>
     <text x="1200" y="58" fill="#34d399" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="900">+8.4%</text>
   </g>

@@ -19,12 +19,13 @@
   </g>
   <g transform="translate(80 58)">
     <text x="0" y="26" fill="#9cf6ff" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="4">FULL BRIEF</text>
-    <text x="0" y="92" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="900">Valve prices Steam Machine above the console market</text>
-    <text x="0" y="138" fill="#b8c4d6" font-family="Inter, Arial, sans-serif" font-size="24">Premium hardware pricing turns Valve's living-room PC into a strategy signal.</text>
-    <rect x="0" y="176" width="135" height="38" rx="14" fill="#123044" stroke="#155e75"/>
-    <text x="20" y="202" fill="#bae6fd" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="900">Hardware</text>
-    <rect x="151" y="176" width="160" height="38" rx="14" fill="#111827" stroke="#334155"/>
-    <text x="171" y="202" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="900">The Verge</text>
+    <text x="0" y="84" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="900">Valve prices Steam Machine</text>
+    <text x="0" y="142" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="900">above the console market</text>
+    <text x="0" y="190" fill="#b8c4d6" font-family="Inter, Arial, sans-serif" font-size="24">Premium hardware pricing turns Valve's living-room PC into a strategy signal.</text>
+    <rect x="0" y="228" width="135" height="38" rx="14" fill="#123044" stroke="#155e75"/>
+    <text x="20" y="254" fill="#bae6fd" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="900">Hardware</text>
+    <rect x="151" y="228" width="160" height="38" rx="14" fill="#111827" stroke="#334155"/>
+    <text x="171" y="254" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="900">The Verge</text>
   </g>
   <g transform="translate(80 310)">
     <rect width="760" height="438" rx="28" fill="#090e19" stroke="#243650"/>
