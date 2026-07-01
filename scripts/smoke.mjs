@@ -7,8 +7,8 @@ const checks = [
   { path: "/sources", expect: "Source Strategy" },
   { path: "/privacy", expect: "Privacy And Legal Notes" },
   {
-    path: "/articles/valve-prices-steam-machine-above-console-market",
-    expect: "Valve prices Steam Machine"
+    path: "/articles/sony-next-playstation-beyond-living-room",
+    expect: "Sony frames next PlayStation"
   },
   { path: "/api/market", expect: "snapshotDate" },
   { path: "/api/health", expect: "\"status\":\"" },
