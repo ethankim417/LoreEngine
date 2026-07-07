@@ -7,8 +7,8 @@ const checks = [
   { path: "/sources", expect: "Source Strategy" },
   { path: "/privacy", expect: "Privacy And Legal Notes" },
   {
-    path: "/articles/playstation-next-gen-strategy-moves-beyond-the-living-room",
-    expect: "PlayStation next-gen strategy moves beyond the living room"
+    path: "/articles/xbox-restructure-turns-studio-ownership-into-margin-discipline",
+    expect: "Xbox restructure turns studio ownership into margin discipline"
   },
   { path: "/api/market", expect: "snapshotDate" },
   { path: "/api/health", expect: "\"status\":\"" },

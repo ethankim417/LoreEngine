@@ -40,7 +40,7 @@ export type MarketSnapshot = {
 
 // Local fallback data. On Vercel, /api/market can refresh public close-price
 // fields from a scheduled server job. The static mirror keeps reading this file.
-export const marketSnapshotDate = "2026-06-30";
+export const marketSnapshotDate = "2026-07-07";
 
 export const marketPlayers: MarketPlayer[] = [
   {
@@ -48,14 +48,14 @@ export const marketPlayers: MarketPlayer[] = [
     company: "NVIDIA",
     segment: "Gaming AI / GPUs",
     exchange: "NASDAQ",
-    price: 200.09,
-    dayChange: 2.63,
+    price: 195.55,
+    dayChange: -2.27,
     thirtyDayChange: -10.82,
     ytdChange: 5.95,
     marketCap: "$3.1T",
     sentiment: "Bullish",
     summary:
-      "GPU demand, local AI inference, and RTX creator tooling keep NVIDIA positioned as the strongest gaming AI infrastructure signal.",
+      "GPU demand, local AI inference, and RTX creator tooling keep NVIDIA positioned as the strongest gaming AI infrastructure signal; latest fallback close is from public market coverage.",
     watchSignal: "On-device agents, DLSS adoption, and AI PC attach rates",
     trend: [75, 71, 78, 68, 57, 56, 51, 55, 47, 80, 76, 56, 66, 32, 41, 39, 20, 31, 32]
   },
@@ -345,29 +345,46 @@ export const staticMarketSnapshot: MarketSnapshot = {
   snapshotDate: marketSnapshotDate,
   players: marketPlayers,
   groups: marketGroups,
-  dataSourceLabel: "Yahoo Finance public chart close fallback; not financial advice",
+  dataSourceLabel: "Public close-price fallback where available; retained stale fallback values are not financial advice",
   mode: "weekly-close-feed",
   refreshedAt: `${marketSnapshotDate}T00:00:00.000Z`,
   updatedTickers: [
-    "NVDA",
+    "NVDA"
+  ],
+  failedTickers: [
     "AMD",
     "INTC",
     "MSFT",
     "SONY",
     "NTDOY",
+    "U",
+    "TCEHY",
     "NTES",
     "EA",
     "TTWO",
-    "U",
-    "TCEHY",
     "RBLX",
     "CCOEY",
     "KONMY",
     "NCBDY",
-    "SQNXF"
+    "SQNXF",
+    "EPIC"
   ],
-  failedTickers: ["EPIC"],
   failedTickerReasons: {
+    AMD: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    INTC: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    MSFT: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    SONY: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    NTDOY: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    U: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    TCEHY: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    NTES: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    EA: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    TTWO: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    RBLX: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    CCOEY: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    KONMY: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    NCBDY: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
+    SQNXF: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
     EPIC: "Epic Games is private and has no public close price; it remains an unpriced engine and creator-economy proxy."
   }
 };
