@@ -3,6 +3,7 @@ import type { DashboardMetric } from "@/lib/metrics";
 import type { Language } from "@/lib/i18n";
 
 type ArticleText = Pick<Article, "title" | "tldr" | "fullTldr" | "whyItMatters" | "possibleImpact" | "trendAnalysis">;
+type ArticleTranslation = ArticleText & { sourceSlug: string };
 
 const categoryLabels: Record<ArticleCategory, Record<Language, string>> = {
   Gaming: { en: "Gaming", ko: "게임" },
@@ -213,6 +214,144 @@ const articleTranslations: Record<string, ArticleText> = {
   }
 };
 
+const currentArticleTranslations: Record<string, ArticleTranslation> = {
+  "le-001": {
+    sourceSlug: "xbox-restructure-turns-studio-ownership-into-margin-discipline",
+    title: "Xbox 구조조정이 스튜디오 보유 전략을 수익성 규율로 바꾼다",
+    tldr: "Microsoft는 Xbox 전반에서 대규모 감원을 진행하고 여러 스튜디오를 완전 내부 소유 구조 밖으로 옮기려 하고 있다.",
+    fullTldr: "The Verge는 Microsoft가 Xbox 조직을 크게 재편하며 수천 명 규모의 게임 부문 감원과 Double Fine, Compulsion, Ninja Theory, Undead Labs 같은 스튜디오 매각 또는 분사를 검토하고 있다고 보도했다. 핵심 신호는 퍼스트파티의 폭이 이제 마진, 관리 복잡도, 프랜차이즈 규모와 함께 평가되고 있다는 점이다.",
+    whyItMatters: "Activision Blizzard 인수 이후 Xbox의 논리는 거대한 콘텐츠 포트폴리오를 느슨한 스튜디오 묶음이 아니라 집중된 플랫폼 사업처럼 운영할 수 있는지에 달려 있다.",
+    possibleImpact: "퍼스트파티 예산, 지원 스튜디오 모델, Game Pass 경제성, 내부 자금을 받을 프로젝트의 기준에 대한 검증이 더 강해질 수 있다.",
+    trendAnalysis: "대형 퍼블리셔가 가장 큰 프랜차이즈는 가까이 두고 작거나 위험한 창작 베팅은 독립 구조로 밀어내는 포트폴리오 압축 흐름이다."
+  },
+  "le-002": {
+    sourceSlug: "xbox-profit-pressure-becomes-industry-warning-signal",
+    title: "Xbox 수익 압박이 게임 산업의 경고 신호가 된다",
+    tldr: "Xbox 구조조정은 콘솔 경제성, 구독 성장, AAA 비용 통제의 더 넓은 문제를 보여주는 사례로 해석되고 있다.",
+    fullTldr: "Business Insider는 Xbox 감원을 콘솔 모멘텀 약화, Game Pass 기대치, 하드웨어 비용 상승, 소수의 장수 게임에 플레이어가 몰리는 현상과 연결했다. 신호는 Microsoft만의 문제가 아니다. 규모 자체가 게임 산업의 마진 문제를 해결하지 못하고 있다.",
+    whyItMatters: "가장 큰 자본력을 가진 회사 중 하나가 내부 개발 노출을 줄인다면 중견 스튜디오와 서비스형 베팅에는 더 차가운 자금 환경이 올 수 있다.",
+    possibleImpact: "퍼블리셔는 검증된 IP, 공유 기술, 저위험 공동 개발, 여러 플랫폼으로 이동 가능한 출시 전략을 더 선호할 가능성이 높다.",
+    trendAnalysis: "스튜디오를 더 많이 소유하는 것보다 각 스튜디오가 반복적으로 수익을 낼 수 있음을 증명하는 운영 레버리지 중심의 흐름이다."
+  },
+  "le-003": {
+    sourceSlug: "playstation-disc-backlash-keeps-digital-ownership-risk-visible",
+    title: "PlayStation 디스크 논란이 디지털 소유권 리스크를 다시 드러낸다",
+    tldr: "Sony가 PlayStation 물리 디스크에서 멀어지는 움직임은 소유권과 가격 결정력에 대한 소비자 반발을 계속 키우고 있다.",
+    fullTldr: "Business Insider는 Sony가 2028년부터 PlayStation 게임 디스크 생산을 중단하려는 계획에 대한 비판이 이어지고 있다고 보도했다. 디지털 유통은 물류만의 문제가 아니라 중고 시장, 보존, 라이선스 리스크, 소비자 신뢰를 바꾸는 문제다.",
+    whyItMatters: "디지털 전용 플랫폼은 마진을 높이고 유통을 단순화할 수 있지만, 그만큼 스토어 거버넌스와 계정 신뢰가 플레이어 관계의 핵심이 된다.",
+    possibleImpact: "환불 기준, 라이브러리 보장, 디스크 드라이브 액세서리, 컬렉터 에디션, 디지털 스토어 가격 경쟁에 대한 압박이 커질 수 있다.",
+    trendAnalysis: "플랫폼이 디스크 대신 라이선스로 이용자를 이동시키면서 플레이어가 더 강한 권리와 투명한 스토어 정책을 요구하는 소유권 불안 흐름이다."
+  },
+  "le-004": {
+    sourceSlug: "nintendo-eu-battery-rule-turns-hardware-compliance-into-platform-planning",
+    title: "Nintendo의 EU 배터리 규정 대응이 하드웨어 계획 문제로 번진다",
+    tldr: "Nintendo는 EU의 사용자 교체 가능 배터리 규정에 맞추기 위해 유럽에서 기존 Switch 판매를 단계적으로 중단한다.",
+    fullTldr: "The Verge는 Nintendo가 2027년 유럽에서 기존 Switch 모델 판매를 중단하고 EU 배터리 규정에 맞춘 개정 하드웨어를 내놓을 예정이라고 보도했다. 당장은 지역 규제 대응이지만, 더 큰 신호는 하드웨어 플랫폼이 수리권과 지속가능성 계획을 제품 수명주기에 포함해야 한다는 점이다.",
+    whyItMatters: "규제는 후속 기기가 출시된 뒤에도 성숙한 콘솔 하드웨어, 액세서리 공급, 수리 흐름, 지역 재고 전략을 바꿀 수 있다.",
+    possibleImpact: "지역별 SKU, 수리 문서, 액세서리 재설계, 휴대용 콘솔 생태계의 긴 컴플라이언스 관리가 더 중요해질 수 있다.",
+    trendAnalysis: "지속가능성과 수리 가능성 규정이 출시와 단종 전략의 제약 조건이 되는 규제형 하드웨어 디자인 흐름이다."
+  },
+  "le-005": {
+    sourceSlug: "memory-price-cooling-still-leaves-gaming-hardware-under-pressure",
+    title: "메모리 가격 상승 둔화에도 게임 하드웨어 압박은 계속된다",
+    tldr: "TrendForce는 소비자 저항으로 속도는 둔화되지만 3분기 DRAM과 NAND 가격 상승이 이어질 것으로 본다.",
+    fullTldr: "Tom's Hardware는 TrendForce 전망을 인용해 2026년 3분기 DRAM 계약 가격이 13~18%, NAND가 10~15% 오를 수 있다고 전했다. AI 인프라 수요가 강한 가운데 소비자 전자 기업은 가격 부담에 저항하고 있어 콘솔, PC, 휴대용 기기가 부품비 긴장에 노출되어 있다.",
+    whyItMatters: "메모리 가격은 AI 투자와 게임 하드웨어 가격을 직접 연결한다. 콘솔 가격, SSD 번들, GPU 보드 비용, 할인 여력에 영향을 준다.",
+    possibleImpact: "하드웨어 할인은 더 조심스러워지고 저장공간 번들은 작아지며, 긴 콘솔 세대와 클라우드 또는 카탈로그 가치 메시지가 다시 강조될 수 있다.",
+    trendAnalysis: "기업 AI가 공급망을 조이는 동안 소비자 게임 수요는 가격에 더 민감해지는 양분된 메모리 수요 흐름이다."
+  },
+  "le-006": {
+    sourceSlug: "nvidia-roadmap-noise-shows-how-ai-compute-now-moves-gaming-stocks",
+    title: "NVIDIA 로드맵 논란은 AI 컴퓨트가 게임 주가를 움직인다는 점을 보여준다",
+    tldr: "NVIDIA는 AI 아키텍처 지연 보도에 반박했고, 투자자들은 그 로드맵 논쟁을 중요한 변수로 받아들였다.",
+    fullTldr: "Investor's Business Daily는 NVIDIA가 차세대 AI 컴퓨팅 아키텍처의 대규모 지연 주장을 일축했으며 분석가들은 이를 시장 잡음으로 봤다고 보도했다. 데이터센터 AI 중심 보도지만 NVIDIA의 밸류에이션, PC GPU 공급, DLSS 로드맵, 로컬 AI 도구가 같은 투자 내러티브 위에 있다는 점에서 게임에도 중요하다.",
+    whyItMatters: "게임 하드웨어 기업은 점점 AI 실행력으로 가격이 매겨진다. 제품 지연, 메모리 수요, 소비자 GPU 공급을 해석하는 방식도 달라진다.",
+    possibleImpact: "게임 GPU 메시지는 순수 래스터 성능보다 AI 가속, 크리에이터 워크플로, 온디바이스 추론으로 더 기울 수 있다.",
+    trendAnalysis: "게임 GPU가 소비자 업그레이드 사이클보다 데이터센터 로드맵 관점에서 먼저 평가되는 AI 주도 하드웨어 밸류에이션 흐름이다."
+  },
+  "le-007": {
+    sourceSlug: "intel-arc-memory-value-highlights-budget-ai-creator-gap",
+    title: "Intel Arc의 메모리 가성비가 저가형 AI 크리에이터 격차를 보여준다",
+    tldr: "RTX 5090 가격 상승은 32GB Intel Arc Pro 카드가 메모리 중심 AI 작업에서 매력적으로 보이게 만들고 있다.",
+    fullTldr: "TechRadar는 128GB 총 VRAM을 갖춘 4장 구성 Intel Arc Pro B70 세트가 부풀려진 RTX 5090 한 장보다 저렴할 수 있다고 보도했다. NVIDIA가 여전히 소프트웨어와 성능에서 강하지만, 게임 개발자, 모더, 소규모 AI 콘텐츠 팀에게 저렴한 VRAM은 현실적인 제작 제약이 되고 있다.",
+    whyItMatters: "게임 AI 실험은 로컬 컴퓨트 경제성에 달려 있다. 고급 소비자 GPU가 계속 희소하거나 비싸면 저가의 대용량 메모리 대안이 전략적으로 중요해진다.",
+    possibleImpact: "인디 팀과 테크니컬 아티스트는 혼합 GPU 구성, 클라우드 버스트, 양자화 모델, 비 CUDA 워크플로를 테스트할 가능성이 높다.",
+    trendAnalysis: "플래그십 게임 카드가 희소성 때문에 비싸질수록 크리에이터는 AI 파이프라인에 충분한 로컬 메모리를 원하게 되는 VRAM 민주화 압력이다."
+  },
+  "le-008": {
+    sourceSlug: "amd-radeon-memory-risk-keeps-pc-gaming-prices-unstable",
+    title: "AMD Radeon 메모리 리스크가 PC 게임 가격을 계속 흔든다",
+    tldr: "Radeon 그래픽 메모리 비용 상승 가능성은 소비자 GPU 가격의 또 다른 압박 요인이다.",
+    fullTldr: "TechRadar는 VideoCardz의 보드 채널 소문을 인용해 AMD Radeon 생태계가 7월 그래픽 메모리 가격 상승에 직면할 수 있다고 보도했다. 중요한 것은 정확한 비율이 아니라 소비자가 높은 하드웨어 가격에 저항하는 와중에도 PC 게임 부품 가격이 메모리 공급 압력에 취약하다는 점이다.",
+    whyItMatters: "GPU 가격은 Steam 하드웨어 채택, PC 업그레이드 시점, 크리에이터 워크스테이션, 소프트웨어 구매 여력에 영향을 준다.",
+    possibleImpact: "번들 PC, 중고 GPU, 이전 세대 카드, 클라우드 게임 체험, 업스케일링 같은 성능 확장 기능에 더 많은 관심이 갈 수 있다.",
+    trendAnalysis: "메모리 가격 변동성이 스택 전반으로 퍼지면서 게이머와 크리에이터가 전체 시스템 비용을 더 적극적으로 비교하는 하드웨어 가치 탐색 흐름이다."
+  },
+  "le-009": {
+    sourceSlug: "esports-world-cup-opens-with-creator-and-club-scale-in-focus",
+    title: "Esports World Cup 개막은 크리에이터와 클럽 규모를 전면에 둔다",
+    tldr: "EWC 공식 일정은 1주차 개막과 7주 일정, 클럽 예선 데이터, 크리에이터 프로그램을 함께 보여준다.",
+    fullTldr: "Esports World Cup 공식 사이트는 2026년 행사가 7월 6~12일 개막 주간에 들어갔고, Road to EWC 슬롯, 클럽 예선 상위권, 크리에이터 프로그램, 8월 말까지 이어지는 다주 일정이 있음을 보여준다. e스포츠가 단순 토너먼트가 아니라 클럽, 크리에이터, 티켓, 페스티벌 상품으로 포장되고 있다는 신호다.",
+    whyItMatters: "e스포츠 수익화는 경쟁, 크리에이터 유통, 현장 관람, 스폰서 친화적 클럽 서사를 얼마나 잘 결합하느냐에 달려 있다.",
+    possibleImpact: "퍼블리셔는 클럽 슬롯, 공동 송출권, 크리에이터 접근, 여러 게임을 넘나드는 페스티벌형 포맷을 더 많이 협상하게 될 수 있다.",
+    trendAnalysis: "토너먼트 운영사가 클럽, 팬, 크리에이터, 라이브 이벤트를 중심으로 연중 상업 시스템을 구축하는 e스포츠 번들링 흐름이다."
+  },
+  "le-010": {
+    sourceSlug: "india-rising-pathway-makes-esports-expansion-more-regional",
+    title: "India Rising 경로는 e스포츠 확장을 더 지역화한다",
+    tldr: "JioBLAST, Chess.com, EWC가 인도 플레이어를 Esports World Cup 생태계로 연결하는 전용 경로를 만들고 있다.",
+    fullTldr: "Times of India는 India Rising: Road to EWC 프로그램을 인도 플레이어가 Esports World Cup 생태계에 진입하는 직접 경로로 소개했다. e스포츠 성장이 글로벌 퍼블리셔 회로에만 의존하지 않고 통신사, 체스, 크리에이터, 국가 시장 파트너십을 통해 지역화되고 있다는 신호다.",
+    whyItMatters: "인도의 모바일 중심 게임 기반, 체스 강점, 통신 유통망은 e스포츠 관객과 인재 확장에서 매우 중요한 조합이다.",
+    possibleImpact: "지역 예선, 통신사 후원 대회, 체스-e스포츠 하이브리드, 국가 정체성을 활용한 스폰서 패키지가 늘어날 수 있다.",
+    trendAnalysis: "글로벌 이벤트가 현지 규모에서 발견성, 유통, 스폰서십 문제를 해결하기 위해 시장별 사다리를 만드는 지역화된 e스포츠 인프라 흐름이다."
+  },
+  "le-011": {
+    sourceSlug: "kai-cenat-dual-platform-return-tests-streaming-exclusivity",
+    title: "Kai Cenat의 동시 플랫폼 복귀가 스트리밍 독점성을 시험한다",
+    tldr: "Kai Cenat의 7월 6일 복귀 방송은 Twitch와 YouTube 양쪽에서 진행될 것으로 예상되며 멀티 플랫폼 크리에이터 전략을 강화한다.",
+    fullTldr: "Times of India는 Kai Cenat가 휴식 후 복귀 방송을 Twitch와 YouTube에서 동시에 진행할 것이라고 보도했다. 게임과 e스포츠 관점에서 중요한 것은 한 크리에이터의 일정이 아니라, 최상위 크리에이터들이 도달 범위, 회복력, 협상력을 위해 단일 플랫폼 독점에서 점점 멀어진다는 점이다.",
+    whyItMatters: "크리에이터 유통은 게임 출시, e스포츠 시청률, 스폰서 도달 범위를 좌우한다. 멀티 플랫폼 방송은 플랫폼 의존도를 낮추고 크리에이터 접근 비용을 높인다.",
+    possibleImpact: "출시 캠페인은 하나의 라이브 플랫폼만으로 충분하다고 보기보다 Twitch, YouTube, TikTok, 숏폼 클립 전반의 크리에이터 도달을 구매하게 될 수 있다.",
+    trendAnalysis: "상위 스트리머가 여러 플랫폼에 관객 권리를 분산한 미디어 네트워크처럼 행동하는 크리에이터 이동성 흐름이다."
+  },
+  "le-012": {
+    sourceSlug: "fortnite-star-wars-tools-show-licensed-ugc-entering-production-mode",
+    title: "Fortnite Star Wars 도구는 라이선스 UGC가 제작 모드로 들어갔음을 보여준다",
+    tldr: "Epic과 Disney는 Fortnite 크리에이터가 Star Wars 경험을 만들 수 있게 하고, 라이선스 섬에 수익 배분을 붙였다.",
+    fullTldr: "The Verge는 Epic과 Disney가 UEFN 크리에이터에게 Star Wars 에셋을 열고 퍼블리싱 지원과 Disney 수익 배분을 제공한다고 보도했다. 이전 신호이지만 이번 주에도 중요한 이유는 크리에이터 주도 게임이 브랜드, 플랫폼, 독립 제작자가 경제성을 나누는 라이선스 채널이 되고 있기 때문이다.",
+    whyItMatters: "라이선스 UGC는 게임 플랫폼을 준공식 프랜차이즈 공장으로 만들 수 있지만, 권리, 수익 배분, 검수, 발견성이 명확해야 한다.",
+    possibleImpact: "IP 보유자는 통제된 크리에이터 에셋 라이브러리, 플랫폼별 수익 배분, 이벤트 연동 퍼블리싱 윈도우를 더 많이 테스트할 가능성이 있다.",
+    trendAnalysis: "브랜드가 일회성 협업에서 재사용 가능한 크리에이터 제작 키트로 이동하는 프랜차이즈 도구의 플랫폼 전략화 흐름이다."
+  },
+  "le-013": {
+    sourceSlug: "roblox-cube-3d-keeps-ai-creation-pressure-on-platforms",
+    title: "Roblox Cube 3D는 플랫폼의 AI 제작 경쟁 압박을 유지한다",
+    tldr: "Roblox의 Cube 3D 모델과 4D 제작 도구는 UGC 플랫폼을 AI 에셋 생성 경쟁 안에 계속 묶어 둔다.",
+    fullTldr: "Roblox의 Cube 3D 자료는 Roblox Studio와 크리에이터 API에 통합되는 메시 생성 모델을 설명하며, GitHub와 Hugging Face에 공개 모델 리소스도 제공한다. 전략적 신호는 AI 에셋 생성이 신기한 데모에서 플랫폼 네이티브 제작 워크플로로 이동하고 있다는 점이다.",
+    whyItMatters: "UGC 플랫폼은 더 많은 크리에이터가 더 빠르게 쓸 만한 오브젝트를 만들 수 있을 때 강해진다. AI 메시 생성은 제작 마찰을 낮추는 동시에 검수, 품질, IP 출처 문제를 키운다.",
+    possibleImpact: "메시, 애니메이션, 스크립팅, 썸네일, 현지화를 위한 플랫폼 내 AI 도구가 더 늘고, 안전 필터와 감사 추적도 함께 강화될 수 있다.",
+    trendAnalysis: "플랫폼이 생성형 도구를 외부 앱으로 두지 않고 크리에이터 워크플로 안에 직접 넣는 내장형 AI 제작 흐름이다."
+  },
+  "le-014": {
+    sourceSlug: "pc-long-tail-still-defends-catalog-first-publishing",
+    title: "PC 롱테일은 여전히 카탈로그 우선 퍼블리싱을 방어한다",
+    tldr: "Newzoo의 PC 및 콘솔 분석은 대형 타이틀 바깥의 카탈로그 매출 내구성을 계속 강조한다.",
+    fullTldr: "PC Gamer가 다룬 Newzoo의 2026년 PC 및 콘솔 보고서에 따르면 서구권 PC 매출의 절반 이상이 상위 20개 게임 밖에서 발생했다. 스튜디오 감원과 하드웨어 가격 압박이 지배한 주간에, 카탈로그 복리는 지속 가능한 퍼블리싱의 강한 반대 신호로 남아 있다.",
+    whyItMatters: "PC 매출은 많은 콘솔 전략보다 소수의 연간 블록버스터에 덜 의존한다. 모드 지원, 할인, 업데이트, 커뮤니티 지속성이 보상받는다.",
+    possibleImpact: "퍼블리셔는 오래된 PC 타이틀을 보호하고, 작은 업데이트를 지원하며, Steam 이벤트를 단순 출시 도구가 아닌 포트폴리오 관리 도구로 활용할 수 있다.",
+    trendAnalysis: "출시 후 업데이트, 할인, 모드, 커뮤니티 콘텐츠를 통해 계속 관심을 얻는 게임이 PC 스토어에서 보상받는 롱테일 회복력 흐름이다."
+  },
+  "le-015": {
+    sourceSlug: "global-games-market-growth-still-masks-studio-stress",
+    title: "글로벌 게임 시장 성장은 여전히 스튜디오 스트레스를 가린다",
+    tldr: "Newzoo가 게임 매출 2,000억 달러 돌파를 추정한 가운데, 감원과 스튜디오 통합은 계속 충돌하는 신호로 남아 있다.",
+    fullTldr: "GamesRadar는 Newzoo의 추정을 인용해 2025년 글로벌 게임 매출이 2,000억 달러를 넘었고 모바일, PC, 콘솔이 모두 큰 지출 풀을 만들었다고 보도했다. 이번 주 Xbox 감원이 보여주듯 시장 성장이 스튜디오 안정으로 고르게 이어지지는 않는다는 점에서 여전히 유용한 주간 앵커다.",
+    whyItMatters: "상위 시장이 성장해도 매출이 대형 플랫폼, 라이브 서비스, 장수 IP에 집중되면 운영 환경은 여전히 어려울 수 있다.",
+    possibleImpact: "자본은 모바일 규모, UGC 플랫폼, 검증된 프랜차이즈, 라이브 운영 팀으로 계속 흐르고 새 프리미엄 베팅의 승인 기준은 더 높아질 수 있다.",
+    trendAnalysis: "총시장 성장은 감원, 프로젝트 취소, 중간 예산 스튜디오의 자금 조달 압박과 공존하는 불균등 확장 흐름이다."
+  }
+};
+
 const metricTranslations: Record<DashboardMetric["id"], Partial<DashboardMetric>> = {
   "industry-heat": {
     label: "산업 열기",
@@ -262,19 +401,37 @@ export function getSectorLabel(sector: string, language: Language) {
 }
 
 export function getArticleText(article: Article, language: Language): ArticleText {
-  return language === "ko" ? articleTranslations[article.id] ?? article : article;
+  if (language === "en") {
+    return article;
+  }
+
+  const currentTranslation = currentArticleTranslations[article.id];
+
+  if (currentTranslation?.sourceSlug === article.slug) {
+    return currentTranslation;
+  }
+
+  return article;
 }
 
 export function getArticleLocalizationStatus(source: Article[]) {
   const missingKoreanArticleIds = source
-    .filter((article) => !articleTranslations[article.id])
+    .filter((article) => !currentArticleTranslations[article.id])
+    .map((article) => article.id);
+  const staleKoreanArticleIds = source
+    .filter((article) => {
+      const translation = currentArticleTranslations[article.id];
+
+      return translation && translation.sourceSlug !== article.slug;
+    })
     .map((article) => article.id);
 
   return {
     englishCount: source.length,
-    koreanCount: source.length - missingKoreanArticleIds.length,
-    complete: missingKoreanArticleIds.length === 0,
-    missingKoreanArticleIds
+    koreanCount: source.length - missingKoreanArticleIds.length - staleKoreanArticleIds.length,
+    complete: missingKoreanArticleIds.length === 0 && staleKoreanArticleIds.length === 0,
+    missingKoreanArticleIds,
+    staleKoreanArticleIds
   };
 }
 

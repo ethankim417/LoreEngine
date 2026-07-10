@@ -49,8 +49,8 @@ export async function runWeeklyIntelligencePipeline(): Promise<WeeklyPipelineRes
     nextSteps: [
       "Add RSS feed URLs",
       "Add durable storage for cached weekly briefs",
-      "Generate and save English/Korean summaries in the same server job",
-      "Fail or flag the weekly run if either language is missing",
+      "Generate and save English/Korean summaries plus slug-matched Korean article translations in the same server job",
+      "Run the localization check and fail the weekly run if either language is missing or stale",
       "Add server-only AI summarization behind an API key",
       "Replace mock article import with cached weekly results"
     ]
