@@ -40,7 +40,7 @@ export type MarketSnapshot = {
 
 // Local fallback data. On Vercel, /api/market can refresh public close-price
 // fields from a scheduled server job. The static mirror keeps reading this file.
-export const marketSnapshotDate = "2026-07-07";
+export const marketSnapshotDate = "2026-07-14";
 
 export const marketPlayers: MarketPlayer[] = [
   {
@@ -345,13 +345,12 @@ export const staticMarketSnapshot: MarketSnapshot = {
   snapshotDate: marketSnapshotDate,
   players: marketPlayers,
   groups: marketGroups,
-  dataSourceLabel: "Public close-price fallback where available; retained stale fallback values are not financial advice",
-  mode: "weekly-close-feed",
+  dataSourceLabel: "Public close-price fallback where available; unavailable values are retained and are not real-time data or financial advice",
+  mode: "cached-fallback",
   refreshedAt: `${marketSnapshotDate}T00:00:00.000Z`,
-  updatedTickers: [
-    "NVDA"
-  ],
+  updatedTickers: [],
   failedTickers: [
+    "NVDA",
     "AMD",
     "INTC",
     "MSFT",
@@ -370,6 +369,7 @@ export const staticMarketSnapshot: MarketSnapshot = {
     "EPIC"
   ],
   failedTickerReasons: {
+    NVDA: "No usable public close-price response was available during this refresh; retained the prior fallback value.",
     AMD: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
     INTC: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",
     MSFT: "Public chart lookup returned no usable current close during this local refresh; retained the prior fallback value.",

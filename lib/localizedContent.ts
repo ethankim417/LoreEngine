@@ -214,7 +214,7 @@ const articleTranslations: Record<string, ArticleText> = {
   }
 };
 
-const currentArticleTranslations: Record<string, ArticleTranslation> = {
+const previousArticleTranslations: Record<string, ArticleTranslation> = {
   "le-001": {
     sourceSlug: "xbox-restructure-turns-studio-ownership-into-margin-discipline",
     title: "Xbox 구조조정이 스튜디오 보유 전략을 수익성 규율로 바꾼다",
@@ -349,6 +349,37 @@ const currentArticleTranslations: Record<string, ArticleTranslation> = {
     whyItMatters: "상위 시장이 성장해도 매출이 대형 플랫폼, 라이브 서비스, 장수 IP에 집중되면 운영 환경은 여전히 어려울 수 있다.",
     possibleImpact: "자본은 모바일 규모, UGC 플랫폼, 검증된 프랜차이즈, 라이브 운영 팀으로 계속 흐르고 새 프리미엄 베팅의 승인 기준은 더 높아질 수 있다.",
     trendAnalysis: "총시장 성장은 감원, 프로젝트 취소, 중간 예산 스튜디오의 자금 조달 압박과 공존하는 불균등 확장 흐름이다."
+  }
+};
+
+const currentArticleTranslations: Record<string, ArticleTranslation> = {
+  ...previousArticleTranslations,
+  "le-002": {
+    sourceSlug: "xbox-strategy-hire-reopens-the-metaverse-question",
+    title: "Xbox 전략 인사가 메타버스 논의를 다시 꺼냈다",
+    tldr: "Xbox가 구조조정 이후 새로운 플랫폼 방향을 찾는 과정에서 메타버스 전략가 매튜 볼을 영입했다.",
+    fullTldr: "PC Gamer는 Xbox가 전략 자문사 Prosimetrum을 통해 매튜 볼을 영입했다고 보도했다. 지속형 가상 세계, Roblox, 크리에이터 경제, 크로스플랫폼 생태계에 대한 그의 배경은 Microsoft가 콘솔 독점작보다 넓은 전략 틀을 검토하고 있음을 보여준다.",
+    whyItMatters: "Xbox는 큰 폭의 스튜디오 재편 이후 게임 포트폴리오, Game Pass, 클라우드 유통, Minecraft, 크리에이터 생태계를 연결할 설득력 있는 전략이 필요하다.",
+    possibleImpact: "지속형 세계, 기기 간 정체성, 크리에이터 경제, 플랫폼 상호운용성이 다시 강조될 수 있다. 동시에 메타버스 구상이 플레이어 가치를 높이는지에 대한 검증도 커질 것이다.",
+    trendAnalysis: "콘솔 기업이 UGC, 소셜 그래프, 클라우드 유통, 가상 경제를 하나의 전략 체계로 보는 플랫폼 융합 흐름이다."
+  },
+  "le-006": {
+    sourceSlug: "ai-upscaling-becomes-a-platform-control-layer",
+    title: "AI 업스케일링이 플랫폼 통제 계층으로 바뀐다",
+    tldr: "차세대 DLSS, FSR, XeSS가 AI 재구성을 PC 게임 화면 전략의 핵심 계층으로 만들고 있다.",
+    fullTldr: "TechRadar는 NVIDIA DLSS, AMD FSR, Intel XeSS가 단순 해상도 복원을 넘어 프레임 생성과 적극적인 이미지 재구성으로 이동하는 방향을 비교했다. 핵심 전략 이슈는 엔진과 출시 게임의 기본 시각 파이프라인을 누가 통제하느냐다.",
+    whyItMatters: "업스케일링은 하드웨어 수명을 늘리고 렌더링 비용을 낮출 수 있지만, 창작 통제권과 호환성을 GPU 업체 모델에 더 의존하게 만들 수도 있다.",
+    possibleImpact: "스튜디오는 더 강한 화질 QA, 확장 가능한 대체 경로, 투명한 프리셋, 파편화된 PC 환경을 위한 업체 중립 성능 목표가 필요하다.",
+    trendAnalysis: "이미지 재구성이 선택형 성능 기능에서 표준 제작 의존성으로 이동하는 AI 네이티브 렌더링 흐름이다."
+  },
+  "le-008": {
+    sourceSlug: "amd-midrange-gpu-price-cut-tests-pc-demand",
+    title: "AMD 중급 GPU 가격 인하가 PC 수요를 시험한다",
+    tldr: "Radeon RX 9070 GRE가 499달러로 내려가며 NVIDIA 중급 제품에 가격 압박을 주고 업그레이드 수요를 시험한다.",
+    fullTldr: "Tom's Hardware는 AMD RX 9070 GRE 가격이 약 9% 하락해 499달러가 됐으며, 1440p 성능도 검토했다고 보도했다. 메모리 비용 상승에도 유통 경쟁과 수요가 요구하면 그래픽카드 가격은 내려갈 수 있다는 구체적 반대 신호다.",
+    whyItMatters: "500달러 가격대는 마니아 판매량, Steam 하드웨어 교체, 프리미엄 GPU에만 기대지 않는 게임 성능 기준에 중요하다.",
+    possibleImpact: "NVIDIA와 Intel은 번들 또는 실판매가 압박을 받을 수 있고, 가격 인하가 유지되면 개발자는 1440p 기능을 제공할 더 큰 이용자층을 확보할 수 있다.",
+    trendAnalysis: "플래그십은 여전히 비싸지만 경쟁적인 중급 재고 가격은 구매자 쪽으로 움직이기 시작하는 선택적 가격 정상화 흐름이다."
   }
 };
 

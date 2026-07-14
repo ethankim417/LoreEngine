@@ -7,8 +7,8 @@ const checks = [
   { path: "/sources", expect: "Source Strategy" },
   { path: "/privacy", expect: "Privacy And Legal Notes" },
   {
-    path: "/articles/xbox-restructure-turns-studio-ownership-into-margin-discipline",
-    expect: "Xbox restructure turns studio ownership into margin discipline"
+    path: "/articles/xbox-strategy-hire-reopens-the-metaverse-question",
+    expect: "Xbox strategy hire reopens the metaverse question"
   },
   { path: "/api/market", expect: "snapshotDate" },
   { path: "/api/health", expect: "\"status\":\"" },
