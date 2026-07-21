@@ -352,7 +352,7 @@ const previousArticleTranslations: Record<string, ArticleTranslation> = {
   }
 };
 
-const currentArticleTranslations: Record<string, ArticleTranslation> = {
+const legacyCurrentArticleTranslations: Record<string, ArticleTranslation> = {
   ...previousArticleTranslations,
   "le-002": {
     sourceSlug: "xbox-strategy-hire-reopens-the-metaverse-question",
@@ -380,6 +380,145 @@ const currentArticleTranslations: Record<string, ArticleTranslation> = {
     whyItMatters: "500달러 가격대는 마니아 판매량, Steam 하드웨어 교체, 프리미엄 GPU에만 기대지 않는 게임 성능 기준에 중요하다.",
     possibleImpact: "NVIDIA와 Intel은 번들 또는 실판매가 압박을 받을 수 있고, 가격 인하가 유지되면 개발자는 1440p 기능을 제공할 더 큰 이용자층을 확보할 수 있다.",
     trendAnalysis: "플래그십은 여전히 비싸지만 경쟁적인 중급 재고 가격은 구매자 쪽으로 움직이기 시작하는 선택적 가격 정상화 흐름이다."
+  }
+};
+
+const currentArticleTranslations: Record<string, ArticleTranslation> = {
+  ...legacyCurrentArticleTranslations,
+  "le-001": {
+    sourceSlug: "roblox-build-moves-ai-game-creation-onto-phones",
+    title: "Roblox Build가 AI 게임 제작을 스마트폰으로 옮긴다",
+    tldr: "Roblox가 프롬프트를 플레이하고 출시할 수 있는 경험으로 바꾸는 모바일 우선 Build 탭을 공개했다.",
+    fullTldr: "Roblox는 메인 모바일 앱 안에 제작 화면 Build를 도입하고, 텍스트 프롬프트를 플레이 가능한 경험으로 바꾸는 AI 도구를 함께 발표했다. 뉴질랜드 공개 알파는 7월 28일 시작될 예정이다.",
+    whyItMatters: "제작이 더 이상 데스크톱 편집기에서만 시작되지 않는다. 소비자 앱 안으로 저작 도구가 들어가면 신규 크리에이터 유입 경로가 크게 넓어진다.",
+    possibleImpact: "첫 제작자와 콘텐츠 생산량이 늘 수 있지만, 검수·독창성·발견성·수익 배분 문제도 더 어려워질 수 있다.",
+    trendAnalysis: "UGC 플랫폼은 플레이, 프롬프트, 편집, 출시 사이의 거리를 줄이며 게임 제작을 앱 내부 활동으로 바꾸고 있다."
+  },
+  "le-002": {
+    sourceSlug: "xbox-cuts-reach-doom-veterans",
+    title: "Xbox 감원이 현대 Doom을 만든 팀까지 닿았다",
+    tldr: "Game Developer는 Xbox의 최근 구조조정으로 남아 있던 Doom(2016) 개발자의 3분의 2가 감원됐다고 보도했다.",
+    fullTldr: "이번 보도는 Microsoft의 7월 조직 재편이 제작 현장에 미친 결과를 보여준다. id Software는 게임과 기술을 계속 만들 인력은 유지했다고 밝혔지만, 핵심 조직 지식은 줄었다.",
+    whyItMatters: "기술 영향력이 큰 스튜디오의 감원은 엔진 관리, 멘토링, 일정 위험, 대표 프랜차이즈의 연속성에 영향을 줄 수 있다.",
+    possibleImpact: "id Tech 투자, 외주, 인력 유지, 출시 범위와 수익성 목표의 양립 가능성에 대한 검증이 커질 수 있다.",
+    trendAnalysis: "대형 퍼블리셔는 창작 역량을 사들이던 단계에서 내부에 반드시 남겨야 할 역량의 규모를 시험하는 단계로 이동하고 있다."
+  },
+  "le-003": {
+    sourceSlug: "gddr7-costs-hold-back-rtx-50-super",
+    title: "GDDR7 비용이 NVIDIA RTX 50 Super 출시를 붙잡는다",
+    tldr: "완성 단계로 알려진 RTX 50 Super 설계가 고용량 GDDR7 모듈 가격 때문에 대기 상태에 놓였다.",
+    fullTldr: "Tom's Hardware는 3GB GDDR7 모듈 가격이 2GB 부품의 약 세 배여서 NVIDIA의 메모리 확대형 리프레시가 어려워졌다고 전했다. AI 시대의 메모리 수요가 게임 GPU 로드맵에 직접 연결된 사례다.",
+    whyItMatters: "고해상도 게임과 로컬 AI에는 더 많은 VRAM이 필요하지만, 메모리 비용은 중간 세대 제품의 가치를 무너뜨릴 수 있다.",
+    possibleImpact: "제품이 지연되거나 더 비싸게 출시될 수 있으며, 개발자는 기존 8~16GB 설치 기반에 계속 최적화해야 할 수 있다.",
+    trendAnalysis: "게임 하드웨어 로드맵이 AI 인프라에서 더 높은 수익을 얻는 메모리 공급망에 종속되고 있다."
+  },
+  "le-004": {
+    sourceSlug: "zaum-cuts-after-acclaim-fails-to-convert",
+    title: "호평이 판매로 이어지지 않자 ZA/UM이 인력을 줄인다",
+    tldr: "Zero Parades가 좋은 평가에도 필요한 매출을 내지 못하면서 ZA/UM이 최대 32개 직무를 감축할 수 있다.",
+    fullTldr: "출시 두 달 만에 나온 감원 신고는 전 부서를 대상으로 한다. ZA/UM은 비평 성과가 아니라 상업적 성과 부족을 직접 이유로 들었다.",
+    whyItMatters: "가시성, 비평적 인정, 개성 있는 중간 예산 팀을 유지할 매출 사이의 격차가 커지고 있음을 보여준다.",
+    possibleImpact: "스튜디오는 고정 인력을 줄이고 범위를 좁히거나, 퍼블리싱 보장과 더 강한 출시 전 수요 증거를 요구할 수 있다.",
+    trendAnalysis: "발견 비용이 오르고 빠른 상업적 증명이 요구되면서 호평이 구조조정을 막아주는 힘은 약해지고 있다."
+  },
+  "le-005": {
+    sourceSlug: "scopely-reorganizes-stumble-guys",
+    title: "Scopely가 Stumble Guys 팀을 재편한다",
+    tldr: "Scopely가 Pokémon Go 등 대형 라이브 서비스 중심으로 포트폴리오를 키우는 가운데 Stumble Guys 팀을 재편한다.",
+    fullTldr: "Game Developer는 Scopely에서 또 다른 모바일 팀 재편이 진행된다고 보도했다. Pokémon Go 인수 이후 대형 라이브 서비스 사업자 안에서도 포트폴리오 선별이 계속되고 있다.",
+    whyItMatters: "모바일 규모가 콘텐츠 위험을 없애지는 않는다. 성숙한 라이브 게임은 유지율, 유입 비용, 다른 투자 기회와 비교해 인력을 정당화해야 한다.",
+    possibleImpact: "자원이 소수 글로벌 프랜차이즈로 이동하고, 작은 라이브 팀에는 더 엄격한 수익성과 마일스톤 기준이 적용될 수 있다.",
+    trendAnalysis: "모바일 통합은 더 큰 포트폴리오와 함께 라이브 제품 사이의 더 잦은 내부 자본 이동을 만들고 있다."
+  },
+  "le-006": {
+    sourceSlug: "epic-store-leader-moves-to-saber",
+    title: "Epic Games Store 책임자가 Saber Interactive로 이동한다",
+    tldr: "Steve Allison이 8년간 이끈 Epic PC 스토어를 떠나 Saber의 최고사업책임자가 됐다.",
+    fullTldr: "Allison은 무료 게임 확보 전략과 월간 활성 사용자 7,800만 명 규모로의 성장을 이끌었다. Embracer에서 분리된 Saber는 스토어와 퍼블리싱 경험을 갖춘 리더를 확보했다.",
+    whyItMatters: "경영진 이동은 플랫폼 경제, 계약, 개발사 관계에 관한 지식을 새 독립 퍼블리셔 그룹으로 옮길 수 있다.",
+    possibleImpact: "Saber는 더 큰 퍼블리싱·유통 파트너십을 추진할 수 있고 Epic은 Steam 경쟁 전략의 새 리더십을 세워야 한다.",
+    trendAnalysis: "대형 그룹 해체 이후 중앙 플랫폼의 숙련된 운영자가 독립 퍼블리싱 네트워크로 재배치되고 있다."
+  },
+  "le-007": {
+    sourceSlug: "gameenginebench-tests-agents-in-real-unreal-projects",
+    title: "GameEngineBench가 실제 Unreal 프로젝트에서 코딩 에이전트를 시험한다",
+    tldr: "새 벤치마크가 실제 Unreal Engine 5 저장소 9개에서 110개 C++ 작업으로 코딩 에이전트를 평가한다.",
+    fullTldr: "GameEngineBench는 실행 가능한 환경에서 게임플레이, 멀티플레이, 애니메이션, UI, 저장, XR, 온라인 서비스, 렌더링 플러그인을 다룬다. 장난감 코드가 아닌 제작 제약으로 평가를 옮긴다.",
+    whyItMatters: "스튜디오에는 에이전트가 런타임 동작을 깨뜨리지 않고 엔진 코드를 바꿀 수 있다는 증거가 필요하다.",
+    possibleImpact: "도구 업체는 저장소 단위 게임 테스트를 도입하고, 스튜디오는 제작 브랜치 투입 전에 자체 평가 체계를 만들 수 있다.",
+    trendAnalysis: "게임 AI 도구가 인상적인 데모에서 분야별 평가, 재현성, 런타임 검증으로 이동하고 있다."
+  },
+  "le-008": {
+    sourceSlug: "nvidia-sega-rtx-spark-partnership",
+    title: "NVIDIA와 Sega가 AI 재구성을 게임 로드맵에 넣는다",
+    tldr: "Sega는 Virtua Fighter Crossroads를 시작으로 향후 게임에서 NVIDIA RTX Spark를 지원한다.",
+    fullTldr: "협력은 NVIDIA의 GB10 시스템과 DLSS 관련 기술을 퍼블리셔 로드맵에 연결한다. 제한된 메모리 대역폭 때문에 재구성 기술이 실용적 성능에 중요하다.",
+    whyItMatters: "업체별 AI 렌더링이 설정 메뉴 선택지를 넘어 공동 개발, 마케팅, 제작 계획의 앞단으로 이동하고 있다.",
+    possibleImpact: "하드웨어 제휴가 늘고 QA 팀은 프레임 생성과 재구성 동작을 더 넓은 조합에서 시험해야 할 수 있다.",
+    trendAnalysis: "AI 렌더링은 그래픽 기능인 동시에 플랫폼 관계가 되며 GPU 업체의 제작 파이프라인 영향력을 키우고 있다."
+  },
+  "le-009": {
+    sourceSlug: "playstation-plus-leans-on-catalog-scale",
+    title: "PlayStation Plus가 인지도 높은 카탈로그 규모를 앞세운다",
+    tldr: "Sony의 7월 카탈로그가 Avatar, Rise of the Ronin, PS2 클래식을 더하며 구독 깊이를 강화한다.",
+    fullTldr: "7월 PlayStation Plus 카탈로그는 최근 프리미엄 게임과 Psi-Ops, Indigo Prophecy 같은 고전작을 결합한다. 구독 가치는 최신 제3자 라이선스와 보존형 카탈로그 모두에서 만들어진다.",
+    whyItMatters: "카탈로그 구성은 참여도, 라이선스 비용, 상위 요금제 차별화, 오래된 게임의 수익 수명에 영향을 준다.",
+    possibleImpact: "Sony는 신작 전면 당일 제공 없이도 최신작 일부와 클래식을 조합해 유지율을 방어할 수 있다.",
+    trendAnalysis: "콘솔 구독은 단순 물량보다 포트폴리오 큐레이션으로 수렴하고 있으며 카탈로그 정체성이 경쟁 수단이 되고 있다."
+  },
+  "le-010": {
+    sourceSlug: "unions-challenge-xbox-layoff-process",
+    title: "노조가 Microsoft의 Xbox 감원 절차에 이의를 제기한다",
+    tldr: "유럽 노동단체가 Xbox 구조조정 일부의 처리 방식에 대해 법적 대응에 나섰다.",
+    fullTldr: "분쟁은 Xbox 재편을 포트폴리오 전략에서 협의, 노동권, 규정 준수 문제로 확장한다. 국가별 노동 규정이 달라 국제 감원은 서로 다른 속도로 진행될 수 있다.",
+    whyItMatters: "글로벌 퍼블리셔는 모든 지역에 하나의 구조조정 방식을 적용할 수 없으며 절차 위험은 일정, 비용, 사기, 스튜디오 연속성에 영향을 준다.",
+    possibleImpact: "퍼블리셔는 더 긴 협의 기간과 현지 법률 검토를 반영하고, 노조는 스튜디오 네트워크 전체에서 더 적극적으로 협력할 수 있다.",
+    trendAnalysis: "노동 조직화가 다국적 게임 산업 구조조정의 지속적인 전략 제약으로 자리 잡고 있다."
+  },
+  "le-011": {
+    sourceSlug: "ewc-packages-esports-as-a-season",
+    title: "Esports World Cup이 대회를 하나의 시즌으로 묶는다",
+    tldr: "EWC의 7주 일정은 클럽 순위, 다수 종목, 크리에이터, 티켓, 페스티벌 프로그램을 결합한다.",
+    fullTldr: "공식 허브는 24개 e스포츠 25개 이벤트가 8월 23일까지 이어짐을 보여준다. 상품은 경기뿐 아니라 클럽 정체성, 크리에이터 유통, 관광, 현장 관람까지 확장된다.",
+    whyItMatters: "대형 운영사는 개별 대회만으로 만들기 어려운 반복 시청 습관과 스폰서 상품을 여러 종목에 걸쳐 만들려 한다.",
+    possibleImpact: "퍼블리셔와 팀은 여러 게임을 아우르는 클럽 프로그램, 공동 중계, 시즌 서사, 중앙 이벤트 제휴를 더 중시할 수 있다.",
+    trendAnalysis: "e스포츠는 분산된 게임 커뮤니티를 하나의 상업 구조 아래 모으는 페스티벌 규모 시즌으로 묶이고 있다."
+  },
+  "le-012": {
+    sourceSlug: "streaming-growth-centers-creators-not-games",
+    title: "스트리밍 성장은 게임만큼 크리에이터를 중심에 둔다",
+    tldr: "스트리밍 데이터에서 크리에이터 주도 엔터테인먼트와 Just Chatting이 게임과 시청 시간을 경쟁한다.",
+    fullTldr: "Digiday가 검토한 데이터에서 Fortnite는 게임 방송 시간을 이끌었지만 Just Chatting은 수억 시간의 시청을 기록했다. 플랫폼은 게임 목록보다 인물 중심 상품으로 변하고 있다.",
+    whyItMatters: "퍼블리셔는 게임 플랫폼 안에서도 크리에이터 형식과 관심을 경쟁하므로 캠페인과 후원 가치가 달라진다.",
+    possibleImpact: "예산이 단기 광고에서 인물 중심 출시, 공동 중계, 장기 크리에이터 관계로 이동할 수 있다.",
+    trendAnalysis: "라이브 스트리밍은 게임 발견 인프라에서 더 넓은 크리에이터 엔터테인먼트 시장으로 진화하고 있다."
+  },
+  "le-013": {
+    sourceSlug: "unreal-6-converges-engine-and-creator-platform",
+    title: "Unreal Engine 6가 엔진과 크리에이터 플랫폼을 통합한다",
+    tldr: "Epic의 UE6 로드맵은 UEFN과 Unreal 작업 흐름을 합치고 엔진 기능을 AI 통합에 개방한다.",
+    fullTldr: "Epic은 2027년 말 UE6 얼리 액세스를 계획하며 Scene Graph와 Verse를 새 게임플레이 프레임워크의 중심에 둔다. 로드맵은 모델 선택과 MCP 기반 AI 작업 흐름도 설명한다.",
+    whyItMatters: "주요 고급 엔진이 패키지 게임 제작뿐 아니라 지속형 크리에이터 생태계와 에이전트 접근 도구 중심으로 재설계되고 있다.",
+    possibleImpact: "스튜디오는 Verse, Scene Graph, AI 정책, 호환성에 관한 이전 결정을 내려야 하고 Epic은 통합 제작 스택을 확보한다.",
+    trendAnalysis: "전문 엔진과 UGC 플랫폼이 수렴하고 AI가 공유 제작 시스템 위의 인터페이스 계층이 되고 있다."
+  },
+  "le-014": {
+    sourceSlug: "nintendo-eu-battery-rules-shape-hardware-lifecycles",
+    title: "EU 배터리 규정이 Nintendo 하드웨어 수명주기를 바꾼다",
+    tldr: "사용자 교체형 배터리 규정 시행을 앞두고 Nintendo가 유럽에서 기존 Switch 판매를 단계적으로 끝낸다.",
+    fullTldr: "Nintendo는 배터리 규정에 맞춘 유럽용 하드웨어를 준비한다. 수리 가능성이 성숙한 콘솔 제품군의 수명주기 요건이 되며 규정 대응은 출시 이후 지역별 단종까지 이어진다.",
+    whyItMatters: "규제는 출시 후 오랜 시간이 지나도 플랫폼 사업자의 하드웨어, 수리, 액세서리, 재고 전략을 바꿀 수 있다.",
+    possibleImpact: "하드웨어 업체는 수리가 쉬운 설계, 지역별 SKU, 휴대형 기기의 장기 규정 계획을 확대할 수 있다.",
+    trendAnalysis: "수리 가능성과 지속가능성 규정이 사후 의무가 아니라 플랫폼 로드맵 입력값이 되고 있다."
+  },
+  "le-015": {
+    sourceSlug: "market-growth-still-masks-studio-stress",
+    title: "게임 시장 성장이 여전히 스튜디오의 압박을 가린다",
+    tldr: "성장하는 글로벌 게임 시장이 감원, 프로젝트 축소, 취약한 중간 예산 경제성과 동시에 존재한다.",
+    fullTldr: "Newzoo의 전망은 모바일, PC, 콘솔 규모를 보여주는 기준이지만 이번 주 감원은 전체 소비 지출이 모든 퍼블리셔, 팀, 프로젝트에 고르게 배분되지 않음을 보여준다.",
+    whyItMatters: "전체 시장 성장만 보면 집중도, 유입 비용, 제작비 상승, 카탈로그 경쟁을 놓쳐 전략 판단을 그르칠 수 있다.",
+    possibleImpact: "투자자와 스튜디오는 전체 성장보다 부문별 수익성, 유지율, 포트폴리오 품질을 더 강조할 수 있다.",
+    trendAnalysis: "산업은 불균등하게 성장하며 규모 있는 플랫폼과 장수 프랜차이즈가 더 많은 가치를 가져가는 동안 제작팀의 자본은 빡빡해지고 있다."
   }
 };
 

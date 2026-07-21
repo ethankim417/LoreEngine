@@ -7,8 +7,8 @@ const checks = [
   { path: "/sources", expect: "Source Strategy" },
   { path: "/privacy", expect: "Privacy And Legal Notes" },
   {
-    path: "/articles/xbox-strategy-hire-reopens-the-metaverse-question",
-    expect: "Xbox strategy hire reopens the metaverse question"
+    path: "/articles/roblox-build-moves-ai-game-creation-onto-phones",
+    expect: "Roblox Build moves AI game creation onto phones"
   },
   { path: "/api/market", expect: "snapshotDate" },
   { path: "/api/health", expect: "\"status\":\"" },
