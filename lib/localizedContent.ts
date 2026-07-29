@@ -404,22 +404,22 @@ const currentArticleTranslations: Record<string, ArticleTranslation> = {
     trendAnalysis: "대형 퍼블리셔는 창작 역량을 사들이던 단계에서 내부에 반드시 남겨야 할 역량의 규모를 시험하는 단계로 이동하고 있다."
   },
   "le-003": {
-    sourceSlug: "gddr7-costs-hold-back-rtx-50-super",
-    title: "GDDR7 비용이 NVIDIA RTX 50 Super 출시를 붙잡는다",
-    tldr: "완성 단계로 알려진 RTX 50 Super 설계가 고용량 GDDR7 모듈 가격 때문에 대기 상태에 놓였다.",
-    fullTldr: "Tom's Hardware는 3GB GDDR7 모듈 가격이 2GB 부품의 약 세 배여서 NVIDIA의 메모리 확대형 리프레시가 어려워졌다고 전했다. AI 시대의 메모리 수요가 게임 GPU 로드맵에 직접 연결된 사례다.",
-    whyItMatters: "고해상도 게임과 로컬 AI에는 더 많은 VRAM이 필요하지만, 메모리 비용은 중간 세대 제품의 가치를 무너뜨릴 수 있다.",
-    possibleImpact: "제품이 지연되거나 더 비싸게 출시될 수 있으며, 개발자는 기존 8~16GB 설치 기반에 계속 최적화해야 할 수 있다.",
-    trendAnalysis: "게임 하드웨어 로드맵이 AI 인프라에서 더 높은 수익을 얻는 메모리 공급망에 종속되고 있다."
+    sourceSlug: "rtx-50-prices-jump-across-china",
+    title: "메모리 압박 속에 중국 RTX 50 가격이 급등한다",
+    tldr: "MSI와 Colorful이 중국 RTX 50 시리즈 가격을 최대 59% 올리며 그래픽카드 원가 압박이 확산되고 있음을 보여줬다.",
+    fullTldr: "중국 유통 가격에서 RTX 50 전 제품군의 인상이 확인됐고 AMD와 Intel 제품도 같은 메모리·부품 압박에 노출돼 있다. 앞선 공급 경고가 실제 소매 가격 부담으로 나타나는 단계다.",
+    whyItMatters: "광범위한 가격 재조정은 PC 업그레이드를 늦추고 보드 파트너의 마진을 압박하며, 스튜디오에는 기존 설치 기반 최적화의 중요성을 키운다.",
+    possibleImpact: "이용자는 업그레이드를 미루거나 하위 제품을 선택하고, 개발사는 구형 GPU 지원을 연장하며 플랫폼은 업스케일링 의존도를 높일 수 있다.",
+    trendAnalysis: "AI가 주도하는 메모리 수요는 미래 제품 출시만 늦추는 데서 벗어나 현재 게임 하드웨어 가격과 교체 주기까지 바꾸고 있다."
   },
   "le-004": {
-    sourceSlug: "zaum-cuts-after-acclaim-fails-to-convert",
-    title: "호평이 판매로 이어지지 않자 ZA/UM이 인력을 줄인다",
-    tldr: "Zero Parades가 좋은 평가에도 필요한 매출을 내지 못하면서 ZA/UM이 최대 32개 직무를 감축할 수 있다.",
-    fullTldr: "출시 두 달 만에 나온 감원 신고는 전 부서를 대상으로 한다. ZA/UM은 비평 성과가 아니라 상업적 성과 부족을 직접 이유로 들었다.",
-    whyItMatters: "가시성, 비평적 인정, 개성 있는 중간 예산 팀을 유지할 매출 사이의 격차가 커지고 있음을 보여준다.",
-    possibleImpact: "스튜디오는 고정 인력을 줄이고 범위를 좁히거나, 퍼블리싱 보장과 더 강한 출시 전 수요 증거를 요구할 수 있다.",
-    trendAnalysis: "발견 비용이 오르고 빠른 상업적 증명이 요구되면서 호평이 구조조정을 막아주는 힘은 약해지고 있다."
+    sourceSlug: "atari-universal-expand-classic-games-to-film",
+    title: "Atari와 Universal이 고전 게임을 영화로 확장한다",
+    tldr: "Atari와 Universal이 Asteroids와 Missile Command를 포함한 고전 게임 IP의 영화를 개발한다.",
+    fullTldr: "두 회사는 서사가 풍부한 원작보다 익숙한 이름과 이미지를 활용해 아케이드 시대 IP를 영화로 확장한다.",
+    whyItMatters: "원작의 서사 기반이 얇은 상황에서 향수와 브랜드 인지도만으로 게임 각색을 얼마나 견인할 수 있는지 시험하는 계약이다.",
+    possibleImpact: "영화가 성공하면 휴면 카탈로그가 라이선스, 리마스터, 상품, 신작 게임 전반에서 다시 활성화될 수 있다.",
+    trendAnalysis: "게임사는 과거 카탈로그를 트랜스미디어 포트폴리오로 다루며 각색 가치를 현재 게임 매출과 분리하고 있다."
   },
   "le-005": {
     sourceSlug: "scopely-reorganizes-stumble-guys",

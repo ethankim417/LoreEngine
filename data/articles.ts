@@ -27,7 +27,7 @@ export type Article = {
 };
 
 export const categories: ArticleCategory[] = ["Gaming", "AI", "Business", "Hardware", "Esports", "Platform", "Studio"];
-export const briefSnapshotDate = "2026-07-21";
+export const briefSnapshotDate = "2026-07-28";
 
 const visuals = {
   business: { image: "/images/intelligence/business-market.webp", alt: "Dark gaming market intelligence terminal with holographic charts" },
@@ -61,26 +61,26 @@ export const articles: Article[] = [
     sourceUrl: "https://www.gamedeveloper.com/business/two-thirds-of-remaining-doom-2016-devs-laid-off-during-latest-round-of-xbox-cuts", visual: visuals.business
   },
   {
-    id: "le-003", slug: "gddr7-costs-hold-back-rtx-50-super", title: "GDDR7 costs hold back NVIDIA's RTX 50 Super refresh",
+    id: "le-003", slug: "rtx-50-prices-jump-across-china", title: "RTX 50 prices jump across China as memory pressure spreads",
     source: "Tom's Hardware", sourceCredibility: "Trade press", category: "Hardware",
-    tldr: "Reportedly finished RTX 50 Super designs remain in limbo because higher-capacity GDDR7 modules cost too much.",
-    fullTldr: "Tom's Hardware reports that 3GB GDDR7 modules cost roughly three times as much as 2GB parts, complicating NVIDIA's planned memory-capacity refresh. The constraint links AI-era memory demand directly to gaming GPU roadmaps.",
-    whyItMatters: "More VRAM is increasingly important for high-resolution games and local AI workflows, but memory economics can erase the value proposition of a mid-cycle refresh.",
-    possibleImpact: "Board launches may slip, ship at higher prices, or use narrower configurations; developers may need to keep optimizing for existing 8GB-to-16GB install bases.",
-    trendAnalysis: "Gaming hardware roadmaps are being subordinated to a memory supply chain whose best margins increasingly come from AI infrastructure.",
-    impactScore: 92, trendScore: 47, confidence: 82, sectors: ["GPUs", "Memory", "PC Gaming", "Supply Chain"], companies: ["NVIDIA", "Samsung", "SK hynix", "Micron"], publishedAt: "2026-07-19",
-    sourceUrl: "https://www.tomshardware.com/pc-components/gpus/nvidia-rtx-50-super-gpus-are-reportedly-ready-but-stuck-in-limbo-due-to-excessive-gddr7-pricing-3gb-gddr7-module-costs-triple-the-price-of-2gb", visual: visuals.hardware
+    tldr: "MSI and Colorful raised Chinese RTX 50-series prices by as much as 59%, signaling broader board-level cost pressure.",
+    fullTldr: "Distributor pricing shows increases across the RTX 50 lineup in China, with AMD and Intel products also exposed to the memory and component squeeze. Earlier supply warnings are becoming visible retail pressure.",
+    whyItMatters: "A broad price reset can slow PC upgrades, compress board-partner margins, and make installed-base optimization more important for studios.",
+    possibleImpact: "Players may delay upgrades or trade down, while developers extend older-GPU support and platform holders lean harder on upscaling.",
+    trendAnalysis: "AI-led memory demand is no longer only delaying future products; it is increasingly altering current gaming-hardware prices and upgrade cycles.",
+    impactScore: 94, trendScore: 48, confidence: 86, sectors: ["GPUs", "Memory", "PC Gaming", "Supply Chain"], companies: ["NVIDIA", "AMD", "Intel", "MSI", "Colorful"], publishedAt: "2026-07-27",
+    sourceUrl: "https://www.tomshardware.com/pc-components/gpus/msi-and-colorful-raise-nvidia-rtx-50-series-prices-in-china-by-up-to-59-percent-across-the-entire-lineup-change-in-distributer-pricing-suggests-gpu-price-hikes-are-on-the-way", visual: visuals.hardware
   },
   {
-    id: "le-004", slug: "zaum-cuts-after-acclaim-fails-to-convert", title: "ZA/UM cuts staff after acclaim fails to convert into sales",
+    id: "le-004", slug: "atari-universal-expand-classic-games-to-film", title: "Atari and Universal expand classic games into film",
     source: "Game Developer", sourceCredibility: "Trade press", category: "Studio",
-    tldr: "ZA/UM may cut up to 32 roles after Zero Parades earned positive reviews but missed the sales needed to sustain its team.",
-    fullTldr: "ZA/UM's redundancy filing spans all departments only two months after launch. The studio explicitly tied the planned cuts to commercial performance rather than critical reception.",
-    whyItMatters: "The case exposes the widening gap between visibility, critical validation, and the revenue required to support distinctive mid-budget teams.",
-    possibleImpact: "Studios may reduce fixed headcount, narrow project scope, seek publishing guarantees, or demand stronger prelaunch audience evidence.",
-    trendAnalysis: "Critical acclaim is becoming a weaker shield against restructuring as discovery costs rise and publishers demand faster commercial proof.",
-    impactScore: 88, trendScore: 44, confidence: 91, sectors: ["Studios", "Publishing", "Labor", "Premium Games"], companies: ["ZA/UM"], publishedAt: "2026-07-17",
-    sourceUrl: "https://www.gamedeveloper.com/business/za-um-studios-to-lay-off-up-to-32-workers-two-months-after-releasing-zero-parades-for-dead-spies", visual: visuals.business
+    tldr: "Atari and Universal will develop films around classic properties including Asteroids and Missile Command.",
+    fullTldr: "The companies are extending recognizable arcade-era intellectual property into film, using familiar names and iconography rather than story-heavy source material.",
+    whyItMatters: "The deal tests how far nostalgia and brand recognition can carry adaptations when the original games provide only a thin narrative foundation.",
+    possibleImpact: "Successful films could reactivate dormant catalogs across licensing, remasters, merchandise, and new games.",
+    trendAnalysis: "Game companies continue treating back catalogs as transmedia portfolios, separating adaptation value from current game sales.",
+    impactScore: 87, trendScore: 45, confidence: 90, sectors: ["Film", "Licensing", "IP", "Publishing"], companies: ["Atari", "Universal Pictures"], publishedAt: "2026-07-27",
+    sourceUrl: "https://www.gamedeveloper.com/business/atari-and-universal-to-create-movies-based-on-classic-properties-including-asteroids-and-missile-command", visual: visuals.business
   },
   {
     id: "le-005", slug: "scopely-reorganizes-stumble-guys", title: "Scopely reorganizes Stumble Guys after its Pokémon Go expansion",
