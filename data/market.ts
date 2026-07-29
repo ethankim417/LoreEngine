@@ -40,7 +40,7 @@ export type MarketSnapshot = {
 
 // Local fallback data. On Vercel, /api/market can refresh public close-price
 // fields from a scheduled server job. The static mirror keeps reading this file.
-export const marketSnapshotDate = "2026-07-21";
+export const marketSnapshotDate = "2026-07-28";
 
 export const marketPlayers: MarketPlayer[] = [
   {

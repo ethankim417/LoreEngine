@@ -73,7 +73,7 @@ export const articles: Article[] = [
   },
   {
     id: "le-004", slug: "atari-universal-expand-classic-games-to-film", title: "Atari and Universal expand classic games into film",
-    source: "Game Developer", sourceCredibility: "Trade press", category: "Studio",
+    source: "Game Developer", sourceCredibility: "Trade press", category: "Business",
     tldr: "Atari and Universal will develop films around classic properties including Asteroids and Missile Command.",
     fullTldr: "The companies are extending recognizable arcade-era intellectual property into film, using familiar names and iconography rather than story-heavy source material.",
     whyItMatters: "The deal tests how far nostalgia and brand recognition can carry adaptations when the original games provide only a thin narrative foundation.",
