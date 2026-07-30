@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Article } from "@/data/articles";
+import { weeklyEditorial } from "@/data/weeklyEditorial";
 import { getArticleText, getCategoryLabel } from "@/lib/localizedContent";
 
 export function ExecutiveBrief({ articles, compact = false }: { articles: Article[]; compact?: boolean }) {
@@ -25,8 +26,9 @@ export function ExecutiveBrief({ articles, compact = false }: { articles: Articl
       article.sectors.some((sector) => ["Hardware", "Platform", "Steam", "Mobile Gaming"].includes(sector))
     ) ?? topStories[0];
   const watchItem = topStories[1] ?? topStories[0];
-  const topCategory = topStories[0] ? getCategoryLabel(topStories[0].category, language) : t("industryImpact");
-  const headline = formatToneHeadline(topCategory, t("isSettingTone"), language);
+  const headline = topStories[0]
+    ? getWeeklyHeadline(topStories[0], language)
+    : t("industryImpact");
   const strategicRead = topStories[0] ? getStrategicRead(topStories[0], language) : t("noLeadStory");
 
   return (
@@ -125,8 +127,12 @@ export function ExecutiveBrief({ articles, compact = false }: { articles: Articl
   );
 }
 
-function formatToneHeadline(category: string, suffix: string, language: "en" | "ko") {
-  return language === "ko" ? `${category}${suffix}` : `${category} ${suffix}`;
+function getWeeklyHeadline(article: Article, language: "en" | "ko") {
+  if (weeklyEditorial.leadArticleSlug === article.slug) {
+    return weeklyEditorial.headline[language];
+  }
+
+  return getArticleText(article, language).title;
 }
 
 function getStrategicRead(article: Article, language: "en" | "ko") {

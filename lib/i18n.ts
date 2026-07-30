@@ -130,7 +130,6 @@ export const translations = {
     impactMetricHelp: "Estimated business or production importance on a 0 to 100 scale.",
     momentumMetricHelp: "Estimated growth in attention around this topic.",
     thisWeeksRead: "This Week's Read",
-    isSettingTone: "is setting the tone",
     executiveBriefIntro:
       "Start with the biggest strategic shift, then scan the AI signal, market context, and next item to watch.",
     thingsToKnow: "3 things to know",
@@ -279,7 +278,6 @@ export const translations = {
     impactMetricHelp: "비즈니스 또는 제작 관점의 중요도를 0~100으로 추정한 값입니다.",
     momentumMetricHelp: "이 주제에 대한 관심 증가세를 추정한 값입니다.",
     thisWeeksRead: "이번 주 핵심",
-    isSettingTone: "가 흐름을 주도합니다",
     executiveBriefIntro: "가장 큰 전략 변화를 먼저 보고, AI 신호와 시장 맥락, 다음 주시 항목을 빠르게 훑어보세요.",
     thingsToKnow: "알아야 할 3가지",
     readTopBrief: "핵심 브리프 읽기",
