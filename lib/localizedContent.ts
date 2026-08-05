@@ -404,13 +404,13 @@ const currentArticleTranslations: Record<string, ArticleTranslation> = {
     trendAnalysis: "대형 퍼블리셔는 창작 역량을 사들이던 단계에서 내부에 반드시 남겨야 할 역량의 규모를 시험하는 단계로 이동하고 있다."
   },
   "le-003": {
-    sourceSlug: "rtx-50-prices-jump-across-china",
-    title: "메모리 압박 속에 중국 RTX 50 가격이 급등한다",
-    tldr: "MSI와 Colorful이 중국 RTX 50 시리즈 가격을 최대 59% 올리며 그래픽카드 원가 압박이 확산되고 있음을 보여줬다.",
-    fullTldr: "중국 유통 가격에서 RTX 50 전 제품군의 인상이 확인됐고 AMD와 Intel 제품도 같은 메모리·부품 압박에 노출돼 있다. 앞선 공급 경고가 실제 소매 가격 부담으로 나타나는 단계다.",
-    whyItMatters: "광범위한 가격 재조정은 PC 업그레이드를 늦추고 보드 파트너의 마진을 압박하며, 스튜디오에는 기존 설치 기반 최적화의 중요성을 키운다.",
-    possibleImpact: "이용자는 업그레이드를 미루거나 하위 제품을 선택하고, 개발사는 구형 GPU 지원을 연장하며 플랫폼은 업스케일링 의존도를 높일 수 있다.",
-    trendAnalysis: "AI가 주도하는 메모리 수요는 미래 제품 출시만 늦추는 데서 벗어나 현재 게임 하드웨어 가격과 교체 주기까지 바꾸고 있다."
+    sourceSlug: "rtx-50-prices-jump-in-south-korea",
+    title: "부품 원가 상승으로 한국 RTX 50 가격이 급등한다",
+    tldr: "웨이퍼와 GDDR7 비용이 그래픽카드 공급망에 반영되며 한국 RTX 50 시리즈 가격이 최대 30% 올랐다.",
+    fullTldr: "Tom's Hardware는 한국에서 NVIDIA RTX 50 전 제품군 가격이 크게 올랐고 RTX 5090은 5,100달러를 넘어섰다고 전했다. 8월 가격 조정을 앞두고 출하도 빠듯해졌다.",
+    whyItMatters: "또 다른 주요 PC 시장에서 가격 압박이 확인되면서 부품 부족이 지역을 넘어 즉시 업그레이드 행동을 바꿀 수 있는 문제임이 드러났다.",
+    possibleImpact: "이용자는 업그레이드를 미루거나 하위 제품을 선택하고, 보드 업체는 재고를 보호하며, 개발사는 구형 GPU 지원과 재구성 기술을 더 중시할 수 있다.",
+    trendAnalysis: "AI가 끌어올린 메모리·파운드리 수요가 소비자용 게임 성능의 실질 가격 상한을 정하기 시작했다."
   },
   "le-004": {
     sourceSlug: "atari-universal-expand-classic-games-to-film",
@@ -458,13 +458,13 @@ const currentArticleTranslations: Record<string, ArticleTranslation> = {
     trendAnalysis: "AI 렌더링은 그래픽 기능인 동시에 플랫폼 관계가 되며 GPU 업체의 제작 파이프라인 영향력을 키우고 있다."
   },
   "le-009": {
-    sourceSlug: "playstation-plus-leans-on-catalog-scale",
-    title: "PlayStation Plus가 인지도 높은 카탈로그 규모를 앞세운다",
-    tldr: "Sony의 7월 카탈로그가 Avatar, Rise of the Ronin, PS2 클래식을 더하며 구독 깊이를 강화한다.",
-    fullTldr: "7월 PlayStation Plus 카탈로그는 최근 프리미엄 게임과 Psi-Ops, Indigo Prophecy 같은 고전작을 결합한다. 구독 가치는 최신 제3자 라이선스와 보존형 카탈로그 모두에서 만들어진다.",
-    whyItMatters: "카탈로그 구성은 참여도, 라이선스 비용, 상위 요금제 차별화, 오래된 게임의 수익 수명에 영향을 준다.",
-    possibleImpact: "Sony는 신작 전면 당일 제공 없이도 최신작 일부와 클래식을 조합해 유지율을 방어할 수 있다.",
-    trendAnalysis: "콘솔 구독은 단순 물량보다 포트폴리오 큐레이션으로 수렴하고 있으며 카탈로그 정체성이 경쟁 수단이 되고 있다."
+    sourceSlug: "xbox-raises-console-prices-as-memory-costs-surge",
+    title: "메모리 비용 급등으로 Xbox가 콘솔 가격을 올린다",
+    tldr: "Microsoft가 8월 1일부터 전 세계 Xbox 가격을 인상해 512GB 모델은 100달러, 1TB 모델은 150달러 더 비싸졌다.",
+    fullTldr: "Xbox는 콘솔 저장장치와 메모리 비용이 2.5배 넘게 올랐고 2027년 가을까지 다시 두 배가 될 수 있다고 밝혔다. 2TB 모델은 단종하고 접근성 지원 프로그램을 도입한다.",
+    whyItMatters: "플랫폼 사업자가 부품 위기를 하드웨어 가격에 직접 반영하면서 보조금을 전제로 한 전통적 콘솔 사업 모델과 이용자 확대 전략이 흔들리고 있다.",
+    possibleImpact: "콘솔 보급이 느려지고 저비용 구매 지원과 클라우드 플레이의 중요성이 커지며, 퍼블리셔는 더 분산된 활성 기기 기반을 상대할 수 있다.",
+    trendAnalysis: "메모리 부족이 PC 부품 문제를 넘어 플랫폼 전략으로 번지며 콘솔 업체에 마진, 가격, 설치 기반 확대 사이의 선택을 요구하고 있다."
   },
   "le-010": {
     sourceSlug: "unions-challenge-xbox-layoff-process",

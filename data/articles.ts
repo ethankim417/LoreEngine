@@ -27,7 +27,7 @@ export type Article = {
 };
 
 export const categories: ArticleCategory[] = ["Gaming", "AI", "Business", "Hardware", "Esports", "Platform", "Studio"];
-export const briefSnapshotDate = "2026-07-28";
+export const briefSnapshotDate = "2026-08-03";
 
 const visuals = {
   business: { image: "/images/intelligence/business-market.webp", alt: "Dark gaming market intelligence terminal with holographic charts" },
@@ -61,15 +61,15 @@ export const articles: Article[] = [
     sourceUrl: "https://www.gamedeveloper.com/business/two-thirds-of-remaining-doom-2016-devs-laid-off-during-latest-round-of-xbox-cuts", visual: visuals.business
   },
   {
-    id: "le-003", slug: "rtx-50-prices-jump-across-china", title: "RTX 50 prices jump across China as memory pressure spreads",
+    id: "le-003", slug: "rtx-50-prices-jump-in-south-korea", title: "RTX 50 prices jump in South Korea as component costs bite",
     source: "Tom's Hardware", sourceCredibility: "Trade press", category: "Hardware",
-    tldr: "MSI and Colorful raised Chinese RTX 50-series prices by as much as 59%, signaling broader board-level cost pressure.",
-    fullTldr: "Distributor pricing shows increases across the RTX 50 lineup in China, with AMD and Intel products also exposed to the memory and component squeeze. Earlier supply warnings are becoming visible retail pressure.",
-    whyItMatters: "A broad price reset can slow PC upgrades, compress board-partner margins, and make installed-base optimization more important for studios.",
-    possibleImpact: "Players may delay upgrades or trade down, while developers extend older-GPU support and platform holders lean harder on upscaling.",
-    trendAnalysis: "AI-led memory demand is no longer only delaying future products; it is increasingly altering current gaming-hardware prices and upgrade cycles.",
-    impactScore: 94, trendScore: 48, confidence: 86, sectors: ["GPUs", "Memory", "PC Gaming", "Supply Chain"], companies: ["NVIDIA", "AMD", "Intel", "MSI", "Colorful"], publishedAt: "2026-07-27",
-    sourceUrl: "https://www.tomshardware.com/pc-components/gpus/msi-and-colorful-raise-nvidia-rtx-50-series-prices-in-china-by-up-to-59-percent-across-the-entire-lineup-change-in-distributer-pricing-suggests-gpu-price-hikes-are-on-the-way", visual: visuals.hardware
+    tldr: "South Korean RTX 50-series prices rose by as much as 30% as wafer and GDDR7 costs moved through the board supply chain.",
+    fullTldr: "Tom's Hardware reports sharp South Korean retail increases across NVIDIA's RTX 50 range, with the RTX 5090 moving above $5,100 and shipments tightening ahead of the August reset.",
+    whyItMatters: "Price pressure appearing in another major PC market confirms that the component squeeze is regional, immediate, and capable of changing upgrade behavior.",
+    possibleImpact: "Players may delay upgrades or trade down, board partners may protect inventory, and studios may prioritize older-GPU support and reconstruction technologies.",
+    trendAnalysis: "AI-driven memory and fabrication demand is increasingly setting the effective price ceiling for consumer gaming performance.",
+    impactScore: 95, trendScore: 49, confidence: 87, sectors: ["GPUs", "Memory", "PC Gaming", "Supply Chain"], companies: ["NVIDIA", "TSMC", "Samsung", "SK hynix"], publishedAt: "2026-08-03",
+    sourceUrl: "https://www.tomshardware.com/pc-components/gpus/in-a-troubling-sign-nvidia-rtx-50-series-prices-jump-up-to-30-percent-in-south-korea-tsmc-wafer-hikes-and-usd20-gddr7-modules-push-rtx-5090-past-usd5-100", visual: visuals.hardware
   },
   {
     id: "le-004", slug: "atari-universal-expand-classic-games-to-film", title: "Atari and Universal expand classic games into film",
@@ -127,15 +127,15 @@ export const articles: Article[] = [
     sourceUrl: "https://www.tomshardware.com/video-games/pc-gaming/nvidia-and-sega-team-up-to-deliver-rtx-spark-support-for-future-games-partnership-kicks-off-next-year-with-upcoming-virtua-fighter-crossroads", visual: visuals.hardware
   },
   {
-    id: "le-009", slug: "playstation-plus-leans-on-catalog-scale", title: "PlayStation Plus leans on recognizable catalog scale",
-    source: "PlayStation Blog", sourceCredibility: "Official source", category: "Platform",
-    tldr: "Sony's July catalog adds Avatar, Rise of the Ronin, and PS2 classics as subscriptions compete on recognizable depth.",
-    fullTldr: "The July PlayStation Plus catalog combines recent premium releases with legacy titles such as Psi-Ops and Indigo Prophecy. The mix shows how subscription value is built from both current third-party licensing and preservation-era catalog.",
-    whyItMatters: "Catalog composition affects engagement, licensing costs, premium-tier differentiation, and how long publishers can monetize older releases.",
-    possibleImpact: "Sony may keep using selective recent releases and classics to defend retention without committing every new first-party game on day one.",
-    trendAnalysis: "Console subscriptions are converging on portfolio curation rather than pure release volume, with catalog identity becoming a competitive lever.",
-    impactScore: 80, trendScore: 38, confidence: 96, sectors: ["Subscriptions", "Console", "Catalog", "Digital Distribution"], companies: ["Sony", "PlayStation", "Ubisoft", "Koei Tecmo"], publishedAt: "2026-07-15",
-    sourceUrl: "https://blog.playstation.com/2026/07/15/playstation-plus-game-catalog-for-july-avatar-frontiers-of-pandora-rise-of-the-ronin-firefighting-simulator-ignite-and-more/", visual: visuals.platform
+    id: "le-009", slug: "xbox-raises-console-prices-as-memory-costs-surge", title: "Xbox raises console prices as memory costs surge",
+    source: "Xbox Wire", sourceCredibility: "Official source", category: "Platform",
+    tldr: "Microsoft raised Xbox console prices worldwide on August 1, adding $100 to 512 GB models and $150 to 1 TB models.",
+    fullTldr: "Xbox says console storage and memory costs have risen more than 2.5 times and could double again by fall 2027. The company is also ending its 2 TB model while introducing accessibility programs.",
+    whyItMatters: "A platform holder is explicitly passing the component crisis into hardware pricing, challenging the traditional subsidized-console model and its role in audience growth.",
+    possibleImpact: "Console adoption may slow, lower-cost access programs and cloud play may gain importance, and publishers may face a more fragmented active hardware base.",
+    trendAnalysis: "The memory crunch is moving from a PC-parts story into platform strategy, forcing console makers to choose between margin, price, and installed-base expansion.",
+    impactScore: 97, trendScore: 50, confidence: 98, sectors: ["Console", "Hardware", "Memory", "Platform Strategy"], companies: ["Microsoft", "Xbox", "Sony", "Nintendo"], publishedAt: "2026-08-01",
+    sourceUrl: "https://news.xbox.com/en-us/2026/06/25/xbox-console-price-update/", visual: visuals.platform
   },
   {
     id: "le-010", slug: "unions-challenge-xbox-layoff-process", title: "Unions challenge Microsoft's Xbox layoff process",
