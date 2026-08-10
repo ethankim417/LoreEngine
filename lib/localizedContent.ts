@@ -404,13 +404,13 @@ const currentArticleTranslations: Record<string, ArticleTranslation> = {
     trendAnalysis: "대형 퍼블리셔는 창작 역량을 사들이던 단계에서 내부에 반드시 남겨야 할 역량의 규모를 시험하는 단계로 이동하고 있다."
   },
   "le-003": {
-    sourceSlug: "rtx-50-prices-jump-in-south-korea",
-    title: "부품 원가 상승으로 한국 RTX 50 가격이 급등한다",
-    tldr: "웨이퍼와 GDDR7 비용이 그래픽카드 공급망에 반영되며 한국 RTX 50 시리즈 가격이 최대 30% 올랐다.",
-    fullTldr: "Tom's Hardware는 한국에서 NVIDIA RTX 50 전 제품군 가격이 크게 올랐고 RTX 5090은 5,100달러를 넘어섰다고 전했다. 8월 가격 조정을 앞두고 출하도 빠듯해졌다.",
-    whyItMatters: "또 다른 주요 PC 시장에서 가격 압박이 확인되면서 부품 부족이 지역을 넘어 즉시 업그레이드 행동을 바꿀 수 있는 문제임이 드러났다.",
-    possibleImpact: "이용자는 업그레이드를 미루거나 하위 제품을 선택하고, 보드 업체는 재고를 보호하며, 개발사는 구형 GPU 지원과 재구성 기술을 더 중시할 수 있다.",
-    trendAnalysis: "AI가 끌어올린 메모리·파운드리 수요가 소비자용 게임 성능의 실질 가격 상한을 정하기 시작했다."
+    sourceSlug: "japan-gpu-distributor-warns-of-new-price-hikes",
+    title: "일본 GPU 유통사가 20~40% 가격 인상을 경고하다",
+    tldr: "일본 유통사 CFD Sales가 8월부터 Gigabyte 그래픽카드 주문 가격이 약 20~40% 오를 수 있다고 알렸다.",
+    fullTldr: "Tom's Hardware에 따르면 CFD Sales는 일본 소매업체에 제조사발 가격 조정을 통보했다. 한국에서 시작된 최근 GPU 가격 충격이 일본 유통망으로 확산하는 신호다.",
+    whyItMatters: "두 번째 주요 PC 시장에서 유통 단계의 명시적 가격 재조정이 나타나며 AI 관련 부품 압박이 전망을 넘어 실제 공급 계약에 반영되고 있다.",
+    possibleImpact: "소매업체는 재고를 제한하고 이용자는 업그레이드를 미루거나 낮은 등급을 선택할 수 있다. 개발사는 구형 GPU 지원과 재구성 기술을 더 중시할 수 있다.",
+    trendAnalysis: "AI 인프라 수요가 메모리와 제조 제약을 아시아 게임 하드웨어의 가격 부담 주기로 바꾸고 있다."
   },
   "le-004": {
     sourceSlug: "atari-universal-expand-classic-games-to-film",
@@ -449,13 +449,13 @@ const currentArticleTranslations: Record<string, ArticleTranslation> = {
     trendAnalysis: "게임 AI 도구가 인상적인 데모에서 분야별 평가, 재현성, 런타임 검증으로 이동하고 있다."
   },
   "le-008": {
-    sourceSlug: "nvidia-sega-rtx-spark-partnership",
-    title: "NVIDIA와 Sega가 AI 재구성을 게임 로드맵에 넣는다",
-    tldr: "Sega는 Virtua Fighter Crossroads를 시작으로 향후 게임에서 NVIDIA RTX Spark를 지원한다.",
-    fullTldr: "협력은 NVIDIA의 GB10 시스템과 DLSS 관련 기술을 퍼블리셔 로드맵에 연결한다. 제한된 메모리 대역폭 때문에 재구성 기술이 실용적 성능에 중요하다.",
-    whyItMatters: "업체별 AI 렌더링이 설정 메뉴 선택지를 넘어 공동 개발, 마케팅, 제작 계획의 앞단으로 이동하고 있다.",
-    possibleImpact: "하드웨어 제휴가 늘고 QA 팀은 프레임 생성과 재구성 동작을 더 넓은 조합에서 시험해야 할 수 있다.",
-    trendAnalysis: "AI 렌더링은 그래픽 기능인 동시에 플랫폼 관계가 되며 GPU 업체의 제작 파이프라인 영향력을 키우고 있다."
+    sourceSlug: "steam-survey-shifts-toward-16gb-gpus",
+    title: "Steam GPU 기반이 16GB 카드 중심으로 이동하다",
+    tldr: "Steam 7월 하드웨어 조사에서 16GB 구성이 조사 대상 PC 가운데 가장 큰 VRAM 등급으로 올라섰다.",
+    fullTldr: "TechRadar가 분석한 Valve의 7월 조사에서는 신형 그래픽카드 가격이 오르는 가운데 16GB 카드 비중이 빠르게 늘었다. 최신 장비 이용자와 예산형 이용자의 성능 격차도 커지고 있다.",
+    whyItMatters: "설치 기반의 메모리 용량은 텍스처 예산, 레이 트레이싱 목표, 최소 사양, 최신 렌더링 기능의 적용 범위를 결정한다.",
+    possibleImpact: "스튜디오는 16GB 환경을 위한 고품질 설정을 강화하면서 구형 카드용 확장 설정을 유지할 수 있다. GPU 업체는 이 변화를 높은 평균 판매가의 근거로 활용할 수 있다.",
+    trendAnalysis: "PC 게임 시장은 성능이 향상된 핵심 이용자층과 가격 부담이 큰 장기 이용자층으로 양분되고 있다."
   },
   "le-009": {
     sourceSlug: "xbox-raises-console-prices-as-memory-costs-surge",

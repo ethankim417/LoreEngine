@@ -27,7 +27,7 @@ export type Article = {
 };
 
 export const categories: ArticleCategory[] = ["Gaming", "AI", "Business", "Hardware", "Esports", "Platform", "Studio"];
-export const briefSnapshotDate = "2026-08-03";
+export const briefSnapshotDate = "2026-08-10";
 
 const visuals = {
   business: { image: "/images/intelligence/business-market.webp", alt: "Dark gaming market intelligence terminal with holographic charts" },
@@ -61,15 +61,15 @@ export const articles: Article[] = [
     sourceUrl: "https://www.gamedeveloper.com/business/two-thirds-of-remaining-doom-2016-devs-laid-off-during-latest-round-of-xbox-cuts", visual: visuals.business
   },
   {
-    id: "le-003", slug: "rtx-50-prices-jump-in-south-korea", title: "RTX 50 prices jump in South Korea as component costs bite",
+    id: "le-003", slug: "japan-gpu-distributor-warns-of-new-price-hikes", title: "Japan GPU distributor warns of 20–40% price hikes",
     source: "Tom's Hardware", sourceCredibility: "Trade press", category: "Hardware",
-    tldr: "South Korean RTX 50-series prices rose by as much as 30% as wafer and GDDR7 costs moved through the board supply chain.",
-    fullTldr: "Tom's Hardware reports sharp South Korean retail increases across NVIDIA's RTX 50 range, with the RTX 5090 moving above $5,100 and shipments tightening ahead of the August reset.",
-    whyItMatters: "Price pressure appearing in another major PC market confirms that the component squeeze is regional, immediate, and capable of changing upgrade behavior.",
-    possibleImpact: "Players may delay upgrades or trade down, board partners may protect inventory, and studios may prioritize older-GPU support and reconstruction technologies.",
-    trendAnalysis: "AI-driven memory and fabrication demand is increasingly setting the effective price ceiling for consumer gaming performance.",
-    impactScore: 95, trendScore: 49, confidence: 87, sectors: ["GPUs", "Memory", "PC Gaming", "Supply Chain"], companies: ["NVIDIA", "TSMC", "Samsung", "SK hynix"], publishedAt: "2026-08-03",
-    sourceUrl: "https://www.tomshardware.com/pc-components/gpus/in-a-troubling-sign-nvidia-rtx-50-series-prices-jump-up-to-30-percent-in-south-korea-tsmc-wafer-hikes-and-usd20-gddr7-modules-push-rtx-5090-past-usd5-100", visual: visuals.hardware
+    tldr: "Japanese distributor CFD Sales warned that Gigabyte graphics-card orders face increases of roughly 20% to 40% from August.",
+    fullTldr: "Tom's Hardware reports that CFD Sales notified Japanese retailers of a manufacturer-led price revision across Gigabyte graphics cards, extending the recent Asian GPU-price shock beyond South Korea.",
+    whyItMatters: "A second major PC market is now seeing explicit channel-level repricing, showing that AI-linked component pressure is moving from forecasts into distributor invoices.",
+    possibleImpact: "Retailers may ration inventory, players may delay upgrades or buy lower tiers, and studios may widen support for older GPUs and reconstruction features.",
+    trendAnalysis: "AI infrastructure demand is turning memory and fabrication constraints into a regional gaming-hardware affordability cycle.",
+    impactScore: 96, trendScore: 50, confidence: 88, sectors: ["GPUs", "Memory", "PC Gaming", "Supply Chain"], companies: ["Gigabyte", "NVIDIA", "CFD Sales"], publishedAt: "2026-08-05",
+    sourceUrl: "https://www.tomshardware.com/pc-components/gpus/more-gpu-price-hikes-loom-for-asia-as-japanese-distributor-warns-of-new-increases-cfd-sales-signals-20-percent-to-40-percent-higher-prices-on-gigabyte-graphics-card-orders-starting-this-month", visual: visuals.hardware
   },
   {
     id: "le-004", slug: "atari-universal-expand-classic-games-to-film", title: "Atari and Universal expand classic games into film",
@@ -116,15 +116,15 @@ export const articles: Article[] = [
     sourceUrl: "https://arxiv.org/abs/2607.03525", visual: visuals.ai
   },
   {
-    id: "le-008", slug: "nvidia-sega-rtx-spark-partnership", title: "NVIDIA and Sega make AI reconstruction part of the game roadmap",
-    source: "Tom's Hardware", sourceCredibility: "Trade press", category: "AI",
-    tldr: "Sega will support NVIDIA RTX Spark in future games, beginning with Virtua Fighter Crossroads.",
-    fullTldr: "The partnership centers NVIDIA's compact GB10 system and DLSS-related technology in a publisher roadmap. Limited memory bandwidth makes reconstruction important to achieving usable game performance.",
-    whyItMatters: "Vendor-specific AI rendering is moving upstream from a settings-menu option into co-development, marketing, and production planning.",
-    possibleImpact: "More publishers may sign hardware partnerships, while QA teams face a larger matrix of generated-frame and reconstruction behavior.",
-    trendAnalysis: "AI rendering is becoming a platform relationship as much as a graphics feature, increasing GPU vendors' influence over presentation pipelines.",
-    impactScore: 81, trendScore: 43, confidence: 84, sectors: ["AI Rendering", "GPUs", "Publishing", "PC Gaming"], companies: ["NVIDIA", "Sega"], publishedAt: "2026-07-15",
-    sourceUrl: "https://www.tomshardware.com/video-games/pc-gaming/nvidia-and-sega-team-up-to-deliver-rtx-spark-support-for-future-games-partnership-kicks-off-next-year-with-upcoming-virtua-fighter-crossroads", visual: visuals.hardware
+    id: "le-008", slug: "steam-survey-shifts-toward-16gb-gpus", title: "Steam's GPU base shifts toward 16 GB cards",
+    source: "TechRadar", sourceCredibility: "Trade press", category: "Hardware",
+    tldr: "Steam's July hardware survey shows 16 GB configurations becoming the largest VRAM class among surveyed PCs.",
+    fullTldr: "TechRadar's reading of Valve's July survey highlights a rapid rise in 16 GB graphics cards even as new-board prices climb, widening the capability gap between recent adopters and budget users.",
+    whyItMatters: "Installed-base memory shapes texture budgets, ray-tracing targets, minimum specifications, and how aggressively studios can design around modern rendering features.",
+    possibleImpact: "Studios may target richer 16 GB profiles while preserving scalable modes for older cards; GPU vendors can use the shift to defend higher average selling prices.",
+    trendAnalysis: "PC gaming is bifurcating between a better-equipped active core and an affordability-constrained long tail.",
+    impactScore: 83, trendScore: 44, confidence: 84, sectors: ["GPUs", "PC Gaming", "Developer Tools", "Market Data"], companies: ["Valve", "NVIDIA", "AMD"], publishedAt: "2026-08-05",
+    sourceUrl: "https://www.techradar.com/computing/gpu/steam-survey-shows-gpus-with-16gb-are-now-the-most-popular-graphics-cards-and-that-really-doesnt-bode-well-for-gamers-wallets", visual: visuals.hardware
   },
   {
     id: "le-009", slug: "xbox-raises-console-prices-as-memory-costs-surge", title: "Xbox raises console prices as memory costs surge",
