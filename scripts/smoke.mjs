@@ -7,8 +7,8 @@ const checks = [
   { path: "/sources", expect: "Source Strategy" },
   { path: "/privacy", expect: "Privacy And Legal Notes" },
   {
-    path: "/articles/xbox-raises-console-prices-as-memory-costs-surge",
-    expect: "Xbox raises console prices as memory costs surge"
+    path: "/articles/us-gpu-prices-jump-as-memory-pressure-spreads",
+    expect: "GPU price shock reaches the US retail shelf"
   },
   { path: "/api/market", expect: "snapshotDate" },
   { path: "/api/health", expect: "\"status\":\"" },
