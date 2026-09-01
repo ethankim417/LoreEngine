@@ -7,8 +7,8 @@ const checks = [
   { path: "/sources", expect: "Source Strategy" },
   { path: "/privacy", expect: "Privacy And Legal Notes" },
   {
-    path: "/articles/us-gpu-prices-jump-as-memory-pressure-spreads",
-    expect: "GPU price shock reaches the US retail shelf"
+    path: "/articles/gamescom-turns-scale-into-industry-infrastructure",
+    expect: "Gamescom turns record scale into industry infrastructure"
   },
   { path: "/api/market", expect: "snapshotDate" },
   { path: "/api/health", expect: "\"status\":\"" },

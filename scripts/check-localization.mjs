@@ -4,7 +4,7 @@ const articlesSource = fs.readFileSync("data/articles.ts", "utf8");
 const localizedSource = fs.readFileSync("lib/localizedContent.ts", "utf8");
 const weeklyEditorialSource = fs.readFileSync("data/weeklyEditorial.ts", "utf8");
 
-const articles = [...articlesSource.matchAll(/id: "(le-\d+)",\s+slug: "([^"]+)"/g)].map((match) => ({
+const articles = [...articlesSource.matchAll(/id:\s*"(le-\d+)",\s*slug:\s*"([^"]+)"/g)].map((match) => ({
   id: match[1],
   slug: match[2]
 }));

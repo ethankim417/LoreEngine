@@ -5,12 +5,14 @@ export const weeklyEditorial: {
   headline: Record<Language, string>;
   previousHeadlines: string[];
 } = {
-  leadArticleSlug: "us-gpu-prices-jump-as-memory-pressure-spreads",
+  leadArticleSlug: "gamescom-turns-scale-into-industry-infrastructure",
   headline: {
-    en: "Hardware inflation turns access into a platform decision",
-    ko: "하드웨어 인플레이션이 게임 접근 방식을 바꿉니다"
+    en: "Gamescom turns attention into shared industry infrastructure",
+    ko: "Gamescom이 관심을 산업의 공동 인프라로 바꿉니다"
   },
   previousHeadlines: [
+    "Hardware inflation turns access into a platform decision",
+    "하드웨어 인플레이션이 게임 접근 방식을 바꿉니다",
     "GPU inflation spreads through Asia's retail channel",
     "GPU 가격 상승이 아시아 유통망 전반으로 번집니다",
     "The memory crunch reaches the console shelf",
