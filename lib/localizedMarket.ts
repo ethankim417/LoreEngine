@@ -189,12 +189,12 @@ const playerCopy: Record<string, Record<Language, PlayerCopy>> = {
   EA: {
     en: {
       segment: "Sports / Live Services",
-      summary: "EA remains a core public read on sports games, live services, annualized franchises, and catalog monetization.",
+      summary: "EA went private on August 4, 2026; no current public share price is available. Sports and live-service performance remain industry signals.",
       watchSignal: "Sports retention, Ultimate Team bookings, and catalog performance"
     },
     ko: {
       segment: "스포츠 / 라이브 서비스",
-      summary: "EA는 스포츠 게임, 라이브 서비스, 연간 프랜차이즈, 카탈로그 수익화를 읽는 핵심 상장 지표입니다.",
+      summary: "EA는 2026년 8월 4일 비상장사가 됐으며 현재 공개 주가가 없습니다. 스포츠와 라이브 서비스 성과는 여전히 업계 동향을 보여줍니다.",
       watchSignal: "스포츠 유저 유지, Ultimate Team 예약매출, 카탈로그 성과"
     }
   },

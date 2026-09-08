@@ -17,9 +17,9 @@ export function MarketPulse() {
   const { language } = useLanguage();
   const [snapshot, setSnapshot] = useState<MarketSnapshot>(staticMarketSnapshot);
   const [isRefreshing, setIsRefreshing] = useState(process.env.NEXT_PUBLIC_GITHUB_PAGES !== "true");
-  const focusPlayers = getMarketFocusPlayersFromSnapshot(snapshot);
+  const focusPlayers = getMarketFocusPlayersFromSnapshot(snapshot).filter((player) => player.price !== null);
   const averageThirtyDay =
-    focusPlayers.reduce((total, player) => total + player.thirtyDayChange, 0) / focusPlayers.length;
+    focusPlayers.reduce((total, player) => total + player.thirtyDayChange, 0) / Math.max(focusPlayers.length, 1);
   const topMovers = [...focusPlayers]
     .sort((a, b) => Math.abs(b.thirtyDayChange) - Math.abs(a.thirtyDayChange))
     .slice(0, 5);

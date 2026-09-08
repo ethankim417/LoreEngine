@@ -5,12 +5,14 @@ export const weeklyEditorial: {
   headline: Record<Language, string>;
   previousHeadlines: string[];
 } = {
-  leadArticleSlug: "gamescom-turns-scale-into-industry-infrastructure",
+  leadArticleSlug: "xbox-meters-cloud-playtime",
   headline: {
-    en: "Gamescom turns attention into shared industry infrastructure",
-    ko: "Gamescom이 관심을 산업의 공동 인프라로 바꿉니다"
+    en: "Xbox turns cloud access into a metered service",
+    ko: "Xbox가 클라우드 이용을 시간제 서비스로 바꿉니다"
   },
   previousHeadlines: [
+    "Gamescom turns attention into shared industry infrastructure",
+    "Gamescom이 관심을 산업의 공동 인프라로 바꿉니다",
     "Hardware inflation turns access into a platform decision",
     "하드웨어 인플레이션이 게임 접근 방식을 바꿉니다",
     "GPU inflation spreads through Asia's retail channel",

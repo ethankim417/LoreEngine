@@ -112,8 +112,9 @@ export function MarketPageView({ snapshot }: { snapshot: MarketSnapshot }) {
   const { language } = useLanguage();
   const copy = marketCopy[language];
   const focusPlayers = getMarketFocusPlayersFromSnapshot(snapshot);
+  const pricedPlayers = focusPlayers.filter((player) => player.price !== null);
   const averageThirtyDay =
-    focusPlayers.reduce((total, player) => total + player.thirtyDayChange, 0) / focusPlayers.length;
+    pricedPlayers.reduce((total, player) => total + player.thirtyDayChange, 0) / Math.max(pricedPlayers.length, 1);
   const bullishCount = focusPlayers.filter((player) => player.sentiment === "Bullish").length;
   const pressureCount = focusPlayers.filter((player) => player.sentiment === "Pressure").length;
 
@@ -296,10 +297,11 @@ function MarketRow({ player, copy, language }: { player: MarketPlayer; copy: typ
       </div>
 
       <MetricCell label={copy.price} value={formatPrice(player, copy)} />
-      <MetricCell label="30d" value={formatPercent(player.thirtyDayChange)} positive={positive} />
-      <MetricCell label="YTD" value={formatPercent(player.ytdChange)} positive={player.ytdChange >= 0} />
+      <MetricCell label="30d" value={player.price === null ? "—" : formatPercent(player.thirtyDayChange)} positive={positive} />
+      <MetricCell label="YTD" value={player.price === null ? "—" : formatPercent(player.ytdChange)} positive={player.ytdChange >= 0} />
 
       <div>
+        {player.price !== null ? <>
         <div className="mb-2 grid grid-cols-2 gap-1.5">
           <PerformanceBar label="30d" value={player.thirtyDayChange} />
           <PerformanceBar label="YTD" value={player.ytdChange} />
@@ -313,6 +315,7 @@ function MarketRow({ player, copy, language }: { player: MarketPlayer; copy: typ
             label={copy.chartLabel(player.company)}
           />
         </div>
+        </> : <p className="text-xs text-slate-500">{copy.private}</p>}
       </div>
     </article>
   );
