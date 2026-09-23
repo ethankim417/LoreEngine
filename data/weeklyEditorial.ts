@@ -5,12 +5,14 @@ export const weeklyEditorial: {
   headline: Record<Language, string>;
   previousHeadlines: string[];
 } = {
-  leadArticleSlug: "roblox-takes-creator-games-beyond-its-app",
+  leadArticleSlug: "xbox-consolidates-studios-and-divests-ownership",
   headline: {
-    en: "Roblox moves from hosting games to powering their distribution",
-    ko: "Roblox가 게임을 담는 앱에서 독립 배포의 기반으로 확장합니다"
+    en: "Xbox concentrates franchise control while studios leave its portfolio",
+    ko: "Xbox가 스튜디오를 내보내며 프랜차이즈 관리 권한을 집중합니다"
   },
   previousHeadlines: [
+    "Roblox moves from hosting games to powering their distribution",
+    "Roblox가 게임을 담는 앱에서 독립 배포의 기반으로 확장합니다",
     "Xbox turns cloud access into a metered service",
     "Xbox가 클라우드 이용을 시간제 서비스로 바꿉니다",
     "Gamescom turns attention into shared industry infrastructure",
@@ -20,8 +22,6 @@ export const weeklyEditorial: {
     "GPU inflation spreads through Asia's retail channel",
     "GPU 가격 상승이 아시아 유통망 전반으로 번집니다",
     "The memory crunch reaches the console shelf",
-    "메모리 부족이 콘솔 판매가를 밀어 올립니다",
-    "Game creation moves inside the player app",
-    "게임 제작이 플레이 앱 안으로 들어옵니다"
+    "메모리 부족이 콘솔 판매가를 밀어 올립니다"
   ]
 };

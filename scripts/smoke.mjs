@@ -7,8 +7,8 @@ const checks = [
   { path: "/sources", expect: "Source Strategy" },
   { path: "/privacy", expect: "Privacy And Legal Notes" },
   {
-    path: "/articles/roblox-takes-creator-games-beyond-its-app",
-    expect: "Roblox plans standalone distribution for creator games"
+    path: "/articles/xbox-consolidates-studios-and-divests-ownership",
+    expect: "Xbox consolidates studios as divestitures advance"
   },
   { path: "/api/market", expect: "snapshotDate" },
   { path: "/api/health", expect: "\"status\":\"" },
