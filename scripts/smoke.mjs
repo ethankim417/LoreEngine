@@ -7,8 +7,8 @@ const checks = [
   { path: "/sources", expect: "Source Strategy" },
   { path: "/privacy", expect: "Privacy And Legal Notes" },
   {
-    path: "/articles/xbox-consolidates-studios-and-divests-ownership",
-    expect: "Xbox consolidates studios as divestitures advance"
+    path: "/articles/king-labor-pact-raises-the-floor-for-studio-change",
+    expect: "King labor agreement ties studio change to worker consultation"
   },
   { path: "/api/market", expect: "snapshotDate" },
   { path: "/api/health", expect: "\"status\":\"" },
