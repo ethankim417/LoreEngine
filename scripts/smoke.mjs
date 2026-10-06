@@ -7,8 +7,8 @@ const checks = [
   { path: "/sources", expect: "Source Strategy" },
   { path: "/privacy", expect: "Privacy And Legal Notes" },
   {
-    path: "/articles/king-labor-pact-raises-the-floor-for-studio-change",
-    expect: "King labor agreement ties studio change to worker consultation"
+    path: "/articles/fortnite-llm-template-makes-conversation-a-creator-tool",
+    expect: "Fortnite ships an LLM-character template to creators"
   },
   { path: "/api/market", expect: "snapshotDate" },
   { path: "/api/health", expect: "\"status\":\"" },
