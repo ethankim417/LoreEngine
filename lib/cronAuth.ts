@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 export function validateCronRequest(request: NextRequest) {
   const cronSecret = process.env.CRON_SECRET;
   const authorization = request.headers.get("authorization");
-  const productionRuntime = process.env.VERCEL_ENV === "production";
+  const productionRuntime = process.env.NODE_ENV === "production" || process.env.VERCEL_ENV === "production";
 
   if (!cronSecret && productionRuntime) {
     return {

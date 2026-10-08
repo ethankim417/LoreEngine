@@ -105,7 +105,7 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
       });
   }, [articles, category, language, query, sortMode, sourceType]);
   const savedArticles = useMemo(
-    () => savedIds.map((id) => articles.find((article) => article.id === id)).filter((article): article is Article => Boolean(article)),
+    () => savedIds.map((slug) => articles.find((article) => article.slug === slug)).filter((article): article is Article => Boolean(article)),
     [articles, savedIds]
   );
 
@@ -127,9 +127,16 @@ export function IntelligenceDashboard({ articles, metrics }: IntelligenceDashboa
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
 
-    if (params.get("saved") === "1") {
+    function openSaved() {
       setSavedOpen(true);
     }
+
+    if (params.get("saved") === "1") {
+      openSaved();
+    }
+
+    window.addEventListener("loreengine-open-bookmarks", openSaved);
+    return () => window.removeEventListener("loreengine-open-bookmarks", openSaved);
   }, []);
 
   return (
@@ -555,7 +562,7 @@ function SavedBriefsDrawer({
                     </Link>
                     <button
                       type="button"
-                      onClick={() => onRemove(article.id)}
+                      onClick={() => onRemove(article.slug)}
                       aria-label={`${t("removeBookmark")}: ${articleText.title}`}
                       className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-400 transition hover:border-rose-300/30 hover:text-rose-100"
                     >

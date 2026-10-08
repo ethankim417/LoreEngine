@@ -33,8 +33,8 @@ type QuoteRow = {
 };
 
 export const getMarketSnapshot = unstable_cache(
-  async () => refreshMarketSnapshot(),
-  ["loreengine-market-snapshot-v2"],
+  async () => process.env.GITHUB_PAGES === "true" ? staticMarketSnapshot : refreshMarketSnapshot(),
+  ["loreengine-market-snapshot-v2", staticMarketSnapshot.snapshotDate],
   {
     revalidate: WEEK_SECONDS,
     tags: ["market-snapshot"]
@@ -66,7 +66,6 @@ export async function refreshMarketSnapshot(): Promise<MarketSnapshot> {
   if (updatedTickers.length === 0) {
     return {
       ...staticMarketSnapshot,
-      refreshedAt: new Date().toISOString(),
       failedTickers,
       failedTickerReasons
     };
@@ -152,7 +151,7 @@ async function fetchYahooHistoryPayload(symbol: string): Promise<unknown> {
   for (let attempt = 1; attempt <= 2; attempt += 1) {
     try {
       const response = await fetch(url, {
-        next: { revalidate: WEEK_SECONDS },
+        cache: "no-store",
         signal: AbortSignal.timeout(YAHOO_TIMEOUT_MS)
       });
 

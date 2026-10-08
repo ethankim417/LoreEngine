@@ -209,6 +209,8 @@ Useful checks:
 ```bash
 npm run typecheck
 npm run lint
+npm test
+npm run check:localization
 npm run build
 ```
 
@@ -233,7 +235,9 @@ CRON_SECRET=your-random-secret
 
 Google login and bookmark sync use Firebase Auth and Firestore client SDK configuration from [firebase-applet-config.json](./firebase-applet-config.json). In Firebase Console, enable the Google sign-in provider and add the deployed domains, including Vercel preview/production domains and `lore-engine.ethankim.cc`, to the authorized domains list.
 
-Account deletion is available from the account menu. It deletes the synced Firebase user document, clears local saved briefs in the current browser, and signs the user out.
+Account deletion asks for Google account confirmation, then deletes the synced Firebase user document and Firebase Auth account and clears saved briefs from the current browser. Errors are shown in the account menu so the user can retry.
+
+Bookmarks use article slugs so a weekly refresh cannot mark a different article as saved. Local account caches are separated by Firebase user ID. Legacy weekly-slot bookmarks remain stored but cannot be safely mapped to their original articles.
 
 Firestore rules are included in [firestore.rules](./firestore.rules). Deploy them from Firebase tooling so users can read and write only their own `users/{uid}` document.
 

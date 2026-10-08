@@ -11,8 +11,10 @@ import {
 } from "@/lib/bookmarksClient";
 import { auth, db, googleProvider } from "@/lib/firebase";
 import {
+  deleteUser,
   getRedirectResult,
   onAuthStateChanged,
+  reauthenticateWithPopup,
   signInWithPopup,
   signInWithRedirect,
   signOut as firebaseSignOut,
@@ -25,6 +27,8 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
   const [open, setOpen] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
   const [isSigningIn, setIsSigningIn] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [accountError, setAccountError] = useState<string | null>(null);
   const [portalReady, setPortalReady] = useState(false);
   const [storageMode, setStorageMode] = useState<"firebase" | "unconfigured" | "local">("local");
   const { setLanguage, t } = useLanguage();
@@ -41,7 +45,7 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
         const snap = await getDoc(doc(db, "users", currentUser.uid));
         const value = snap.exists() ? snap.data().language : null;
 
-        if (value === "en" || value === "ko") {
+        if (active && auth.currentUser?.uid === currentUser.uid && (value === "en" || value === "ko")) {
           setLanguage(value);
         }
       } catch (error) {
@@ -55,10 +59,12 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
       setIsSigningIn(false);
       if (currentUser) {
         const merged = await mergeBookmarksFromAccount(currentUser);
+        if (!active || auth.currentUser?.uid !== currentUser.uid) return;
         setStorageMode(merged.storageMode);
         await loadLanguagePreference(currentUser);
       } else {
         setStorageMode("local");
+        window.dispatchEvent(new Event("loreengine-bookmarks-updated"));
       }
     });
 
@@ -124,14 +130,27 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
     const confirmed = window.confirm(
       t("deleteConfirm")
     );
-    if (!confirmed || !user) return;
+    if (!confirmed || !user || isDeleting) return;
 
+    const currentUser = user;
+    setAccountError(null);
+    setIsDeleting(true);
     try {
-      await deleteDoc(doc(db, "users", user.uid));
+      await reauthenticateWithPopup(currentUser, googleProvider);
+      await deleteDoc(doc(db, "users", currentUser.uid));
+      await deleteUser(currentUser);
+      try {
+        window.localStorage.removeItem(`loreengine-bookmarks:${currentUser.uid}`);
+      } catch {
+        // The remote account has been deleted even if local storage is blocked.
+      }
       writeLocalBookmarks([]);
-      await signOut();
+      setOpen(false);
     } catch (error) {
       console.error(error);
+      setAccountError(t("accountDeleteFailed"));
+    } finally {
+      setIsDeleting(false);
     }
   }
 
@@ -152,6 +171,8 @@ export function AuthAccount({ compact = false }: { compact?: boolean }) {
             deleteAccount={deleteAccount}
             signOut={signOut}
             storageMode={storageMode}
+            isDeleting={isDeleting}
+            accountError={accountError}
             onClose={() => setOpen(false)}
             t={t}
             user={user}
@@ -186,6 +207,8 @@ function AccountMenu({
   deleteAccount,
   signOut,
   storageMode,
+  isDeleting,
+  accountError,
   onClose,
   t,
   user
@@ -193,6 +216,8 @@ function AccountMenu({
   deleteAccount: () => void;
   signOut: () => void;
   storageMode: "firebase" | "unconfigured" | "local";
+  isDeleting: boolean;
+  accountError: string | null;
   onClose: () => void;
   t: ReturnType<typeof useLanguage>["t"];
   user: FirebaseUser;
@@ -225,19 +250,23 @@ function AccountMenu({
           </div>
         </div>
         <div className="mt-3 grid gap-2">
-          <Link href="/?saved=1" className="inline-flex items-center justify-center gap-2 rounded-lg border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-2 font-bold text-cyan-50 transition hover:border-cyan-300/40">
+          <Link href="/?saved=1" onClick={() => {
+            onClose();
+            window.dispatchEvent(new Event("loreengine-open-bookmarks"));
+          }} className="inline-flex items-center justify-center gap-2 rounded-lg border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-2 font-bold text-cyan-50 transition hover:border-cyan-300/40">
             <Bookmark className="h-3.5 w-3.5" />
             {t("viewBookmarks")}
           </Link>
-          <button type="button" onClick={signOut} className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 font-bold text-slate-100 transition hover:border-cyan-300/35">
+          <button type="button" onClick={signOut} disabled={isDeleting} className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 font-bold text-slate-100 transition hover:border-cyan-300/35 disabled:opacity-50">
             <LogOut className="h-3.5 w-3.5" />
             {t("signOut")}
           </button>
-          <button type="button" onClick={deleteAccount} className="inline-flex items-center justify-center gap-2 rounded-lg border border-rose-300/20 bg-rose-300/[0.07] px-3 py-2 font-bold text-rose-100 transition hover:border-rose-300/40">
+          <button type="button" onClick={deleteAccount} disabled={isDeleting} className="inline-flex items-center justify-center gap-2 rounded-lg border border-rose-300/20 bg-rose-300/[0.07] px-3 py-2 font-bold text-rose-100 transition hover:border-rose-300/40 disabled:opacity-50">
             <Trash2 className="h-3.5 w-3.5" />
-            {t("deleteAccountData")}
+            {isDeleting ? t("deletingAccount") : t("deleteAccountData")}
           </button>
         </div>
+        {accountError ? <p role="alert" className="mt-3 text-rose-200">{accountError}</p> : null}
         <Link href="/privacy" className="mt-3 inline-flex text-cyan-200/80 underline decoration-cyan-300/20 underline-offset-4 hover:text-cyan-100">
           {t("privacyRights")}
         </Link>
@@ -268,9 +297,7 @@ function shouldTryRedirect(error: unknown) {
   const code = typeof error === "object" && error && "code" in error ? String(error.code) : "";
 
   return (
-    code.includes("popup-blocked") ||
-    code.includes("popup-closed-by-user") ||
-    code.includes("cancelled-popup-request")
+    code.includes("popup-blocked")
   );
 }
 

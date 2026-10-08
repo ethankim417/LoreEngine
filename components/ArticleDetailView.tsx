@@ -17,7 +17,7 @@ export function ArticleDetailView({ article }: { article: Article }) {
 
   return (
     <main className="relative min-h-screen overflow-hidden px-4 py-5 sm:px-6 sm:py-6 lg:px-8">
-      <ArticleReadTracker articleId={article.id} />
+      <ArticleReadTracker articleId={article.slug} />
       <div aria-hidden="true" className="mesh-grid absolute inset-0 opacity-70" />
       <div
         aria-hidden="true"
@@ -42,7 +42,7 @@ export function ArticleDetailView({ article }: { article: Article }) {
         <article className="glass-panel overflow-hidden rounded-lg">
           <div className="detail-hero relative overflow-hidden border-b border-white/10 p-4 sm:min-h-[30rem] sm:p-7">
             <Image
-              src={article.visual.image}
+              src={process.env.NEXT_PUBLIC_GITHUB_PAGES === "true" ? `/LoreEngine${article.visual.image}` : article.visual.image}
               alt={article.visual.alt}
               fill
               priority

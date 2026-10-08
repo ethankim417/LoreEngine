@@ -9,6 +9,11 @@ const articles = [...articlesSource.matchAll(/id:\s*"(le-\d+)",\s*slug:\s*"([^"]
   slug: match[2]
 }));
 
+if (!articles.length) {
+  console.error("No articles found; localization could not be checked.");
+  process.exit(1);
+}
+
 const translations = new Map(
   [...localizedSource.matchAll(/"(le-\d+)": \{\s+sourceSlug: "([^"]+)"/g)].map((match) => [match[1], match[2]])
 );

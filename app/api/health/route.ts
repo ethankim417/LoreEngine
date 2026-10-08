@@ -9,7 +9,7 @@ const STALE_MARKET_HOURS = 24 * 8;
 
 export async function GET() {
   const marketSnapshot = await getMarketSnapshot();
-  const marketDataAgeHours = getAgeHours(marketSnapshot.refreshedAt);
+  const marketDataAgeHours = getAgeHours(`${marketSnapshot.snapshotDate}T00:00:00Z`);
   const marketIsStale = marketDataAgeHours > STALE_MARKET_HOURS;
   const marketIsDegraded = marketSnapshot.failedTickers.length > 0 || marketSnapshot.mode === "cached-fallback";
   const status = marketIsStale ? "stale" : marketIsDegraded ? "degraded" : "ok";

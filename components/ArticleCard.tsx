@@ -32,8 +32,8 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
 
   useEffect(() => {
     function syncState() {
-      setBookmarked(readLocalBookmarks().includes(article.id));
-      setRead(readStorageList("loreengine-read-briefs").includes(article.id));
+      setBookmarked(readLocalBookmarks().includes(article.slug));
+      setRead(readStorageList("loreengine-read-briefs").includes(article.slug));
     }
 
     syncState();
@@ -46,17 +46,17 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
       window.removeEventListener("loreengine-bookmarks-updated", syncState);
       window.removeEventListener("loreengine-read-updated", syncState);
     };
-  }, [article.id]);
+  }, [article.slug]);
 
   function toggleBookmark() {
     const bookmarks = readLocalBookmarks();
-    const next = bookmarks.includes(article.id)
-      ? bookmarks.filter((id) => id !== article.id)
-      : [...bookmarks, article.id];
+    const next = bookmarks.includes(article.slug)
+      ? bookmarks.filter((slug) => slug !== article.slug)
+      : [...bookmarks, article.slug];
 
     writeLocalBookmarks(next);
     void syncRemoteBookmarks(next);
-    setBookmarked(next.includes(article.id));
+    setBookmarked(next.includes(article.slug));
   }
 
   return (
@@ -64,7 +64,7 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
       <div className={`absolute inset-y-0 left-0 z-20 w-1 ${priority.railClass}`} aria-hidden="true" />
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <Image
-          src={article.visual.image}
+          src={process.env.NEXT_PUBLIC_GITHUB_PAGES === "true" ? `/LoreEngine${article.visual.image}` : article.visual.image}
           alt=""
           fill
           sizes={

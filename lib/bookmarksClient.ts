@@ -5,8 +5,16 @@ import { auth, db } from "./firebase";
 export const BOOKMARK_STORAGE_KEY = "loreengine-bookmarks";
 
 export function readLocalBookmarks() {
+  return readBookmarks(getBookmarkStorageKey());
+}
+
+function getBookmarkStorageKey() {
+  return auth.currentUser ? `${BOOKMARK_STORAGE_KEY}:${auth.currentUser.uid}` : BOOKMARK_STORAGE_KEY;
+}
+
+function readBookmarks(key: string) {
   try {
-    const stored = window.localStorage.getItem(BOOKMARK_STORAGE_KEY);
+    const stored = window.localStorage.getItem(key);
     const parsed = stored ? (JSON.parse(stored) as unknown) : [];
 
     return Array.isArray(parsed) ? parsed.filter((id): id is string => typeof id === "string") : [];
@@ -16,7 +24,11 @@ export function readLocalBookmarks() {
 }
 
 export function writeLocalBookmarks(bookmarkIds: string[]) {
-  window.localStorage.setItem(BOOKMARK_STORAGE_KEY, JSON.stringify([...new Set(bookmarkIds)]));
+  try {
+    window.localStorage.setItem(getBookmarkStorageKey(), JSON.stringify([...new Set(bookmarkIds)]));
+  } catch {
+    // Cloud sync can still run when browser storage is blocked.
+  }
   window.dispatchEvent(new Event("loreengine-bookmarks-updated"));
 }
 
@@ -40,11 +52,18 @@ export async function syncRemoteBookmarks(bookmarkIds: string[]) {
 }
 
 export async function mergeBookmarksFromAccount(user: User) {
-  const local = readLocalBookmarks();
+  const local = [...new Set([
+    ...readBookmarks(`${BOOKMARK_STORAGE_KEY}:${user.uid}`),
+    ...readBookmarks(BOOKMARK_STORAGE_KEY).filter((id) => !/^le-\d+$/.test(id))
+  ])].slice(0, 250);
 
   try {
     const dbDoc = doc(db, "users", user.uid);
     const snap = await getDoc(dbDoc);
+
+    if (auth.currentUser?.uid !== user.uid) {
+      return { bookmarkIds: local, storageMode: "local" as const };
+    }
 
     if (!snap.exists()) {
       await setDoc(
@@ -52,11 +71,14 @@ export async function mergeBookmarksFromAccount(user: User) {
         { bookmarkIds: local, updatedAt: new Date().toISOString() },
         { merge: true }
       );
+      if (auth.currentUser?.uid === user.uid) writeLocalBookmarks(local);
       return { bookmarkIds: local, storageMode: "firebase" as const };
     }
 
     const remoteData = snap.data();
-    const remote = Array.isArray(remoteData.bookmarkIds) ? remoteData.bookmarkIds : [];
+    const remote = Array.isArray(remoteData.bookmarkIds)
+      ? remoteData.bookmarkIds.filter((id): id is string => typeof id === "string")
+      : [];
 
     const merged = [...new Set([...remote, ...local])].slice(0, 250);
     writeLocalBookmarks(merged);
@@ -73,6 +95,7 @@ export async function mergeBookmarksFromAccount(user: User) {
     };
   } catch (error) {
     console.error("Firebase Bookmark Sync Error:", error);
+    if (auth.currentUser?.uid === user.uid) writeLocalBookmarks(local);
     return { bookmarkIds: local, storageMode: "unconfigured" as const };
   }
 }

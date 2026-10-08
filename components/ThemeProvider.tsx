@@ -30,7 +30,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const setTheme = useCallback((nextTheme: InterfaceTheme) => {
     setThemeState(nextTheme);
     applyTheme(nextTheme);
-    window.localStorage.setItem(THEME_KEY, nextTheme);
+    try {
+      window.localStorage.setItem(THEME_KEY, nextTheme);
+    } catch {
+      // The theme selection still works when browser storage is blocked.
+    }
   }, []);
 
   const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme]);

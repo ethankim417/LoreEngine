@@ -18,11 +18,11 @@ const privacyCopy = {
       },
       {
         title: "What Data May Be Stored",
-        body: "With Firebase sync enabled, LoreEngine stores a Firebase user document containing saved article IDs, language preference, and update timestamps. Firebase Auth may provide the display name and email shown in the account menu."
+        body: "With Firebase sync enabled, LoreEngine stores a Firebase user document containing saved article identifiers, language preference, and update timestamps. Firebase Auth may provide the display name and email shown in the account menu."
       },
       {
         title: "Account Deletion",
-        body: "The account menu includes a Delete account data action. It deletes the synced Firebase user document, clears local saved briefs in the current browser, and signs the user out."
+        body: "Delete account asks you to confirm your Google account, then removes the synced Firebase user document and Firebase Auth account and clears saved briefs from the current browser. If deletion cannot finish, the account menu shows an error so you can retry."
       },
       {
         title: "Korea And US Privacy Context",
@@ -65,7 +65,7 @@ const privacyCopy = {
       },
       {
         title: "계정 데이터 삭제",
-        body: "계정 메뉴에는 계정 데이터 삭제 기능이 있습니다. 이 기능은 동기화된 Firebase 사용자 문서를 삭제하고, 현재 브라우저의 저장 브리프를 지운 뒤 로그아웃합니다."
+        body: "계정 삭제를 선택하면 Google 계정을 확인한 뒤 동기화된 Firebase 사용자 문서와 Firebase Auth 계정을 삭제하고 현재 브라우저의 저장 브리프를 지웁니다. 삭제가 완료되지 않으면 계정 메뉴에 오류가 표시되어 다시 시도할 수 있습니다."
       },
       {
         title: "한국 및 미국 개인정보 참고 사항",

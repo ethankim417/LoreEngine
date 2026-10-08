@@ -24,9 +24,17 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
   const setLanguage = useCallback((nextLanguage: Language) => {
     setLanguageState(nextLanguage);
-    window.localStorage.setItem(LANGUAGE_KEY, nextLanguage);
+    try {
+      window.localStorage.setItem(LANGUAGE_KEY, nextLanguage);
+    } catch {
+      // The language selection still works when browser storage is blocked.
+    }
   }, []);
 
   const value = useMemo(
