@@ -5,12 +5,14 @@ export const weeklyEditorial: {
   headline: Record<Language, string>;
   previousHeadlines: string[];
 } = {
-  leadArticleSlug: "fortnite-llm-template-makes-conversation-a-creator-tool",
+  leadArticleSlug: "xbox-xp-formalizes-franchise-expansion",
   headline: {
-    en: "Fortnite turns LLM characters into a governed creator workflow",
-    ko: "Fortnite가 LLM 캐릭터를 관리 가능한 크리에이터 작업 흐름으로 바꿉니다"
+    en: "Xbox turns franchise fandom into a platform operating layer",
+    ko: "Xbox가 프랜차이즈 팬덤을 플랫폼 운영 계층으로 만듭니다"
   },
   previousHeadlines: [
+    "Fortnite turns LLM characters into a governed creator workflow",
+    "Fortnite가 LLM 캐릭터를 관리 가능한 크리에이터 작업 흐름으로 바꿉니다",
     "Studio restructuring now comes with a labor operating model",
     "스튜디오 재편에는 이제 노사 운영 방식도 함께 따라옵니다",
     "Gamescom turns attention into shared industry infrastructure",
@@ -20,8 +22,6 @@ export const weeklyEditorial: {
     "GPU inflation spreads through Asia's retail channel",
     "GPU 가격 상승이 아시아 유통망 전반으로 번집니다",
     "The memory crunch reaches the console shelf",
-    "메모리 부족이 콘솔 판매가를 밀어 올립니다",
-    "GPU inflation spreads through Asia's retail channel",
-    "GPU 가격 상승이 아시아 유통망 전반으로 번집니다"
+    "메모리 부족이 콘솔 판매가를 밀어 올립니다"
   ]
 };

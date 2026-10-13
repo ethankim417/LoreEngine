@@ -4,10 +4,15 @@ const articlesSource = fs.readFileSync("data/articles.ts", "utf8");
 const localizedSource = fs.readFileSync("lib/localizedContent.ts", "utf8");
 const weeklyEditorialSource = fs.readFileSync("data/weeklyEditorial.ts", "utf8");
 
-const articles = [...articlesSource.matchAll(/id:\s*"(le-\d+)",\s*slug:\s*"([^"]+)"/g)].map((match) => ({
+const literalArticles = [...articlesSource.matchAll(/id:\s*"(le-\d+)",\s*slug:\s*"([^"]+)"/g)].map((match) => ({
   id: match[1],
   slug: match[2]
 }));
+const helperArticles = [...articlesSource.matchAll(/a\("(le-\d+)","([^"]+)"/g)].map((match) => ({
+  id: match[1],
+  slug: match[2]
+}));
+const articles = literalArticles.length ? literalArticles : helperArticles;
 
 if (!articles.length) {
   console.error("No articles found; localization could not be checked.");
@@ -15,7 +20,7 @@ if (!articles.length) {
 }
 
 const translations = new Map(
-  [...localizedSource.matchAll(/"(le-\d+)": \{\s+sourceSlug: "([^"]+)"/g)].map((match) => [match[1], match[2]])
+  [...localizedSource.matchAll(/"(le-\d+)": \{\s+sourceSlug:\s*"([^"]+)"/g)].map((match) => [match[1], match[2]])
 );
 
 const missing = articles.filter((article) => !translations.has(article.id));

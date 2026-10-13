@@ -40,7 +40,7 @@ export type MarketSnapshot = {
 
 // Local fallback data. On Vercel, /api/market can refresh public close-price
 // fields from a scheduled server job. The static mirror keeps reading this file.
-export const marketSnapshotDate = "2026-10-06";
+export const marketSnapshotDate = "2026-10-09";
 
 export const marketPlayers: MarketPlayer[] = [
   {
@@ -345,9 +345,9 @@ export const staticMarketSnapshot: MarketSnapshot = {
   snapshotDate: marketSnapshotDate,
   players: marketPlayers,
   groups: marketGroups,
-  dataSourceLabel: "Yahoo public daily closes dated 2026-10-06; 30-day changes use the public daily-close window; YTD and trend metrics are cached; not real-time data or financial advice",
+  dataSourceLabel: "Yahoo public daily closes last verified 2026-10-09; 30-day changes use the public daily-close window; YTD and trend metrics are cached; not real-time data or financial advice",
   mode: "cached-fallback",
-  refreshedAt: "2026-10-06T02:15:00.000Z",
+  refreshedAt: "2026-10-13T01:55:00.000Z",
   updatedTickers: ["NVDA","AMD","INTC","MSFT","SONY","NTDOY","U","TCEHY","NTES","TTWO","RBLX","CCOEY","KONMY","NCBDY","SQNXF"],
   failedTickers: ["EPIC","EA"],
   failedTickerReasons: {
