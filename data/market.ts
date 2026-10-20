@@ -40,7 +40,7 @@ export type MarketSnapshot = {
 
 // Local fallback data. On Vercel, /api/market can refresh public close-price
 // fields from a scheduled server job. The static mirror keeps reading this file.
-export const marketSnapshotDate = "2026-10-09";
+export const marketSnapshotDate = "2026-10-16";
 
 export const marketPlayers: MarketPlayer[] = [
   {
@@ -345,12 +345,27 @@ export const staticMarketSnapshot: MarketSnapshot = {
   snapshotDate: marketSnapshotDate,
   players: marketPlayers,
   groups: marketGroups,
-  dataSourceLabel: "Yahoo public daily closes last verified 2026-10-09; 30-day changes use the public daily-close window; YTD and trend metrics are cached; not real-time data or financial advice",
+  dataSourceLabel: "Public daily-close fallback last verified 2026-10-09; fresh October 16 quote verification was unavailable, so cached prices are retained; not real-time data or financial advice",
   mode: "cached-fallback",
-  refreshedAt: "2026-10-13T01:55:00.000Z",
-  updatedTickers: ["NVDA","AMD","INTC","MSFT","SONY","NTDOY","U","TCEHY","NTES","TTWO","RBLX","CCOEY","KONMY","NCBDY","SQNXF"],
-  failedTickers: ["EPIC","EA"],
+  refreshedAt: "2026-10-20T00:00:00.000Z",
+  updatedTickers: [],
+  failedTickers: ["NVDA","AMD","INTC","MSFT","SONY","NTDOY","U","TCEHY","NTES","TTWO","RBLX","CCOEY","KONMY","NCBDY","SQNXF","EPIC","EA"],
   failedTickerReasons: {
+    NVDA: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    AMD: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    INTC: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    MSFT: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    SONY: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    NTDOY: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    U: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    TCEHY: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    NTES: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    TTWO: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    RBLX: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    CCOEY: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    KONMY: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    NCBDY: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
+    SQNXF: "No fresh public close-price payload was available during the October 20 refresh; cached October 9 value retained.",
     EPIC: "Epic Games is private and has no public close price.",
     EA: "EA went private on August 4, 2026; historical quotes are not current prices. https://careers.ea.com/playtesting/news/ea-announces-completion-of-acquisition"
   }

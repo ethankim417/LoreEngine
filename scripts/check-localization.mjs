@@ -19,8 +19,10 @@ if (!articles.length) {
   process.exit(1);
 }
 
+const currentTranslationsBlock =
+  localizedSource.match(/const currentArticleTranslations[\s\S]*?(?=\/\* Previous weekly translations|const metricTranslations)/)?.[0] ?? "";
 const translations = new Map(
-  [...localizedSource.matchAll(/"(le-\d+)": \{\s+sourceSlug:\s*"([^"]+)"/g)].map((match) => [match[1], match[2]])
+  [...currentTranslationsBlock.matchAll(/"(le-\d+)": \{\s+sourceSlug:\s*"([^"]+)"/g)].map((match) => [match[1], match[2]])
 );
 
 const missing = articles.filter((article) => !translations.has(article.id));

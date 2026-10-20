@@ -5,12 +5,14 @@ export const weeklyEditorial: {
   headline: Record<Language, string>;
   previousHeadlines: string[];
 } = {
-  leadArticleSlug: "xbox-xp-formalizes-franchise-expansion",
+  leadArticleSlug: "fortnite-discover-redesign-raises-creator-packaging-bar",
   headline: {
-    en: "Xbox turns franchise fandom into a platform operating layer",
-    ko: "Xbox가 프랜차이즈 팬덤을 플랫폼 운영 계층으로 만듭니다"
+    en: "Fortnite makes creator packaging part of the publishing stack",
+    ko: "Fortnite가 크리에이터 패키징을 퍼블리싱 스택의 일부로 만듭니다"
   },
   previousHeadlines: [
+    "Xbox turns franchise fandom into a platform operating layer",
+    "Xbox가 프랜차이즈 팬덤을 플랫폼 운영 계층으로 만듭니다",
     "Fortnite turns LLM characters into a governed creator workflow",
     "Fortnite가 LLM 캐릭터를 관리 가능한 크리에이터 작업 흐름으로 바꿉니다",
     "Studio restructuring now comes with a labor operating model",
@@ -20,8 +22,6 @@ export const weeklyEditorial: {
     "Hardware inflation turns access into a platform decision",
     "하드웨어 인플레이션이 게임 접근 방식을 바꿉니다",
     "GPU inflation spreads through Asia's retail channel",
-    "GPU 가격 상승이 아시아 유통망 전반으로 번집니다",
-    "The memory crunch reaches the console shelf",
-    "메모리 부족이 콘솔 판매가를 밀어 올립니다"
+    "GPU 가격 상승이 아시아 유통망 전반으로 번집니다"
   ]
 };
