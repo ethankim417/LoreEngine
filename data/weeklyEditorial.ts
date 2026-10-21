@@ -5,12 +5,14 @@ export const weeklyEditorial: {
   headline: Record<Language, string>;
   previousHeadlines: string[];
 } = {
-  leadArticleSlug: "fortnite-discover-redesign-raises-creator-packaging-bar",
+  leadArticleSlug: "unity-7-alpha-makes-ai-era-engine-change-testable",
   headline: {
-    en: "Fortnite makes creator packaging part of the publishing stack",
-    ko: "Fortnite가 크리에이터 패키징을 퍼블리싱 스택의 일부로 만듭니다"
+    en: "Unity turns the next engine cycle into a weekly migration decision",
+    ko: "Unity가 차세대 엔진 전환을 주간 단위의 마이그레이션 결정으로 만듭니다"
   },
   previousHeadlines: [
+    "Fortnite makes creator packaging part of the publishing stack",
+    "Fortnite가 크리에이터 패키징을 퍼블리싱 스택의 일부로 만듭니다",
     "Xbox turns franchise fandom into a platform operating layer",
     "Xbox가 프랜차이즈 팬덤을 플랫폼 운영 계층으로 만듭니다",
     "Fortnite turns LLM characters into a governed creator workflow",
@@ -20,8 +22,6 @@ export const weeklyEditorial: {
     "Gamescom turns attention into shared industry infrastructure",
     "Gamescom이 관심을 산업의 공동 인프라로 바꿉니다",
     "Hardware inflation turns access into a platform decision",
-    "하드웨어 인플레이션이 게임 접근 방식을 바꿉니다",
-    "GPU inflation spreads through Asia's retail channel",
-    "GPU 가격 상승이 아시아 유통망 전반으로 번집니다"
+    "하드웨어 인플레이션이 게임 접근 방식을 바꿉니다"
   ]
 };
