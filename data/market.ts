@@ -40,7 +40,7 @@ export type MarketSnapshot = {
 
 // Local fallback data. On Vercel, /api/market can refresh public close-price
 // fields from a scheduled server job. The static mirror keeps reading this file.
-export const marketSnapshotDate = "2026-10-20";
+export const marketSnapshotDate = "2026-10-24";
 
 export const marketPlayers: MarketPlayer[] = [
   {
@@ -345,23 +345,23 @@ export const staticMarketSnapshot: MarketSnapshot = {
   snapshotDate: marketSnapshotDate,
   players: marketPlayers,
   groups: marketGroups,
-  dataSourceLabel: "Public October 20 close-price fallback: NVDA (ChartExchange), AMD (StockAnalysis), MSFT (Yahoo Finance), and RBLX (ChartExchange); remaining values retain the last verified cache. Not real-time data or financial advice",
+  dataSourceLabel: "Public close-price fallback reviewed October 24: NVDA (ChartExchange), AMD (StockAnalysis), MSFT (Yahoo Finance), and RBLX (ChartExchange); values remain dated closes, not real-time data or financial advice",
   mode: "cached-fallback",
-  refreshedAt: "2026-10-21T00:00:00.000Z",
+  refreshedAt: "2026-10-27T00:00:00.000Z",
   updatedTickers: ["NVDA","AMD","MSFT","RBLX"],
   failedTickers: ["INTC","SONY","NTDOY","U","TCEHY","NTES","TTWO","CCOEY","KONMY","NCBDY","SQNXF","EPIC","EA"],
   failedTickerReasons: {
-    INTC: "No fresh public close price was verified during the October 21 refresh; cached October 9 value retained.",
-    SONY: "No fresh public close price was verified during the October 21 refresh; cached October 9 value retained.",
-    NTDOY: "No fresh public close price was verified during the October 21 refresh; cached October 9 value retained.",
-    U: "No fresh public close price was verified during the October 21 refresh; cached October 9 value retained.",
-    TCEHY: "No fresh public close price was verified during the October 21 refresh; cached October 9 value retained.",
-    NTES: "No fresh public close price was verified during the October 21 refresh; cached October 9 value retained.",
-    TTWO: "No fresh public close price was verified during the October 21 refresh; cached October 9 value retained.",
-    CCOEY: "No fresh public close price was verified during the October 21 refresh; cached October 9 value retained.",
-    KONMY: "No fresh public close price was verified during the October 21 refresh; cached October 9 value retained.",
-    NCBDY: "No fresh public close price was verified during the October 21 refresh; cached October 9 value retained.",
-    SQNXF: "No fresh public close price was verified during the October 21 refresh; cached October 9 value retained.",
+    INTC: "No fresh public close price was verified in this weekly fallback review; cached value retained.",
+    SONY: "No fresh public close price was verified in this weekly fallback review; cached value retained.",
+    NTDOY: "No fresh public close price was verified in this weekly fallback review; cached value retained.",
+    U: "No fresh public close price was verified in this weekly fallback review; cached value retained.",
+    TCEHY: "No fresh public close price was verified in this weekly fallback review; cached value retained.",
+    NTES: "No fresh public close price was verified in this weekly fallback review; cached value retained.",
+    TTWO: "No fresh public close price was verified in this weekly fallback review; cached value retained.",
+    CCOEY: "No fresh public close price was verified in this weekly fallback review; cached value retained.",
+    KONMY: "No fresh public close price was verified in this weekly fallback review; cached value retained.",
+    NCBDY: "No fresh public close price was verified in this weekly fallback review; cached value retained.",
+    SQNXF: "No fresh public close price was verified in this weekly fallback review; cached value retained.",
     EPIC: "Epic Games is private and has no public close price.",
     EA: "EA went private on August 4, 2026; historical quotes are not current prices. https://careers.ea.com/playtesting/news/ea-announces-completion-of-acquisition"
   }

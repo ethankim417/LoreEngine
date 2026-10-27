@@ -5,12 +5,14 @@ export const weeklyEditorial: {
   headline: Record<Language, string>;
   previousHeadlines: string[];
 } = {
-  leadArticleSlug: "unity-7-alpha-makes-ai-era-engine-change-testable",
+  leadArticleSlug: "id-xbox-ign-showcase-turns-indie-slots-into-cross-device-distribution",
   headline: {
-    en: "Unity turns the next engine cycle into a weekly migration decision",
-    ko: "Unity가 차세대 엔진 전환을 주간 단위의 마이그레이션 결정으로 만듭니다"
+    en: "Xbox turns indie discovery into a cross-device distribution bundle",
+    ko: "Xbox가 인디 발견성을 기기 간 유통 묶음으로 만듭니다"
   },
   previousHeadlines: [
+    "Unity turns the next engine cycle into a weekly migration decision",
+    "Unity가 차세대 엔진 전환을 주간 단위의 마이그레이션 결정으로 만듭니다",
     "Fortnite makes creator packaging part of the publishing stack",
     "Fortnite가 크리에이터 패키징을 퍼블리싱 스택의 일부로 만듭니다",
     "Xbox turns franchise fandom into a platform operating layer",
@@ -20,8 +22,6 @@ export const weeklyEditorial: {
     "Studio restructuring now comes with a labor operating model",
     "스튜디오 재편에는 이제 노사 운영 방식도 함께 따라옵니다",
     "Gamescom turns attention into shared industry infrastructure",
-    "Gamescom이 관심을 산업의 공동 인프라로 바꿉니다",
-    "Hardware inflation turns access into a platform decision",
-    "하드웨어 인플레이션이 게임 접근 방식을 바꿉니다"
+    "Gamescom이 관심을 산업의 공동 인프라로 바꿉니다"
   ]
 };
