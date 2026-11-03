@@ -5,12 +5,14 @@ export const weeklyEditorial: {
   headline: Record<Language, string>;
   previousHeadlines: string[];
 } = {
-  leadArticleSlug: "xbox-game-pass-wave-two-turns-october-into-device-portfolio",
+  leadArticleSlug: "fortnite-4300-makes-creator-production-an-agent-assisted-stack",
   headline: {
-    en: "Game Pass turns October releases into a cross-screen retention loop",
-    ko: "Game Pass가 10월 출시작을 화면 간 리텐션 순환으로 만듭니다"
+    en: "Fortnite packages AI creation, profiling, and progression into one creator operating system",
+    ko: "Fortnite가 AI 제작·성능 분석·성장 설계를 하나의 크리에이터 운영 체계로 묶습니다"
   },
   previousHeadlines: [
+    "Game Pass turns October releases into a cross-screen retention loop",
+    "Game Pass가 10월 출시작을 화면 간 리텐션 순환으로 만듭니다",
     "Xbox turns indie discovery into a cross-device distribution bundle",
     "Xbox가 인디 발견성을 기기 간 유통 묶음으로 만듭니다",
     "Unity turns the next engine cycle into a weekly migration decision",
@@ -20,8 +22,6 @@ export const weeklyEditorial: {
     "Xbox turns franchise fandom into a platform operating layer",
     "Xbox가 프랜차이즈 팬덤을 플랫폼 운영 계층으로 만듭니다",
     "Fortnite turns LLM characters into a governed creator workflow",
-    "Fortnite가 LLM 캐릭터를 관리 가능한 크리에이터 작업 흐름으로 바꿉니다",
-    "Studio restructuring now comes with a labor operating model",
-    "스튜디오 재편에는 이제 노사 운영 방식도 함께 따라옵니다"
+    "Fortnite가 LLM 캐릭터를 관리 가능한 크리에이터 작업 흐름으로 바꿉니다"
   ]
 };

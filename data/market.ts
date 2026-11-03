@@ -40,7 +40,7 @@ export type MarketSnapshot = {
 
 // Local fallback data. On Vercel, /api/market can refresh public close-price
 // fields from a scheduled server job. The static mirror keeps reading this file.
-export const marketSnapshotDate = "2026-10-24";
+export const marketSnapshotDate = "2026-10-30";
 
 export const marketPlayers: MarketPlayer[] = [
   {
@@ -48,8 +48,8 @@ export const marketPlayers: MarketPlayer[] = [
     company: "NVIDIA",
     segment: "Gaming AI / GPUs",
     exchange: "NASDAQ",
-    price: 216.32,
-    dayChange: -0.4,
+    price: 204.64,
+    dayChange: -4.22,
     thirtyDayChange: 12.2,
     ytdChange: 17,
     marketCap: "$3.1T",
@@ -64,8 +64,8 @@ export const marketPlayers: MarketPlayer[] = [
     company: "AMD",
     segment: "Gaming CPUs / GPUs",
     exchange: "NASDAQ",
-    price: 534.74,
-    dayChange: -0.6,
+    price: 504.8,
+    dayChange: -10.88,
     thirtyDayChange: 38.8,
     ytdChange: 141,
     marketCap: "$900B",
@@ -96,8 +96,8 @@ export const marketPlayers: MarketPlayer[] = [
     company: "Microsoft",
     segment: "Xbox / Cloud / AI",
     exchange: "NASDAQ",
-    price: 531.87,
-    dayChange: 0.4,
+    price: 521.91,
+    dayChange: -1.88,
     thirtyDayChange: 6.2,
     ytdChange: 2.5,
     marketCap: "$3.2T",
@@ -240,8 +240,8 @@ export const marketPlayers: MarketPlayer[] = [
     company: "Roblox",
     segment: "UGC / Creator Economy",
     exchange: "NYSE",
-    price: 52.34,
-    dayChange: 3.1,
+    price: 42.99,
+    dayChange: -18.05,
     thirtyDayChange: 13.8,
     ytdChange: -43.8,
     marketCap: "$25B",
@@ -345,9 +345,9 @@ export const staticMarketSnapshot: MarketSnapshot = {
   snapshotDate: marketSnapshotDate,
   players: marketPlayers,
   groups: marketGroups,
-  dataSourceLabel: "Public close-price fallback reviewed October 24: NVDA (ChartExchange), AMD (StockAnalysis), MSFT (Yahoo Finance), and RBLX (ChartExchange); values remain dated closes, not real-time data or financial advice",
+  dataSourceLabel: "Public close-price fallback reviewed October 30: NVDA and RBLX (ChartExchange), AMD (ADVFN), and MSFT (Yahoo Finance); values are dated closes, not real-time data or financial advice",
   mode: "cached-fallback",
-  refreshedAt: "2026-10-27T00:00:00.000Z",
+  refreshedAt: "2026-11-03T00:00:00.000Z",
   updatedTickers: ["NVDA","AMD","MSFT","RBLX"],
   failedTickers: ["INTC","SONY","NTDOY","U","TCEHY","NTES","TTWO","CCOEY","KONMY","NCBDY","SQNXF","EPIC","EA"],
   failedTickerReasons: {
