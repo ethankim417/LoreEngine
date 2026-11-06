@@ -345,9 +345,9 @@ export const staticMarketSnapshot: MarketSnapshot = {
   snapshotDate: marketSnapshotDate,
   players: marketPlayers,
   groups: marketGroups,
-  dataSourceLabel: "Public close-price fallback reviewed October 30: NVDA and RBLX (ChartExchange), AMD (ADVFN), and MSFT (Yahoo Finance); values are dated closes, not real-time data or financial advice",
+  dataSourceLabel: "Public close-price fallback reviewed November 6: latest verified closes remain NVDA and RBLX (ChartExchange), AMD (ADVFN), and MSFT (Yahoo Finance) from October 30; values are dated closes, not real-time data or financial advice",
   mode: "cached-fallback",
-  refreshedAt: "2026-11-03T00:00:00.000Z",
+  refreshedAt: "2026-11-06T00:00:00.000Z",
   updatedTickers: ["NVDA","AMD","MSFT","RBLX"],
   failedTickers: ["INTC","SONY","NTDOY","U","TCEHY","NTES","TTWO","CCOEY","KONMY","NCBDY","SQNXF","EPIC","EA"],
   failedTickerReasons: {
